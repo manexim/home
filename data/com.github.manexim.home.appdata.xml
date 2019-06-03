@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Manexim -->
+<component type="desktop">
+    <id>com.github.manexim.home.desktop</id>
+    <metadata_license>CC0</metadata_license>
+    <project_license>GPL-3.0+</project_license>
+    <name>Home</name>
+    <summary>Control your smart home gadgets</summary>
+    <description>
+    </description>
+    <provides>
+        <binary>com.github.manexim.home</binary>
+    </provides>
+    ​<releases>
+    </releases>
+    <screenshots>
+    </screenshots>
+    <developer_name>Manexim</developer_name>
+    <url type="homepage">https://github.com/manexim</url>
+    <url type="bugtracker">https://github.com/manexim/home/issues</url>
+    <custom>
+        <!-- elementary AppCenter specific values -->
+        <value key="x-appcenter-color-primary">#4fad51</value>
+        <value key="x-appcenter-color-primary-text">#333</value>
+        <!-- Suggested price in USD; just a suggestion, NOT a minimum. -->
+        <value key="x-appcenter-suggested-price">5</value>
+    </custom>
+</component>
