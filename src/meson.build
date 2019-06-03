@@ -1,5 +1,6 @@
 sources = [
-    'config/Constants.vala'
+    'config/Constants.vala',
+    'lifx/Service.vala'
 ]
 
 executable(
