@@ -20,18 +20,23 @@ public class MyApp : Gtk.Application {
         main_window.show_all ();
     }
 
-    protected void addLamp (string lamp) {
-        this.label.set_text (lamp);
+    protected void addThing (Thing thing) {
+        this.label.set_text (thing.name);
     }
 
     public static int main (string[] args) {
         var app = new MyApp ();
 
         var lifxService = new Lifx.Service ();
-        lifxService.onNewLamp.connect ((lamp) => {
-            print ("Found new lamp: %s\n", lamp);
+        lifxService.onNewThing.connect ((thing) => {
+            if (thing is Lamp) {
+                print ("Found new lamp: ");
+            } else {
+                print ("Found new thing: ");
+            }
+            print ("%s\n", thing.id);
 
-            app.addLamp (lamp);
+            app.addThing (thing);
         });
 
         return app.run (args);
