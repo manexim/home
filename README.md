@@ -7,6 +7,8 @@ These dependencies must be present before building
  - `meson (>=0.40)`
  - `valac (>=0.16)`
  - `libgtk-3-dev`
+ - `libjson-glib-dev`
+ - `libgee-0.8-dev`
 
 ### Building
 
