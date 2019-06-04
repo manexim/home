@@ -1,5 +1,7 @@
 sources = [
     'config/Constants.vala',
+    'lifx/LifxLamp.vala',
+    'lifx/Packet.vala',
     'lifx/Service.vala',
     'models/Lamp.vala',
     'models/Thing.vala',
@@ -12,7 +14,9 @@ executable(
     sources + ['Application.vala'],
     dependencies: [
         gtk_plus_3_dep,
-        posix_dep
+        json_glib_1_dep,
+        posix_dep,
+        gee_dep
     ],
     install: true
 )
@@ -27,7 +31,9 @@ foreach test_name : tests
         sources + [test_name + '.test.vala'],
         dependencies: [
             gtk_plus_3_dep,
+            json_glib_1_dep,
             posix_dep,
+            gee_dep
         ]
     )
     test(
