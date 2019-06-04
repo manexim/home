@@ -1,20 +1,25 @@
 sources = [
     'config/Constants.vala',
+    'lifx/Service.vala',
     'models/Lamp.vala',
     'models/Thing.vala',
-    'lifx/Service.vala'
+    'utils/Buffer.vala',
+    'utils/Platform.vala'
 ]
 
 executable(
     meson.project_name(),
     sources + ['Application.vala'],
     dependencies: [
-        gtk_plus_3_dep
+        gtk_plus_3_dep,
+        posix_dep
     ],
     install: true
 )
 
-tests = []
+tests = [
+    'utils/Buffer'
+]
 
 foreach test_name : tests
     test_exe = executable(
@@ -22,9 +27,7 @@ foreach test_name : tests
         sources + [test_name + '.test.vala'],
         dependencies: [
             gtk_plus_3_dep,
-            json_glib_1_dep,
             posix_dep,
-            gee_dep
         ]
     )
     test(
