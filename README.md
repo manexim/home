@@ -9,6 +9,7 @@ These dependencies must be present before building
  - `libgtk-3-dev`
  - `libjson-glib-dev`
  - `libgee-0.8-dev`
+ - `libgranite-dev`
 
 ### Building
 

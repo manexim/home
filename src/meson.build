@@ -16,7 +16,8 @@ executable(
         gtk_plus_3_dep,
         json_glib_1_dep,
         posix_dep,
-        gee_dep
+        gee_dep,
+        granite_dep
     ],
     install: true
 )
@@ -33,7 +34,8 @@ foreach test_name : tests
             gtk_plus_3_dep,
             json_glib_1_dep,
             posix_dep,
-            gee_dep
+            gee_dep,
+            granite_dep
         ]
     )
     test(
