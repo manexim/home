@@ -1,4 +1,4 @@
-public class MyApp : Gtk.Application {
+public class MyApp : Granite.Application {
     private Gtk.Label label;
 
     public MyApp () {
@@ -9,15 +9,29 @@ public class MyApp : Gtk.Application {
     }
 
     protected override void activate () {
-        var main_window = new Gtk.ApplicationWindow (this);
-        main_window.default_height = 480;
-        main_window.default_width = 640;
-        main_window.title = Config.APP_NAME;
+        var window = new Gtk.ApplicationWindow (this);
 
         this.label = new Gtk.Label ("");
-        main_window.add (label);
+        window.add (label);
 
-        main_window.show_all ();
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        mode_switch.primary_icon_tooltip_text = ("Light background");
+        mode_switch.secondary_icon_tooltip_text = ("Dark background");
+        mode_switch.valign = Gtk.Align.CENTER;
+        mode_switch.bind_property ("active", gtk_settings, "gtk-application-prefer-dark-theme");
+
+        var headerbar = new Gtk.HeaderBar ();
+        headerbar.get_style_context ().add_class ("default-decoration");
+        headerbar.show_close_button = true;
+        headerbar.pack_end (mode_switch);
+
+        window.set_default_size (900, 600);
+        window.set_size_request (750, 500);
+        window.set_titlebar (headerbar);
+        window.title = Config.APP_NAME;
+        window.show_all ();
     }
 
     protected void addThing (Thing thing) {
