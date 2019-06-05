@@ -1,7 +1,7 @@
-public class MyApp : Granite.Application {
+public class Application : Granite.Application {
     private Gtk.Label label;
 
-    public MyApp () {
+    public Application () {
         Object (
             application_id: Config.APP_ID,
             flags: ApplicationFlags.FLAGS_NONE
@@ -39,7 +39,7 @@ public class MyApp : Granite.Application {
     }
 
     public static int main (string[] args) {
-        var app = new MyApp ();
+        var app = new Application ();
 
         var lifxService = new Lifx.Service (true);
         lifxService.onNewThing.connect ((thing) => {
