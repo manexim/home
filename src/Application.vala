@@ -74,6 +74,7 @@ public class Application : Granite.Application {
                 print ("Found new thing: ");
             }
             print ("%s\n", thing.id);
+            print ("%s\n", (thing as Lifx.LifxLamp).toString ());
 
             app.addThing (thing);
         });
@@ -85,6 +86,7 @@ public class Application : Granite.Application {
                 print ("Updated thing: ");
             }
             print ("%s\n", thing.id);
+            print ("%s\n", (thing as Lifx.LifxLamp).toString ());
 
             app.addThing (thing);
         });

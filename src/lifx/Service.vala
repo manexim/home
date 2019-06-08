@@ -56,7 +56,7 @@ namespace Lifx {
                                     thing.id = packet.target;
                                     thing.port = (uint16) packet.payload.get_int_member ("port");
 
-                                    this.getPower (thing);
+                                    this.getState (thing);
 
                                     this.thingMap.set (thing.id, thing);
                                     this.onNewThing (thing);
@@ -161,6 +161,23 @@ namespace Lifx {
         private void getLabel (Lifx.LifxLamp lamp) {
             var packet = new Lifx.Packet ();
             packet.type = 23;
+            packet.tagged = true;
+            packet.addressable = true;
+            //  packet.target = lamp.id;
+            //  packet.ack_required = true;
+            //  packet.res_required = true;
+            packet.source = this.source++;
+
+            try {
+                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("224.0.0.251"), 56700), packet.raw);
+            } catch (Error e) {
+                stderr.printf (e.message);
+            }
+        }
+
+        private void getState (Lifx.LifxLamp lamp) {
+            var packet = new Lifx.Packet ();
+            packet.type = 101;
             packet.tagged = true;
             packet.addressable = true;
             //  packet.target = lamp.id;
