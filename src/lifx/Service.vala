@@ -30,8 +30,7 @@ namespace Lifx {
         private void setupSocket () {
             try {
                 this.socket = new Socket (SocketFamily.IPV4, SocketType.DATAGRAM, SocketProtocol.UDP);
-                this.socket.multicast_ttl = 225;
-                this.socket.multicast_loopback = true;
+                this.socket.broadcast = true;
 
                 #if HAVE_SO_REUSEPORT
                 int32 enable = 1;
@@ -40,7 +39,6 @@ namespace Lifx {
 
                 var sa = new InetSocketAddress (new InetAddress.any (SocketFamily.IPV4), 56700);
                 this.socket.bind (sa, true);
-                this.socket.join_multicast_group (new InetAddress.from_string ("224.0.0.251"), false, "lo");
             } catch (Error e) {
                 stderr.printf (e.message);
             }
@@ -160,7 +158,7 @@ namespace Lifx {
             packet.tagged = true;
 
             try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("224.0.0.251"), 56700), packet.raw);
+                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), 56700), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }
@@ -177,7 +175,7 @@ namespace Lifx {
             packet.source = this.source++;
 
             try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("224.0.0.251"), 56700), packet.raw);
+                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), 56700), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }
