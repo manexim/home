@@ -67,6 +67,8 @@ public class LampPage : Granite.SimpleSettingsPage {
     }
 
     private void updateStatus () {
+        this.controller.switchPower (status_switch.active);
+
         if (status_switch.active) {
             status_type = Granite.SettingsPage.StatusType.SUCCESS;
             status = ("Enabled");

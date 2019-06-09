@@ -19,6 +19,25 @@ namespace Lifx {
             }
         }
 
+        public void setPower (Lifx.LifxLamp lamp, uint16 level, uint32 duration) {
+            var packet = new Lifx.Packet ();
+            packet.type = 117;
+            packet.tagged = false;
+            packet.addressable = true;
+            packet.target = lamp.id;
+            packet.ack_required = true;
+            packet.res_required = true;
+            packet.source = this.source++;
+            packet.payload.set_int_member ("level", level);
+            packet.payload.set_int_member ("duration", duration);
+
+            try {
+                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
+            } catch (Error e) {
+                stderr.printf (e.message);
+            }
+        }
+
         private Service () {
             this.thingMap = new Gee.HashMap<string, Thing> ();
 
@@ -123,6 +142,20 @@ namespace Lifx {
                                     this.onNewThing (thing);
                                 }
                                 break;
+                            case 118: // StatePower
+                                if (this.thingMap.has_key (packet.target)) {
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).on = (packet.payload.get_int_member ("power") == 65535);
+
+                                    this.onUpdatedThing (this.thingMap.get (packet.target));
+                                } else {
+                                    var thing = new Lifx.LifxLamp ();
+                                    thing.id = packet.target;
+                                    thing.on = (packet.payload.get_int_member ("power") == 65535);
+
+                                    this.thingMap.set (thing.id, thing);
+                                    this.onNewThing (thing);
+                                }
+                                break;
                             default:
                                 break;
                             }
@@ -169,13 +202,10 @@ namespace Lifx {
             packet.type = 101;
             packet.tagged = true;
             packet.addressable = true;
-            //  packet.target = lamp.id;
-            //  packet.ack_required = true;
-            //  packet.res_required = true;
             packet.source = this.source++;
 
             try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), 56700), packet.raw);
+                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }

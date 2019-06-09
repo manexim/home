@@ -15,5 +15,9 @@ namespace Lifx {
                 }
             });
         }
+
+        public void switchPower (bool on) {
+            this.service.setPower (this.lamp, on ? 65535 : 0, 0);
+        }
     }
 }

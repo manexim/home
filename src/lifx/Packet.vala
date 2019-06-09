@@ -18,6 +18,7 @@ namespace Lifx {
 
         public Packet () {
             this.target = "00:00:00:00:00:00:00:00";
+            this.payload = new Json.Object ();
         }
 
         public Packet.from (uint8[] array) {
@@ -84,6 +85,9 @@ namespace Lifx {
                 this.payload.set_int_member ("power", buffer.readUInt16LE (i + 10));
                 this.payload.set_string_member ("label", (string) buffer.slice (i + 12, i + 44).raw);
                 break;
+            case 118: // StatePower
+                this.payload.set_int_member ("level", buffer.readUInt16LE (i));
+                break;
             default:
                 var a = new Json.Array ();
                 var raw = buffer.slice (i, (uint8) this.size).raw;
@@ -144,6 +148,15 @@ namespace Lifx {
 
                 switch (this.type) {
                 case 2: // GetService
+                    break;
+                case 21: // SetPower
+                    buf4 = new Buffer.alloc (2);
+                    buf4.writeUInt16LE ((uint16) this.payload.get_int_member ("level"), 0);
+                    break;
+                case 117: // SetPower
+                    buf4 = new Buffer.alloc (6);
+                    buf4.writeUInt16LE ((uint16) this.payload.get_int_member ("level"), 0);
+                    buf4.writeUInt32LE ((uint32) this.payload.get_int_member ("duration"), 2);
                     break;
                 default:
                     break;
