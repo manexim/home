@@ -1,12 +1,16 @@
 sources = [
     'config/Constants.vala',
+    'controllers/ThingsController.vala',
+    'lifx/LifxLampController.vala',
     'lifx/LifxLamp.vala',
     'lifx/Packet.vala',
     'lifx/Service.vala',
     'models/Lamp.vala',
     'models/Thing.vala',
+    'pages/LampPage.vala',
     'utils/Buffer.vala',
-    'utils/Platform.vala'
+    'utils/Platform.vala',
+    'views/ThingsView.vala'
 ]
 
 executable(

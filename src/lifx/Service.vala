@@ -1,6 +1,7 @@
 namespace Lifx {
     public class Service {
-        private bool debug;
+        private static Service? _instance;
+        public bool debug = true;
         private uint32 source = 0;
         private Gee.HashMap<string, Thing> thingMap;
         private Socket socket;
@@ -8,11 +9,21 @@ namespace Lifx {
         public signal void onNewThing (Thing thing);
         public signal void onUpdatedThing (Thing thing);
 
-        public Service (bool debug = false) {
-            this.debug = debug;
+        public static Service instance {
+            get {
+                if (_instance == null) {
+                    _instance = new Service ();
+                }
+
+                return _instance;
+            }
+        }
+
+        private Service () {
             this.thingMap = new Gee.HashMap<string, Thing> ();
 
             this.setupSocket ();
+            this.listen ();
             this.discover ();
         }
 
@@ -35,7 +46,7 @@ namespace Lifx {
             }
         }
 
-        private void discover () {
+        private void listen () {
             new Thread<void*> (null, () => {
                 while (true) {
                     var source = this.socket.create_source (IOCondition.IN);
@@ -72,8 +83,6 @@ namespace Lifx {
                                     thing.id = packet.target;
                                     thing.on = (packet.payload.get_int_member ("level") == 65535);
 
-                                    this.getLabel (thing);
-
                                     this.thingMap.set (thing.id, thing);
                                     this.onNewThing (thing);
                                 }
@@ -96,6 +105,10 @@ namespace Lifx {
                                 if (this.thingMap.has_key (packet.target)) {
                                     this.thingMap.get (packet.target).name = packet.payload.get_string_member ("label");
                                     (this.thingMap.get (packet.target) as Lifx.LifxLamp).on = (packet.payload.get_int_member ("power") == 65535);
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).hue = (uint16) packet.payload.get_int_member ("hue");
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).saturation = (uint16) packet.payload.get_int_member ("saturation");
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).brightness = (uint16) packet.payload.get_int_member ("brightness");
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).kelvin = (uint16) packet.payload.get_int_member ("kelvin");
 
                                     this.onUpdatedThing (this.thingMap.get (packet.target));
                                 } else {
@@ -103,6 +116,10 @@ namespace Lifx {
                                     thing.id = packet.target;
                                     thing.name = packet.payload.get_string_member ("label");
                                     thing.on = (packet.payload.get_int_member ("power") == 65535);
+                                    thing.hue = (uint16) packet.payload.get_int_member ("hue");
+                                    thing.saturation = (uint16) packet.payload.get_int_member ("saturation");
+                                    thing.brightness = (uint16) packet.payload.get_int_member ("brightness");
+                                    thing.kelvin = (uint16) packet.payload.get_int_member ("kelvin");
 
                                     this.thingMap.set (thing.id, thing);
                                     this.onNewThing (thing);
@@ -122,9 +139,17 @@ namespace Lifx {
                     });
                     source.attach (MainContext.default ());
 
+                    new MainLoop ().run ();
+                }
+            });
+        }
+
+        private void discover () {
+            new Thread<void*> (null, () => {
+                while (true) {
                     this.getService ();
 
-                    new MainLoop ().run ();
+                    Thread.usleep (10 * 1000 * 1000);
                 }
             });
         }
@@ -133,40 +158,6 @@ namespace Lifx {
             var packet = new Lifx.Packet ();
             packet.type = 2;
             packet.tagged = true;
-
-            try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("224.0.0.251"), 56700), packet.raw);
-            } catch (Error e) {
-                stderr.printf (e.message);
-            }
-        }
-
-        private void getPower (Lifx.LifxLamp lamp) {
-            var packet = new Lifx.Packet ();
-            packet.type = 20;
-            packet.tagged = true;
-            packet.addressable = true;
-            //  packet.target = lamp.id;
-            //  packet.ack_required = true;
-            //  packet.res_required = true;
-            packet.source = this.source++;
-
-            try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("224.0.0.251"), 56700), packet.raw);
-            } catch (Error e) {
-                stderr.printf (e.message);
-            }
-        }
-
-        private void getLabel (Lifx.LifxLamp lamp) {
-            var packet = new Lifx.Packet ();
-            packet.type = 23;
-            packet.tagged = true;
-            packet.addressable = true;
-            //  packet.target = lamp.id;
-            //  packet.ack_required = true;
-            //  packet.res_required = true;
-            packet.source = this.source++;
 
             try {
                 this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("224.0.0.251"), 56700), packet.raw);
