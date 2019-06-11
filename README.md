@@ -4,7 +4,7 @@
   <p align="center">Designed for <a href="https://elementary.io">elementary OS</a></p>
 </div>
 
-[![Build Status](https://travis-ci.org/manexim/home.svg?branch=develop)](https://travis-ci.org/manexim/home)
+[![Build Status](https://travis-ci.org/manexim/home.svg?branch=master)](https://travis-ci.org/manexim/home)
 
 ![screenshot](data/screenshots/000.png)
 ![screenshot](data/screenshots/001.png)
