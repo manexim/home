@@ -3,7 +3,7 @@
 <component type="desktop">
     <id>com.github.manexim.home.desktop</id>
     <metadata_license>CC0</metadata_license>
-    <project_license>MIT</project_license>
+    <project_license>GPL-3.0+</project_license>
     <name>Home</name>
     <summary>Control your smart home gadgets</summary>
     <description>

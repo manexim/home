@@ -4,4 +4,4 @@ Source: https://github.com/manexim/home
 
 Files: src/* data/* debian/*
 Copyright: 2019 Marius Meisenzahl <mariusmeisenzahl@gmail.com>
-License: MIT
+License: GPL-3.0+
