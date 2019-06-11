@@ -6,6 +6,10 @@
 
 [![Build Status](https://travis-ci.org/manexim/home.svg?branch=develop)](https://travis-ci.org/manexim/home)
 
+![screenshot](data/screenshots/000.png)
+![screenshot](data/screenshots/001.png)
+![screenshot](data/screenshots/002.png)
+
 ## Installation
 
 ### Dependencies
