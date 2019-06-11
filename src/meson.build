@@ -8,6 +8,7 @@ sources = [
     'models/Lamp.vala',
     'models/Thing.vala',
     'pages/LampPage.vala',
+    'types/Power.vala',
     'utils/Buffer.vala',
     'utils/Platform.vala',
     'views/ThingsView.vala'

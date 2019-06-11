@@ -72,7 +72,14 @@ namespace Lifx {
                 this.payload.set_int_member ("rx", buffer.readUInt32LE (i + 8));
                 break;
             case 22: // StatePower
-                this.payload.set_int_member ("level", buffer.readUInt16LE (i));
+            Power power = Power.UNKNOWN;
+                uint16 power_t = buffer.readUInt16LE (i);
+                if (power_t > 0) {
+                    power = Power.ON;
+                } else if (power_t == 0) {
+                    power = Power.OFF;
+                }
+                this.payload.set_int_member ("level", power);
                 break;
             case 25: // StateLabel
             this.payload.set_string_member ("label", (string) buffer.slice (i, i + 32).raw);
@@ -82,11 +89,28 @@ namespace Lifx {
                 this.payload.set_int_member ("saturation", buffer.readUInt16LE (i + 2));
                 this.payload.set_int_member ("brightness", buffer.readUInt16LE (i + 4));
                 this.payload.set_int_member ("kelvin", buffer.readUInt16LE (i + 6));
-                this.payload.set_int_member ("power", buffer.readUInt16LE (i + 10));
+
+                // power
+                Power power = Power.UNKNOWN;
+                uint16 power_t = buffer.readUInt16LE (i + 10);
+                if (power_t > 0) {
+                    power = Power.ON;
+                } else if (power_t == 0) {
+                    power = Power.OFF;
+                }
+                this.payload.set_int_member ("power", power);
+
                 this.payload.set_string_member ("label", (string) buffer.slice (i + 12, i + 44).raw);
                 break;
             case 118: // StatePower
-                this.payload.set_int_member ("level", buffer.readUInt16LE (i));
+                Power power = Power.UNKNOWN;
+                uint16 power_t = buffer.readUInt16LE (i);
+                if (power_t > 0) {
+                    power = Power.ON;
+                } else if (power_t == 0) {
+                    power = Power.OFF;
+                }
+                this.payload.set_int_member ("level", power);
                 break;
             default:
                 var a = new Json.Array ();

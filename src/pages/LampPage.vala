@@ -9,17 +9,40 @@ public class LampPage : Granite.SimpleSettingsPage {
         Object (
             activatable: true,
             icon_name: "dialog-question",
+            description: lamp.id,
             title: lamp.name != null ? lamp.name : lamp.id
         );
 
         this.controller = new Lifx.LifxLampController (lamp as Lifx.LifxLamp);
         this.controller.updated.connect ((lamp) => {
-            this.status_switch.active = lamp.on;
+            if (lamp.power == Power.ON) {
+                this.status_switch.active = true;
+                this.status_switch.state = true;
+            } else if (lamp.power == Power.OFF) {
+                this.status_switch.active = false;
+                this.status_switch.state = false;
+            }
+
             this.title = lamp.name;
             this.hue_entry.text = lamp.hue.to_string ();
             this.saturation_entry.text = lamp.saturation.to_string ();
             this.brightness_entry.text = lamp.brightness.to_string ();
             this.kelvin_entry.text = lamp.kelvin.to_string ();
+
+            updateStatus ();
+        });
+
+        updateStatus ();
+
+        status_switch.notify["active"].connect (updateStatus);
+
+        status_switch.state_set.connect ((state) => {
+            this.controller.switchPower (state);
+
+            this.status_switch.active = state;
+            this.status_switch.state = state;
+
+            return state;
         });
     }
 
@@ -60,21 +83,22 @@ public class LampPage : Granite.SimpleSettingsPage {
         content_area.attach (brightness_entry, 1, 2, 1, 1);
         content_area.attach (kelvin_label, 0, 3, 1, 1);
         content_area.attach (kelvin_entry, 1, 3, 1, 1);
-
-        updateStatus ();
-
-        status_switch.notify["active"].connect (updateStatus);
     }
 
     private void updateStatus () {
-        this.controller.switchPower (status_switch.active);
-
-        if (status_switch.active) {
+        switch (this.controller.lamp.power) {
+        case Power.ON:
             status_type = Granite.SettingsPage.StatusType.SUCCESS;
             status = ("Enabled");
-        } else {
+            break;
+        case Power.OFF:
             status_type = Granite.SettingsPage.StatusType.OFFLINE;
             status = ("Disabled");
+            break;
+        default:
+            status_type = Granite.SettingsPage.StatusType.NONE;
+            status = ("Unknown");
+            break;
         }
     }
 }

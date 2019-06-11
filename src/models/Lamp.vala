@@ -1,19 +1,21 @@
 public class Lamp : Thing {
-    public bool on;
+    public Power power {
+        get {
+            if (!this._obj.has_member ("power")) {
+                this._obj.set_string_member ("power", "unknown");
+            }
 
-    public new string toString () {
-        size_t length;
-
-        var gen = new Json.Generator ();
-        var root = new Json.Node (Json.NodeType.OBJECT);
-        var object = new Json.Object ();
-        root.set_object (object);
-        gen.set_root (root);
-
-        object.set_string_member ("id", this.id);
-        object.set_string_member ("name", this.name);
-        object.set_boolean_member ("on", this.on);
-
-        return gen.to_data (out length);
+            switch (this._obj.get_string_member ("power")) {
+            case "on":
+                return Power.ON;
+            case "off":
+                return Power.OFF;
+            default:
+                return Power.UNKNOWN;
+            }
+        }
+        set {
+            this._obj.set_string_member ("power", value.to_string ());
+        }
     }
 }

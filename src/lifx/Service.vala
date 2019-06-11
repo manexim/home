@@ -1,7 +1,7 @@
 namespace Lifx {
     public class Service {
         private static Service? _instance;
-        public bool debug = true;
+        public bool debug = false;
         private uint32 source = 0;
         private Gee.HashMap<string, Thing> thingMap;
         private Socket socket;
@@ -19,17 +19,16 @@ namespace Lifx {
             }
         }
 
-        public void setPower (Lifx.LifxLamp lamp, uint16 level, uint32 duration) {
+        public void setPower (Lifx.LifxLamp lamp, uint16 level) {
             var packet = new Lifx.Packet ();
-            packet.type = 117;
+            packet.type = 21;
             packet.tagged = false;
             packet.addressable = true;
             packet.target = lamp.id;
-            packet.ack_required = true;
-            packet.res_required = true;
+            packet.ack_required = false;
+            packet.res_required = false;
             packet.source = this.source++;
             packet.payload.set_int_member ("level", level);
-            packet.payload.set_int_member ("duration", duration);
 
             try {
                 this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
@@ -92,13 +91,13 @@ namespace Lifx {
                                 break;
                             case 22: // StatePower
                                 if (this.thingMap.has_key (packet.target)) {
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).on = (packet.payload.get_int_member ("level") == 65535);
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).power = (Power) packet.payload.get_int_member ("level");
 
                                     this.onUpdatedThing (this.thingMap.get (packet.target));
                                 } else {
                                     var thing = new Lifx.LifxLamp ();
                                     thing.id = packet.target;
-                                    thing.on = (packet.payload.get_int_member ("level") == 65535);
+                                    thing.power = (Power) packet.payload.get_int_member ("level");
 
                                     this.thingMap.set (thing.id, thing);
                                     this.onNewThing (thing);
@@ -121,7 +120,7 @@ namespace Lifx {
                             case 107: // State
                                 if (this.thingMap.has_key (packet.target)) {
                                     this.thingMap.get (packet.target).name = packet.payload.get_string_member ("label");
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).on = (packet.payload.get_int_member ("power") == 65535);
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).power = (Power) packet.payload.get_int_member ("power");
                                     (this.thingMap.get (packet.target) as Lifx.LifxLamp).hue = (uint16) packet.payload.get_int_member ("hue");
                                     (this.thingMap.get (packet.target) as Lifx.LifxLamp).saturation = (uint16) packet.payload.get_int_member ("saturation");
                                     (this.thingMap.get (packet.target) as Lifx.LifxLamp).brightness = (uint16) packet.payload.get_int_member ("brightness");
@@ -132,7 +131,7 @@ namespace Lifx {
                                     var thing = new Lifx.LifxLamp ();
                                     thing.id = packet.target;
                                     thing.name = packet.payload.get_string_member ("label");
-                                    thing.on = (packet.payload.get_int_member ("power") == 65535);
+                                    thing.power = (Power) packet.payload.get_int_member ("power");
                                     thing.hue = (uint16) packet.payload.get_int_member ("hue");
                                     thing.saturation = (uint16) packet.payload.get_int_member ("saturation");
                                     thing.brightness = (uint16) packet.payload.get_int_member ("brightness");
@@ -144,13 +143,13 @@ namespace Lifx {
                                 break;
                             case 118: // StatePower
                                 if (this.thingMap.has_key (packet.target)) {
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).on = (packet.payload.get_int_member ("power") == 65535);
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).power = (Power) packet.payload.get_int_member ("level");
 
                                     this.onUpdatedThing (this.thingMap.get (packet.target));
                                 } else {
                                     var thing = new Lifx.LifxLamp ();
                                     thing.id = packet.target;
-                                    thing.on = (packet.payload.get_int_member ("power") == 65535);
+                                    thing.power = (Power) packet.payload.get_int_member ("level");
 
                                     this.thingMap.set (thing.id, thing);
                                     this.onNewThing (thing);
@@ -180,7 +179,7 @@ namespace Lifx {
                 while (true) {
                     this.getService ();
 
-                    Thread.usleep (10 * 1000 * 1000);
+                    Thread.usleep (30 * 1000 * 1000);
                 }
             });
         }

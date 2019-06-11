@@ -1,30 +1,52 @@
 namespace Lifx {
     public class LifxLamp : Lamp {
-        public uint16 port;
-        public uint16 hue;
-        public uint16 saturation;
-        public uint16 brightness;
-        public uint16 kelvin;
+        public uint16 port {
+            get {
+                if (!this._obj.has_member ("port")) {
+                    this.port = 56700;
+                }
 
-        public new string toString () {
-            size_t length;
+                return (uint16) this._obj.get_int_member ("port");
+            }
+            set {
+                this._obj.set_int_member ("port", value);
+            }
+        }
 
-            var gen = new Json.Generator ();
-            var root = new Json.Node (Json.NodeType.OBJECT);
-            var object = new Json.Object ();
-            root.set_object (object);
-            gen.set_root (root);
+        public uint16 hue {
+            get {
+                return (uint16) this._obj.get_int_member ("hue");
+            }
+            set {
+                this._obj.set_int_member ("hue", value);
+            }
+        }
 
-            object.set_string_member ("id", this.id);
-            object.set_string_member ("name", this.name);
-            object.set_boolean_member ("on", this.on);
-            object.set_int_member ("port", this.port);
-            object.set_int_member ("hue", this.hue);
-            object.set_int_member ("saturation", this.saturation);
-            object.set_int_member ("brightness", this.brightness);
-            object.set_int_member ("kelvin", this.kelvin);
+        public uint16 saturation {
+            get {
+                return (uint16) this._obj.get_int_member ("saturation");
+            }
+            set {
+                this._obj.set_int_member ("saturation", value);
+            }
+        }
 
-            return gen.to_data (out length);
+        public uint16 brightness {
+            get {
+                return (uint16) this._obj.get_int_member ("brightness");
+            }
+            set {
+                this._obj.set_int_member ("brightness", value);
+            }
+        }
+
+        public uint16 kelvin {
+            get {
+                return (uint16) this._obj.get_int_member ("kelvin");
+            }
+            set {
+                this._obj.set_int_member ("kelvin", value);
+            }
         }
     }
 }

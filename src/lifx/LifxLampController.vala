@@ -1,12 +1,12 @@
 namespace Lifx {
     public class LifxLampController {
         private Lifx.Service service;
-        private Lifx.LifxLamp lamp;
+        private Lifx.LifxLamp _lamp;
 
         public signal void updated (Lifx.LifxLamp lamp);
 
         public LifxLampController (Lifx.LifxLamp lamp) {
-            this.lamp = lamp;
+            this._lamp = lamp;
 
             this.service = Lifx.Service.instance;
             this.service.onUpdatedThing.connect ((updatedLamp) => {
@@ -17,7 +17,15 @@ namespace Lifx {
         }
 
         public void switchPower (bool on) {
-            this.service.setPower (this.lamp, on ? 65535 : 0, 0);
+            this.service.setPower (this.lamp, on ? 65535 : 0);
+
+            this._lamp.power = on ? Power.ON : Power.OFF;
+        }
+
+        public Lifx.LifxLamp lamp {
+            get {
+                return this._lamp;
+            }
         }
     }
 }
