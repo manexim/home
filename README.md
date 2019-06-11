@@ -4,6 +4,8 @@
   <p align="center">Designed for <a href="https://elementary.io">elementary OS</a></p>
 </div>
 
+[![Build Status](https://travis-ci.org/manexim/home.svg?branch=develop)](https://travis-ci.org/manexim/home)
+
 ## Installation
 
 ### Dependencies
