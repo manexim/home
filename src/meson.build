@@ -8,6 +8,7 @@ sources = [
     'models/Lamp.vala',
     'models/Thing.vala',
     'pages/LampPage.vala',
+    'services/Settings.vala',
     'types/Power.vala',
     'utils/Buffer.vala',
     'utils/Platform.vala',
@@ -16,7 +17,7 @@ sources = [
 
 executable(
     meson.project_name(),
-    sources + ['Application.vala'],
+    sources + ['Application.vala', 'MainWindow.vala'],
     dependencies: [
         gtk_plus_3_dep,
         json_glib_1_dep,
