@@ -7,7 +7,7 @@
   <name>Home</name>
   <summary>Control your smart home gadgets</summary>
   <description>
-    <p>A smart home control application designed for elementary OS.</p>
+    <p>A smart home application to control your gadgets.</p>
     <p>Supported devices:</p>
     <ul>
       <li>LIFX</li>
