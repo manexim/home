@@ -48,4 +48,8 @@ public class Settings : Granite.Services.Settings {
     public bool isFirstRun () {
         return last_started_app_version == "";
     }
+
+    public void save () {
+        last_started_app_version = Config.APP_VERSION;
+    }
 }

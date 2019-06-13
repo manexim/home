@@ -7,15 +7,27 @@ public class MainWindow : Gtk.ApplicationWindow {
         this.settings = Settings.get_default ();
         this.load_settings ();
 
-        var thingsView = new ThingsView ();
-        this.add (thingsView);
-
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
         headerbar.show_close_button = true;
 
         this.set_titlebar (headerbar);
         this.title = Config.APP_NAME;
+
+        var stack = new Gtk.Stack ();
+        this.add (stack);
+
+        if (settings.isFirstRun ()) {
+            var welcomeView = new WelcomeView ();
+            stack.add_named (welcomeView, "welcome");
+
+            welcomeView.start.connect (() => {
+                stack.set_visible_child_full("things", Gtk.StackTransitionType.SLIDE_LEFT);
+            });
+        }
+
+        var thingsView = new ThingsView ();
+        stack.add_named (thingsView, "things");
 
         this.delete_event.connect (() => {
             save_settings ();
@@ -53,5 +65,7 @@ public class MainWindow : Gtk.ApplicationWindow {
             settings.window_width = width;
             settings.window_height = height;
         }
+
+        settings.save ();
     }
 }

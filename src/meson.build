@@ -12,7 +12,8 @@ sources = [
     'types/Power.vala',
     'utils/Buffer.vala',
     'utils/Platform.vala',
-    'views/ThingsView.vala'
+    'views/ThingsView.vala',
+    'views/WelcomeView.vala'
 ]
 
 executable(
