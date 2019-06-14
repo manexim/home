@@ -41,11 +41,11 @@ public class Buffer {
         return this.values[offset];
     }
 
-    public uint8 readUInt8 (uint8 offset) {
+    public uint8 read_uint8 (uint8 offset) {
         return this.values[offset];
     }
 
-    public uint8 writeUInt8 (uint8 value, uint8 offset) {
+    public uint8 write_uint8 (uint8 value, uint8 offset) {
         this.values[offset] = value;
 
         return offset + 1;
@@ -61,16 +61,16 @@ public class Buffer {
             | (this.values[offset + 1] << 8);
     }
 
-    public uint16 readUInt16BE (uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint16 read_uint16_be (uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.readUInt16Forwards (offset);
         }
 
         return this.readUInt16Backwards (offset);
     }
 
-    public uint16 readUInt16LE (uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint16 read_uint16_le (uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.readUInt16Backwards (offset);
         }
 
@@ -91,16 +91,16 @@ public class Buffer {
         return offset + 2;
     }
 
-    public uint8 writeUInt16BE (uint16 value, uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint8 write_uint16_be (uint16 value, uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.writeUInt16Forwards (value, offset);
         }
 
         return this.writeUInt16Backwards (value, offset);
     }
 
-    public uint8 writeUInt16LE (uint16 value, uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint8 write_uint16_le (uint16 value, uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.writeUInt16Backwards (value, offset);
         }
 
@@ -121,16 +121,16 @@ public class Buffer {
             | (this.values[offset + 3] << 24);
     }
 
-    public uint32 readUInt32BE (uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint32 read_uint32_be (uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.readUInt32Forwards (offset);
         }
 
         return this.readUInt32Backwards (offset);
     }
 
-    public uint32 readUInt32LE (uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint32 read_uint32_le (uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.readUInt32Backwards (offset);
         }
 
@@ -155,16 +155,16 @@ public class Buffer {
         return offset + 4;
     }
 
-    public uint8 writeUInt32BE (uint32 value, uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint8 write_uint32_be (uint32 value, uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.writeUInt32Forwards (value, offset);
         }
 
         return this.writeUInt32Backwards (value, offset);
     }
 
-    public uint8 writeUInt32LE (uint32 value, uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint8 write_uint32_le (uint32 value, uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.writeUInt32Backwards (value, offset);
         }
 
@@ -185,16 +185,16 @@ public class Buffer {
         return f;
     }
 
-    public float readFloatBE (uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public float read_float_be (uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.readFloatForwards (offset);
         }
 
         return this.readFloatBackwards (offset);
     }
 
-    public float readFloatLE (uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public float read_float_le (uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.readFloatBackwards (offset);
         }
 
@@ -213,16 +213,16 @@ public class Buffer {
         return 4;
     }
 
-    public uint8 writeFloatBE (float value, uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint8 write_float_be (float value, uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.writeFloatForwards (value, offset);
         }
 
         return this.writeFloatBackwards (value, offset);
     }
 
-    public uint8 writeFloatLE (float value, uint8 offset) {
-        if (Platform.isBigEndian ()) {
+    public uint8 write_float_le (float value, uint8 offset) {
+        if (Platform.is_big_endian ()) {
             return this.writeFloatBackwards (value, offset);
         }
 

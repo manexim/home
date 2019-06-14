@@ -23,76 +23,76 @@ namespace Lifx {
     public class LifxLamp : Lamp {
         public uint16 port {
             get {
-                if (!this._obj.has_member ("port")) {
-                    this.port = 56700;
+                if (!_obj.has_member ("port")) {
+                    port = 56700;
                 }
 
-                return (uint16) this._obj.get_int_member ("port");
+                return (uint16) _obj.get_int_member ("port");
             }
             set {
-                this._obj.set_int_member ("port", value);
+                _obj.set_int_member ("port", value);
             }
         }
 
         public uint16 hue {
             get {
-                return (uint16) this._obj.get_int_member ("hue");
+                return (uint16) _obj.get_int_member ("hue");
             }
             set {
-                this._obj.set_int_member ("hue", value);
+                _obj.set_int_member ("hue", value);
             }
         }
 
         public uint16 saturation {
             get {
-                return (uint16) this._obj.get_int_member ("saturation");
+                return (uint16) _obj.get_int_member ("saturation");
             }
             set {
-                this._obj.set_int_member ("saturation", value);
+                _obj.set_int_member ("saturation", value);
             }
         }
 
         public uint16 brightness {
             get {
-                return (uint16) this._obj.get_int_member ("brightness");
+                return (uint16) _obj.get_int_member ("brightness");
             }
             set {
-                this._obj.set_int_member ("brightness", value);
+                _obj.set_int_member ("brightness", value);
             }
         }
 
         public uint16 kelvin {
             get {
-                return (uint16) this._obj.get_int_member ("kelvin");
+                return (uint16) _obj.get_int_member ("kelvin");
             }
             set {
-                this._obj.set_int_member ("kelvin", value);
+                _obj.set_int_member ("kelvin", value);
             }
         }
 
         public bool supports_infrared {
             get {
-                if (!this._obj.has_member ("supportsInfrared")) {
-                    this.supports_infrared = false;
+                if (!_obj.has_member ("supportsInfrared")) {
+                    supports_infrared = false;
                 }
 
-                return this._obj.get_boolean_member ("supportsInfrared");
+                return _obj.get_boolean_member ("supportsInfrared");
             }
             set {
-                this._obj.set_boolean_member ("supportsInfrared", value);
+                _obj.set_boolean_member ("supportsInfrared", value);
             }
         }
 
         public bool supports_multizone {
             get {
-                if (!this._obj.has_member ("supportsMultizone")) {
-                    this.supports_multizone = false;
+                if (!_obj.has_member ("supportsMultizone")) {
+                    supports_multizone = false;
                 }
 
-                return this._obj.get_boolean_member ("supportsMultizone");
+                return _obj.get_boolean_member ("supportsMultizone");
             }
             set {
-                this._obj.set_boolean_member ("supportsMultizone", value);
+                _obj.set_boolean_member ("supportsMultizone", value);
             }
         }
     }

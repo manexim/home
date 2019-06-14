@@ -22,60 +22,60 @@
 public class Lamp : Thing {
     public Power power {
         get {
-            if (!this._obj.has_member ("power")) {
-                this._obj.set_string_member ("power", "unknown");
+            if (!_obj.has_member ("power")) {
+                _obj.set_string_member ("power", "unknown");
             }
 
-            switch (this._obj.get_string_member ("power")) {
-            case "on":
-                return Power.ON;
-            case "off":
-                return Power.OFF;
-            default:
-                return Power.UNKNOWN;
+            switch (_obj.get_string_member ("power")) {
+                case "on":
+                    return Power.ON;
+                case "off":
+                    return Power.OFF;
+                default:
+                    return Power.UNKNOWN;
             }
         }
         set {
-            this._obj.set_string_member ("power", value.to_string ());
+            _obj.set_string_member ("power", value.to_string ());
         }
     }
 
     public string manufacturer {
         get {
-            if (!this._obj.has_member ("manufacturer")) {
-                this.manufacturer = null;
+            if (!_obj.has_member ("manufacturer")) {
+                manufacturer = null;
             }
 
-            return this._obj.get_string_member ("manufacturer");
+            return _obj.get_string_member ("manufacturer");
         }
         set {
-            this._obj.set_string_member ("manufacturer", value);
+            _obj.set_string_member ("manufacturer", value);
         }
     }
 
     public string model {
         get {
-            if (!this._obj.has_member ("model")) {
-                this.model = null;
+            if (!_obj.has_member ("model")) {
+                model = null;
             }
 
-            return this._obj.get_string_member ("model");
+            return _obj.get_string_member ("model");
         }
         set {
-            this._obj.set_string_member ("model", value);
+            _obj.set_string_member ("model", value);
         }
     }
 
     public bool supports_color {
         get {
-            if (!this._obj.has_member ("supportsColor")) {
-                this.supports_color = false;
+            if (!_obj.has_member ("supportsColor")) {
+                supports_color = false;
             }
 
-            return this._obj.get_boolean_member ("supportsColor");
+            return _obj.get_boolean_member ("supportsColor");
         }
         set {
-            this._obj.set_boolean_member ("supportsColor", value);
+            _obj.set_boolean_member ("supportsColor", value);
         }
     }
 }

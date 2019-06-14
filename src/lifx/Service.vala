@@ -24,11 +24,11 @@ namespace Lifx {
         private static Service? _instance;
         public bool debug = false;
         private uint32 source = 0;
-        private Gee.HashMap<string, Thing> thingMap;
+        private Gee.HashMap<string, Thing> thing_map;
         private Socket socket;
 
-        public signal void onNewThing (Thing thing);
-        public signal void onUpdatedThing (Thing thing);
+        public signal void on_new_thing (Thing thing);
+        public signal void on_updated_thing (Thing thing);
 
         public static Service instance {
             get {
@@ -40,7 +40,7 @@ namespace Lifx {
             }
         }
 
-        public void setPower (Lifx.LifxLamp lamp, uint16 level) {
+        public void set_power (Lifx.LifxLamp lamp, uint16 level) {
             var packet = new Lifx.Packet ();
             packet.type = 21;
             packet.tagged = false;
@@ -48,36 +48,36 @@ namespace Lifx {
             packet.target = lamp.id;
             packet.ack_required = false;
             packet.res_required = false;
-            packet.source = this.source++;
+            packet.source = source++;
             packet.payload.set_int_member ("level", level);
 
             try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
+                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }
         }
 
         private Service () {
-            this.thingMap = new Gee.HashMap<string, Thing> ();
+            thing_map = new Gee.HashMap<string, Thing> ();
 
-            this.setupSocket ();
-            this.listen ();
-            this.discover ();
+            setup_socket ();
+            listen ();
+            discover ();
         }
 
-        private void setupSocket () {
+        private void setup_socket () {
             try {
-                this.socket = new Socket (SocketFamily.IPV4, SocketType.DATAGRAM, SocketProtocol.UDP);
-                this.socket.broadcast = true;
+                socket = new Socket (SocketFamily.IPV4, SocketType.DATAGRAM, SocketProtocol.UDP);
+                socket.broadcast = true;
 
                 #if HAVE_SO_REUSEPORT
                 int32 enable = 1;
-                Posix.setsockopt(this.socket.fd, Platform.Socket.SOL_SOCKET, Platform.Socket.SO_REUSEPORT, &enable, (Posix.socklen_t) sizeof(int));
+                Posix.setsockopt(socket.fd, Platform.Socket.SOL_SOCKET, Platform.Socket.SO_REUSEPORT, &enable, (Posix.socklen_t) sizeof(int));
                 #endif
 
                 var sa = new InetSocketAddress (new InetAddress.any (SocketFamily.IPV4), 56700);
-                this.socket.bind (sa, true);
+                socket.bind (sa, true);
             } catch (Error e) {
                 stderr.printf (e.message);
             }
@@ -86,7 +86,7 @@ namespace Lifx {
         private void listen () {
             new Thread<void*> (null, () => {
                 while (true) {
-                    var source = this.socket.create_source (IOCondition.IN);
+                    var source = socket.create_source (IOCondition.IN);
                     source.set_callback ((s, cond) => {
                         try {
                             uint8 buffer[256];
@@ -98,117 +98,117 @@ namespace Lifx {
 
                             Lifx.Packet packet = new Lifx.Packet.from (raw);
                             switch (packet.type) {
-                            case 3: // StateService
-                                if (!this.thingMap.has_key (packet.target)) {
-                                    var thing = new Lifx.LifxLamp ();
-                                    thing.id = packet.target;
-                                    thing.port = (uint16) packet.payload.get_int_member ("port");
-                                    thing.manufacturer = "LIFX";
+                                case 3: // StateService
+                                    if (!thing_map.has_key (packet.target)) {
+                                        var thing = new Lifx.LifxLamp ();
+                                        thing.id = packet.target;
+                                        thing.port = (uint16) packet.payload.get_int_member ("port");
+                                        thing.manufacturer = "LIFX";
 
-                                    this.getVersion (thing);
-                                    this.getState (thing);
+                                        get_version (thing);
+                                        get_state (thing);
 
-                                    this.thingMap.set (thing.id, thing);
-                                    this.onNewThing (thing);
-                                }
-                                break;
-                            case 22: // StatePower
-                                if (this.thingMap.has_key (packet.target)) {
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).power = (Power) packet.payload.get_int_member ("level");
+                                        thing_map.set (thing.id, thing);
+                                        on_new_thing (thing);
+                                    }
+                                    break;
+                                case 22: // StatePower
+                                    if (thing_map.has_key (packet.target)) {
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power = (Power) packet.payload.get_int_member ("level");
 
-                                    this.onUpdatedThing (this.thingMap.get (packet.target));
-                                } else {
-                                    var thing = new Lifx.LifxLamp ();
-                                    thing.id = packet.target;
-                                    thing.power = (Power) packet.payload.get_int_member ("level");
+                                        on_updated_thing (thing_map.get (packet.target));
+                                    } else {
+                                        var thing = new Lifx.LifxLamp ();
+                                        thing.id = packet.target;
+                                        thing.power = (Power) packet.payload.get_int_member ("level");
 
-                                    this.thingMap.set (thing.id, thing);
-                                    this.onNewThing (thing);
-                                }
-                                break;
-                            case 25: // StateLabel
-                                if (this.thingMap.has_key (packet.target)) {
-                                    this.thingMap.get (packet.target).name = packet.payload.get_string_member ("label");
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).manufacturer = "LIFX";
+                                        thing_map.set (thing.id, thing);
+                                        on_new_thing (thing);
+                                    }
+                                    break;
+                                case 25: // StateLabel
+                                    if (thing_map.has_key (packet.target)) {
+                                        thing_map.get (packet.target).name = packet.payload.get_string_member ("label");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer = "LIFX";
 
-                                    this.onUpdatedThing (this.thingMap.get (packet.target));
-                                } else {
-                                    var thing = new Lifx.LifxLamp ();
-                                    thing.id = packet.target;
-                                    thing.name = packet.payload.get_string_member ("label");
-                                    thing.manufacturer = "LIFX";
+                                        on_updated_thing (thing_map.get (packet.target));
+                                    } else {
+                                        var thing = new Lifx.LifxLamp ();
+                                        thing.id = packet.target;
+                                        thing.name = packet.payload.get_string_member ("label");
+                                        thing.manufacturer = "LIFX";
 
-                                    this.thingMap.set (thing.id, thing);
-                                    this.onNewThing (thing);
-                                }
-                                break;
-                            case 33: // StateVersion
-                            if (this.thingMap.has_key (packet.target)) {
-                                (this.thingMap.get (packet.target) as Lifx.LifxLamp).manufacturer = packet.payload.get_string_member ("manufacturer");
-                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).model = packet.payload.get_string_member ("model");
-                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).supports_color = packet.payload.get_boolean_member ("supportsColor");
-                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
-                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
+                                        thing_map.set (thing.id, thing);
+                                        on_new_thing (thing);
+                                    }
+                                    break;
+                                case 33: // StateVersion
+                                    if (thing_map.has_key (packet.target)) {
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer = packet.payload.get_string_member ("manufacturer");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).model = packet.payload.get_string_member ("model");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_color = packet.payload.get_boolean_member ("supportsColor");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
 
-                                this.onUpdatedThing (this.thingMap.get (packet.target));
-                            } else {
-                                var thing = new Lifx.LifxLamp ();
-                                thing.id = packet.target;
-                                thing.manufacturer = packet.payload.get_string_member ("manufacturer");
-                                thing.model = packet.payload.get_string_member ("model");
-                                thing.supports_color = packet.payload.get_boolean_member ("supportsColor");
-                                thing.supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
-                                thing.supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
+                                        on_updated_thing (thing_map.get (packet.target));
+                                    } else {
+                                        var thing = new Lifx.LifxLamp ();
+                                        thing.id = packet.target;
+                                        thing.manufacturer = packet.payload.get_string_member ("manufacturer");
+                                        thing.model = packet.payload.get_string_member ("model");
+                                        thing.supports_color = packet.payload.get_boolean_member ("supportsColor");
+                                        thing.supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
+                                        thing.supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
 
-                                this.thingMap.set (thing.id, thing);
-                                this.onNewThing (thing);
+                                        thing_map.set (thing.id, thing);
+                                        on_new_thing (thing);
+                                    }
+                                    break;
+                                case 107: // State
+                                    if (thing_map.has_key (packet.target)) {
+                                        thing_map.get (packet.target).name = packet.payload.get_string_member ("label");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer = "LIFX";
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power = (Power) packet.payload.get_int_member ("power");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).hue = (uint16) packet.payload.get_int_member ("hue");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).saturation = (uint16) packet.payload.get_int_member ("saturation");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).brightness = (uint16) packet.payload.get_int_member ("brightness");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).kelvin = (uint16) packet.payload.get_int_member ("kelvin");
+
+                                        on_updated_thing (thing_map.get (packet.target));
+                                    } else {
+                                        var thing = new Lifx.LifxLamp ();
+                                        thing.id = packet.target;
+                                        thing.name = packet.payload.get_string_member ("label");
+                                        thing.manufacturer = "LIFX";
+                                        thing.power = (Power) packet.payload.get_int_member ("power");
+                                        thing.hue = (uint16) packet.payload.get_int_member ("hue");
+                                        thing.saturation = (uint16) packet.payload.get_int_member ("saturation");
+                                        thing.brightness = (uint16) packet.payload.get_int_member ("brightness");
+                                        thing.kelvin = (uint16) packet.payload.get_int_member ("kelvin");
+
+                                        thing_map.set (thing.id, thing);
+                                        on_new_thing (thing);
+                                    }
+                                    break;
+                                case 118: // StatePower
+                                    if (thing_map.has_key (packet.target)) {
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power = (Power) packet.payload.get_int_member ("level");
+
+                                        on_updated_thing (thing_map.get (packet.target));
+                                    } else {
+                                        var thing = new Lifx.LifxLamp ();
+                                        thing.id = packet.target;
+                                        thing.power = (Power) packet.payload.get_int_member ("level");
+
+                                        thing_map.set (thing.id, thing);
+                                        on_new_thing (thing);
+                                    }
+                                    break;
+                                default:
+                                    break;
                             }
-                                break;
-                            case 107: // State
-                                if (this.thingMap.has_key (packet.target)) {
-                                    this.thingMap.get (packet.target).name = packet.payload.get_string_member ("label");
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).manufacturer = "LIFX";
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).power = (Power) packet.payload.get_int_member ("power");
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).hue = (uint16) packet.payload.get_int_member ("hue");
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).saturation = (uint16) packet.payload.get_int_member ("saturation");
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).brightness = (uint16) packet.payload.get_int_member ("brightness");
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).kelvin = (uint16) packet.payload.get_int_member ("kelvin");
 
-                                    this.onUpdatedThing (this.thingMap.get (packet.target));
-                                } else {
-                                    var thing = new Lifx.LifxLamp ();
-                                    thing.id = packet.target;
-                                    thing.name = packet.payload.get_string_member ("label");
-                                    thing.manufacturer = "LIFX";
-                                    thing.power = (Power) packet.payload.get_int_member ("power");
-                                    thing.hue = (uint16) packet.payload.get_int_member ("hue");
-                                    thing.saturation = (uint16) packet.payload.get_int_member ("saturation");
-                                    thing.brightness = (uint16) packet.payload.get_int_member ("brightness");
-                                    thing.kelvin = (uint16) packet.payload.get_int_member ("kelvin");
-
-                                    this.thingMap.set (thing.id, thing);
-                                    this.onNewThing (thing);
-                                }
-                                break;
-                            case 118: // StatePower
-                                if (this.thingMap.has_key (packet.target)) {
-                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).power = (Power) packet.payload.get_int_member ("level");
-
-                                    this.onUpdatedThing (this.thingMap.get (packet.target));
-                                } else {
-                                    var thing = new Lifx.LifxLamp ();
-                                    thing.id = packet.target;
-                                    thing.power = (Power) packet.payload.get_int_member ("level");
-
-                                    this.thingMap.set (thing.id, thing);
-                                    this.onNewThing (thing);
-                                }
-                                break;
-                            default:
-                                break;
-                            }
-
-                            if (this.debug) {
+                            if (debug) {
                                 print ("%s\n", packet.to_string ());
                             }
                         } catch (Error e) {
@@ -226,48 +226,48 @@ namespace Lifx {
         private void discover () {
             new Thread<void*> (null, () => {
                 while (true) {
-                    this.getService ();
+                    get_service ();
 
                     Thread.usleep (30 * 1000 * 1000);
                 }
             });
         }
 
-        private void getService () {
+        private void get_service () {
             var packet = new Lifx.Packet ();
             packet.type = 2;
             packet.tagged = true;
 
             try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), 56700), packet.raw);
+                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), 56700), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }
         }
 
-        private void getVersion (Lifx.LifxLamp lamp) {
+        private void get_version (Lifx.LifxLamp lamp) {
             var packet = new Lifx.Packet ();
             packet.type = 32;
             packet.tagged = true;
             packet.addressable = true;
-            packet.source = this.source++;
+            packet.source = source++;
 
             try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
+                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }
         }
 
-        private void getState (Lifx.LifxLamp lamp) {
+        private void get_state (Lifx.LifxLamp lamp) {
             var packet = new Lifx.Packet ();
             packet.type = 101;
             packet.tagged = true;
             packet.addressable = true;
-            packet.source = this.source++;
+            packet.source = source++;
 
             try {
-                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
+                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }

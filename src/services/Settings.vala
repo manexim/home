@@ -66,7 +66,7 @@ public class Settings : Granite.Services.Settings {
         }
     }
 
-    public bool isFirstRun () {
+    public bool is_first_run () {
         return last_started_app_version == "";
     }
 

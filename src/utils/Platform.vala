@@ -20,7 +20,7 @@
 */
 
 namespace Platform {
-    bool isBigEndian () {
+    bool is_big_endian () {
         uint8 x = 1;
         uint8 *c = (uint8 *) &x;
 

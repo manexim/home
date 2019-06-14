@@ -31,63 +31,63 @@ void main (string[] args) {
         }
     });
 
-    Test.add_func ("/Buffer/readUInt8", () => {
+    Test.add_func ("/Buffer/read_uint8", () => {
         uint8[] array = {1, 254};
         var buffer = new Buffer.from (array);
 
         assert (buffer.length == 2);
-        assert (buffer.readUInt8 (0) == 1);
-        assert (buffer.readUInt8 (1) == 254);
+        assert (buffer.read_uint8 (0) == 1);
+        assert (buffer.read_uint8 (1) == 254);
     });
 
-    Test.add_func ("/Buffer/readUInt16", () => {
+    Test.add_func ("/Buffer/read_uint16", () => {
         uint8[] array = {0x12, 0x34, 0x56};
         var buffer = new Buffer.from (array);
 
-        assert (buffer.readUInt16BE (0).to_string ("%x") == "1234");
-        assert (buffer.readUInt16LE (0).to_string ("%x") == "3412");
-        assert (buffer.readUInt16BE (1).to_string ("%x") == "3456");
-        assert (buffer.readUInt16LE (1).to_string ("%x") == "5634");
+        assert (buffer.read_uint16_be (0).to_string ("%x") == "1234");
+        assert (buffer.read_uint16_le (0).to_string ("%x") == "3412");
+        assert (buffer.read_uint16_be (1).to_string ("%x") == "3456");
+        assert (buffer.read_uint16_le (1).to_string ("%x") == "5634");
     });
 
-    Test.add_func ("/Buffer/writeUInt16", () => {
+    Test.add_func ("/Buffer/write_uint16", () => {
         var buffer = new Buffer.alloc (4);
 
-        assert (buffer.writeUInt16BE (0xdead, 0) == 2);
-        assert (buffer.writeUInt16BE (0xbeef, 2) == 4);
+        assert (buffer.write_uint16_be (0xdead, 0) == 2);
+        assert (buffer.write_uint16_be (0xbeef, 2) == 4);
         assert (buffer.to_string () == "deadbeef");
 
-        assert (buffer.writeUInt16LE (0xdead, 0) == 2);
-        assert (buffer.writeUInt16LE (0xbeef, 2) == 4);
+        assert (buffer.write_uint16_le (0xdead, 0) == 2);
+        assert (buffer.write_uint16_le (0xbeef, 2) == 4);
         assert (buffer.to_string () == "addeefbe");
     });
 
-    Test.add_func ("/Buffer/readUInt32", () => {
+    Test.add_func ("/Buffer/read_uint32", () => {
         uint8[] array = {0x12, 0x34, 0x56, 0x78};
         var buffer = new Buffer.from (array);
 
-        assert (buffer.readUInt32BE (0).to_string ("%x") == "12345678");
-        assert (buffer.readUInt32LE (0).to_string ("%x") == "78563412");
+        assert (buffer.read_uint32_be (0).to_string ("%x") == "12345678");
+        assert (buffer.read_uint32_le (0).to_string ("%x") == "78563412");
     });
 
-    Test.add_func ("/Buffer/writeUInt32", () => {
+    Test.add_func ("/Buffer/write_uint32", () => {
         var buffer = new Buffer.alloc (4);
 
-        assert (buffer.writeUInt32BE ((uint32) 0xdeadbeef, 0) == 4);
+        assert (buffer.write_uint32_be ((uint32) 0xdeadbeef, 0) == 4);
         assert (buffer.to_string () == "deadbeef");
 
-        assert (buffer.writeUInt32LE ((uint32) 0xdeadbeef, 0) == 4);
+        assert (buffer.write_uint32_le ((uint32) 0xdeadbeef, 0) == 4);
         assert (buffer.to_string () == "efbeadde");
     });
 
-    Test.add_func ("/Buffer/writeFloat", () => {
+    Test.add_func ("/Buffer/write_float", () => {
         var buffer = new Buffer.alloc (4);
 
-        assert (buffer.writeFloatBE (3.14f, 0) == 4);
-        assert (buffer.readFloatBE (0) == 3.14f);
+        assert (buffer.write_float_be (3.14f, 0) == 4);
+        assert (buffer.read_float_be (0) == 3.14f);
 
-        assert (buffer.writeFloatLE (3.14f, 0) == 4);
-        assert (buffer.readFloatLE (0) == 3.14f);
+        assert (buffer.write_float_le (3.14f, 0) == 4);
+        assert (buffer.read_float_le (0) == 3.14f);
     });
 
     Test.add_func ("/Buffer/concat", () => {

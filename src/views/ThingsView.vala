@@ -21,30 +21,30 @@
 
 public class ThingsView : Gtk.Paned {
     private Gtk.Stack stack;
-    private ThingsController thingsController;
+    private ThingsController things_controller;
 
     public ThingsView () {
-        this.thingsController = new ThingsController ();
+        things_controller = new ThingsController ();
 
-        this.stack = new Gtk.Stack ();
+        stack = new Gtk.Stack ();
 
         var sidebar = new Granite.SettingsSidebar (stack);
 
-        this.add (sidebar);
-        this.add (stack);
+        add (sidebar);
+        add (stack);
 
-        this.stack.add_named (new LoadingPage (), "loading");
-        this.stack.show_all ();
+        stack.add_named (new LoadingPage (), "loading");
+        stack.show_all ();
 
-        this.thingsController.onNewLamp.connect ((lamp) => {
-            this.stack.add_named (new LampPage (lamp), lamp.id);
+        things_controller.on_new_lamp.connect ((lamp) => {
+            stack.add_named (new LampPage (lamp), lamp.id);
 
-            if (this.stack.get_visible_child_name () == "loading") {
-                var child = this.stack.get_child_by_name ("loading");
-                this.stack.remove (child);
+            if (stack.get_visible_child_name () == "loading") {
+                var child = stack.get_child_by_name ("loading");
+                stack.remove (child);
             }
 
-            this.stack.show_all ();
+            stack.show_all ();
         });
     }
 }

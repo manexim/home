@@ -30,7 +30,7 @@ public class Application : Granite.Application {
     }
 
     protected override void activate () {
-        this.window = new MainWindow (this);
+        window = new MainWindow (this);
 
         window.show_all ();
     }

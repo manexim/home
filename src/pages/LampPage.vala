@@ -30,41 +30,41 @@ public class LampPage : Granite.SimpleSettingsPage {
             title: lamp.name != null ? lamp.name : lamp.id
         );
 
-        this.controller = new Lifx.LifxLampController (lamp as Lifx.LifxLamp);
-        this.controller.updated.connect ((lamp) => {
+        controller = new Lifx.LifxLampController ((Lifx.LifxLamp) lamp);
+        controller.updated.connect ((lamp) => {
             if (lamp.power == Power.ON) {
-                this.status_switch.active = true;
-                this.status_switch.state = true;
+                status_switch.active = true;
+                status_switch.state = true;
             } else if (lamp.power == Power.OFF) {
-                this.status_switch.active = false;
-                this.status_switch.state = false;
+                status_switch.active = false;
+                status_switch.state = false;
             }
 
-            this.title = lamp.name;
+            title = lamp.name;
 
-            updateStatus ();
+            update_status ();
         });
 
-        updateStatus ();
+        update_status ();
 
-        status_switch.notify["active"].connect (updateStatus);
+        status_switch.notify["active"].connect (update_status);
 
         status_switch.state_set.connect ((state) => {
-            this.controller.switchPower (state);
+            controller.switch_power (state);
 
-            this.status_switch.active = state;
-            this.status_switch.state = state;
+            status_switch.active = state;
+            status_switch.state = state;
 
             return state;
         });
     }
 
-    private void updateStatus () {
-        this.description = "ID: " + this.controller.lamp.id;
-        this.description += "\nManufacturer: " + this.controller.lamp.manufacturer;
-        this.description += "\nModel: " + this.controller.lamp.model;
+    private void update_status () {
+        description = "ID: " + controller.lamp.id;
+        description += "\nManufacturer: " + controller.lamp.manufacturer;
+        description += "\nModel: " + controller.lamp.model;
 
-        switch (this.controller.lamp.power) {
+        switch (controller.lamp.power) {
         case Power.ON:
             status_type = Granite.SettingsPage.StatusType.SUCCESS;
             status = ("Enabled");

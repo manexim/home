@@ -27,25 +27,25 @@ namespace Lifx {
         public signal void updated (Lifx.LifxLamp lamp);
 
         public LifxLampController (Lifx.LifxLamp lamp) {
-            this._lamp = lamp;
+            _lamp = lamp;
 
-            this.service = Lifx.Service.instance;
-            this.service.onUpdatedThing.connect ((updatedLamp) => {
-                if (updatedLamp.id == this.lamp.id) {
-                    this.updated (updatedLamp as Lifx.LifxLamp);
+            service = Lifx.Service.instance;
+            service.on_updated_thing.connect ((updated_lamp) => {
+                if (updated_lamp.id == lamp.id) {
+                    updated ((Lifx.LifxLamp) updated_lamp);
                 }
             });
         }
 
-        public void switchPower (bool on) {
-            this.service.setPower (this.lamp, on ? 65535 : 0);
+        public void switch_power (bool on) {
+            service.set_power (lamp, on ? 65535 : 0);
 
-            this._lamp.power = on ? Power.ON : Power.OFF;
+            _lamp.power = on ? Power.ON : Power.OFF;
         }
 
         public Lifx.LifxLamp lamp {
             get {
-                return this._lamp;
+                return _lamp;
             }
         }
     }
