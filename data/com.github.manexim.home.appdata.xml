@@ -20,6 +20,26 @@
       <binary>com.github.manexim.home</binary>
   </provides>
   ​<releases>
+    <release date="2019-06-14" version="0.2.0">
+      <description>
+        <p>New:</p>
+        <ul>
+          <li>Add welcome view for onboarding</li>
+          <li>Show loading page if no smart home gadget is found</li>
+          <li>Show manufacturer and model of device</li>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+          <li>Save and load window settings</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Remove mention of elementary OS in app description</li>
+          <li>Suffix symbolic icon names with -symbolic</li>
+          <li>Install all available icon sizes</li>
+        </ul>
+      </description>
+    </release>
     <release date="2019-06-11" version="0.1.0">
       <description>
         <p>Initial release</p>

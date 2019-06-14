@@ -1,3 +1,20 @@
+com.github.manexim.home (0.2.0) bionic; urgency=medium
+
+[NEW]
+ * Add welcome view for onboarding
+ * Show loading page if no smart home gadget is found
+ * Show manufacturer and model of device
+[IMPROVED]
+ * Save and load window settings
+[FIXED]
+ * Remove mention of elementary OS in app description
+ * Suffix symbolic icon names with -symbolic
+ * Install all available icon sizes
+
+ -- Marius Meisenzahl <mariusmeisenzahl@gmail.com>  Fri, 14 Jun 2019 09:28:04 +0200
+
 com.github.manexim.home (0.1.0) bionic; urgency=medium
 
-  * Initial Release.
+ * Initial Release.
+
+ -- Marius Meisenzahl <mariusmeisenzahl@gmail.com>  Tue, 11 Jun 2019 21:06:00 +0200
