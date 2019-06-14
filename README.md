@@ -10,6 +10,8 @@
 ![screenshot](data/screenshots/000.png)
 ![screenshot](data/screenshots/001.png)
 ![screenshot](data/screenshots/002.png)
+![screenshot](data/screenshots/003.png)
+![screenshot](data/screenshots/004.png)
 
 ## Installation
 
