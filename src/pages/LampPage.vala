@@ -4,7 +4,7 @@ public class LampPage : Granite.SimpleSettingsPage {
     public LampPage (Lamp lamp) {
         Object (
             activatable: true,
-            icon_name: "com.github.manexim.home.lightbulb.lifx",
+            icon_name: "com.github.manexim.home.lightbulb.lifx-symbolic",
             description: lamp.id,
             title: lamp.name != null ? lamp.name : lamp.id
         );

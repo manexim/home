@@ -13,8 +13,8 @@ foreach i : icon_sizes
 endforeach
 
 symbolic_icons = [
-    'com.github.manexim.home.lightbulb',
-    'com.github.manexim.home.lightbulb.lifx'
+    'com.github.manexim.home.lightbulb-symbolic',
+    'com.github.manexim.home.lightbulb.lifx-symbolic'
 ]
 
 foreach icon : symbolic_icons
