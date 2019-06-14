@@ -87,80 +87,152 @@ namespace Lifx {
             case 33: // StateVersion
                 uint32 product = buffer.readUInt32LE (i + 4);
                 string model = "";
+                bool supports_color = false;
+                bool supports_infrared = false;
+                bool supports_multizone = false;
 
                 // https://lan.developer.lifx.com/v2.0/docs/lifx-products
                 switch (product) {
                     case 1:
                         model = "Original 1000";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 3:
                         model = "Color 650";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 10:
                         model = "White 800 (Low Voltage)";
+                        supports_color = false;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 11:
                         model = "White 800 (High Voltage)";
+                        supports_color = false;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 18:
                         model = "White 900 BR30 (Low Voltage)";
+                        supports_color = false;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 20:
                         model = "Color 1000 BR30";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 22:
                         model = "Color 1000";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 27:
                     case 43:
                         model = "LIFX A19";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 28:
                     case 44:
                         model = "LIFX BR30";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 29:
                     case 45:
                         model = "LIFX+ A19";
+                        supports_color = true;
+                        supports_infrared = true;
+                        supports_multizone = false;
                         break;
                     case 30:
                     case 46:
                         model = "LIFX+ BR30";
+                        supports_color = true;
+                        supports_infrared = true;
+                        supports_multizone = false;
                         break;
                     case 31:
                         model = "LIFX Z";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = true;
                         break;
                     case 32:
                         model = "LIFX Z 2";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = true;
                         break;
                     case 36:
                     case 37:
                         model = "LIFX Downlight";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
+                        break;
+                    case 38:
+                        model = "LIFX Beam";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = true;
                         break;
                     case 49:
                     case 59:
                         model = "LIFX Mini";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 50:
                     case 60:
                         model = "LIFX Mini Day and Dusk";
+                        supports_color = false;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 51:
                     case 61:
                         model = "LIFX Mini White";
+                        supports_color = false;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 52:
                         model = "LIFX GU10";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     case 55:
                         model = "LIFX Tile";
+                        supports_color = true;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                     default:
                         model = "unknown";
+                        supports_color = false;
+                        supports_infrared = false;
+                        supports_multizone = false;
                         break;
                 }
                 this.payload.set_string_member ("manufacturer", "LIFX");
                 this.payload.set_string_member ("model", model);
+                this.payload.set_boolean_member ("supportsColor", supports_color);
+                this.payload.set_boolean_member ("supportsInfrared", supports_infrared);
+                this.payload.set_boolean_member ("supportsMultizone", supports_multizone);
                 break;
             case 107: // State
                 this.payload.set_int_member ("hue", buffer.readUInt16LE (i));

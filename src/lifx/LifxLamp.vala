@@ -61,5 +61,18 @@ namespace Lifx {
                 this._obj.set_boolean_member ("supportsInfrared", value);
             }
         }
+
+        public bool supports_multizone {
+            get {
+                if (!this._obj.has_member ("supportsMultizone")) {
+                    this.supports_multizone = false;
+                }
+
+                return this._obj.get_boolean_member ("supportsMultizone");
+            }
+            set {
+                this._obj.set_boolean_member ("supportsMultizone", value);
+            }
+        }
     }
 }

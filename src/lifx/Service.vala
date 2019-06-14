@@ -125,6 +125,9 @@ namespace Lifx {
                             if (this.thingMap.has_key (packet.target)) {
                                 (this.thingMap.get (packet.target) as Lifx.LifxLamp).manufacturer = packet.payload.get_string_member ("manufacturer");
                                 (this.thingMap.get (packet.target)as Lifx.LifxLamp).model = packet.payload.get_string_member ("model");
+                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).supports_color = packet.payload.get_boolean_member ("supportsColor");
+                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
+                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
 
                                 this.onUpdatedThing (this.thingMap.get (packet.target));
                             } else {
@@ -132,6 +135,9 @@ namespace Lifx {
                                 thing.id = packet.target;
                                 thing.manufacturer = packet.payload.get_string_member ("manufacturer");
                                 thing.model = packet.payload.get_string_member ("model");
+                                thing.supports_color = packet.payload.get_boolean_member ("supportsColor");
+                                thing.supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
+                                thing.supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
 
                                 this.thingMap.set (thing.id, thing);
                                 this.onNewThing (thing);
