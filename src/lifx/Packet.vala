@@ -72,7 +72,7 @@ namespace Lifx {
                 this.payload.set_int_member ("rx", buffer.readUInt32LE (i + 8));
                 break;
             case 22: // StatePower
-            Power power = Power.UNKNOWN;
+                Power power = Power.UNKNOWN;
                 uint16 power_t = buffer.readUInt16LE (i);
                 if (power_t > 0) {
                     power = Power.ON;
@@ -82,7 +82,85 @@ namespace Lifx {
                 this.payload.set_int_member ("level", power);
                 break;
             case 25: // StateLabel
-            this.payload.set_string_member ("label", (string) buffer.slice (i, i + 32).raw);
+                this.payload.set_string_member ("label", (string) buffer.slice (i, i + 32).raw);
+                break;
+            case 33: // StateVersion
+                uint32 product = buffer.readUInt32LE (i + 4);
+                string model = "";
+
+                // https://lan.developer.lifx.com/v2.0/docs/lifx-products
+                switch (product) {
+                    case 1:
+                        model = "Original 1000";
+                        break;
+                    case 3:
+                        model = "Color 650";
+                        break;
+                    case 10:
+                        model = "White 800 (Low Voltage)";
+                        break;
+                    case 11:
+                        model = "White 800 (High Voltage)";
+                        break;
+                    case 18:
+                        model = "White 900 BR30 (Low Voltage)";
+                        break;
+                    case 20:
+                        model = "Color 1000 BR30";
+                        break;
+                    case 22:
+                        model = "Color 1000";
+                        break;
+                    case 27:
+                    case 43:
+                        model = "LIFX A19";
+                        break;
+                    case 28:
+                    case 44:
+                        model = "LIFX BR30";
+                        break;
+                    case 29:
+                    case 45:
+                        model = "LIFX+ A19";
+                        break;
+                    case 30:
+                    case 46:
+                        model = "LIFX+ BR30";
+                        break;
+                    case 31:
+                        model = "LIFX Z";
+                        break;
+                    case 32:
+                        model = "LIFX Z 2";
+                        break;
+                    case 36:
+                    case 37:
+                        model = "LIFX Downlight";
+                        break;
+                    case 49:
+                    case 59:
+                        model = "LIFX Mini";
+                        break;
+                    case 50:
+                    case 60:
+                        model = "LIFX Mini Day and Dusk";
+                        break;
+                    case 51:
+                    case 61:
+                        model = "LIFX Mini White";
+                        break;
+                    case 52:
+                        model = "LIFX GU10";
+                        break;
+                    case 55:
+                        model = "LIFX Tile";
+                        break;
+                    default:
+                        model = "unknown";
+                        break;
+                }
+                this.payload.set_string_member ("manufacturer", "LIFX");
+                this.payload.set_string_member ("model", model);
                 break;
             case 107: // State
                 this.payload.set_int_member ("hue", buffer.readUInt16LE (i));

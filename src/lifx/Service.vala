@@ -82,7 +82,9 @@ namespace Lifx {
                                     var thing = new Lifx.LifxLamp ();
                                     thing.id = packet.target;
                                     thing.port = (uint16) packet.payload.get_int_member ("port");
+                                    thing.manufacturer = "LIFX";
 
+                                    this.getVersion (thing);
                                     this.getState (thing);
 
                                     this.thingMap.set (thing.id, thing);
@@ -106,20 +108,39 @@ namespace Lifx {
                             case 25: // StateLabel
                                 if (this.thingMap.has_key (packet.target)) {
                                     this.thingMap.get (packet.target).name = packet.payload.get_string_member ("label");
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).manufacturer = "LIFX";
 
                                     this.onUpdatedThing (this.thingMap.get (packet.target));
                                 } else {
                                     var thing = new Lifx.LifxLamp ();
                                     thing.id = packet.target;
                                     thing.name = packet.payload.get_string_member ("label");
+                                    thing.manufacturer = "LIFX";
 
                                     this.thingMap.set (thing.id, thing);
                                     this.onNewThing (thing);
                                 }
                                 break;
+                            case 33: // StateVersion
+                            if (this.thingMap.has_key (packet.target)) {
+                                (this.thingMap.get (packet.target) as Lifx.LifxLamp).manufacturer = packet.payload.get_string_member ("manufacturer");
+                                (this.thingMap.get (packet.target)as Lifx.LifxLamp).model = packet.payload.get_string_member ("model");
+
+                                this.onUpdatedThing (this.thingMap.get (packet.target));
+                            } else {
+                                var thing = new Lifx.LifxLamp ();
+                                thing.id = packet.target;
+                                thing.manufacturer = packet.payload.get_string_member ("manufacturer");
+                                thing.model = packet.payload.get_string_member ("model");
+
+                                this.thingMap.set (thing.id, thing);
+                                this.onNewThing (thing);
+                            }
+                                break;
                             case 107: // State
                                 if (this.thingMap.has_key (packet.target)) {
                                     this.thingMap.get (packet.target).name = packet.payload.get_string_member ("label");
+                                    (this.thingMap.get (packet.target) as Lifx.LifxLamp).manufacturer = "LIFX";
                                     (this.thingMap.get (packet.target) as Lifx.LifxLamp).power = (Power) packet.payload.get_int_member ("power");
                                     (this.thingMap.get (packet.target) as Lifx.LifxLamp).hue = (uint16) packet.payload.get_int_member ("hue");
                                     (this.thingMap.get (packet.target) as Lifx.LifxLamp).saturation = (uint16) packet.payload.get_int_member ("saturation");
@@ -131,6 +152,7 @@ namespace Lifx {
                                     var thing = new Lifx.LifxLamp ();
                                     thing.id = packet.target;
                                     thing.name = packet.payload.get_string_member ("label");
+                                    thing.manufacturer = "LIFX";
                                     thing.power = (Power) packet.payload.get_int_member ("power");
                                     thing.hue = (uint16) packet.payload.get_int_member ("hue");
                                     thing.saturation = (uint16) packet.payload.get_int_member ("saturation");
@@ -191,6 +213,20 @@ namespace Lifx {
 
             try {
                 this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), 56700), packet.raw);
+            } catch (Error e) {
+                stderr.printf (e.message);
+            }
+        }
+
+        private void getVersion (Lifx.LifxLamp lamp) {
+            var packet = new Lifx.Packet ();
+            packet.type = 32;
+            packet.tagged = true;
+            packet.addressable = true;
+            packet.source = this.source++;
+
+            try {
+                this.socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
             } catch (Error e) {
                 stderr.printf (e.message);
             }

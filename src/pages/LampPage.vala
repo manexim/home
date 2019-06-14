@@ -39,6 +39,10 @@ public class LampPage : Granite.SimpleSettingsPage {
     }
 
     private void updateStatus () {
+        this.description = "ID: " + this.controller.lamp.id;
+        this.description += "\nManufacturer: " + this.controller.lamp.manufacturer;
+        this.description += "\nModel: " + this.controller.lamp.model;
+
         switch (this.controller.lamp.power) {
         case Power.ON:
             status_type = Granite.SettingsPage.StatusType.SUCCESS;

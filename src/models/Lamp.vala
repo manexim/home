@@ -18,4 +18,30 @@ public class Lamp : Thing {
             this._obj.set_string_member ("power", value.to_string ());
         }
     }
+
+    public string manufacturer {
+        get {
+            if (!this._obj.has_member ("manufacturer")) {
+                this.manufacturer = null;
+            }
+
+            return this._obj.get_string_member ("manufacturer");
+        }
+        set {
+            this._obj.set_string_member ("manufacturer", value);
+        }
+    }
+
+    public string model {
+        get {
+            if (!this._obj.has_member ("model")) {
+                this.model = null;
+            }
+
+            return this._obj.get_string_member ("model");
+        }
+        set {
+            this._obj.set_string_member ("model", value);
+        }
+    }
 }
