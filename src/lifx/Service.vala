@@ -52,7 +52,11 @@ namespace Lifx {
             packet.payload.set_int_member ("level", level);
 
             try {
-                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
+                socket.send_to (
+                    new InetSocketAddress (
+                        new InetAddress.from_string ("255.255.255.255"), lamp.port),
+                    packet.raw
+                );
             } catch (Error e) {
                 stderr.printf (e.message);
             }
@@ -73,7 +77,10 @@ namespace Lifx {
 
                 #if HAVE_SO_REUSEPORT
                 int32 enable = 1;
-                Posix.setsockopt(socket.fd, Platform.Socket.SOL_SOCKET, Platform.Socket.SO_REUSEPORT, &enable, (Posix.socklen_t) sizeof(int));
+                Posix.setsockopt(
+                    socket.fd, Platform.Socket.SOL_SOCKET, Platform.Socket.SO_REUSEPORT, &enable,
+                    (Posix.socklen_t) sizeof(int)
+                );
                 #endif
 
                 var sa = new InetSocketAddress (new InetAddress.any (SocketFamily.IPV4), 56700);
@@ -114,7 +121,8 @@ namespace Lifx {
                                     break;
                                 case 22: // StatePower
                                     if (thing_map.has_key (packet.target)) {
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power = (Power) packet.payload.get_int_member ("level");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power =
+                                            (Power) packet.payload.get_int_member ("level");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
@@ -144,11 +152,16 @@ namespace Lifx {
                                     break;
                                 case 33: // StateVersion
                                     if (thing_map.has_key (packet.target)) {
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer = packet.payload.get_string_member ("manufacturer");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).model = packet.payload.get_string_member ("model");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_color = packet.payload.get_boolean_member ("supportsColor");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer =
+                                            packet.payload.get_string_member ("manufacturer");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).model =
+                                            packet.payload.get_string_member ("model");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_color =
+                                            packet.payload.get_boolean_member ("supportsColor");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_infrared =
+                                            packet.payload.get_boolean_member ("supportsInfrared");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_multizone =
+                                            packet.payload.get_boolean_member ("supportsMultizone");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
@@ -157,8 +170,10 @@ namespace Lifx {
                                         thing.manufacturer = packet.payload.get_string_member ("manufacturer");
                                         thing.model = packet.payload.get_string_member ("model");
                                         thing.supports_color = packet.payload.get_boolean_member ("supportsColor");
-                                        thing.supports_infrared = packet.payload.get_boolean_member ("supportsInfrared");
-                                        thing.supports_multizone = packet.payload.get_boolean_member ("supportsMultizone");
+                                        thing.supports_infrared =
+                                            packet.payload.get_boolean_member ("supportsInfrared");
+                                        thing.supports_multizone =
+                                            packet.payload.get_boolean_member ("supportsMultizone");
 
                                         thing_map.set (thing.id, thing);
                                         on_new_thing (thing);
@@ -168,11 +183,16 @@ namespace Lifx {
                                     if (thing_map.has_key (packet.target)) {
                                         thing_map.get (packet.target).name = packet.payload.get_string_member ("label");
                                         ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer = "LIFX";
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power = (Power) packet.payload.get_int_member ("power");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).hue = (uint16) packet.payload.get_int_member ("hue");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).saturation = (uint16) packet.payload.get_int_member ("saturation");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).brightness = (uint16) packet.payload.get_int_member ("brightness");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).kelvin = (uint16) packet.payload.get_int_member ("kelvin");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power =
+                                            (Power) packet.payload.get_int_member ("power");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).hue =
+                                            (uint16) packet.payload.get_int_member ("hue");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).saturation =
+                                            (uint16) packet.payload.get_int_member ("saturation");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).brightness =
+                                            (uint16) packet.payload.get_int_member ("brightness");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).kelvin =
+                                            (uint16) packet.payload.get_int_member ("kelvin");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
@@ -192,7 +212,8 @@ namespace Lifx {
                                     break;
                                 case 118: // StatePower
                                     if (thing_map.has_key (packet.target)) {
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power = (Power) packet.payload.get_int_member ("level");
+                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power =
+                                            (Power) packet.payload.get_int_member ("level");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
@@ -239,7 +260,11 @@ namespace Lifx {
             packet.tagged = true;
 
             try {
-                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), 56700), packet.raw);
+                socket.send_to (
+                    new InetSocketAddress (
+                        new InetAddress.from_string ("255.255.255.255"), 56700),
+                    packet.raw
+                );
             } catch (Error e) {
                 stderr.printf (e.message);
             }
@@ -253,7 +278,11 @@ namespace Lifx {
             packet.source = source++;
 
             try {
-                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
+                socket.send_to (
+                    new InetSocketAddress (
+                        new InetAddress.from_string ("255.255.255.255"), lamp.port),
+                    packet.raw
+                );
             } catch (Error e) {
                 stderr.printf (e.message);
             }
@@ -267,7 +296,11 @@ namespace Lifx {
             packet.source = source++;
 
             try {
-                socket.send_to (new InetSocketAddress (new InetAddress.from_string ("255.255.255.255"), lamp.port), packet.raw);
+                socket.send_to (
+                    new InetSocketAddress (
+                        new InetAddress.from_string ("255.255.255.255"), lamp.port),
+                    packet.raw
+                );
             } catch (Error e) {
                 stderr.printf (e.message);
             }
