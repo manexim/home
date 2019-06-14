@@ -48,5 +48,18 @@ namespace Lifx {
                 this._obj.set_int_member ("kelvin", value);
             }
         }
+
+        public bool supports_infrared {
+            get {
+                if (!this._obj.has_member ("supportsInfrared")) {
+                    this.supports_infrared = false;
+                }
+
+                return this._obj.get_boolean_member ("supportsInfrared");
+            }
+            set {
+                this._obj.set_boolean_member ("supportsInfrared", value);
+            }
+        }
     }
 }

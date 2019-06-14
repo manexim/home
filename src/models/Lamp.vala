@@ -44,4 +44,17 @@ public class Lamp : Thing {
             this._obj.set_string_member ("model", value);
         }
     }
+
+    public bool supports_color {
+        get {
+            if (!this._obj.has_member ("supportsColor")) {
+                this.supports_color = false;
+            }
+
+            return this._obj.get_boolean_member ("supportsColor");
+        }
+        set {
+            this._obj.set_boolean_member ("supportsColor", value);
+        }
+    }
 }
