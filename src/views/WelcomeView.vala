@@ -25,23 +25,29 @@ public class WelcomeView : Gtk.Grid {
     construct {
         var welcome = new Granite.Widgets.Welcome ("Home", "Control your smart home gadgets");
         welcome.append (
-            "com.github.manexim.home.lightbulb.lifx-symbolic",
+            "com.github.manexim.home.logo.lifx-symbolic",
             "LIFX",
-            "Currently only LIFX lights are supported. They must already be connected to your Wi-Fi."
+            "Smart Wi-Fi lights by LIFX are supported. They must already be connected to your Wi-Fi."
+        );
+        welcome.append (
+            "com.github.manexim.home.logo.philips.hue-symbolic",
+            "Philips Hue",
+            "Smart ZigBee lights by Philips Hue are supported. They must already be connected to your Philips Hue Bridge."
         );
         welcome.append (
             "go-next",
             "Let's go",
-            "You can control your lamps directly via Wi-Fi."
+            "You can control your smart home gadgets directly via your local network. A connection to the internet is not required."
         );
 
         welcome.set_item_sensitivity (0, false);
+        welcome.set_item_sensitivity (1, false);
 
         add (welcome);
 
         welcome.activated.connect ((index) => {
             switch (index) {
-            case 1:
+            case 2:
                 start ();
                 break;
             }
