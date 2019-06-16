@@ -14,7 +14,9 @@ endforeach
 
 symbolic_icons = [
     'com.github.manexim.home.lightbulb-symbolic',
-    'com.github.manexim.home.lightbulb.lifx-symbolic'
+    'com.github.manexim.home.lightbulb.lifx-symbolic',
+    'com.github.manexim.home.logo.lifx-symbolic',
+    'com.github.manexim.home.logo.philips.hue-symbolic'
 ]
 
 foreach icon : symbolic_icons
