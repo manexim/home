@@ -20,9 +20,9 @@
 */
 
 public class LampPage : Granite.SimpleSettingsPage {
-    private Lifx.LifxLampController controller;
+    private Lifx.LampController controller;
 
-    public LampPage (Lamp lamp) {
+    public LampPage (Models.Lamp lamp) {
         Object (
             activatable: true,
             icon_name: "com.github.manexim.home.lightbulb.lifx-symbolic",
@@ -30,7 +30,7 @@ public class LampPage : Granite.SimpleSettingsPage {
             title: lamp.name != null ? lamp.name : lamp.id
         );
 
-        controller = new Lifx.LifxLampController ((Lifx.LifxLamp) lamp);
+        controller = new Lifx.LampController ((Lifx.Lamp) lamp);
         controller.updated.connect ((lamp) => {
             if (lamp.power == Power.ON) {
                 status_switch.active = true;

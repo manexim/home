@@ -20,19 +20,19 @@
 */
 
 namespace Lifx {
-    public class LifxLampController {
+    public class LampController {
         private Lifx.Service service;
-        private Lifx.LifxLamp _lamp;
+        private Lifx.Lamp _lamp;
 
-        public signal void updated (Lifx.LifxLamp lamp);
+        public signal void updated (Lifx.Lamp lamp);
 
-        public LifxLampController (Lifx.LifxLamp lamp) {
+        public LampController (Lifx.Lamp lamp) {
             _lamp = lamp;
 
             service = Lifx.Service.instance;
             service.on_updated_thing.connect ((updated_lamp) => {
                 if (updated_lamp.id == lamp.id) {
-                    updated ((Lifx.LifxLamp) updated_lamp);
+                    updated ((Lifx.Lamp) updated_lamp);
                 }
             });
         }
@@ -43,7 +43,7 @@ namespace Lifx {
             _lamp.power = on ? Power.ON : Power.OFF;
         }
 
-        public Lifx.LifxLamp lamp {
+        public Lifx.Lamp lamp {
             get {
                 return _lamp;
             }

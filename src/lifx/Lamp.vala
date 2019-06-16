@@ -20,7 +20,7 @@
 */
 
 namespace Lifx {
-    public class LifxLamp : Lamp {
+    public class Lamp : Models.Lamp {
         public uint16 port {
             get {
                 if (!_obj.has_member ("port")) {

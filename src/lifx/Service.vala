@@ -24,11 +24,11 @@ namespace Lifx {
         private static Service? _instance;
         public bool debug = false;
         private uint32 source = 0;
-        private Gee.HashMap<string, Thing> thing_map;
+        private Gee.HashMap<string, Models.Thing> thing_map;
         private Socket socket;
 
-        public signal void on_new_thing (Thing thing);
-        public signal void on_updated_thing (Thing thing);
+        public signal void on_new_thing (Models.Thing thing);
+        public signal void on_updated_thing (Models.Thing thing);
 
         public static Service instance {
             get {
@@ -40,7 +40,7 @@ namespace Lifx {
             }
         }
 
-        public void set_power (Lifx.LifxLamp lamp, uint16 level) {
+        public void set_power (Lifx.Lamp lamp, uint16 level) {
             var packet = new Lifx.Packet ();
             packet.type = 21;
             packet.tagged = false;
@@ -63,7 +63,7 @@ namespace Lifx {
         }
 
         private Service () {
-            thing_map = new Gee.HashMap<string, Thing> ();
+            thing_map = new Gee.HashMap<string, Models.Thing> ();
 
             setup_socket ();
             listen ();
@@ -107,7 +107,7 @@ namespace Lifx {
                             switch (packet.type) {
                                 case 3: // StateService
                                     if (!thing_map.has_key (packet.target)) {
-                                        var thing = new Lifx.LifxLamp ();
+                                        var thing = new Lifx.Lamp ();
                                         thing.id = packet.target;
                                         thing.port = (uint16) packet.payload.get_int_member ("port");
                                         thing.manufacturer = "LIFX";
@@ -121,12 +121,12 @@ namespace Lifx {
                                     break;
                                 case 22: // StatePower
                                     if (thing_map.has_key (packet.target)) {
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).power =
                                             (Power) packet.payload.get_int_member ("level");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
-                                        var thing = new Lifx.LifxLamp ();
+                                        var thing = new Lifx.Lamp ();
                                         thing.id = packet.target;
                                         thing.power = (Power) packet.payload.get_int_member ("level");
 
@@ -137,11 +137,11 @@ namespace Lifx {
                                 case 25: // StateLabel
                                     if (thing_map.has_key (packet.target)) {
                                         thing_map.get (packet.target).name = packet.payload.get_string_member ("label");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer = "LIFX";
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).manufacturer = "LIFX";
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
-                                        var thing = new Lifx.LifxLamp ();
+                                        var thing = new Lifx.Lamp ();
                                         thing.id = packet.target;
                                         thing.name = packet.payload.get_string_member ("label");
                                         thing.manufacturer = "LIFX";
@@ -152,20 +152,20 @@ namespace Lifx {
                                     break;
                                 case 33: // StateVersion
                                     if (thing_map.has_key (packet.target)) {
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).manufacturer =
                                             packet.payload.get_string_member ("manufacturer");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).model =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).model =
                                             packet.payload.get_string_member ("model");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_color =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).supports_color =
                                             packet.payload.get_boolean_member ("supportsColor");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_infrared =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).supports_infrared =
                                             packet.payload.get_boolean_member ("supportsInfrared");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).supports_multizone =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).supports_multizone =
                                             packet.payload.get_boolean_member ("supportsMultizone");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
-                                        var thing = new Lifx.LifxLamp ();
+                                        var thing = new Lifx.Lamp ();
                                         thing.id = packet.target;
                                         thing.manufacturer = packet.payload.get_string_member ("manufacturer");
                                         thing.model = packet.payload.get_string_member ("model");
@@ -182,21 +182,21 @@ namespace Lifx {
                                 case 107: // State
                                     if (thing_map.has_key (packet.target)) {
                                         thing_map.get (packet.target).name = packet.payload.get_string_member ("label");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).manufacturer = "LIFX";
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).manufacturer = "LIFX";
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).power =
                                             (Power) packet.payload.get_int_member ("power");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).hue =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).hue =
                                             (uint16) packet.payload.get_int_member ("hue");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).saturation =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).saturation =
                                             (uint16) packet.payload.get_int_member ("saturation");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).brightness =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).brightness =
                                             (uint16) packet.payload.get_int_member ("brightness");
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).kelvin =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).kelvin =
                                             (uint16) packet.payload.get_int_member ("kelvin");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
-                                        var thing = new Lifx.LifxLamp ();
+                                        var thing = new Lifx.Lamp ();
                                         thing.id = packet.target;
                                         thing.name = packet.payload.get_string_member ("label");
                                         thing.manufacturer = "LIFX";
@@ -212,12 +212,12 @@ namespace Lifx {
                                     break;
                                 case 118: // StatePower
                                     if (thing_map.has_key (packet.target)) {
-                                        ((Lifx.LifxLamp) thing_map.get (packet.target)).power =
+                                        ((Lifx.Lamp) thing_map.get (packet.target)).power =
                                             (Power) packet.payload.get_int_member ("level");
 
                                         on_updated_thing (thing_map.get (packet.target));
                                     } else {
-                                        var thing = new Lifx.LifxLamp ();
+                                        var thing = new Lifx.Lamp ();
                                         thing.id = packet.target;
                                         thing.power = (Power) packet.payload.get_int_member ("level");
 
@@ -270,7 +270,7 @@ namespace Lifx {
             }
         }
 
-        private void get_version (Lifx.LifxLamp lamp) {
+        private void get_version (Lifx.Lamp lamp) {
             var packet = new Lifx.Packet ();
             packet.type = 32;
             packet.tagged = true;
@@ -288,7 +288,7 @@ namespace Lifx {
             }
         }
 
-        private void get_state (Lifx.LifxLamp lamp) {
+        private void get_state (Lifx.Lamp lamp) {
             var packet = new Lifx.Packet ();
             packet.type = 101;
             packet.tagged = true;

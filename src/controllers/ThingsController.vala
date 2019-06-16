@@ -22,18 +22,18 @@
 public class ThingsController {
     private Lifx.Service lifx_service;
 
-    public signal void on_new_lamp(Lamp lamp);
-    public signal void on_updated_lamp(Lamp lamp);
+    public signal void on_new_lamp(Models.Lamp lamp);
+    public signal void on_updated_lamp(Models.Lamp lamp);
 
     public ThingsController () {
         lifx_service = Lifx.Service.instance;
 
         lifx_service.on_new_thing.connect ((thing) => {
-            on_new_lamp((Lamp) thing);
+            on_new_lamp((Models.Lamp) thing);
         });
 
         lifx_service.on_updated_thing.connect ((thing) => {
-            on_updated_lamp((Lamp) thing);
+            on_updated_lamp((Models.Lamp) thing);
         });
     }
 }

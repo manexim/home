@@ -19,63 +19,65 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Lamp : Thing {
-    public Power power {
-        get {
-            if (!_obj.has_member ("power")) {
-                _obj.set_string_member ("power", "unknown");
+namespace Models {
+    public class Lamp : Thing {
+        public Power power {
+            get {
+                if (!_obj.has_member ("power")) {
+                    _obj.set_string_member ("power", "unknown");
+                }
+
+                switch (_obj.get_string_member ("power")) {
+                    case "on":
+                        return Power.ON;
+                    case "off":
+                        return Power.OFF;
+                    default:
+                        return Power.UNKNOWN;
+                }
             }
-
-            switch (_obj.get_string_member ("power")) {
-                case "on":
-                    return Power.ON;
-                case "off":
-                    return Power.OFF;
-                default:
-                    return Power.UNKNOWN;
+            set {
+                _obj.set_string_member ("power", value.to_string ());
             }
         }
-        set {
-            _obj.set_string_member ("power", value.to_string ());
-        }
-    }
 
-    public string manufacturer {
-        get {
-            if (!_obj.has_member ("manufacturer")) {
-                manufacturer = null;
+        public string manufacturer {
+            get {
+                if (!_obj.has_member ("manufacturer")) {
+                    manufacturer = null;
+                }
+
+                return _obj.get_string_member ("manufacturer");
             }
-
-            return _obj.get_string_member ("manufacturer");
-        }
-        set {
-            _obj.set_string_member ("manufacturer", value);
-        }
-    }
-
-    public string model {
-        get {
-            if (!_obj.has_member ("model")) {
-                model = null;
+            set {
+                _obj.set_string_member ("manufacturer", value);
             }
-
-            return _obj.get_string_member ("model");
         }
-        set {
-            _obj.set_string_member ("model", value);
-        }
-    }
 
-    public bool supports_color {
-        get {
-            if (!_obj.has_member ("supportsColor")) {
-                supports_color = false;
+        public string model {
+            get {
+                if (!_obj.has_member ("model")) {
+                    model = null;
+                }
+
+                return _obj.get_string_member ("model");
             }
-
-            return _obj.get_boolean_member ("supportsColor");
+            set {
+                _obj.set_string_member ("model", value);
+            }
         }
-        set {
-            _obj.set_boolean_member ("supportsColor", value);
+
+        public bool supports_color {
+            get {
+                if (!_obj.has_member ("supportsColor")) {
+                    supports_color = false;
+                }
+
+                return _obj.get_boolean_member ("supportsColor");
+            }
+            set {
+                _obj.set_boolean_member ("supportsColor", value);
+            }
         }
     }
 }
