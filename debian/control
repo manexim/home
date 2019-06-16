@@ -8,6 +8,9 @@ Build-Depends: meson,
                libjson-glib-dev,
                libgee-0.8-dev,
                libgranite-dev,
+               libsoup2.4-dev,
+               libxml2-dev,
+               uuid-dev,
                valac
 Standards-Version: 3.9.3
 

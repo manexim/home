@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
   <schema id="com.github.manexim.home" path="/com/github/manexim/home/" gettext-domain="com.github.manexim.home">
+    <key name="uuid" type="s">
+      <default>""</default>
+      <summary>The universally unique identifier</summary>
+      <description>The universally unique identifier used to identify yourself on devices. It is automatically generated on first start. Do not change!</description>
+    </key>
     <key name="last-started-app-version" type="s">
       <default>""</default>
       <summary>Lasted started app version</summary>
       <description>Last started app version to check if new features should be explained to user.</description>
     </key>
+    <key name="philips-hue-bridges" type="as">
+      <default>[]</default>
+      <summary>List of configured Philips Hue Bridges</summary>
+      <description>List of configured Philips Hue Bridges.</description>
+    </key>
     <key name="window-width" type="i">
-			<default>900</default>
-			<summary>The saved width of the window.</summary>
-			<description>The saved width of the window.</description>
-		</key>
-		<key name="window-height" type="i">
-			<default>600</default>
-			<summary>The saved height of the window.</summary>
-			<description>The saved height of the window.</description>
-		</key>
-		<key name="window-x" type="i">
-			<default>-1</default>
-			<summary>The saved x-position of the window.</summary>
-			<description>The saved x-position of the window.</description>
-		</key>
+      <default>900</default>
+      <summary>The saved width of the window.</summary>
+      <description>The saved width of the window.</description>
+    </key>
+    <key name="window-height" type="i">
+      <default>600</default>
+      <summary>The saved height of the window.</summary>
+      <description>The saved height of the window.</description>
+    </key>
+    <key name="window-x" type="i">
+      <default>-1</default>
+      <summary>The saved x-position of the window.</summary>
+      <description>The saved x-position of the window.</description>
+    </key>
     <key name="window-y" type="i">
-			<default>-1</default>
-			<summary>The saved y-position of the window.</summary>
-			<description>The saved y-position of the window.</description>
-		</key>
+      <default>-1</default>
+      <summary>The saved y-position of the window.</summary>
+      <description>The saved y-position of the window.</description>
+    </key>
     <key name="window-maximized" type="b">
-			<default>false</default>
-			<summary>Maximized window.</summary>
-			<description>Maximized window.</description>
-		</key>
+      <default>false</default>
+      <summary>Maximized window.</summary>
+      <description>Maximized window.</description>
+    </key>
   </schema>
 </schemalist>

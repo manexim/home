@@ -30,7 +30,9 @@ public class Settings : Granite.Services.Settings {
         return settings;
     }
 
+    public string uuid { get; protected set; }
     public string last_started_app_version { get; set; }
+    public string[] philips_hue_bridges { get; set; }
     public int window_width { get; set; }
     public int window_height { get; set; }
     public int window_x { get; set; }
@@ -72,5 +74,27 @@ public class Settings : Granite.Services.Settings {
 
     public void save () {
         last_started_app_version = Config.APP_VERSION;
+
+        if (uuid == null || uuid == "") {
+            uint8[] uu = new uint8[16];
+            UUID.generate (uu);
+            string s = "";
+
+            for (uint8 i = 0; i < 16; i++) {
+                s += uu[i].to_string ("%X");
+            }
+
+            uuid = s;
+        }
+
+        var philips_hue_service = Philips.Hue.Service.instance;
+        var bridges = philips_hue_service.bridges;
+        var bridges_strings = new string[bridges.length];
+
+        for (uint8 i = 0; i < bridges.length; i++) {
+            bridges_strings[i] = bridges[i].to_string ();
+        }
+
+        philips_hue_bridges = bridges_strings;
     }
 }

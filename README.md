@@ -24,6 +24,9 @@ These dependencies must be present before building
  - `libjson-glib-dev`
  - `libgee-0.8-dev`
  - `libgranite-dev`
+ - `libsoup2.4-dev`
+ - `libxml2-dev`
+ - `uuid-dev`
 
 ### Building
 

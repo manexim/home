@@ -9,6 +9,9 @@ sources = [
     'models/Thing.vala',
     'pages/LampPage.vala',
     'pages/LoadingPage.vala',
+    'philips/hue/Bridge.vala',
+    'philips/hue/BridgeController.vala',
+    'philips/hue/Service.vala',
     'services/Settings.vala',
     'types/Power.vala',
     'utils/Buffer.vala',
@@ -25,7 +28,10 @@ executable(
         json_glib_1_dep,
         posix_dep,
         gee_dep,
-        granite_dep
+        granite_dep,
+        soup_dep,
+        xml_dep,
+        uuid_dep
     ],
     install: true
 )
@@ -43,7 +49,10 @@ foreach test_name : tests
             json_glib_1_dep,
             posix_dep,
             gee_dep,
-            granite_dep
+            granite_dep,
+            soup_dep,
+            xml_dep,
+            uuid_dep
         ]
     )
     test(
