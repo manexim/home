@@ -24,7 +24,7 @@ public class LoadingPage : Gtk.Grid {
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
 
-        var label = new Gtk.Label ("Looking for smart home gadgets to control.");
+        var label = new Gtk.Label (_("Looking for smart home gadgets to control."));
 		label.halign = Gtk.Align.CENTER;
 		label.valign = Gtk.Align.CENTER;
 
