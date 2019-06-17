@@ -1,5 +1,8 @@
 project('com.github.manexim.home', 'vala', 'c')
 
+i18n = import('i18n')
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+
 add_project_arguments(
     ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
     language: 'vala'
@@ -16,5 +19,6 @@ uuid_dep = dependency('uuid')
 
 subdir('data')
 subdir('src')
+subdir('po')
 
 meson.add_install_script('meson/post_install.py')

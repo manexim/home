@@ -23,21 +23,21 @@ public class WelcomeView : Gtk.Grid {
     public signal void start ();
 
     construct {
-        var welcome = new Granite.Widgets.Welcome ("Home", "Control your smart home gadgets");
+        var welcome = new Granite.Widgets.Welcome ("Home", _("Control your smart home gadgets"));
         welcome.append (
             "com.github.manexim.home.logo.lifx-symbolic",
             "LIFX",
-            "Smart Wi-Fi lights by LIFX are supported. They must already be connected to your Wi-Fi."
+            _("Smart Wi-Fi lights by LIFX are supported. They must already be connected to your Wi-Fi.")
         );
         welcome.append (
             "com.github.manexim.home.logo.philips.hue-symbolic",
             "Philips Hue",
-            "Smart ZigBee lights by Philips Hue are supported. They must already be connected to your Philips Hue Bridge."
+            _("Smart ZigBee lights by Philips Hue are supported. They must already be connected to your Philips Hue Bridge.")
         );
         welcome.append (
             "go-next",
-            "Let's go",
-            "You can control your smart home gadgets directly via your local network. A connection to the internet is not required."
+            _("Let's go"),
+            _("You can control your smart home gadgets directly via your local network. A connection to the internet is not required.")
         );
 
         welcome.set_item_sensitivity (0, false);
