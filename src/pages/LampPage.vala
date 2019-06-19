@@ -60,22 +60,22 @@ public class LampPage : Granite.SimpleSettingsPage {
     }
 
     private void update_status () {
-        description = "ID: " + controller.lamp.id;
-        description += "\nManufacturer: " + controller.lamp.manufacturer;
-        description += "\nModel: " + controller.lamp.model;
+        description = _("ID: ") + controller.lamp.id;
+        description += "\n" + _("Manufacturer: ") + controller.lamp.manufacturer;
+        description += "\n" + _("Model: ") + controller.lamp.model;
 
         switch (controller.lamp.power) {
         case Power.ON:
             status_type = Granite.SettingsPage.StatusType.SUCCESS;
-            status = ("Enabled");
+            status = (_("Enabled"));
             break;
         case Power.OFF:
             status_type = Granite.SettingsPage.StatusType.OFFLINE;
-            status = ("Disabled");
+            status = (_("Disabled"));
             break;
         default:
             status_type = Granite.SettingsPage.StatusType.NONE;
-            status = ("Unknown");
+            status = (_("Unknown"));
             break;
         }
     }
