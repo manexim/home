@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 16:59+0200\n"
+"POT-Creation-Date: 2019-06-19 17:14+0200\n"
 "PO-Revision-Date: 2019-06-17 22:32+0400\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -41,6 +41,30 @@ msgstr ""
 msgid ""
 "You can control your smart home gadgets directly via your local network. A "
 "connection to the internet is not required."
+msgstr ""
+
+#: src/pages/LampPage.vala:63
+msgid "ID: "
+msgstr ""
+
+#: src/pages/LampPage.vala:64
+msgid "Manufacturer: "
+msgstr ""
+
+#: src/pages/LampPage.vala:65
+msgid "Model: "
+msgstr ""
+
+#: src/pages/LampPage.vala:70
+msgid "Enabled"
+msgstr ""
+
+#: src/pages/LampPage.vala:74
+msgid "Disabled"
+msgstr ""
+
+#: src/pages/LampPage.vala:78
+msgid "Unknown"
 msgstr ""
 
 #: src/pages/LoadingPage.vala:27
