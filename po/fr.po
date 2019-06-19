@@ -51,27 +51,27 @@ msgstr ""
 
 #: src/pages/LampPage.vala:63
 msgid "ID: "
-msgstr ""
+msgstr "Identifiant : "
 
 #: src/pages/LampPage.vala:64
 msgid "Manufacturer: "
-msgstr ""
+msgstr "Fabricant : "
 
 #: src/pages/LampPage.vala:65
 msgid "Model: "
-msgstr ""
+msgstr "Modèle : "
 
 #: src/pages/LampPage.vala:70
 msgid "Enabled"
-msgstr ""
+msgstr "Activé"
 
 #: src/pages/LampPage.vala:74
 msgid "Disabled"
-msgstr ""
+msgstr "Désactivé"
 
 #: src/pages/LampPage.vala:78
 msgid "Unknown"
-msgstr ""
+msgstr "Inconnu"
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
