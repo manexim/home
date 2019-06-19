@@ -1,7 +1,7 @@
 # French translations for extra package.
 # Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
-# Automatically generated, 2019.
+# NathanBnm, 2019.
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-19 16:59+0200\n"
 "PO-Revision-Date: 2019-06-17 22:33+0400\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -21,73 +21,73 @@ msgstr ""
 #: data/com.github.manexim.home.desktop.in:4
 #: data/com.github.manexim.home.desktop.in:5
 msgid "Home"
-msgstr ""
+msgstr "Maison"
 
 #: data/com.github.manexim.home.appdata.xml.in:8
 #: data/com.github.manexim.home.desktop.in:6
 msgid "Control your smart home gadgets"
-msgstr ""
+msgstr "Contrôlez vos objets connectés pour maison intelligente"
 
 #: data/com.github.manexim.home.appdata.xml.in:10
 msgid "A smart home application to control your gadgets."
-msgstr ""
+msgstr "Une application pour maison intelligente afin de contrôler vos objets connectés"
 
 #: data/com.github.manexim.home.appdata.xml.in:11
 msgid "Supported devices:"
-msgstr ""
+msgstr "Appareils supportés :"
 
 #: data/com.github.manexim.home.appdata.xml.in:13
 msgid "LIFX"
-msgstr ""
+msgstr "LIFX"
 
 #: data/com.github.manexim.home.appdata.xml.in:25
 msgid "New:"
-msgstr ""
+msgstr "Nouveau :"
 
 #: data/com.github.manexim.home.appdata.xml.in:27
 msgid "Add welcome view for onboarding"
-msgstr ""
+msgstr "Ajout d'un écran de bienvenue à l'ouverture"
 
 #: data/com.github.manexim.home.appdata.xml.in:28
 msgid "Show loading page if no smart home gadget is found"
-msgstr ""
+msgstr "Affichage de la page de chargement si aucun objet connecté n'est trouvé"
 
 #: data/com.github.manexim.home.appdata.xml.in:29
 msgid "Show manufacturer and model of device"
-msgstr ""
+msgstr "Affichage des informations du modèle et de l'appareil"
 
 #: data/com.github.manexim.home.appdata.xml.in:31
 msgid "Improved:"
-msgstr ""
+msgstr "Amélioration :"
 
 #: data/com.github.manexim.home.appdata.xml.in:33
 msgid "Save and load window settings"
-msgstr ""
+msgstr "Enregistrement et rechargement des paramètres de la fenêtre"
 
 #: data/com.github.manexim.home.appdata.xml.in:35
 msgid "Fixed:"
-msgstr ""
+msgstr "Corrections :"
 
 #: data/com.github.manexim.home.appdata.xml.in:37
 msgid "Remove mention of elementary OS in app description"
-msgstr ""
+msgstr "Suppression de la mention d'elementary OS dans la description"
 
 #: data/com.github.manexim.home.appdata.xml.in:38
 msgid "Suffix symbolic icon names with -symbolic"
-msgstr ""
+msgstr "Ajout du suffixe -symbolic au nom des icônes symboliques"
 
 #: data/com.github.manexim.home.appdata.xml.in:39
 msgid "Install all available icon sizes"
-msgstr ""
+msgstr "Installation de toutes les tailles d'icône disponibles"
 
 #: data/com.github.manexim.home.appdata.xml.in:45
 msgid "Initial release"
-msgstr ""
+msgstr "Version initiale"
 
 #: data/com.github.manexim.home.appdata.xml.in:71
 msgid "Manexim"
-msgstr ""
+msgstr "Menxim"
 
 #: data/com.github.manexim.home.desktop.in:8
 msgid "com.github.manexim.home"
-msgstr ""
+msgstr "com.github.manexim.home"

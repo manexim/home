@@ -1,7 +1,7 @@
 # French translations for com.github.manexim.home package.
 # Copyright (C) 2019 THE com.github.manexim.home'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.manexim.home package.
-# Automatically generated, 2019.
+# NathanBnm, 2019.
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-19 16:59+0200\n"
 "PO-Revision-Date: 2019-06-17 22:32+0400\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -19,30 +19,33 @@ msgstr ""
 
 #: src/views/WelcomeView.vala:26
 msgid "Control your smart home gadgets"
-msgstr ""
+msgstr "Contrôlez vos objets connectés pour maison intelligente"
 
 #: src/views/WelcomeView.vala:30
 msgid ""
 "Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
 "your Wi-Fi."
 msgstr ""
+"Les lampes Wi-Fi intelligentes de LIFX sont prises en charges. Elles doivent déjà être connectées à votre Wi-Fi."
 
 #: src/views/WelcomeView.vala:35
 msgid ""
 "Smart ZigBee lights by Philips Hue are supported. They must already be "
 "connected to your Philips Hue Bridge."
 msgstr ""
+"Les lampes intelligentes ZigBee de Philips Hue sont prises en charge. Elles doivent déjà être connectées à votre Philips Hue Bridge."
 
 #: src/views/WelcomeView.vala:39
 msgid "Let's go"
-msgstr ""
+msgstr "C'est parti"
 
 #: src/views/WelcomeView.vala:40
 msgid ""
 "You can control your smart home gadgets directly via your local network. A "
 "connection to the internet is not required."
 msgstr ""
+"Vous pouvez contrôler vos objets connectés directement via votre réseau local. Une connexion Internet n'est pas nécessaire."
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
-msgstr ""
+msgstr "Recherche d'objets connectés à contrôler."
