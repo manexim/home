@@ -21,7 +21,7 @@ msgstr ""
 #: data/com.github.manexim.home.desktop.in:4
 #: data/com.github.manexim.home.desktop.in:5
 msgid "Home"
-msgstr "Maison"
+msgstr "Home"
 
 #: data/com.github.manexim.home.appdata.xml.in:8
 #: data/com.github.manexim.home.desktop.in:6
