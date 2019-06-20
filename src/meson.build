@@ -15,6 +15,7 @@ sources = [
     'services/Settings.vala',
     'types/Power.vala',
     'utils/Buffer.vala',
+    'utils/History.vala',
     'utils/Platform.vala',
     'views/ThingsView.vala',
     'views/WelcomeView.vala'
