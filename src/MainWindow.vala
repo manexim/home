@@ -20,9 +20,17 @@
 */
 
 public class MainWindow : Gtk.ApplicationWindow {
+    private static MainWindow? instance;
     private Settings settings;
+    private Gtk.Stack stack;
+    private Gtk.Button return_button;
+    private History history;
 
     public MainWindow (Gtk.Application application) {
+        instance = this;
+
+        history = new History ();
+
         this.application = application;
 
         settings = Settings.get_default ();
@@ -31,6 +39,13 @@ public class MainWindow : Gtk.ApplicationWindow {
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
         headerbar.show_close_button = true;
+
+        return_button = new Gtk.Button ();
+        return_button.no_show_all = true;
+        return_button.valign = Gtk.Align.CENTER;
+        return_button.get_style_context ().add_class ("back-button");
+        return_button.clicked.connect (go_back);
+        headerbar.pack_start (return_button);
 
         set_titlebar (headerbar);
         title = Config.APP_NAME;
@@ -49,12 +64,45 @@ public class MainWindow : Gtk.ApplicationWindow {
 
         var things_view = new ThingsView ();
         stack.add_named (things_view, "things");
+        history.add (_("Overview"));
 
         delete_event.connect (() => {
             save_settings ();
 
             return false;
         });
+    }
+
+    public static MainWindow get_default () {
+        return instance;
+    }
+
+    public void go_to_page (Gtk.Widget page, string name) {
+        stack.add_named (page, name);
+
+        return_button.label = history.current;
+        return_button.no_show_all = false;
+        return_button.visible = true;
+        history.add (name);
+        stack.set_visible_child_full (name, Gtk.StackTransitionType.SLIDE_RIGHT);
+    }
+
+    public void go_back () {
+        if (!history.is_homepage) {
+            var widget = stack.get_visible_child ();
+
+            stack.set_visible_child_full (history.previous, Gtk.StackTransitionType.SLIDE_LEFT);
+            stack.remove (widget);
+
+            history.pop ();
+        }
+
+        if (!history.is_homepage) {
+            return_button.label = history.previous;
+        } else {
+            return_button.no_show_all = true;
+            return_button.visible = false;
+        }
     }
 
     private void load_settings () {
