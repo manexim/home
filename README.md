@@ -63,3 +63,7 @@ sudo ninja uninstall
 | ----------------------------------------- | ---------- |
 | [camellan](https://github.com/camellan)   | Russian 🇷🇺 |
 | [NathanBnm](https://github.com/NathanBnm) | French 🇫🇷  |
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [COPYING](COPYING) file for details.
