@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-17 22:32+0400\n"
+"POT-Creation-Date: 2019-06-19 17:14+0200\n"
 "PO-Revision-Date: 2019-06-17 22:56+0400\n"
 "Last-Translator: Andrey Kultyapov <camellan@yandex.ru>\n"
 "Language-Team: none\n"
@@ -50,6 +50,30 @@ msgid ""
 msgstr ""
 "Вы можете управлять своими умными домашними устройствами непосредственно "
 "через локальную сеть. Подключение к интернету не требуется."
+
+#: src/pages/LampPage.vala:63
+msgid "ID: "
+msgstr ""
+
+#: src/pages/LampPage.vala:64
+msgid "Manufacturer: "
+msgstr ""
+
+#: src/pages/LampPage.vala:65
+msgid "Model: "
+msgstr ""
+
+#: src/pages/LampPage.vala:70
+msgid "Enabled"
+msgstr ""
+
+#: src/pages/LampPage.vala:74
+msgid "Disabled"
+msgstr ""
+
+#: src/pages/LampPage.vala:78
+msgid "Unknown"
+msgstr ""
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
