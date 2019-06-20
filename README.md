@@ -4,8 +4,9 @@
   <p align="center">Designed for <a href="https://elementary.io">elementary OS</a></p>
 </div>
 
-[![Build Status](https://travis-ci.org/manexim/home.svg?branch=master)](https://travis-ci.org/manexim/home)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+[![Build Status](https://img.shields.io/travis/manexim/home.svg)](https://travis-ci.org/manexim/home)
+[![GitHub release](https://img.shields.io/github/release/manexim/home.svg)](https://github.com/manexim/home/releases/)
+[![License](https://img.shields.io/github/license/manexim/home.svg)](https://github.com/manexim/home/blob/master/COPYING)
 
 ![screenshot](data/screenshots/000.png)
 ![screenshot](data/screenshots/001.png)
