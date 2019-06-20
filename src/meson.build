@@ -18,7 +18,8 @@ sources = [
     'utils/History.vala',
     'utils/Platform.vala',
     'views/ThingsView.vala',
-    'views/WelcomeView.vala'
+    'views/WelcomeView.vala',
+    'widgets/Overlay.vala'
 ]
 
 executable(

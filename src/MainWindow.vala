@@ -25,6 +25,7 @@ public class MainWindow : Gtk.ApplicationWindow {
     private Gtk.Stack stack;
     private Gtk.Button return_button;
     private History history;
+    private Overlay overlay;
 
     public MainWindow (Gtk.Application application) {
         instance = this;
@@ -50,8 +51,11 @@ public class MainWindow : Gtk.ApplicationWindow {
         set_titlebar (headerbar);
         title = Config.APP_NAME;
 
-        var stack = new Gtk.Stack ();
-        add (stack);
+        overlay = Overlay.instance;
+        add (overlay);
+
+        stack = new Gtk.Stack ();
+        overlay.add (stack);
 
         if (settings.is_first_run ()) {
             var welcome_view = new WelcomeView ();
