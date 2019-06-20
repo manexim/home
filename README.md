@@ -1,12 +1,21 @@
-<div>
+<div align="center">
+  <span align="center"> <img width="80" height="80" class="center" src="data/icons/128/com.github.manexim.home.svg" alt="Icon"></span>
   <h1 align="center">Home</h1>
-  <h3 align="center"><img src="data/icons/64/com.github.manexim.home.svg"/><br>Control your smart home gadgets</h3>
+  <h3 align="center">Control your smart home gadgets</h3>
   <p align="center">Designed for <a href="https://elementary.io">elementary OS</a></p>
 </div>
 
-[![Build Status](https://img.shields.io/travis/manexim/home.svg)](https://travis-ci.org/manexim/home)
-[![GitHub release](https://img.shields.io/github/release/manexim/home.svg)](https://github.com/manexim/home/releases/)
-[![License](https://img.shields.io/github/license/manexim/home.svg)](https://github.com/manexim/home/blob/master/COPYING)
+<p align="center">
+  <a href="https://travis-ci.org/manexim/home">
+    <img src="https://img.shields.io/travis/manexim/home.svg">
+  </a>
+  <a href="https://github.com/manexim/home/releases/">
+    <img src="https://img.shields.io/github/release/manexim/home.svg">
+  </a>
+  <a href="https://github.com/manexim/home/blob/master/COPYING">
+    <img src="https://img.shields.io/github/license/manexim/home.svg">
+  </a>
+</p>
 
 ![screenshot](data/screenshots/000.png)
 ![screenshot](data/screenshots/001.png)
