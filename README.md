@@ -55,6 +55,21 @@ com.github.manexim.home
 sudo ninja uninstall
 ```
 
+## Contributing
+
+If you want to contribute to Home and make it better, your help is very welcome.
+
+### How to make a clean pull request
+
+- Create a personal fork of this project on GitHub.
+- Clone the fork on your local machine. Your remote repo on GitHub is called `origin`.
+- Create a new branch to work on. Branch from `develop`!
+- Implement/fix your feature.
+- Push your branch to your fork on GitHub, the remote `origin`.
+- From your fork open a pull request in the correct branch. Target the `develop` branch!
+
+And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
+
 ## Special thanks
 
 ### Translators
