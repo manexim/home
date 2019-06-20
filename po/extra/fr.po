@@ -34,7 +34,7 @@ msgstr "Une application pour maison intelligente afin de contrôler vos objets c
 
 #: data/com.github.manexim.home.appdata.xml.in:11
 msgid "Supported devices:"
-msgstr "Appareils supportés :"
+msgstr "Appareils supportés:"
 
 #: data/com.github.manexim.home.appdata.xml.in:13
 msgid "LIFX"
@@ -58,7 +58,7 @@ msgstr "Affichage des informations du modèle et de l'appareil"
 
 #: data/com.github.manexim.home.appdata.xml.in:31
 msgid "Improved:"
-msgstr "Amélioration :"
+msgstr "Amélioration:"
 
 #: data/com.github.manexim.home.appdata.xml.in:33
 msgid "Save and load window settings"
@@ -66,7 +66,7 @@ msgstr "Enregistrement et rechargement des paramètres de la fenêtre"
 
 #: data/com.github.manexim.home.appdata.xml.in:35
 msgid "Fixed:"
-msgstr "Corrections :"
+msgstr "Corrections:"
 
 #: data/com.github.manexim.home.appdata.xml.in:37
 msgid "Remove mention of elementary OS in app description"

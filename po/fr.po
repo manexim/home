@@ -51,11 +51,11 @@ msgstr ""
 
 #: src/pages/LampPage.vala:63
 msgid "ID: "
-msgstr "Identifiant : "
+msgstr "Identifiant: "
 
 #: src/pages/LampPage.vala:64
 msgid "Manufacturer: "
-msgstr "Fabricant : "
+msgstr "Fabricant: "
 
 #: src/pages/LampPage.vala:65
 msgid "Model: "
