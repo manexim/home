@@ -26,7 +26,7 @@
 ## Installation
 
 ### Dependencies
-These dependencies must be present before building
+These dependencies must be present before building:
  - `elementary-sdk`
  - `meson (>=0.40)`
  - `valac (>=0.40)`
@@ -54,3 +54,12 @@ com.github.manexim.home
 ```
 sudo ninja uninstall
 ```
+
+## Special thanks
+
+### Translators
+
+| Name                                      | Language   |
+| ----------------------------------------- | ---------- |
+| [camellan](https://github.com/camellan)   | Russian 🇷🇺 |
+| [NathanBnm](https://github.com/NathanBnm) | French 🇫🇷  |
