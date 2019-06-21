@@ -6,6 +6,12 @@
 </div>
 
 <p align="center">
+  <a href="https://appcenter.elementary.io/com.github.manexim.home" target="_blank">
+    <img src="https://appcenter.elementary.io/badge.svg">
+  </a>
+</p>
+
+<p align="center">
   <a href="https://travis-ci.org/manexim/home">
     <img src="https://img.shields.io/travis/manexim/home.svg">
   </a>
