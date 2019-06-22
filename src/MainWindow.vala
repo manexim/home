@@ -88,14 +88,14 @@ public class MainWindow : Gtk.ApplicationWindow {
         return_button.no_show_all = false;
         return_button.visible = true;
         history.add (name);
-        stack.set_visible_child_full (name, Gtk.StackTransitionType.SLIDE_RIGHT);
+        stack.set_visible_child_full (name, Gtk.StackTransitionType.SLIDE_LEFT);
     }
 
     public void go_back () {
         if (!history.is_homepage) {
             var widget = stack.get_visible_child ();
 
-            stack.set_visible_child_full (history.previous, Gtk.StackTransitionType.SLIDE_LEFT);
+            stack.set_visible_child_full (history.previous, Gtk.StackTransitionType.SLIDE_RIGHT);
             stack.remove (widget);
 
             history.pop ();
