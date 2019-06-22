@@ -35,7 +35,7 @@ msgstr "Geräte"
 
 #: src/views/WelcomeView.vala:26
 msgid "Control your smart home gadgets"
-msgstr "Steuern Sie Ihre Smart Home Gadgets"
+msgstr "Steuer deine Smart Home Gadgets"
 
 #: src/views/WelcomeView.vala:30
 msgid ""
@@ -62,7 +62,7 @@ msgid ""
 "You can control your smart home gadgets directly via your local network. A "
 "connection to the internet is not required."
 msgstr ""
-"Sie können Ihre Smart Home Gadgets direkt über Ihr lokales Netzwerk steuern. "
+"Du kannst deine Smart Home Gadgets direkt über dein lokales Netzwerk steuern. "
 "Eine Verbindung zum Internet ist nicht erforderlich."
 
 #: src/pages/ThingPage.vala:65
@@ -91,7 +91,7 @@ msgstr "Unbekannt"
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
-msgstr "Suche nach Smart Home Gadgets zur Steuerung."
+msgstr "Suche nach steuerbaren Smart Home Gadgets."
 
 #: src/pages/HueBridgeOnboardingPage.vala:31
 msgid "Press the push-link button on the Hue bridge."
