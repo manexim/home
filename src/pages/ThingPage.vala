@@ -19,15 +19,66 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class ThingPage : Gtk.ScrolledWindow {
+public class ThingPage : Granite.SimpleSettingsPage {
+    private Lifx.LampController controller;
+
     public ThingPage (Models.Thing thing) {
-        set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+        Object (
+            activatable: true,
+            icon_name: thing.icon,
+            description: thing.id,
+            title: thing.name != null ? thing.name : thing.id
+        );
 
-        var list_box = new Gtk.ListBox ();
-        add (list_box);
+        controller = new Lifx.LampController ((Lifx.Lamp) thing);
+        controller.updated.connect ((lamp) => {
+            if (lamp.power == Power.ON) {
+                status_switch.active = true;
+                status_switch.state = true;
+            } else if (lamp.power == Power.OFF) {
+                status_switch.active = false;
+                status_switch.state = false;
+            }
 
-        list_box.add (new Gtk.Label (thing.id));
+            title = lamp.name;
+
+            update_status ();
+        });
+
+        update_status ();
+
+        status_switch.notify["active"].connect (update_status);
+
+        status_switch.state_set.connect ((state) => {
+            controller.switch_power (state);
+
+            status_switch.active = state;
+            status_switch.state = state;
+
+            return state;
+        });
 
         show_all ();
+    }
+
+    private void update_status () {
+        description = _("ID: ") + controller.lamp.id;
+        description += "\n" + _("Manufacturer: ") + controller.lamp.manufacturer;
+        description += "\n" + _("Model: ") + controller.lamp.model;
+
+        switch (controller.lamp.power) {
+        case Power.ON:
+            status_type = Granite.SettingsPage.StatusType.SUCCESS;
+            status = (_("Enabled"));
+            break;
+        case Power.OFF:
+            status_type = Granite.SettingsPage.StatusType.OFFLINE;
+            status = (_("Disabled"));
+            break;
+        default:
+            status_type = Granite.SettingsPage.StatusType.NONE;
+            status = (_("Unknown"));
+            break;
+        }
     }
 }
