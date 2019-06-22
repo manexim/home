@@ -21,5 +21,9 @@
 
 namespace Philips.Hue {
     public class Lamp : Models.Lamp {
+        public Lamp () {
+            icon = "com.github.manexim.home.lightbulb.philips.hue-symbolic";
+            manufacturer = "Philips";
+        }
     }
 }

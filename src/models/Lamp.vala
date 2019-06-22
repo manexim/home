@@ -21,50 +21,8 @@
 
 namespace Models {
     public class Lamp : Thing {
-        public Power power {
-            get {
-                if (!_obj.has_member ("power")) {
-                    _obj.set_string_member ("power", "unknown");
-                }
-
-                switch (_obj.get_string_member ("power")) {
-                    case "on":
-                        return Power.ON;
-                    case "off":
-                        return Power.OFF;
-                    default:
-                        return Power.UNKNOWN;
-                }
-            }
-            set {
-                _obj.set_string_member ("power", value.to_string ());
-            }
-        }
-
-        public string manufacturer {
-            get {
-                if (!_obj.has_member ("manufacturer")) {
-                    manufacturer = null;
-                }
-
-                return _obj.get_string_member ("manufacturer");
-            }
-            set {
-                _obj.set_string_member ("manufacturer", value);
-            }
-        }
-
-        public string model {
-            get {
-                if (!_obj.has_member ("model")) {
-                    model = null;
-                }
-
-                return _obj.get_string_member ("model");
-            }
-            set {
-                _obj.set_string_member ("model", value);
-            }
+        public Lamp () {
+            icon = "com.github.manexim.home.lightbulb-symbolic";
         }
 
         public bool supports_color {

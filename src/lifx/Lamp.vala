@@ -21,6 +21,11 @@
 
 namespace Lifx {
     public class Lamp : Models.Lamp {
+        public Lamp () {
+            icon = "com.github.manexim.home.lightbulb.lifx-symbolic";
+            manufacturer = "LIFX";
+        }
+
         public uint16 port {
             get {
                 if (!_obj.has_member ("port")) {

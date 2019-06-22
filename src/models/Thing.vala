@@ -25,6 +25,7 @@ namespace Models {
 
         public Thing () {
             _obj = new Json.Object ();
+            icon = "com.github.manexim.home.thing-symbolic";
         }
 
         public string id {
@@ -50,6 +51,65 @@ namespace Models {
             }
             set {
                 _obj.set_string_member ("name", value);
+            }
+        }
+
+        public string icon {
+            get {
+                if (!_obj.has_member ("icon")) {
+                    icon = null;
+                }
+
+                return _obj.get_string_member ("icon");
+            }
+            set {
+                _obj.set_string_member ("icon", value);
+            }
+        }
+
+        public Power power {
+            get {
+                if (!_obj.has_member ("power")) {
+                    _obj.set_string_member ("power", "unknown");
+                }
+
+                switch (_obj.get_string_member ("power")) {
+                    case "on":
+                        return Power.ON;
+                    case "off":
+                        return Power.OFF;
+                    default:
+                        return Power.UNKNOWN;
+                }
+            }
+            set {
+                _obj.set_string_member ("power", value.to_string ());
+            }
+        }
+
+        public string manufacturer {
+            get {
+                if (!_obj.has_member ("manufacturer")) {
+                    manufacturer = null;
+                }
+
+                return _obj.get_string_member ("manufacturer");
+            }
+            set {
+                _obj.set_string_member ("manufacturer", value);
+            }
+        }
+
+        public string model {
+            get {
+                if (!_obj.has_member ("model")) {
+                    model = null;
+                }
+
+                return _obj.get_string_member ("model");
+            }
+            set {
+                _obj.set_string_member ("model", value);
             }
         }
 
