@@ -7,6 +7,7 @@ sources = [
     'lifx/Service.vala',
     'models/Lamp.vala',
     'models/Thing.vala',
+    'pages/HueBridgeOnboardingPage.vala',
     'pages/LoadingPage.vala',
     'pages/ThingPage.vala',
     'philips/hue/Bridge.vala',

@@ -85,5 +85,12 @@ public class Overview : Gtk.ScrolledWindow {
             hubs_carousel.add_thing (bridge);
             hubs_revealer.reveal_child = true;
         });
+
+        hubs_carousel.on_thing_activated.connect ((thing) => {
+            MainWindow.get_default ().go_to_page (
+                new HueBridgeOnboardingPage (),
+                (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
+            );
+        });
     }
 }
