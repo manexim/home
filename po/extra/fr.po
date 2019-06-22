@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 16:59+0200\n"
+"POT-Creation-Date: 2019-06-22 09:47+0200\n"
 "PO-Revision-Date: 2019-06-17 22:33+0400\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -30,7 +30,9 @@ msgstr "Contrôlez vos objets connectés pour maison intelligente"
 
 #: data/com.github.manexim.home.appdata.xml.in:10
 msgid "A smart home application to control your gadgets."
-msgstr "Une application pour maison intelligente afin de contrôler vos objets connectés"
+msgstr ""
+"Une application pour maison intelligente afin de contrôler vos objets "
+"connectés"
 
 #: data/com.github.manexim.home.appdata.xml.in:11
 msgid "Supported devices:"
@@ -50,7 +52,8 @@ msgstr "Ajout d'un écran de bienvenue à l'ouverture"
 
 #: data/com.github.manexim.home.appdata.xml.in:28
 msgid "Show loading page if no smart home gadget is found"
-msgstr "Affichage de la page de chargement si aucun objet connecté n'est trouvé"
+msgstr ""
+"Affichage de la page de chargement si aucun objet connecté n'est trouvé"
 
 #: data/com.github.manexim.home.appdata.xml.in:29
 msgid "Show manufacturer and model of device"
