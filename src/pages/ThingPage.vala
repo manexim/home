@@ -19,32 +19,15 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class ThingsView : Gtk.Paned {
-    private Gtk.Stack stack;
-    private ThingsController things_controller;
+public class ThingPage : Gtk.ScrolledWindow {
+    public ThingPage (Models.Thing thing) {
+        set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
 
-    public ThingsView () {
-        things_controller = new ThingsController ();
+        var list_box = new Gtk.ListBox ();
+        add (list_box);
 
-        stack = new Gtk.Stack ();
+        list_box.add (new Gtk.Label (thing.id));
 
-        var sidebar = new Granite.SettingsSidebar (stack);
-
-        add (sidebar);
-        add (stack);
-
-        stack.add_named (new LoadingPage (), "loading");
-        stack.show_all ();
-
-        things_controller.on_new_lamp.connect ((lamp) => {
-            stack.add_named (new ThingPage (lamp), lamp.id);
-
-            if (stack.get_visible_child_name () == "loading") {
-                var child = stack.get_child_by_name ("loading");
-                stack.remove (child);
-            }
-
-            stack.show_all ();
-        });
+        show_all ();
     }
 }

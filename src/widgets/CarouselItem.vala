@@ -63,23 +63,22 @@ public class CarouselItem : Gtk.FlowBoxChild {
         grid.attach (id_label, 1, 1, 1, 1);
 
         add (grid);
+
+        update_thing (thing);
     }
 
     public void update_thing (Models.Thing thing) {
-        if (thing is Lifx.Lamp) {
-            icon.gicon = new ThemedIcon ("com.github.manexim.home.lightbulb.lifx-symbolic");
-        } else if (thing is Philips.Hue.Lamp) {
-            icon.gicon = new ThemedIcon ("com.github.manexim.home.lightbulb.philips.hue-symbolic");
-        } else {
-            icon.gicon = new ThemedIcon ("com.github.manexim.home.lightbulb-symbolic");
-        }
+        icon.gicon = new ThemedIcon (thing.icon);
 
-        switch ((thing as Models.Lamp).power) {
+        switch (thing.power) {
         case Power.ON:
             status_icon.icon_name = "user-available";
             break;
         case Power.OFF:
             status_icon.icon_name = "user-offline";
+            break;
+        default:
+            status_icon.icon_name = "dialog-question";
             break;
         }
 

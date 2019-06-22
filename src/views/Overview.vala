@@ -56,7 +56,7 @@ public class Overview : Gtk.Viewport {
 
         devices_carousel.on_thing_activated.connect ((thing) => {
             MainWindow.get_default ().go_to_page (
-                new LampPage (thing as Models.Lamp),
+                new ThingPage (thing),
                 (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
             );
         });
