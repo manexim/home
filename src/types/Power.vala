@@ -20,7 +20,8 @@
 */
 
 public enum Power {
-    UNKNOWN = -1,
+    UNKNOWN = 1,
+    WARNING = 2,
     OFF = 0,
     ON = 65535;
 
@@ -28,6 +29,8 @@ public enum Power {
         switch (this) {
             case UNKNOWN:
                 return "unknown";
+            case WARNING:
+                return "warning";
             case OFF:
                 return "off";
             case ON:

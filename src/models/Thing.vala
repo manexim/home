@@ -78,6 +78,8 @@ namespace Models {
                         return Power.ON;
                     case "off":
                         return Power.OFF;
+                    case "warning":
+                        return Power.WARNING;
                     default:
                         return Power.UNKNOWN;
                 }

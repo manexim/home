@@ -57,14 +57,14 @@ public class MainWindow : Gtk.ApplicationWindow {
         stack = new Gtk.Stack ();
         overlay.add (stack);
 
-        if (settings.is_first_run ()) {
-            var welcome_view = new WelcomeView ();
-            stack.add_named (welcome_view, "welcome");
+        //  if (settings.is_first_run ()) {
+        //      var welcome_view = new WelcomeView ();
+        //      stack.add_named (welcome_view, "welcome");
 
-            welcome_view.start.connect (() => {
-                stack.set_visible_child_full(_("Overview"), Gtk.StackTransitionType.SLIDE_LEFT);
-            });
-        }
+        //      welcome_view.start.connect (() => {
+        //          stack.set_visible_child_full(_("Overview"), Gtk.StackTransitionType.SLIDE_LEFT);
+        //      });
+        //  }
 
         var overview = new Overview ();
         stack.add_named (overview, _("Overview"));

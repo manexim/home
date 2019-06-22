@@ -19,16 +19,13 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Overview : Gtk.Viewport {
+public class Overview : Gtk.ScrolledWindow {
     private ThingsController things_controller;
 
     public Overview () {
-        var scrolled_window = new Gtk.ScrolledWindow (null, null);
-        add (scrolled_window);
-
         var grid = new Gtk.Grid ();
         grid.margin = 12;
-        scrolled_window.add (grid);
+        add (grid);
 
         var devices_label = new Gtk.Label (_("Devices"));
         devices_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
@@ -43,11 +40,15 @@ public class Overview : Gtk.Viewport {
         devices_grid.attach (devices_label, 0, 0, 1, 1);
         devices_grid.attach (devices_carousel, 0, 1, 1, 1);
 
-        grid.attach (devices_grid, 0, 0, 1, 1);
+        var devices_revealer = new Gtk.Revealer ();
+        devices_revealer.add (devices_grid );
+
+        grid.attach (devices_revealer, 0, 0, 1, 1);
 
         things_controller = new ThingsController ();
         things_controller.on_new_lamp.connect ((lamp) => {
             devices_carousel.add_thing (lamp);
+            devices_revealer.reveal_child = true;
         });
 
         things_controller.on_updated_lamp.connect ((lamp) => {
@@ -59,6 +60,30 @@ public class Overview : Gtk.Viewport {
                 new ThingPage (thing),
                 (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
             );
+        });
+
+        var hubs_label = new Gtk.Label ("Hubs");
+        hubs_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        hubs_label.xalign = 0;
+        hubs_label.margin_start = 10;
+
+        var hubs_carousel = new Carousel ();
+
+        var hubs_grid = new Gtk.Grid ();
+        hubs_grid.margin = 2;
+        hubs_grid.margin_top = 12;
+        hubs_grid.attach (hubs_label, 0, 0, 1, 1);
+        hubs_grid.attach (hubs_carousel, 0, 1, 1, 1);
+
+        var hubs_revealer = new Gtk.Revealer ();
+        hubs_revealer.add (hubs_grid );
+
+        grid.attach (hubs_revealer, 0, 1, 1, 1);
+
+        var philipsHueService = Philips.Hue.Service.instance;
+        philipsHueService.on_new_bridge.connect ((bridge) => {
+            hubs_carousel.add_thing (bridge);
+            hubs_revealer.reveal_child = true;
         });
     }
 }

@@ -1,5 +1,11 @@
 namespace Philips.Hue {
     public class Bridge : Models.Thing {
+        public Bridge () {
+            icon = "com.github.manexim.home.bridge.philips.hue-symbolic";
+            manufacturer = "Philips";
+            power = Power.WARNING;
+        }
+
         public string base_url {
             get {
                 if (!_obj.has_member ("baseURL")) {

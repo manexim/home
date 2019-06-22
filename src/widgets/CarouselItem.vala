@@ -77,6 +77,9 @@ public class CarouselItem : Gtk.FlowBoxChild {
         case Power.OFF:
             status_icon.icon_name = "user-offline";
             break;
+        case Power.WARNING:
+            status_icon.icon_name = "user-away";
+            break;
         default:
             status_icon.icon_name = "dialog-question";
             break;
