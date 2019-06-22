@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-20 15:56+0200\n"
+"POT-Creation-Date: 2019-06-22 09:23+0200\n"
 "PO-Revision-Date: 2019-06-17 22:32+0400\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -17,8 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/MainWindow.vala:67
+#: src/MainWindow.vala:65 src/MainWindow.vala:70 src/MainWindow.vala:71
 msgid "Overview"
+msgstr ""
+
+#: src/views/Overview.vala:33
+msgid "Devices"
 msgstr ""
 
 #: src/views/WelcomeView.vala:26
@@ -53,27 +57,27 @@ msgstr ""
 "Vous pouvez contrôler vos objets connectés directement via votre réseau "
 "local. Une connexion Internet n'est pas nécessaire."
 
-#: src/pages/LampPage.vala:63
+#: src/pages/ThingPage.vala:65
 msgid "ID: "
 msgstr "Identifiant : "
 
-#: src/pages/LampPage.vala:64
+#: src/pages/ThingPage.vala:66
 msgid "Manufacturer: "
 msgstr "Fabricant : "
 
-#: src/pages/LampPage.vala:65
+#: src/pages/ThingPage.vala:67
 msgid "Model: "
 msgstr "Modèle : "
 
-#: src/pages/LampPage.vala:70
+#: src/pages/ThingPage.vala:72
 msgid "Enabled"
 msgstr "Activé"
 
-#: src/pages/LampPage.vala:74
+#: src/pages/ThingPage.vala:76
 msgid "Disabled"
 msgstr "Désactivé"
 
-#: src/pages/LampPage.vala:78
+#: src/pages/ThingPage.vala:80
 msgid "Unknown"
 msgstr "Inconnu"
 

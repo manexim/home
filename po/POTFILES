@@ -1,4 +1,5 @@
 src/MainWindow.vala
+src/views/Overview.vala
 src/views/WelcomeView.vala
-src/pages/LampPage.vala
+src/pages/ThingPage.vala
 src/pages/LoadingPage.vala
