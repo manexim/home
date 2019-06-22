@@ -11,20 +11,25 @@ sources = [
     'pages/LoadingPage.vala',
     'philips/hue/Bridge.vala',
     'philips/hue/BridgeController.vala',
+    'philips/hue/Lamp.vala',
     'philips/hue/Service.vala',
     'services/Settings.vala',
     'types/Power.vala',
     'utils/Buffer.vala',
     'utils/History.vala',
     'utils/Platform.vala',
+    'views/Overview.vala',
     'views/ThingsView.vala',
     'views/WelcomeView.vala',
-    'widgets/Overlay.vala'
+    'widgets/Carousel.vala',
+    'widgets/CarouselItem.vala',
+    'widgets/Overlay.vala',
+    'MainWindow.vala'
 ]
 
 executable(
     meson.project_name(),
-    sources + ['Application.vala', 'MainWindow.vala'],
+    sources + ['Application.vala'],
     dependencies: [
         gtk_plus_3_dep,
         json_glib_1_dep,
