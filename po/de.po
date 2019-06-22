@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-22 18:04+0200\n"
+"POT-Creation-Date: 2019-06-22 19:07+0200\n"
 "PO-Revision-Date: 2019-06-22 09:24+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -92,3 +92,7 @@ msgstr "Unbekannt"
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
 msgstr "Suche nach Smart Home Gadgets zur Steuerung."
+
+#: src/pages/HueBridgeOnboardingPage.vala:31
+msgid "Press the push-link button on the Hue bridge."
+msgstr "Drücke die Push-Link-Taste an der Hue Bridge."

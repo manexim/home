@@ -24,7 +24,11 @@ public class HueBridgeOnboardingPage : Gtk.Grid {
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
 
-        var label = new Gtk.Label (_("Looking for smart home gadgets to control."));
+        var icon = new Gtk.Image ();
+        icon.gicon = new ThemedIcon ("com.github.manexim.home.bridge.philips.hue-symbolic");
+        icon.pixel_size = 256;
+
+        var label = new Gtk.Label (_("Press the push-link button on the Hue bridge."));
 		label.halign = Gtk.Align.CENTER;
 		label.valign = Gtk.Align.CENTER;
 
@@ -33,7 +37,8 @@ public class HueBridgeOnboardingPage : Gtk.Grid {
 		spinner.valign = Gtk.Align.CENTER;
 		spinner.start ();
 
-        attach (label, 0, 0, 1, 1);
+        attach (icon, 0, 0, 1, 1);
+        attach (label, 0, 1, 1, 1);
         attach (spinner, 0, 2, 1, 1);
 
         show_all ();

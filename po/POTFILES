@@ -3,3 +3,4 @@ src/views/Overview.vala
 src/views/WelcomeView.vala
 src/pages/ThingPage.vala
 src/pages/LoadingPage.vala
+src/pages/HueBridgeOnboardingPage.vala
