@@ -23,6 +23,7 @@ public class HueBridgeOnboardingPage : Gtk.Grid {
     public HueBridgeOnboardingPage () {
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
+        row_spacing = 16;
 
         var icon = new Gtk.Image ();
         icon.gicon = new ThemedIcon ("com.github.manexim.home.bridge.philips.hue-symbolic");

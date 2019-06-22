@@ -145,6 +145,10 @@ namespace Philips.Hue {
                     bridge.id = bridgeid.up ();
                     bridge.base_url = protocol + host + ":" + port + "/";
 
+                    var controller = new Philips.Hue.BridgeController (bridge);
+                    controller.get_description ();
+                    bridge = controller.bridge;
+
                     bridge_map.set (bridge.id, bridge);
                     on_new_bridge (bridge);
                 }

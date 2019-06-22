@@ -34,12 +34,28 @@ namespace Philips.Hue {
                     print ("failed to create the xpath context\n");
                 }
 
-                Xml.XPath.Object* obj = context.eval_expression("/root/device/manufacturer");
+                Xml.XPath.Object* obj = context.eval_expression("/root/device/friendlyName");
                 if (obj == null) {
                     print ("failed to evaluate xpath\n");
                 }
 
                 Xml.Node* node = null;
+                if (obj->nodesetval != null && obj->nodesetval->item(0) != null) {
+                    node = obj->nodesetval->item(0);
+                } else {
+                    print ("failed to find the expected node\n");
+                }
+
+                _bridge.name = node->get_content ();
+
+                delete obj;
+
+                obj = context.eval_expression("/root/device/manufacturer");
+                if (obj == null) {
+                    print ("failed to evaluate xpath\n");
+                }
+
+                node = null;
                 if (obj->nodesetval != null && obj->nodesetval->item(0) != null) {
                     node = obj->nodesetval->item(0);
                 } else {
