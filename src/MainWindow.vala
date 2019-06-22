@@ -62,7 +62,7 @@ public class MainWindow : Gtk.ApplicationWindow {
         //      stack.add_named (welcome_view, "welcome");
 
         //      welcome_view.start.connect (() => {
-        //          stack.set_visible_child_full(_("Overview"), Gtk.StackTransitionType.SLIDE_LEFT);
+        //          stack.set_visible_child_full (_("Overview"), Gtk.StackTransitionType.SLIDE_LEFT);
         //      });
         //  }
 

@@ -41,7 +41,7 @@ public class Overview : Gtk.ScrolledWindow {
         devices_grid.attach (devices_carousel, 0, 1, 1, 1);
 
         var devices_revealer = new Gtk.Revealer ();
-        devices_revealer.add (devices_grid );
+        devices_revealer.add (devices_grid);
 
         grid.attach (devices_revealer, 0, 0, 1, 1);
 
@@ -76,7 +76,7 @@ public class Overview : Gtk.ScrolledWindow {
         hubs_grid.attach (hubs_carousel, 0, 1, 1, 1);
 
         var hubs_revealer = new Gtk.Revealer ();
-        hubs_revealer.add (hubs_grid );
+        hubs_revealer.add (hubs_grid);
 
         grid.attach (hubs_revealer, 0, 1, 1, 1);
 
