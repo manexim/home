@@ -21,6 +21,7 @@
 
 public class Settings : Granite.Services.Settings {
     private static Settings settings;
+    private bool _is_freedesktop_prefers_color_scheme_available;
 
     public static Settings get_default () {
         if (settings == null) {
@@ -45,11 +46,13 @@ public class Settings : Granite.Services.Settings {
         const string DESKTOP_SCHEMA = "org.freedesktop";
         const string PREFERS_KEY = "prefers-color-scheme";
 
-        var gtk_settings = Gtk.Settings.get_default ();
         var lookup = SettingsSchemaSource.get_default ().lookup (DESKTOP_SCHEMA, false);
-
         if (lookup != null) {
+            _is_freedesktop_prefers_color_scheme_available = true;
+
+            var gtk_settings = Gtk.Settings.get_default ();
             var desktop_settings = new GLib.Settings (DESKTOP_SCHEMA);
+
             desktop_settings.bind_with_mapping (
                 PREFERS_KEY,
                 gtk_settings,
@@ -65,11 +68,17 @@ public class Settings : Granite.Services.Settings {
                 null,
                 null
             );
+        } else {
+            _is_freedesktop_prefers_color_scheme_available = false;
         }
     }
 
     public bool is_first_run () {
         return last_started_app_version == "";
+    }
+
+    public bool is_freedesktop_prefers_color_scheme_available () {
+        return _is_freedesktop_prefers_color_scheme_available;
     }
 
     public void save () {
