@@ -43,6 +43,18 @@ public class Settings : Granite.Services.Settings {
     private Settings () {
         base ("com.github.manexim.home");
 
+        if (uuid == null || uuid == "") {
+            uint8[] uu = new uint8[16];
+            UUID.generate (uu);
+            string s = "";
+
+            for (uint8 i = 0; i < 16; i++) {
+                s += uu[i].to_string ("%X");
+            }
+
+            uuid = s;
+        }
+
         const string DESKTOP_SCHEMA = "org.freedesktop";
         const string PREFERS_KEY = "prefers-color-scheme";
 
@@ -83,18 +95,6 @@ public class Settings : Granite.Services.Settings {
 
     public void save () {
         last_started_app_version = Config.APP_VERSION;
-
-        if (uuid == null || uuid == "") {
-            uint8[] uu = new uint8[16];
-            UUID.generate (uu);
-            string s = "";
-
-            for (uint8 i = 0; i < 16; i++) {
-                s += uu[i].to_string ("%X");
-            }
-
-            uuid = s;
-        }
 
         var philips_hue_service = Philips.Hue.Service.instance;
         var bridges = philips_hue_service.bridges;
