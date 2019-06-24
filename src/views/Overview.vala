@@ -62,7 +62,7 @@ public class Overview : Gtk.ScrolledWindow {
             );
         });
 
-        var hubs_label = new Gtk.Label ("Hubs");
+        var hubs_label = new Gtk.Label (_("Hubs"));
         hubs_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
         hubs_label.xalign = 0;
         hubs_label.margin_start = 10;
@@ -88,7 +88,7 @@ public class Overview : Gtk.ScrolledWindow {
 
         hubs_carousel.on_thing_activated.connect ((thing) => {
             MainWindow.get_default ().go_to_page (
-                new HueBridgeOnboardingPage (),
+                new HueBridgeOnboardingPage (thing as Philips.Hue.Bridge),
                 (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
             );
         });

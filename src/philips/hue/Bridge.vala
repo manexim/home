@@ -6,6 +6,10 @@ namespace Philips.Hue {
             power = Power.WARNING;
         }
 
+        public Bridge.from_object (Json.Object object) {
+            _obj = object;
+        }
+
         public string base_url {
             get {
                 if (!_obj.has_member ("baseURL")) {

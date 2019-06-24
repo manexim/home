@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-22 19:15+0200\n"
+"POT-Creation-Date: 2019-06-23 09:20+0200\n"
 "PO-Revision-Date: 2019-06-17 22:32+0400\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -31,6 +31,10 @@ msgstr ""
 
 #: src/views/Overview.vala:30
 msgid "Devices"
+msgstr ""
+
+#: src/views/Overview.vala:65
+msgid "Hubs"
 msgstr ""
 
 #: src/views/WelcomeView.vala:26
@@ -93,6 +97,10 @@ msgstr "Inconnu"
 msgid "Looking for smart home gadgets to control."
 msgstr "Recherche d'objets connectés à contrôler."
 
-#: src/pages/HueBridgeOnboardingPage.vala:31
+#: src/pages/HueBridgeOnboardingPage.vala:38
 msgid "Press the push-link button in the middle of the Hue bridge."
+msgstr ""
+
+#: src/pages/HueBridgeOnboardingPage.vala:61
+msgid "The Hue bridge was successfully registered."
 msgstr ""

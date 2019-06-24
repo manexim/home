@@ -20,12 +20,16 @@
 */
 
 namespace Models {
-    public class Thing {
+    public class Thing : Object {
         protected Json.Object _obj;
 
         public Thing () {
             _obj = new Json.Object ();
             icon = "com.github.manexim.home.thing-symbolic";
+        }
+
+        public Thing.from_object (Json.Object object) {
+            _obj = object;
         }
 
         public string id {

@@ -21,9 +21,10 @@
 
 public class ThingsController {
     private Lifx.Service lifx_service;
+    private Philips.Hue.Service philips_hue_service;
 
-    public signal void on_new_lamp(Models.Lamp lamp);
-    public signal void on_updated_lamp(Models.Lamp lamp);
+    public signal void on_new_lamp (Models.Lamp lamp);
+    public signal void on_updated_lamp (Models.Lamp lamp);
 
     public ThingsController () {
         lifx_service = Lifx.Service.instance;
@@ -33,6 +34,16 @@ public class ThingsController {
         });
 
         lifx_service.on_updated_thing.connect ((thing) => {
+            on_updated_lamp((Models.Lamp) thing);
+        });
+
+        philips_hue_service = Philips.Hue.Service.instance;
+
+        philips_hue_service.on_new_thing.connect ((thing) => {
+            on_new_lamp((Models.Lamp) thing);
+        });
+
+        philips_hue_service.on_updated_thing.connect ((thing) => {
             on_updated_lamp((Models.Lamp) thing);
         });
     }

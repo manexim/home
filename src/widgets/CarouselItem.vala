@@ -65,6 +65,10 @@ public class CarouselItem : Gtk.FlowBoxChild {
         add (grid);
 
         update_thing (thing);
+
+        thing.notify.connect ((_) => {
+            update_thing (thing);
+        });
     }
 
     public void update_thing (Models.Thing thing) {

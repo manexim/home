@@ -20,7 +20,13 @@
 */
 
 public class HueBridgeOnboardingPage : Gtk.Grid {
-    public HueBridgeOnboardingPage () {
+    private Philips.Hue.BridgeController controller;
+    private Gtk.Label label;
+    private Gtk.Spinner spinner;
+
+    public HueBridgeOnboardingPage (Philips.Hue.Bridge bridge) {
+        controller = new Philips.Hue.BridgeController (bridge);
+
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
         row_spacing = 16;
@@ -29,9 +35,9 @@ public class HueBridgeOnboardingPage : Gtk.Grid {
         icon.gicon = new ThemedIcon ("com.github.manexim.home.bridge.philips.hue-symbolic");
         icon.pixel_size = 256;
 
-        var label = new Gtk.Label (_("Press the push-link button in the middle of the Hue bridge."));
+        label = new Gtk.Label (_("Press the push-link button in the middle of the Hue bridge."));
 
-        var spinner = new Gtk.Spinner ();
+        spinner = new Gtk.Spinner ();
 		spinner.start ();
 
         attach (icon, 0, 0, 1, 1);
@@ -39,5 +45,29 @@ public class HueBridgeOnboardingPage : Gtk.Grid {
         attach (spinner, 0, 2, 1, 1);
 
         show_all ();
+
+        register ();
+    }
+
+    private void register () {
+        new Thread<void*> (null, () => {
+            const ulong SLEEP_SECONDS = 5;
+
+            while (true) {
+                try {
+                    if (controller.register ()) {
+                        label.label = _("The Hue bridge was successfully registered.");
+                        spinner.stop ();
+
+                        Thread.usleep (SLEEP_SECONDS * 1000 * 1000);
+                        MainWindow.get_default ().go_back ();
+                    }
+                } catch (GLib.Error e) {
+                    stderr.printf ("Error: %d %s\n", e.code, e.message);
+                }
+
+                Thread.usleep (SLEEP_SECONDS * 1000 * 1000);
+            }
+        });
     }
 }

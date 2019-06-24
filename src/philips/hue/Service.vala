@@ -26,6 +26,9 @@ namespace Philips.Hue {
         private Socket socket;
 
         public signal void on_new_bridge (Bridge bridge);
+        public signal void on_updated_bridge (Bridge bridge);
+        public signal void on_new_thing (Models.Thing thing);
+        public signal void on_updated_thing (Models.Thing thing);
 
         public static Service instance {
             get {
@@ -46,9 +49,24 @@ namespace Philips.Hue {
         private Service () {
             bridge_map = new Gee.HashMap<string, Bridge> ();
 
+            load_bridges ();
             setup_socket ();
             listen ();
-            discover ();
+            discover_bridges ();
+        }
+
+        private void load_bridges () {
+            string[] philips_hue_bridges = Settings.get_default ().philips_hue_bridges;
+            foreach (var bridge_str in philips_hue_bridges) {
+                var parser = new Json.Parser();
+                parser.load_from_data (bridge_str, -1);
+                var object = parser.get_root ().get_object ();
+
+                var bridge = new Philips.Hue.Bridge.from_object (object);
+                bridge.power = Power.UNKNOWN;
+
+                found_bridge (bridge);
+            }
         }
 
         private void setup_socket () {
@@ -101,17 +119,38 @@ namespace Philips.Hue {
             });
         }
 
-        private void discover () {
+        private void discover_bridges () {
             new Thread<void*> (null, () => {
                 while (true) {
-                    discover_ssdp ();
+                    discover_bridges_ssdp ();
 
                     Thread.usleep (10 * 1000 * 1000);
                 }
             });
         }
 
-        private void discover_ssdp () {
+        private void discover_bridge_things (Philips.Hue.Bridge bridge) {
+            var controller = new Philips.Hue.BridgeController (bridge);
+            controller.on_new_lamp.connect ((lamp) => {
+                on_new_thing (lamp);
+            });
+
+            controller.on_updated_lamp.connect ((lamp) => {
+                on_updated_thing (lamp);
+            });
+
+            new Thread<void*> (null, () => {
+                while (true) {
+                    if (bridge.username != null && bridge.username != "") {
+                        controller.state ();
+                    }
+
+                    Thread.usleep (10 * 1000 * 1000);
+                }
+            });
+        }
+
+        private void discover_bridges_ssdp () {
             string message = "M-SEARCH * HTTP/1.1\r\n";
             message += "HOST: 239.255.255.250:1900\r\n";
             message += "MAN: ssdp:discover\r\n";
@@ -140,18 +179,27 @@ namespace Philips.Hue {
                 port = mi.fetch (4);
                 path = mi.fetch (5);
 
-                if (!bridge_map.has_key (bridgeid)) {
-                    var bridge = new Bridge ();
-                    bridge.id = bridgeid.up ();
-                    bridge.base_url = protocol + host + ":" + port + "/";
+                var bridge = new Bridge ();
+                bridge.id = bridgeid.up ();
+                bridge.base_url = protocol + host + ":" + port + "/";
 
-                    var controller = new Philips.Hue.BridgeController (bridge);
-                    controller.get_description ();
-                    bridge = controller.bridge;
+                found_bridge (bridge);
 
-                    bridge_map.set (bridge.id, bridge);
-                    on_new_bridge (bridge);
-                }
+            }
+        }
+
+        private void found_bridge (Philips.Hue.Bridge bridge) {
+            var controller = new Philips.Hue.BridgeController (bridge);
+            controller.get_description ();
+            bridge = controller.bridge;
+
+            if (!bridge_map.has_key (bridge.id)) {
+                bridge_map.set (bridge.id, bridge);
+                discover_bridge_things (bridge);
+                on_new_bridge (bridge);
+            } else {
+                bridge_map.set (bridge.id, bridge);
+                on_updated_bridge (bridge);
             }
         }
     }
