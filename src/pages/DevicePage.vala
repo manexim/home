@@ -32,16 +32,6 @@ public class DevicePage : Granite.SimpleSettingsPage {
 
         controller = new Lifx.LampController ((Lifx.Lamp) thing);
         controller.updated.connect ((lamp) => {
-            if (lamp.power == Power.ON) {
-                status_switch.active = true;
-                status_switch.state = true;
-            } else if (lamp.power == Power.OFF) {
-                status_switch.active = false;
-                status_switch.state = false;
-            }
-
-            title = lamp.name;
-
             update_status ();
         });
 
@@ -66,12 +56,18 @@ public class DevicePage : Granite.SimpleSettingsPage {
         description += "\n" + _("Manufacturer: ") + controller.lamp.manufacturer;
         description += "\n" + _("Model: ") + controller.lamp.model;
 
+        title = controller.lamp.name;
+
         switch (controller.lamp.power) {
         case Power.ON:
+            status_switch.active = true;
+            status_switch.state = true;
             status_type = Granite.SettingsPage.StatusType.SUCCESS;
             status = (_("Enabled"));
             break;
         case Power.OFF:
+            status_switch.active = false;
+            status_switch.state = false;
             status_type = Granite.SettingsPage.StatusType.OFFLINE;
             status = (_("Disabled"));
             break;
