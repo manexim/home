@@ -20,7 +20,7 @@
 */
 
 namespace Models {
-    public class Lamp : Thing {
+    public class Lamp : Device {
         public Lamp () {
             icon = "com.github.manexim.home.lightbulb-symbolic";
         }

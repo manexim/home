@@ -20,7 +20,7 @@
 */
 
 public class Overview : Gtk.ScrolledWindow {
-    private ThingsController things_controller;
+    private DevicesController devices_controller;
 
     public Overview () {
         var grid = new Gtk.Grid ();
@@ -45,19 +45,19 @@ public class Overview : Gtk.ScrolledWindow {
 
         grid.attach (devices_revealer, 0, 0, 1, 1);
 
-        things_controller = new ThingsController ();
-        things_controller.on_new_lamp.connect ((lamp) => {
+        devices_controller = new DevicesController ();
+        devices_controller.on_new_lamp.connect ((lamp) => {
             devices_carousel.add_thing (lamp);
             devices_revealer.reveal_child = true;
         });
 
-        things_controller.on_updated_lamp.connect ((lamp) => {
+        devices_controller.on_updated_lamp.connect ((lamp) => {
             devices_carousel.update_thing (lamp);
         });
 
         devices_carousel.on_thing_activated.connect ((thing) => {
             MainWindow.get_default ().go_to_page (
-                new ThingPage (thing),
+                new DevicePage (thing),
                 (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
             );
         });

@@ -19,10 +19,10 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class ThingPage : Granite.SimpleSettingsPage {
+public class DevicePage : Granite.SimpleSettingsPage {
     private Lifx.LampController controller;
 
-    public ThingPage (Models.Thing thing) {
+    public DevicePage (Models.Device thing) {
         Object (
             activatable: true,
             icon_name: thing.icon,

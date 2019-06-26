@@ -19,34 +19,6 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Lifx {
-    public class LampController {
-        private Lifx.Service service;
-        private Lifx.Lamp _lamp;
-
-        public signal void updated (Lifx.Lamp lamp);
-
-        public LampController (Lifx.Lamp lamp) {
-            _lamp = lamp;
-
-            service = Lifx.Service.instance;
-            service.on_updated_device.connect ((updated_lamp) => {
-                if (updated_lamp.id == lamp.id) {
-                    updated ((Lifx.Lamp) updated_lamp);
-                }
-            });
-        }
-
-        public void switch_power (bool on) {
-            service.set_power (lamp, on ? 65535 : 0);
-
-            _lamp.power = on ? Power.ON : Power.OFF;
-        }
-
-        public Lifx.Lamp lamp {
-            get {
-                return _lamp;
-            }
-        }
-    }
+namespace Models {
+    public class Device : Thing {}
 }

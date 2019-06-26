@@ -1,14 +1,14 @@
 namespace Philips.Hue {
     public class BridgeController {
         private Bridge _bridge;
-        private Gee.HashMap<string, Models.Thing> thing_map;
+        private Gee.HashMap<string, Models.Device> thing_map;
 
         public signal void on_new_lamp (Models.Lamp lamp);
         public signal void on_updated_lamp (Models.Lamp lamp);
 
         public BridgeController (Bridge bridge) {
             _bridge = bridge;
-            thing_map = new Gee.HashMap<string, Models.Thing> ();
+            thing_map = new Gee.HashMap<string, Models.Device> ();
         }
 
         public void get_description () {

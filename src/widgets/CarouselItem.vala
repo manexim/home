@@ -20,13 +20,13 @@
 */
 
 public class CarouselItem : Gtk.FlowBoxChild {
-    public Models.Thing thing { get; construct set; }
+    public Models.Device thing { get; construct set; }
     private Gtk.Image icon;
     private Gtk.Image status_icon;
     private Gtk.Label name_label;
     private Gtk.Label id_label;
 
-    public CarouselItem (Models.Thing thing) {
+    public CarouselItem (Models.Device thing) {
         Object (thing: thing);
     }
 
@@ -71,7 +71,7 @@ public class CarouselItem : Gtk.FlowBoxChild {
         });
     }
 
-    public void update_thing (Models.Thing thing) {
+    public void update_thing (Models.Device thing) {
         icon.gicon = new ThemedIcon (thing.icon);
 
         switch (thing.power) {

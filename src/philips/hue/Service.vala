@@ -27,8 +27,8 @@ namespace Philips.Hue {
 
         public signal void on_new_bridge (Bridge bridge);
         public signal void on_updated_bridge (Bridge bridge);
-        public signal void on_new_thing (Models.Thing thing);
-        public signal void on_updated_thing (Models.Thing thing);
+        public signal void on_new_device (Models.Device device);
+        public signal void on_updated_device (Models.Device device);
 
         public static Service instance {
             get {
@@ -129,14 +129,14 @@ namespace Philips.Hue {
             });
         }
 
-        private void discover_bridge_things (Philips.Hue.Bridge bridge) {
+        private void discover_bridge_devices (Philips.Hue.Bridge bridge) {
             var controller = new Philips.Hue.BridgeController (bridge);
             controller.on_new_lamp.connect ((lamp) => {
-                on_new_thing (lamp);
+                on_new_device (lamp);
             });
 
             controller.on_updated_lamp.connect ((lamp) => {
-                on_updated_thing (lamp);
+                on_updated_device (lamp);
             });
 
             new Thread<void*> (null, () => {
@@ -195,7 +195,7 @@ namespace Philips.Hue {
 
             if (!bridge_map.has_key (bridge.id)) {
                 bridge_map.set (bridge.id, bridge);
-                discover_bridge_things (bridge);
+                discover_bridge_devices (bridge);
                 on_new_bridge (bridge);
             } else {
                 bridge_map.set (bridge.id, bridge);

@@ -19,32 +19,32 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class ThingsController {
+public class DevicesController {
     private Lifx.Service lifx_service;
     private Philips.Hue.Service philips_hue_service;
 
     public signal void on_new_lamp (Models.Lamp lamp);
     public signal void on_updated_lamp (Models.Lamp lamp);
 
-    public ThingsController () {
+    public DevicesController () {
         lifx_service = Lifx.Service.instance;
 
-        lifx_service.on_new_thing.connect ((thing) => {
-            on_new_lamp((Models.Lamp) thing);
+        lifx_service.on_new_device.connect ((device) => {
+            on_new_lamp((Models.Lamp) device);
         });
 
-        lifx_service.on_updated_thing.connect ((thing) => {
-            on_updated_lamp((Models.Lamp) thing);
+        lifx_service.on_updated_device.connect ((device) => {
+            on_updated_lamp((Models.Lamp) device);
         });
 
         philips_hue_service = Philips.Hue.Service.instance;
 
-        philips_hue_service.on_new_thing.connect ((thing) => {
-            on_new_lamp((Models.Lamp) thing);
+        philips_hue_service.on_new_device.connect ((device) => {
+            on_new_lamp((Models.Lamp) device);
         });
 
-        philips_hue_service.on_updated_thing.connect ((thing) => {
-            on_updated_lamp((Models.Lamp) thing);
+        philips_hue_service.on_updated_device.connect ((device) => {
+            on_updated_lamp((Models.Lamp) device);
         });
     }
 }

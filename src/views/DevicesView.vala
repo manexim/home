@@ -19,34 +19,32 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Lifx {
-    public class LampController {
-        private Lifx.Service service;
-        private Lifx.Lamp _lamp;
+public class DevicesView : Gtk.Paned {
+    private Gtk.Stack stack;
+    private DevicesController devices_controller;
 
-        public signal void updated (Lifx.Lamp lamp);
+    public DevicesView () {
+        devices_controller = new DevicesController ();
 
-        public LampController (Lifx.Lamp lamp) {
-            _lamp = lamp;
+        stack = new Gtk.Stack ();
 
-            service = Lifx.Service.instance;
-            service.on_updated_device.connect ((updated_lamp) => {
-                if (updated_lamp.id == lamp.id) {
-                    updated ((Lifx.Lamp) updated_lamp);
-                }
-            });
-        }
+        var sidebar = new Granite.SettingsSidebar (stack);
 
-        public void switch_power (bool on) {
-            service.set_power (lamp, on ? 65535 : 0);
+        add (sidebar);
+        add (stack);
 
-            _lamp.power = on ? Power.ON : Power.OFF;
-        }
+        stack.add_named (new LoadingPage (), "loading");
+        stack.show_all ();
 
-        public Lifx.Lamp lamp {
-            get {
-                return _lamp;
+        devices_controller.on_new_lamp.connect ((lamp) => {
+            stack.add_named (new DevicePage (lamp), lamp.id);
+
+            if (stack.get_visible_child_name () == "loading") {
+                var child = stack.get_child_by_name ("loading");
+                stack.remove (child);
             }
-        }
+
+            stack.show_all ();
+        });
     }
 }
