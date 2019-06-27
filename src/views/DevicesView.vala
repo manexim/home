@@ -19,12 +19,12 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class DevicesView : Gtk.Paned {
+public class Views.DevicesView : Gtk.Paned {
     private Gtk.Stack stack;
-    private DevicesController devices_controller;
+    private Controllers.DevicesController devices_controller;
 
     public DevicesView () {
-        devices_controller = new DevicesController ();
+        devices_controller = new Controllers.DevicesController ();
 
         stack = new Gtk.Stack ();
 
@@ -33,11 +33,11 @@ public class DevicesView : Gtk.Paned {
         add (sidebar);
         add (stack);
 
-        stack.add_named (new LoadingPage (), "loading");
+        stack.add_named (new Pages.LoadingPage (), "loading");
         stack.show_all ();
 
         devices_controller.on_new_device.connect ((device) => {
-            stack.add_named (new DevicePage (device), device.id);
+            stack.add_named (new Pages.DevicePage (device), device.id);
 
             if (stack.get_visible_child_name () == "loading") {
                 var child = stack.get_child_by_name ("loading");

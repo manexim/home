@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public abstract class DeviceController : Object {
+public abstract class Controllers.DeviceController : Object {
     protected Models.Device _device;
 
     public DeviceController (Models.Device device) {

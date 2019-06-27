@@ -19,11 +19,9 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Philips.Hue {
-    public class Lamp : Models.Lamp {
-        public Lamp () {
-            icon = "com.github.manexim.home.lightbulb.philips.hue-symbolic";
-            manufacturer = "Philips";
-        }
+public class Philips.Hue.Lamp : Models.Lamp {
+    public Lamp () {
+        icon = "com.github.manexim.home.lightbulb.philips.hue-symbolic";
+        manufacturer = "Philips";
     }
 }

@@ -19,8 +19,8 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class DevicePage : Granite.SimpleSettingsPage {
-    private DeviceController controller;
+public class Pages.DevicePage : Granite.SimpleSettingsPage {
+    private Controllers.DeviceController controller;
 
     public DevicePage (Models.Device device) {
         Object (
@@ -60,13 +60,13 @@ public class DevicePage : Granite.SimpleSettingsPage {
         title = controller.device.name;
 
         switch (controller.device.power) {
-        case Power.ON:
+        case Types.Power.ON:
             status_switch.active = true;
             status_switch.state = true;
             status_type = Granite.SettingsPage.StatusType.SUCCESS;
             status = (_("Enabled"));
             break;
-        case Power.OFF:
+        case Types.Power.OFF:
             status_switch.active = false;
             status_switch.state = false;
             status_type = Granite.SettingsPage.StatusType.OFFLINE;

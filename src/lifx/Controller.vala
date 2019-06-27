@@ -19,22 +19,20 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Lifx {
-    public class Controller : DeviceController {
-        private Lifx.Service service;
+public class Lifx.Controller : Controllers.DeviceController {
+    private Lifx.Service service;
 
-        public Controller (Models.Device device) {
-            Object (
-                device : device
-            );
+    public Controller (Models.Device device) {
+        Object (
+            device : device
+        );
 
-            service = Lifx.Service.instance;
-        }
+        service = Lifx.Service.instance;
+    }
 
-        public override void switch_power (bool on) {
-            service.set_power (device as Lifx.Lamp, on ? 65535 : 0);
+    public override void switch_power (bool on) {
+        service.set_power (device as Lifx.Lamp, on ? 65535 : 0);
 
-            _device.power = on ? Power.ON : Power.OFF;
-        }
+        _device.power = on ? Types.Power.ON : Types.Power.OFF;
     }
 }

@@ -19,6 +19,4 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Models {
-    public class Device : Thing {}
-}
+public class Models.Device : Models.Thing {}

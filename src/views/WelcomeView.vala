@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class WelcomeView : Gtk.Grid {
+public class Views.WelcomeView : Gtk.Grid {
     public signal void start ();
 
     construct {

@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Overlay : Gtk.Overlay {
+public class Widgets.Overlay : Gtk.Overlay {
     private static Overlay? _instance;
     public Granite.Widgets.Toast toast;
 

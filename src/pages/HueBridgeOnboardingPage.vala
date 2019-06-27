@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class HueBridgeOnboardingPage : Gtk.Grid {
+public class Pages.HueBridgeOnboardingPage : Gtk.Grid {
     private Philips.Hue.BridgeController controller;
     private Gtk.Label label;
     private Gtk.Spinner spinner;

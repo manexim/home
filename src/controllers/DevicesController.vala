@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class DevicesController {
+public class Controllers.DevicesController {
     private Lifx.Service lifx_service;
     private Philips.Hue.Service philips_hue_service;
 

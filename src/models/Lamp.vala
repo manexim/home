@@ -19,23 +19,21 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Models {
-    public class Lamp : Device {
-        public Lamp () {
-            icon = "com.github.manexim.home.lightbulb-symbolic";
+public class Models.Lamp : Models.Device {
+    public Lamp () {
+        icon = "com.github.manexim.home.lightbulb-symbolic";
+    }
+
+    public bool supports_color {
+        get {
+            if (!_obj.has_member ("supportsColor")) {
+                supports_color = false;
+            }
+
+            return _obj.get_boolean_member ("supportsColor");
         }
-
-        public bool supports_color {
-            get {
-                if (!_obj.has_member ("supportsColor")) {
-                    supports_color = false;
-                }
-
-                return _obj.get_boolean_member ("supportsColor");
-            }
-            set {
-                _obj.set_boolean_member ("supportsColor", value);
-            }
+        set {
+            _obj.set_boolean_member ("supportsColor", value);
         }
     }
 }

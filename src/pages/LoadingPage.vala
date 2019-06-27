@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class LoadingPage : Gtk.Grid {
+public class Pages.LoadingPage : Gtk.Grid {
     public LoadingPage () {
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;

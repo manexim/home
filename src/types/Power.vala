@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public enum Power {
+public enum Types.Power {
     UNKNOWN = 1,
     WARNING = 2,
     OFF = 0,

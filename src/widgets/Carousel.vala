@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Carousel : Gtk.FlowBox {
+public class Widgets.Carousel : Gtk.FlowBox {
     private Gee.HashMap<string, int> carousel_item_map;
     private int index = 0;
     public signal void on_thing_activated (Models.Thing thing);

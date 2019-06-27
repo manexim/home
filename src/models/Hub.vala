@@ -19,6 +19,4 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Models {
-    public class Hub : Thing {}
-}
+public class Models.Hub : Models.Thing {}

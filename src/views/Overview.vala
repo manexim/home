@@ -19,8 +19,8 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Overview : Gtk.ScrolledWindow {
-    private DevicesController devices_controller;
+public class Views.Overview : Gtk.ScrolledWindow {
+    private Controllers.DevicesController devices_controller;
 
     public Overview () {
         var grid = new Gtk.Grid ();
@@ -32,7 +32,7 @@ public class Overview : Gtk.ScrolledWindow {
         devices_label.xalign = 0;
         devices_label.margin_start = 10;
 
-        var devices_carousel = new Carousel ();
+        var devices_carousel = new Widgets.Carousel ();
 
         var devices_grid = new Gtk.Grid ();
         devices_grid.margin = 2;
@@ -45,7 +45,7 @@ public class Overview : Gtk.ScrolledWindow {
 
         grid.attach (devices_revealer, 0, 0, 1, 1);
 
-        devices_controller = new DevicesController ();
+        devices_controller = new Controllers.DevicesController ();
         devices_controller.on_new_device.connect ((device) => {
             devices_carousel.add_thing (device);
             devices_revealer.reveal_child = true;
@@ -57,7 +57,7 @@ public class Overview : Gtk.ScrolledWindow {
 
         devices_carousel.on_thing_activated.connect ((thing) => {
             MainWindow.get_default ().go_to_page (
-                new DevicePage (thing as Models.Device),
+                new Pages.DevicePage (thing as Models.Device),
                 (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
             );
         });
@@ -67,7 +67,7 @@ public class Overview : Gtk.ScrolledWindow {
         hubs_label.xalign = 0;
         hubs_label.margin_start = 10;
 
-        var hubs_carousel = new Carousel ();
+        var hubs_carousel = new Widgets.Carousel ();
 
         var hubs_grid = new Gtk.Grid ();
         hubs_grid.margin = 2;
@@ -88,7 +88,7 @@ public class Overview : Gtk.ScrolledWindow {
 
         hubs_carousel.on_thing_activated.connect ((thing) => {
             MainWindow.get_default ().go_to_page (
-                new HueBridgeOnboardingPage (thing as Philips.Hue.Bridge),
+                new Pages.HueBridgeOnboardingPage (thing as Philips.Hue.Bridge),
                 (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
             );
         });

@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class CarouselItem : Gtk.FlowBoxChild {
+public class Widgets.CarouselItem : Gtk.FlowBoxChild {
     public Models.Thing thing { get; construct set; }
     private Gtk.Image icon;
     private Gtk.Image status_icon;
@@ -73,13 +73,13 @@ public class CarouselItem : Gtk.FlowBoxChild {
         icon.gicon = new ThemedIcon (thing.icon);
 
         switch (thing.power) {
-        case Power.ON:
+        case Types.Power.ON:
             status_icon.icon_name = "user-available";
             break;
-        case Power.OFF:
+        case Types.Power.OFF:
             status_icon.icon_name = "user-offline";
             break;
-        case Power.WARNING:
+        case Types.Power.WARNING:
             status_icon.icon_name = "user-away";
             break;
         default:
