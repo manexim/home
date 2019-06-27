@@ -20,13 +20,13 @@
 */
 
 public class CarouselItem : Gtk.FlowBoxChild {
-    public Models.Device thing { get; construct set; }
+    public Models.Thing thing { get; construct set; }
     private Gtk.Image icon;
     private Gtk.Image status_icon;
     private Gtk.Label name_label;
     private Gtk.Label id_label;
 
-    public CarouselItem (Models.Device thing) {
+    public CarouselItem (Models.Thing thing) {
         Object (thing: thing);
     }
 
@@ -64,14 +64,12 @@ public class CarouselItem : Gtk.FlowBoxChild {
 
         add (grid);
 
-        update_thing (thing);
+        update ();
 
-        thing.notify.connect ((_) => {
-            update_thing (thing);
-        });
+        thing.notify.connect (update);
     }
 
-    public void update_thing (Models.Device thing) {
+    public void update () {
         icon.gicon = new ThemedIcon (thing.icon);
 
         switch (thing.power) {

@@ -20,20 +20,21 @@
 */
 
 public class DevicePage : Granite.SimpleSettingsPage {
-    private Lifx.LampController controller;
+    private DeviceController controller;
 
-    public DevicePage (Models.Device thing) {
+    public DevicePage (Models.Device device) {
         Object (
             activatable: true,
-            icon_name: thing.icon,
-            description: thing.id,
-            title: thing.name != null ? thing.name : thing.id
+            icon_name: device.icon,
+            description: device.id,
+            title: device.name != null ? device.name : device.id
         );
 
-        controller = new Lifx.LampController ((Lifx.Lamp) thing);
-        controller.updated.connect ((lamp) => {
-            update_status ();
-        });
+        if (device is Lifx.Lamp) {
+            controller = new Lifx.Controller (device);
+        }
+
+        controller.device.notify.connect (update_status);
 
         update_status ();
 
@@ -52,13 +53,13 @@ public class DevicePage : Granite.SimpleSettingsPage {
     }
 
     private void update_status () {
-        description = _("ID: ") + controller.lamp.id;
-        description += "\n" + _("Manufacturer: ") + controller.lamp.manufacturer;
-        description += "\n" + _("Model: ") + controller.lamp.model;
+        description = _("ID: ") + controller.device.id;
+        description += "\n" + _("Manufacturer: ") + controller.device.manufacturer;
+        description += "\n" + _("Model: ") + controller.device.model;
 
-        title = controller.lamp.name;
+        title = controller.device.name;
 
-        switch (controller.lamp.power) {
+        switch (controller.device.power) {
         case Power.ON:
             status_switch.active = true;
             status_switch.state = true;

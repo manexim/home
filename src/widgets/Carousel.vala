@@ -22,7 +22,7 @@
 public class Carousel : Gtk.FlowBox {
     private Gee.HashMap<string, int> carousel_item_map;
     private int index = 0;
-    public signal void on_thing_activated (Models.Device thing);
+    public signal void on_thing_activated (Models.Thing thing);
 
     public Carousel () {
         Object (
@@ -43,18 +43,18 @@ public class Carousel : Gtk.FlowBox {
         child_activated.connect (on_child_activated);
     }
 
-    public void add_thing (Models.Device? thing) {
+    public void add_thing (Models.Thing? thing) {
         var carousel_item = new CarouselItem (thing);
         add (carousel_item);
         carousel_item_map.set (thing.id, index++);
         show_all ();
     }
 
-    public void update_thing (Models.Device? thing) {
+    public void update_thing (Models.Thing? thing) {
         weak Gtk.FlowBoxChild child = get_child_at_index (carousel_item_map.get (thing.id));
         if (child is CarouselItem) {
             var carousel_item = child as CarouselItem;
-            carousel_item.update_thing (thing);
+            carousel_item.update ();
         }
     }
 

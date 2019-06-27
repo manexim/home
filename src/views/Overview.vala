@@ -46,18 +46,18 @@ public class Overview : Gtk.ScrolledWindow {
         grid.attach (devices_revealer, 0, 0, 1, 1);
 
         devices_controller = new DevicesController ();
-        devices_controller.on_new_lamp.connect ((lamp) => {
-            devices_carousel.add_thing (lamp);
+        devices_controller.on_new_device.connect ((device) => {
+            devices_carousel.add_thing (device);
             devices_revealer.reveal_child = true;
         });
 
-        devices_controller.on_updated_lamp.connect ((lamp) => {
-            devices_carousel.update_thing (lamp);
+        devices_controller.on_updated_device.connect ((device) => {
+            devices_carousel.update_thing (device);
         });
 
         devices_carousel.on_thing_activated.connect ((thing) => {
             MainWindow.get_default ().go_to_page (
-                new DevicePage (thing),
+                new DevicePage (thing as Models.Device),
                 (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
             );
         });

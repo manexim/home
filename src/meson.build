@@ -1,7 +1,8 @@
 sources = [
     'config/Constants.vala',
+    'controllers/DeviceController.vala',
     'controllers/DevicesController.vala',
-    'lifx/LampController.vala',
+    'lifx/Controller.vala',
     'lifx/Lamp.vala',
     'lifx/Packet.vala',
     'lifx/Service.vala',
