@@ -102,12 +102,25 @@ public class Settings : Granite.Services.Settings {
 
         var philips_hue_service = Philips.Hue.Service.instance;
         var bridges = philips_hue_service.bridges;
-        var bridges_strings = new string[bridges.length];
 
-        for (uint8 i = 0; i < bridges.length; i++) {
-            bridges_strings[i] = bridges[i].to_string ();
+        var bridges_list = new Gee.ArrayList<string> ();
+        for (uint i = 0; i < bridges.length; i++) {
+            if (bridges[i].username != null) {
+                size_t length;
+
+                var gen = new Json.Generator ();
+                var root = new Json.Node (Json.NodeType.OBJECT);
+                var obj = new Json.Object ();
+                root.set_object (obj);
+
+                obj.set_string_member ("id", bridges[i].id);
+                obj.set_string_member ("username", bridges[i].username);
+
+                gen.set_root (root);
+                bridges_list.add (gen.to_data (out length));
+            }
         }
 
-        philips_hue_bridges = bridges_strings;
+        philips_hue_bridges = bridges_list.to_array ();
     }
 }

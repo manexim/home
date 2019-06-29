@@ -21,7 +21,8 @@
 
 public class Philips.Hue.Service {
     private static Service? _instance;
-    private Gee.HashMap<string, Bridge> bridge_map;
+    private Array<Bridge> bridge_loaded_array;
+    private Array<Bridge> bridge_array;
     private Socket socket;
 
     public signal void on_new_bridge (Bridge bridge);
@@ -41,12 +42,13 @@ public class Philips.Hue.Service {
 
     public Bridge[] bridges {
         owned get {
-            return bridge_map.values.to_array ();
+            return bridge_array.data;
         }
     }
 
     private Service () {
-        bridge_map = new Gee.HashMap<string, Bridge> ();
+        bridge_loaded_array = new Array<Bridge> ();
+        bridge_array = new Array<Bridge> ();
 
         load_bridges ();
         setup_socket ();
@@ -64,7 +66,7 @@ public class Philips.Hue.Service {
             var bridge = new Philips.Hue.Bridge.from_object (object);
             bridge.power = Types.Power.UNKNOWN;
 
-            found_bridge (bridge);
+            bridge_loaded_array.append_val (bridge);
         }
     }
 
@@ -190,15 +192,38 @@ public class Philips.Hue.Service {
     private void found_bridge (Philips.Hue.Bridge bridge) {
         var controller = new Philips.Hue.BridgeController (bridge);
         controller.get_description ();
-        bridge = controller.bridge;
 
-        if (!bridge_map.has_key (bridge.id)) {
-            bridge_map.set (bridge.id, bridge);
+        if (!is_in_array (bridge_array, bridge.id)) {
+            if (is_in_array (bridge_loaded_array, bridge.id)) {
+                bridge.username = get_value_from_id (bridge_loaded_array, bridge.id).username;
+                bridge.power = Types.Power.ON;
+            }
+
+            bridge_array.append_val (bridge);
             discover_bridge_devices (bridge);
             on_new_bridge (bridge);
         } else {
-            bridge_map.set (bridge.id, bridge);
             on_updated_bridge (bridge);
         }
+    }
+
+    private bool is_in_array (Array<Models.Thing> array, string id) {
+        for (uint i = 0; i < array.length; i++) {
+            if (array.index (i).id == id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private Bridge? get_value_from_id (Array<Models.Thing> array, string id) {
+        for (uint i = 0; i < array.length; i++) {
+            if (array.index (i).id == id) {
+                return array.index (i) as Philips.Hue.Bridge;
+            }
+        }
+
+        return null;
     }
 }
