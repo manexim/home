@@ -59,6 +59,7 @@ public class MainWindow : Gtk.ApplicationWindow {
             mode_switch.secondary_icon_tooltip_text = _("Dark background");
             mode_switch.valign = Gtk.Align.CENTER;
             mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+            settings.bind ("prefer-dark-style", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             headerbar.pack_end (mode_switch);
         }
 

@@ -85,6 +85,10 @@ public class Settings : Granite.Services.Settings {
         }
     }
 
+    public void bind (string key, GLib.Object object, string property, GLib.SettingsBindFlags flags) {
+        schema.bind (key, object, property, flags);
+    }
+
     public bool is_first_run () {
         return last_started_app_version == "";
     }
