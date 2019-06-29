@@ -87,10 +87,12 @@ public class Views.Overview : Gtk.ScrolledWindow {
         });
 
         hubs_carousel.on_thing_activated.connect ((thing) => {
-            MainWindow.get_default ().go_to_page (
-                new Pages.HueBridgeOnboardingPage (thing as Philips.Hue.Bridge),
-                (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
-            );
+            if (thing.power != Types.Power.ON) {
+                MainWindow.get_default ().go_to_page (
+                    new Pages.HueBridgeOnboardingPage (thing as Philips.Hue.Bridge),
+                    (thing.name == null || thing.name.length == 0) ? thing.id : thing.name
+                );
+            }
         });
     }
 }
