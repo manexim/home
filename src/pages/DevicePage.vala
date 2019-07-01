@@ -32,6 +32,8 @@ public class Pages.DevicePage : Granite.SimpleSettingsPage {
 
         if (device is Lifx.Lamp) {
             controller = new Lifx.Controller (device);
+        } else if (device is Philips.Hue.Lamp) {
+            controller = new Philips.Hue.Controller (device);
         }
 
         controller.device.notify.connect (update_status);

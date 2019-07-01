@@ -15,6 +15,7 @@ sources = [
     'pages/LoadingPage.vala',
     'philips/hue/Bridge.vala',
     'philips/hue/BridgeController.vala',
+    'philips/hue/Controller.vala',
     'philips/hue/Lamp.vala',
     'philips/hue/Service.vala',
     'services/Settings.vala',
