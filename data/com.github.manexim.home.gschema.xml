@@ -11,10 +11,10 @@
       <summary>Lasted started app version</summary>
       <description>Last started app version to check if new features should be explained to user.</description>
     </key>
-    <key name="philips-hue-bridges" type="as">
-      <default>[]</default>
-      <summary>List of configured Philips Hue Bridges</summary>
-      <description>List of configured Philips Hue Bridges.</description>
+    <key name="configuration" type="s">
+      <default>"{}"</default>
+      <summary>Configuration</summary>
+      <description>Configuration</description>
     </key>
     <key name="prefer-dark-style" type="b">
       <default>false</default>

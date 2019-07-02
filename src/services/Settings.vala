@@ -33,7 +33,7 @@ public class Settings : Granite.Services.Settings {
 
     public string uuid { get; protected set; }
     public string last_started_app_version { get; set; }
-    public string[] philips_hue_bridges { get; set; }
+    public string configuration { get; set; }
     public int window_width { get; set; }
     public int window_height { get; set; }
     public int window_x { get; set; }
@@ -97,30 +97,42 @@ public class Settings : Granite.Services.Settings {
         return _is_freedesktop_prefers_color_scheme_available;
     }
 
+    public Json.Object configuration_as_json () {
+        var parser = new Json.Parser();
+        parser.load_from_data (configuration, -1);
+        var object = parser.get_root ().get_object ();
+
+        return object;
+    }
+
     public void save () {
         last_started_app_version = Config.APP_VERSION;
 
         var philips_hue_service = Philips.Hue.Service.instance;
-        var bridges = philips_hue_service.bridges;
 
-        var bridges_list = new Gee.ArrayList<string> ();
-        for (uint i = 0; i < bridges.length; i++) {
-            if (bridges[i].username != null) {
-                size_t length;
-
-                var gen = new Json.Generator ();
-                var root = new Json.Node (Json.NodeType.OBJECT);
-                var obj = new Json.Object ();
-                root.set_object (obj);
-
-                obj.set_string_member ("id", bridges[i].id);
-                obj.set_string_member ("username", bridges[i].username);
-
-                gen.set_root (root);
-                bridges_list.add (gen.to_data (out length));
+        var obj = new Json.Object ();
+        var com = new Json.Object ();
+        var philips = new Json.Object ();
+        var hue = new Json.Object ();
+        var bridges = new Json.Object ();
+        for (uint i = 0; i < philips_hue_service.bridges.length; i++) {
+            if (philips_hue_service.bridges[i].username != null) {
+                var bridge = new Json.Object ();
+                bridge.set_string_member ("username", philips_hue_service.bridges[i].username);
+                bridges.set_object_member (philips_hue_service.bridges[i].id, bridge);
             }
         }
 
-        philips_hue_bridges = bridges_list.to_array ();
+        hue.set_object_member ("bridges", bridges);
+        philips.set_object_member ("hue", hue);
+        com.set_object_member ("philips", philips);
+        obj.set_object_member ("com", com);
+        var gen = new Json.Generator ();
+        var root = new Json.Node (Json.NodeType.OBJECT);
+        root.set_object (obj);
+        gen.set_root (root);
+
+        size_t length;
+        configuration = gen.to_data (out length);
     }
 }

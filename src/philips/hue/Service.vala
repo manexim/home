@@ -57,13 +57,35 @@ public class Philips.Hue.Service {
     }
 
     private void load_bridges () {
-        string[] philips_hue_bridges = Settings.get_default ().philips_hue_bridges;
-        foreach (var bridge_str in philips_hue_bridges) {
-            var parser = new Json.Parser();
-            parser.load_from_data (bridge_str, -1);
-            var object = parser.get_root ().get_object ();
+        var configuration = Settings.get_default ().configuration_as_json ();
+        var o = configuration.get_object_member ("com");
+        if (o == null) {
+            return;
+        }
 
-            var bridge = new Philips.Hue.Bridge.from_object (object);
+        o = o.get_object_member ("philips");
+        if (o == null) {
+            return;
+        }
+
+        o = o.get_object_member ("hue");
+        if (o == null) {
+            return;
+        }
+
+        o = o.get_object_member ("bridges");
+        if (o == null) {
+            return;
+        }
+
+        foreach (var key in o.get_members ()) {
+            var obj = o.get_object_member (key);
+            if (obj == null) {
+                continue;
+            }
+
+            var bridge = new Philips.Hue.Bridge.from_object (obj);
+            bridge.id = key;
             bridge.power = Types.Power.UNKNOWN;
 
             bridge_loaded_array.append_val (bridge);
