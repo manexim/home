@@ -97,7 +97,7 @@ public class Settings : Granite.Services.Settings {
         return _is_freedesktop_prefers_color_scheme_available;
     }
 
-    public Json.Object configuration_as_json () {
+    public Json.Object configuration_as_json () throws GLib.Error {
         var parser = new Json.Parser();
         parser.load_from_data (configuration, -1);
         var object = parser.get_root ().get_object ();
