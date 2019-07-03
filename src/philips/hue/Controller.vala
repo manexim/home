@@ -27,8 +27,12 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
             device : device
         );
 
-        //  controller = Philips.Hue.BridgeController.instance;
+        controller = new Philips.Hue.BridgeController ((device as Philips.Hue.Lamp).bridge);
     }
 
-    public override void switch_power (bool on) {}
+    public override void switch_power (bool on) {
+        controller.switch_light_power (device as Philips.Hue.Lamp, on);
+
+        _device.power = on ? Types.Power.ON : Types.Power.OFF;
+    }
 }

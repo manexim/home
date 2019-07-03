@@ -20,8 +20,23 @@
 */
 
 public class Philips.Hue.Lamp : Models.Lamp {
+    public Philips.Hue.Bridge bridge;
+
     public Lamp () {
         icon = "com.github.manexim.home.lightbulb.philips.hue-symbolic";
         manufacturer = "Philips";
+    }
+
+    public string number {
+        get {
+            if (!_obj.has_member ("number")) {
+                number = null;
+            }
+
+            return _obj.get_string_member ("number");
+        }
+        set {
+            _obj.set_string_member ("number", value);
+        }
     }
 }
