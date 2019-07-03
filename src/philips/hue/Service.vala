@@ -59,23 +59,28 @@ public class Philips.Hue.Service {
     private void load_bridges () {
         try {
             var configuration = Settings.get_default ().configuration_as_json ();
-            var o = configuration.get_object_member ("com");
-            if (o == null) {
+            Json.Object o;
+            if (configuration.has_member ("com")) {
+                o = configuration.get_object_member ("com");
+            } else {
                 return;
             }
 
-            o = o.get_object_member ("philips");
-            if (o == null) {
+            if (o.has_member ("philips")) {
+                o = o.get_object_member ("philips");
+            } else {
                 return;
             }
 
-            o = o.get_object_member ("hue");
-            if (o == null) {
+            if (o.has_member ("hue")) {
+                o = o.get_object_member ("hue");
+            } else {
                 return;
             }
 
-            o = o.get_object_member ("bridges");
-            if (o == null) {
+            if (o.has_member ("bridges")) {
+                o = o.get_object_member ("bridges");
+            } else {
                 return;
             }
 
