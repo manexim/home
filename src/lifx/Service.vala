@@ -64,9 +64,82 @@ public class Lifx.Service {
     private Service () {
         device_map = new Gee.HashMap<string, Models.Device> ();
 
+        #if DEMO_MODE
+        new Thread<void*> (null, () => {
+            Thread.usleep (500 * 1000);
+
+            {
+                var lamp = new Lifx.Lamp ();
+                lamp.name = "Backyard";
+                lamp.id = "??:??:??:??:??:??:??:??";
+                lamp.power = Types.Power.OFF;
+                lamp.manufacturer = "LIFX";
+                lamp.model = "White 800 (High Voltage)";
+                on_new_device (lamp);
+            }
+
+            Thread.usleep (500 * 1000);
+
+            {
+                var lamp = new Lifx.Lamp ();
+                lamp.name = "Bedroom";
+                lamp.id = "??:??:??:??:??:??:??:??";
+                lamp.power = Types.Power.OFF;
+                lamp.model = "Color 1000";
+                on_new_device (lamp as Models.Device);
+            }
+
+            Thread.usleep (500 * 1000);
+
+            {
+                var lamp = new Lifx.Lamp ();
+                lamp.name = "Coffee Table";
+                lamp.id = "??:??:??:??:??:??:??:??";
+                lamp.power = Types.Power.ON;
+                lamp.model = "Color 1000";
+                on_new_device (lamp as Models.Device);
+            }
+
+            Thread.usleep (500 * 1000);
+
+            {
+                var lamp = new Lifx.Lamp ();
+                lamp.name = "Desk";
+                lamp.id = "??:??:??:??:??:??:??:??";
+                lamp.power = Types.Power.ON;
+                lamp.model = "Color 1000";
+                on_new_device (lamp as Models.Device);
+            }
+
+            Thread.usleep (500 * 1000);
+
+            {
+                var lamp = new Lifx.Lamp ();
+                lamp.name = "Hallway";
+                lamp.id = "??:??:??:??:??:??:??:??";
+                lamp.power = Types.Power.ON;
+                lamp.model = "Color 1000";
+                on_new_device (lamp as Models.Device);
+            }
+
+            Thread.usleep (500 * 1000);
+
+            {
+                var lamp = new Lifx.Lamp ();
+                lamp.name = "Living Room";
+                lamp.id = "??:??:??:??:??:??:??:??";
+                lamp.power = Types.Power.OFF;
+                lamp.model = "Color 1000";
+                on_new_device (lamp as Models.Device);
+            }
+
+            return null;
+        });
+        #else
         setup_socket ();
         listen ();
         discover ();
+        #endif
     }
 
     private void setup_socket () {

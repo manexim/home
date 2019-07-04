@@ -23,10 +23,4 @@ namespace Config {
     public const string APP_ID = "com.github.manexim.home";
     public const string APP_NAME = "Home";
     public const string APP_VERSION = "0.2.0";
-
-    #if DEMO_MODE
-    public const bool DEMO_MODE = true;
-    #else
-    public const bool DEMO_MODE = false;
-    #endif
 }

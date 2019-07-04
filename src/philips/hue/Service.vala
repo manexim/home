@@ -50,10 +50,23 @@ public class Philips.Hue.Service {
         bridge_loaded_array = new Array<Bridge> ();
         bridge_array = new Array<Bridge> ();
 
+        #if DEMO_MODE
+        new Thread<void*> (null, () => {
+            Thread.usleep (2 * 1000 * 1000);
+
+            var bridge = new Philips.Hue.Bridge ();
+            bridge.name = "Philips Hue";
+            bridge.id = "????????????????";
+            found_bridge (bridge);
+
+            return null;
+        });
+        #else
         load_bridges ();
         setup_socket ();
         listen ();
         discover_bridges ();
+        #endif
     }
 
     private void load_bridges () {
@@ -162,6 +175,35 @@ public class Philips.Hue.Service {
     }
 
     private void discover_bridge_devices (Philips.Hue.Bridge bridge) {
+        #if DEMO_MODE
+        new Thread<void*> (null, () => {
+            while (bridge.power != Types.Power.ON) {
+                Thread.usleep (1 * 1000 * 1000);
+            }
+
+            {
+                var lamp = new Philips.Hue.Lamp ();
+                lamp.name = "Kitchen";
+                lamp.id = "??:??:??:??:??:??:??:??-??";
+                lamp.power = Types.Power.ON;
+                lamp.manufacturer = "Philips Hue";
+                lamp.model = "White";
+                on_new_device (lamp);
+            }
+
+            {
+                var lamp = new Philips.Hue.Lamp ();
+                lamp.name = "Garage";
+                lamp.id = "??:??:??:??:??:??:??:??-??";
+                lamp.power = Types.Power.OFF;
+                lamp.manufacturer = "Philips Hue";
+                lamp.model = "White";
+                on_new_device (lamp);
+            }
+
+            return null;
+        });
+        #else
         var controller = new Philips.Hue.BridgeController (bridge);
         controller.on_new_lamp.connect ((lamp) => {
             on_new_device (lamp);
@@ -180,6 +222,7 @@ public class Philips.Hue.Service {
                 Thread.usleep (10 * 1000 * 1000);
             }
         });
+        #endif
     }
 
     private void discover_bridges_ssdp () {
@@ -222,7 +265,10 @@ public class Philips.Hue.Service {
 
     private void found_bridge (Philips.Hue.Bridge bridge) {
         var controller = new Philips.Hue.BridgeController (bridge);
+        #if DEMO_MODE
+        #else
         controller.get_description ();
+        #endif
 
         if (!is_in_array (bridge_array, bridge.id)) {
             if (is_in_array (bridge_loaded_array, bridge.id)) {

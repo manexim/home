@@ -23,6 +23,10 @@ public class Philips.Hue.BridgeController {
     private Bridge _bridge;
     private Gee.HashMap<string, Models.Device> thing_map;
 
+    #if DEMO_MODE
+    private uint register_counter = 0;
+    #endif
+
     public signal void on_new_lamp (Models.Lamp lamp);
     public signal void on_updated_lamp (Models.Lamp lamp);
 
@@ -115,6 +119,13 @@ public class Philips.Hue.BridgeController {
     }
 
     public bool register () throws GLib.Error {
+        #if DEMO_MODE
+        if (register_counter++ == 2) {
+            _bridge.power = Types.Power.ON;
+
+            return true;
+        }
+        #else
         string url = "%sapi".printf (_bridge.base_url);
 
         var session = new Soup.Session ();
@@ -157,6 +168,7 @@ public class Philips.Hue.BridgeController {
                 return true;
             }
         }
+        #endif
 
         return false;
     }

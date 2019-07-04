@@ -43,7 +43,11 @@ public class Pages.DevicePage : Granite.SimpleSettingsPage {
         status_switch.notify["active"].connect (update_status);
 
         status_switch.state_set.connect ((state) => {
+            #if DEMO_MODE
+            controller.device.power = state ? Types.Power.ON : Types.Power.OFF;
+            #else
             controller.switch_power (state);
+            #endif
 
             status_switch.active = state;
             status_switch.state = state;
