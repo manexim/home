@@ -19,81 +19,84 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Lifx {
-    public class Lamp : Models.Lamp {
-        public uint16 port {
-            get {
-                if (!_obj.has_member ("port")) {
-                    port = 56700;
-                }
+public class Lifx.Lamp : Models.Lamp {
+    public Lamp () {
+        icon = "com.github.manexim.home.lightbulb.lifx-symbolic";
+        manufacturer = "LIFX";
+    }
 
-                return (uint16) _obj.get_int_member ("port");
+    public uint16 port {
+        get {
+            if (!_obj.has_member ("port")) {
+                port = 56700;
             }
-            set {
-                _obj.set_int_member ("port", value);
-            }
+
+            return (uint16) _obj.get_int_member ("port");
         }
-
-        public uint16 hue {
-            get {
-                return (uint16) _obj.get_int_member ("hue");
-            }
-            set {
-                _obj.set_int_member ("hue", value);
-            }
+        set {
+            _obj.set_int_member ("port", value);
         }
+    }
 
-        public uint16 saturation {
-            get {
-                return (uint16) _obj.get_int_member ("saturation");
-            }
-            set {
-                _obj.set_int_member ("saturation", value);
-            }
+    public uint16 hue {
+        get {
+            return (uint16) _obj.get_int_member ("hue");
         }
-
-        public uint16 brightness {
-            get {
-                return (uint16) _obj.get_int_member ("brightness");
-            }
-            set {
-                _obj.set_int_member ("brightness", value);
-            }
+        set {
+            _obj.set_int_member ("hue", value);
         }
+    }
 
-        public uint16 kelvin {
-            get {
-                return (uint16) _obj.get_int_member ("kelvin");
-            }
-            set {
-                _obj.set_int_member ("kelvin", value);
-            }
+    public uint16 saturation {
+        get {
+            return (uint16) _obj.get_int_member ("saturation");
         }
-
-        public bool supports_infrared {
-            get {
-                if (!_obj.has_member ("supportsInfrared")) {
-                    supports_infrared = false;
-                }
-
-                return _obj.get_boolean_member ("supportsInfrared");
-            }
-            set {
-                _obj.set_boolean_member ("supportsInfrared", value);
-            }
+        set {
+            _obj.set_int_member ("saturation", value);
         }
+    }
 
-        public bool supports_multizone {
-            get {
-                if (!_obj.has_member ("supportsMultizone")) {
-                    supports_multizone = false;
-                }
+    public uint16 brightness {
+        get {
+            return (uint16) _obj.get_int_member ("brightness");
+        }
+        set {
+            _obj.set_int_member ("brightness", value);
+        }
+    }
 
-                return _obj.get_boolean_member ("supportsMultizone");
+    public uint16 kelvin {
+        get {
+            return (uint16) _obj.get_int_member ("kelvin");
+        }
+        set {
+            _obj.set_int_member ("kelvin", value);
+        }
+    }
+
+    public bool supports_infrared {
+        get {
+            if (!_obj.has_member ("supportsInfrared")) {
+                supports_infrared = false;
             }
-            set {
-                _obj.set_boolean_member ("supportsMultizone", value);
+
+            return _obj.get_boolean_member ("supportsInfrared");
+        }
+        set {
+            _obj.set_boolean_member ("supportsInfrared", value);
+        }
+    }
+
+    public bool supports_multizone {
+        get {
+            if (!_obj.has_member ("supportsMultizone")) {
+                supports_multizone = false;
             }
+
+            return _obj.get_boolean_member ("supportsMultizone");
+        }
+        set {
+            _obj.set_boolean_member ("supportsMultizone", value);
         }
     }
 }

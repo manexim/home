@@ -1,3 +1,10 @@
-src/views/WelcomeView.vala
-src/pages/LampPage.vala
+src/MainWindow.vala
+src/onboarding/FinishView.vala
+src/onboarding/LIFXView.vala
+src/onboarding/PhilipsHueView.vala
+src/onboarding/StartView.vala
+src/pages/DevicePage.vala
 src/pages/LoadingPage.vala
+src/pages/HueBridgeOnboardingPage.vala
+src/views/Overview.vala
+src/views/OnboardingView.vala

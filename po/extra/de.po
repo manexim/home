@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 16:59+0200\n"
-"PO-Revision-Date: 2019-06-17 22:33+0400\n"
+"POT-Creation-Date: 2019-06-22 09:47+0200\n"
+"PO-Revision-Date: 2019-06-22 09:24+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: de\n"
@@ -26,15 +26,15 @@ msgstr ""
 #: data/com.github.manexim.home.appdata.xml.in:8
 #: data/com.github.manexim.home.desktop.in:6
 msgid "Control your smart home gadgets"
-msgstr ""
+msgstr "Steuern Sie Ihre Smart Home Gadgets"
 
 #: data/com.github.manexim.home.appdata.xml.in:10
 msgid "A smart home application to control your gadgets."
-msgstr ""
+msgstr "Eine Smart Home App zur Steuerung Ihrer Gadgets."
 
 #: data/com.github.manexim.home.appdata.xml.in:11
 msgid "Supported devices:"
-msgstr ""
+msgstr "Unterstützte Geräte:"
 
 #: data/com.github.manexim.home.appdata.xml.in:13
 msgid "LIFX"
@@ -42,27 +42,27 @@ msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:25
 msgid "New:"
-msgstr ""
+msgstr "Neu:"
 
 #: data/com.github.manexim.home.appdata.xml.in:27
 msgid "Add welcome view for onboarding"
-msgstr ""
+msgstr "Willkommensansicht für Onboarding hinzugefügt"
 
 #: data/com.github.manexim.home.appdata.xml.in:28
 msgid "Show loading page if no smart home gadget is found"
-msgstr ""
+msgstr "Lade-Seite anzeigen, wenn kein Smart Home Gadget gefunden wird."
 
 #: data/com.github.manexim.home.appdata.xml.in:29
 msgid "Show manufacturer and model of device"
-msgstr ""
+msgstr "Zeige Hersteller und Modell des Gerätes an"
 
 #: data/com.github.manexim.home.appdata.xml.in:31
 msgid "Improved:"
-msgstr ""
+msgstr "Verbessert:"
 
 #: data/com.github.manexim.home.appdata.xml.in:33
 msgid "Save and load window settings"
-msgstr ""
+msgstr "Speichern und laden der Fenstereinstellungen"
 
 #: data/com.github.manexim.home.appdata.xml.in:35
 msgid "Fixed:"
@@ -70,19 +70,19 @@ msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:37
 msgid "Remove mention of elementary OS in app description"
-msgstr ""
+msgstr "Entfernen der Erwähnung von elementary OS in der App-Beschreibung"
 
 #: data/com.github.manexim.home.appdata.xml.in:38
 msgid "Suffix symbolic icon names with -symbolic"
-msgstr ""
+msgstr "-symbolic an symbolic Icon-Namen angehängt"
 
 #: data/com.github.manexim.home.appdata.xml.in:39
 msgid "Install all available icon sizes"
-msgstr ""
+msgstr "Installiere alle verfügbaren Icon-Größen"
 
 #: data/com.github.manexim.home.appdata.xml.in:45
 msgid "Initial release"
-msgstr ""
+msgstr "Erstveröffentlichung"
 
 #: data/com.github.manexim.home.appdata.xml.in:71
 msgid "Manexim"

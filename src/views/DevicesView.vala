@@ -19,21 +19,32 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Pages.LoadingPage : Gtk.Grid {
-    public LoadingPage () {
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
+public class Views.DevicesView : Gtk.Paned {
+    private Gtk.Stack stack;
+    private Controllers.DevicesController devices_controller;
 
-        var label = new Gtk.Label (_("Looking for smart home gadgets to control."));
-		label.halign = Gtk.Align.CENTER;
-		label.valign = Gtk.Align.CENTER;
+    public DevicesView () {
+        devices_controller = new Controllers.DevicesController ();
 
-        var spinner = new Gtk.Spinner ();
-		spinner.halign = Gtk.Align.CENTER;
-		spinner.valign = Gtk.Align.CENTER;
-		spinner.start ();
+        stack = new Gtk.Stack ();
 
-        attach (label, 0, 0, 1, 1);
-        attach (spinner, 0, 2, 1, 1);
+        var sidebar = new Granite.SettingsSidebar (stack);
+
+        add (sidebar);
+        add (stack);
+
+        stack.add_named (new Pages.LoadingPage (), "loading");
+        stack.show_all ();
+
+        devices_controller.on_new_device.connect ((device) => {
+            stack.add_named (new Pages.DevicePage (device), device.id);
+
+            if (stack.get_visible_child_name () == "loading") {
+                var child = stack.get_child_by_name ("loading");
+                stack.remove (child);
+            }
+
+            stack.show_all ();
+        });
     }
 }

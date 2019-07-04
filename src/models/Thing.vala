@@ -19,49 +19,113 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Models {
-    public class Thing {
-        protected Json.Object _obj;
+public class Models.Thing : Object {
+    protected Json.Object _obj;
 
-        public Thing () {
-            _obj = new Json.Object ();
-        }
+    public Thing () {
+        _obj = new Json.Object ();
+        icon = "com.github.manexim.home.thing-symbolic";
+    }
 
-        public string id {
-            get {
-                if (!_obj.has_member ("id")) {
-                    id = null;
-                }
+    public Thing.from_object (Json.Object object) {
+        _obj = object;
+    }
 
-                return _obj.get_string_member ("id");
+    public string id {
+        get {
+            if (!_obj.has_member ("id")) {
+                id = null;
             }
-            set {
-                _obj.set_string_member ("id", value);
+
+            return _obj.get_string_member ("id");
+        }
+        set {
+            _obj.set_string_member ("id", value);
+        }
+    }
+
+    public string name {
+        get {
+            if (!_obj.has_member ("name")) {
+                name = null;
+            }
+
+            return _obj.get_string_member ("name");
+        }
+        set {
+            _obj.set_string_member ("name", value);
+        }
+    }
+
+    public string icon {
+        get {
+            if (!_obj.has_member ("icon")) {
+                icon = null;
+            }
+
+            return _obj.get_string_member ("icon");
+        }
+        set {
+            _obj.set_string_member ("icon", value);
+        }
+    }
+
+    public Types.Power power {
+        get {
+            if (!_obj.has_member ("power")) {
+                _obj.set_string_member ("power", "unknown");
+            }
+
+            switch (_obj.get_string_member ("power")) {
+                case "on":
+                    return Types.Power.ON;
+                case "off":
+                    return Types.Power.OFF;
+                case "warning":
+                    return Types.Power.WARNING;
+                default:
+                    return Types.Power.UNKNOWN;
             }
         }
-
-        public string name {
-            get {
-                if (!_obj.has_member ("name")) {
-                    name = null;
-                }
-
-                return _obj.get_string_member ("name");
-            }
-            set {
-                _obj.set_string_member ("name", value);
-            }
+        set {
+            _obj.set_string_member ("power", value.to_string ());
         }
+    }
 
-        public string to_string () {
-            size_t length;
+    public string manufacturer {
+        get {
+            if (!_obj.has_member ("manufacturer")) {
+                manufacturer = null;
+            }
 
-            var gen = new Json.Generator ();
-            var root = new Json.Node (Json.NodeType.OBJECT);
-            root.set_object (_obj);
-            gen.set_root (root);
-
-            return gen.to_data (out length);
+            return _obj.get_string_member ("manufacturer");
         }
+        set {
+            _obj.set_string_member ("manufacturer", value);
+        }
+    }
+
+    public string model {
+        get {
+            if (!_obj.has_member ("model")) {
+                model = null;
+            }
+
+            return _obj.get_string_member ("model");
+        }
+        set {
+            _obj.set_string_member ("model", value);
+        }
+    }
+
+    public string to_string () {
+        size_t length;
+
+        var gen = new Json.Generator ();
+        var root = new Json.Node (Json.NodeType.OBJECT);
+        root.set_object (_obj);
+        gen.set_root (root);
+
+        return gen.to_data (out length);
     }
 }

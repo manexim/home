@@ -19,65 +19,21 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-namespace Models {
-    public class Lamp : Thing {
-        public Power power {
-            get {
-                if (!_obj.has_member ("power")) {
-                    _obj.set_string_member ("power", "unknown");
-                }
+public class Models.Lamp : Models.Device {
+    public Lamp () {
+        icon = "com.github.manexim.home.lightbulb-symbolic";
+    }
 
-                switch (_obj.get_string_member ("power")) {
-                    case "on":
-                        return Power.ON;
-                    case "off":
-                        return Power.OFF;
-                    default:
-                        return Power.UNKNOWN;
-                }
+    public bool supports_color {
+        get {
+            if (!_obj.has_member ("supportsColor")) {
+                supports_color = false;
             }
-            set {
-                _obj.set_string_member ("power", value.to_string ());
-            }
+
+            return _obj.get_boolean_member ("supportsColor");
         }
-
-        public string manufacturer {
-            get {
-                if (!_obj.has_member ("manufacturer")) {
-                    manufacturer = null;
-                }
-
-                return _obj.get_string_member ("manufacturer");
-            }
-            set {
-                _obj.set_string_member ("manufacturer", value);
-            }
-        }
-
-        public string model {
-            get {
-                if (!_obj.has_member ("model")) {
-                    model = null;
-                }
-
-                return _obj.get_string_member ("model");
-            }
-            set {
-                _obj.set_string_member ("model", value);
-            }
-        }
-
-        public bool supports_color {
-            get {
-                if (!_obj.has_member ("supportsColor")) {
-                    supports_color = false;
-                }
-
-                return _obj.get_boolean_member ("supportsColor");
-            }
-            set {
-                _obj.set_boolean_member ("supportsColor", value);
-            }
+        set {
+            _obj.set_boolean_member ("supportsColor", value);
         }
     }
 }

@@ -19,40 +19,24 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Philips.Hue.Bridge : Models.Device {
-    public Bridge () {
-        icon = "com.github.manexim.home.bridge.philips.hue-symbolic";
+public class Philips.Hue.Lamp : Models.Lamp {
+    public Philips.Hue.Bridge bridge;
+
+    public Lamp () {
+        icon = "com.github.manexim.home.lightbulb.philips.hue-symbolic";
         manufacturer = "Philips";
-        power = Types.Power.WARNING;
     }
 
-    public Bridge.from_object (Json.Object object) {
-        _obj = object;
-    }
-
-    public string base_url {
+    public string number {
         get {
-            if (!_obj.has_member ("baseURL")) {
-                base_url = null;
+            if (!_obj.has_member ("number")) {
+                number = null;
             }
 
-            return _obj.get_string_member ("baseURL");
+            return _obj.get_string_member ("number");
         }
         set {
-            _obj.set_string_member ("baseURL", value);
-        }
-    }
-
-    public string username {
-        get {
-            if (!_obj.has_member ("username")) {
-                username = null;
-            }
-
-            return _obj.get_string_member ("username");
-        }
-        set {
-            _obj.set_string_member ("username", value);
+            _obj.set_string_member ("number", value);
         }
     }
 }

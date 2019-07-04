@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 17:14+0200\n"
+"POT-Creation-Date: 2019-07-04 19:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,56 +17,101 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/views/WelcomeView.vala:26
-msgid "Control your smart home gadgets"
+#: src/MainWindow.vala:58
+msgid "Light background"
 msgstr ""
 
-#: src/views/WelcomeView.vala:30
-msgid ""
-"Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
-"your Wi-Fi."
+#: src/MainWindow.vala:59
+msgid "Dark background"
 msgstr ""
 
-#: src/views/WelcomeView.vala:35
-msgid ""
-"Smart ZigBee lights by Philips Hue are supported. They must already be "
-"connected to your Philips Hue Bridge."
+#: src/MainWindow.vala:80 src/MainWindow.vala:85 src/MainWindow.vala:86
+msgid "Overview"
 msgstr ""
 
-#: src/views/WelcomeView.vala:39
-msgid "Let's go"
-msgstr ""
-
-#: src/views/WelcomeView.vala:40
+#: src/onboarding/FinishView.vala:25
 msgid ""
 "You can control your smart home gadgets directly via your local network. A "
 "connection to the internet is not required."
 msgstr ""
 
-#: src/pages/LampPage.vala:63
+#: src/onboarding/FinishView.vala:27
+msgid "Let's go"
+msgstr ""
+
+#: src/onboarding/LIFXView.vala:25
+msgid ""
+"Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
+"your Wi-Fi."
+msgstr ""
+
+#: src/onboarding/PhilipsHueView.vala:25
+msgid ""
+"Smart ZigBee lights by Philips Hue are supported. They must already be "
+"connected to your Philips Hue Bridge."
+msgstr ""
+
+#: src/onboarding/StartView.vala:25
+msgid "Control your smart home gadgets"
+msgstr ""
+
+#: src/onboarding/StartView.vala:27
+#, c-format
+msgid "Welcome to %s!"
+msgstr ""
+
+#: src/pages/DevicePage.vala:62
 msgid "ID: "
 msgstr ""
 
-#: src/pages/LampPage.vala:64
+#: src/pages/DevicePage.vala:63
 msgid "Manufacturer: "
 msgstr ""
 
-#: src/pages/LampPage.vala:65
+#: src/pages/DevicePage.vala:64
 msgid "Model: "
 msgstr ""
 
-#: src/pages/LampPage.vala:70
+#: src/pages/DevicePage.vala:73
 msgid "Enabled"
 msgstr ""
 
-#: src/pages/LampPage.vala:74
+#: src/pages/DevicePage.vala:79
 msgid "Disabled"
 msgstr ""
 
-#: src/pages/LampPage.vala:78
+#: src/pages/DevicePage.vala:83
 msgid "Unknown"
 msgstr ""
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
+msgstr ""
+
+#: src/pages/HueBridgeOnboardingPage.vala:38
+msgid "Press the push-link button in the middle of the Hue bridge."
+msgstr ""
+
+#: src/pages/HueBridgeOnboardingPage.vala:59
+msgid "The Hue bridge was successfully registered."
+msgstr ""
+
+#: src/views/Overview.vala:30
+msgid "Devices"
+msgstr ""
+
+#: src/views/Overview.vala:65
+msgid "Hubs"
+msgstr ""
+
+#: src/views/OnboardingView.vala:53
+msgid "Skip All"
+msgstr ""
+
+#: src/views/OnboardingView.vala:64 src/views/OnboardingView.vala:91
+msgid "Next"
+msgstr ""
+
+#: src/views/OnboardingView.vala:88
+msgid "Get Started"
 msgstr ""

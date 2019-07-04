@@ -11,6 +11,7 @@
     <p>Supported devices:</p>
     <ul>
       <li>LIFX</li>
+      <li>Philips Hue</li>
     </ul>
   </description>
   <categories>
@@ -20,6 +21,32 @@
       <binary>com.github.manexim.home</binary>
   </provides>
   ​<releases>
+    <release date="2019-07-04" version="0.3.0">
+      <description>
+        <p>New:</p>
+        <ul>
+          <li>Add new UI</li>
+          <li>Add initial support for Philips Hue devices</li>
+          <li>Add discovery for Philips Hue bridges</li>
+          <li>Add page to configure Philips Hue bridges</li>
+          <li>Add service to save configurations</li>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+          <li>Update welcome view</li>
+          <li>Add mode switch for dark theme if freedesktop schema is not available</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+        </ul>
+        <p>Translations:</p>
+        <ul>
+          <li>French (by NathanBnm)</li>
+          <li>German</li>
+          <li>Russian (by camellan)</li>
+        </ul>
+      </description>
+    </release>
     <release date="2019-06-14" version="0.2.0">
       <description>
         <p>New:</p>
@@ -66,6 +93,10 @@
     <screenshot>
       <caption></caption>
       <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/004.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/005.png</image>
     </screenshot>
   </screenshots>
   <developer_name>Manexim</developer_name>

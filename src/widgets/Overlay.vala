@@ -19,40 +19,27 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Philips.Hue.Bridge : Models.Device {
-    public Bridge () {
-        icon = "com.github.manexim.home.bridge.philips.hue-symbolic";
-        manufacturer = "Philips";
-        power = Types.Power.WARNING;
-    }
+public class Widgets.Overlay : Gtk.Overlay {
+    private static Overlay? _instance;
+    public Granite.Widgets.Toast toast;
 
-    public Bridge.from_object (Json.Object object) {
-        _obj = object;
-    }
-
-    public string base_url {
+    public static Overlay instance {
         get {
-            if (!_obj.has_member ("baseURL")) {
-                base_url = null;
+            if (_instance == null) {
+                _instance = new Overlay ();
             }
 
-            return _obj.get_string_member ("baseURL");
-        }
-        set {
-            _obj.set_string_member ("baseURL", value);
+            return _instance;
         }
     }
 
-    public string username {
-        get {
-            if (!_obj.has_member ("username")) {
-                username = null;
-            }
+    private Overlay () {
+        toast = new Granite.Widgets.Toast ("");
+        add_overlay (toast);
+    }
 
-            return _obj.get_string_member ("username");
-        }
-        set {
-            _obj.set_string_member ("username", value);
-        }
+    public void show_toast (string message) {
+        toast.title = message;
+        toast.send_notification ();
     }
 }

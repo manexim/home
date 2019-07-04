@@ -1,0 +1,1 @@
+option('demo_mode', type: 'string', value: 'false', description: 'Check if demo mode should be enabled')

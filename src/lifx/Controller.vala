@@ -19,21 +19,20 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Pages.LoadingPage : Gtk.Grid {
-    public LoadingPage () {
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
+public class Lifx.Controller : Controllers.DeviceController {
+    private Lifx.Service service;
 
-        var label = new Gtk.Label (_("Looking for smart home gadgets to control."));
-		label.halign = Gtk.Align.CENTER;
-		label.valign = Gtk.Align.CENTER;
+    public Controller (Models.Device device) {
+        Object (
+            device : device
+        );
 
-        var spinner = new Gtk.Spinner ();
-		spinner.halign = Gtk.Align.CENTER;
-		spinner.valign = Gtk.Align.CENTER;
-		spinner.start ();
+        service = Lifx.Service.instance;
+    }
 
-        attach (label, 0, 0, 1, 1);
-        attach (spinner, 0, 2, 1, 1);
+    public override void switch_power (bool on) {
+        service.set_power (device as Lifx.Lamp, on ? 65535 : 0);
+
+        _device.power = on ? Types.Power.ON : Types.Power.OFF;
     }
 }

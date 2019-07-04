@@ -19,40 +19,52 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Philips.Hue.Bridge : Models.Device {
-    public Bridge () {
-        icon = "com.github.manexim.home.bridge.philips.hue-symbolic";
-        manufacturer = "Philips";
-        power = Types.Power.WARNING;
+public class History {
+    private Gee.LinkedList<string> list;
+    private int index = -1;
+
+    public History () {
+        list = new Gee.LinkedList<string> ();
     }
 
-    public Bridge.from_object (Json.Object object) {
-        _obj = object;
-    }
-
-    public string base_url {
+    public bool is_homepage {
         get {
-            if (!_obj.has_member ("baseURL")) {
-                base_url = null;
-            }
-
-            return _obj.get_string_member ("baseURL");
-        }
-        set {
-            _obj.set_string_member ("baseURL", value);
+            return list.size <= 1;
         }
     }
 
-    public string username {
-        get {
-            if (!_obj.has_member ("username")) {
-                username = null;
-            }
+    public string current {
+        owned get {
+            return list.get (index);
+        }
+    }
 
-            return _obj.get_string_member ("username");
+    public string previous {
+        owned get {
+            return list.get (index - 1);
         }
-        set {
-            _obj.set_string_member ("username", value);
+    }
+
+    public void add (string v) {
+        list.add (v);
+        index += 1;
+    }
+
+    public string pop () {
+        index -= 1;
+        return list.poll_tail ();
+    }
+
+    public void println () {
+        print ("History: ");
+        for (int i = 0; i < list.size; i++) {
+            print (list.get (i));
+
+            if (i < list.size - 1) {
+                print (" > ");
+            }
         }
+
+        print ("\n");
     }
 }

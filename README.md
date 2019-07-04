@@ -39,9 +39,19 @@
       <td>
         <img src="data/screenshots/004.png">
       </td>
+      <td>
+        <img src="data/screenshots/005.png">
+      </td>
     </tr>
   </table>
 </p>
+
+## Supported devices
+
+<ul>
+  <li>LIFX</li>
+  <li>Philips Hue</li>
+</ul>
 
 ## Installation
 

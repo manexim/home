@@ -19,40 +19,23 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Philips.Hue.Bridge : Models.Device {
-    public Bridge () {
-        icon = "com.github.manexim.home.bridge.philips.hue-symbolic";
-        manufacturer = "Philips";
-        power = Types.Power.WARNING;
+public abstract class Controllers.DeviceController : Object {
+    protected Models.Device _device;
+
+    public DeviceController (Models.Device device) {
+        Object (
+            device : device
+        );
     }
 
-    public Bridge.from_object (Json.Object object) {
-        _obj = object;
-    }
+    public abstract void switch_power (bool on);
 
-    public string base_url {
+    public Models.Device device {
         get {
-            if (!_obj.has_member ("baseURL")) {
-                base_url = null;
-            }
-
-            return _obj.get_string_member ("baseURL");
+            return _device;
         }
-        set {
-            _obj.set_string_member ("baseURL", value);
-        }
-    }
-
-    public string username {
-        get {
-            if (!_obj.has_member ("username")) {
-                username = null;
-            }
-
-            return _obj.get_string_member ("username");
-        }
-        set {
-            _obj.set_string_member ("username", value);
+        construct set {
+            _device = value;
         }
     }
 }
