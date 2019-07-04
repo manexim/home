@@ -17,6 +17,14 @@ soup_dep = dependency('libsoup-2.4')
 xml_dep = dependency('libxml-2.0')
 uuid_dep = dependency('uuid')
 
+vala_flags = []
+enable_demo_mode = get_option('demo_mode') == 'true'
+if enable_demo_mode
+    vala_flags += ['--define', 'DEMO_MODE']
+endif
+
+add_project_arguments(vala_flags, language: 'vala')
+
 subdir('data')
 subdir('src')
 subdir('po')
