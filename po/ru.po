@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-23 09:20+0200\n"
+"POT-Creation-Date: 2019-07-04 19:19+0200\n"
 "PO-Revision-Date: 2019-06-17 22:56+0400\n"
 "Last-Translator: Andrey Kultyapov <camellan@yandex.ru>\n"
 "Language-Team: none\n"
@@ -27,43 +27,11 @@ msgstr ""
 msgid "Dark background"
 msgstr ""
 
-#: src/MainWindow.vala:84 src/MainWindow.vala:85
+#: src/MainWindow.vala:80 src/MainWindow.vala:85 src/MainWindow.vala:86
 msgid "Overview"
 msgstr ""
 
-#: src/views/Overview.vala:30
-msgid "Devices"
-msgstr ""
-
-#: src/views/Overview.vala:65
-msgid "Hubs"
-msgstr ""
-
-#: src/views/WelcomeView.vala:26
-msgid "Control your smart home gadgets"
-msgstr "Управляйте своими умными домашними устройствами"
-
-#: src/views/WelcomeView.vala:30
-msgid ""
-"Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
-"your Wi-Fi."
-msgstr ""
-"Поддерживаются умные Wi-Fi лампы LIFX . Они уже должны быть подключены к Wi-"
-"Fi."
-
-#: src/views/WelcomeView.vala:35
-msgid ""
-"Smart ZigBee lights by Philips Hue are supported. They must already be "
-"connected to your Philips Hue Bridge."
-msgstr ""
-"Поддерживаются умные ZigBee лампы от Philips Hue. Они уже должны быть "
-"подключены к Philips Hue Bridge."
-
-#: src/views/WelcomeView.vala:39
-msgid "Let's go"
-msgstr "Поехали"
-
-#: src/views/WelcomeView.vala:40
+#: src/onboarding/FinishView.vala:25
 msgid ""
 "You can control your smart home gadgets directly via your local network. A "
 "connection to the internet is not required."
@@ -71,27 +39,56 @@ msgstr ""
 "Вы можете управлять своими умными домашними устройствами непосредственно "
 "через локальную сеть. Подключение к интернету не требуется."
 
-#: src/pages/ThingPage.vala:65
+#: src/onboarding/FinishView.vala:27
+msgid "Let's go"
+msgstr "Поехали"
+
+#: src/onboarding/LIFXView.vala:25
+msgid ""
+"Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
+"your Wi-Fi."
+msgstr ""
+"Поддерживаются умные Wi-Fi лампы LIFX . Они уже должны быть подключены к Wi-"
+"Fi."
+
+#: src/onboarding/PhilipsHueView.vala:25
+msgid ""
+"Smart ZigBee lights by Philips Hue are supported. They must already be "
+"connected to your Philips Hue Bridge."
+msgstr ""
+"Поддерживаются умные ZigBee лампы от Philips Hue. Они уже должны быть "
+"подключены к Philips Hue Bridge."
+
+#: src/onboarding/StartView.vala:25
+msgid "Control your smart home gadgets"
+msgstr "Управляйте своими умными домашними устройствами"
+
+#: src/onboarding/StartView.vala:27
+#, c-format
+msgid "Welcome to %s!"
+msgstr ""
+
+#: src/pages/DevicePage.vala:62
 msgid "ID: "
 msgstr ""
 
-#: src/pages/ThingPage.vala:66
+#: src/pages/DevicePage.vala:63
 msgid "Manufacturer: "
 msgstr ""
 
-#: src/pages/ThingPage.vala:67
+#: src/pages/DevicePage.vala:64
 msgid "Model: "
 msgstr ""
 
-#: src/pages/ThingPage.vala:72
+#: src/pages/DevicePage.vala:73
 msgid "Enabled"
 msgstr ""
 
-#: src/pages/ThingPage.vala:76
+#: src/pages/DevicePage.vala:79
 msgid "Disabled"
 msgstr ""
 
-#: src/pages/ThingPage.vala:80
+#: src/pages/DevicePage.vala:83
 msgid "Unknown"
 msgstr ""
 
@@ -103,6 +100,26 @@ msgstr "Поиск умных домашних устройств."
 msgid "Press the push-link button in the middle of the Hue bridge."
 msgstr ""
 
-#: src/pages/HueBridgeOnboardingPage.vala:61
+#: src/pages/HueBridgeOnboardingPage.vala:59
 msgid "The Hue bridge was successfully registered."
+msgstr ""
+
+#: src/views/Overview.vala:30
+msgid "Devices"
+msgstr ""
+
+#: src/views/Overview.vala:65
+msgid "Hubs"
+msgstr ""
+
+#: src/views/OnboardingView.vala:53
+msgid "Skip All"
+msgstr ""
+
+#: src/views/OnboardingView.vala:64 src/views/OnboardingView.vala:91
+msgid "Next"
+msgstr ""
+
+#: src/views/OnboardingView.vala:88
+msgid "Get Started"
 msgstr ""
