@@ -24,7 +24,7 @@ public class Onboarding.StartView : Onboarding.AbstractOnboardingView {
         Object (
             description: _("Control your smart home gadgets"),
             icon_name: "com.github.manexim.home",
-            title: _("Welcome to %s!").printf (Config.APP_NAME)
+            title: _("Welcome to %s!").printf (Config.APP_AUTHOR + " " + Config.APP_NAME)
         );
     }
 }
