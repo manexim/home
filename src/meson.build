@@ -40,6 +40,7 @@ sources = [
 executable(
     meson.project_name(),
     sources + ['Application.vala'],
+    asresources,
     dependencies: [
         gtk_plus_3_dep,
         json_glib_1_dep,
