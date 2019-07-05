@@ -347,6 +347,15 @@ public class Lifx.Packet {
                     buf4 = new Buffer.alloc (2);
                     buf4.write_uint16_le ((uint16) payload.get_int_member ("level"), 0);
                     break;
+                case 102: // SetColor
+                    buf4 = new Buffer.alloc (13);
+                    buf4.write_uint8 ((uint8) 0, 0);
+                    buf4.write_uint16_le ((uint16) payload.get_int_member ("hue"), 1);
+                    buf4.write_uint16_le ((uint16) payload.get_int_member ("saturation"), 3);
+                    buf4.write_uint16_le ((uint16) payload.get_int_member ("brightness"), 5);
+                    buf4.write_uint16_le ((uint16) payload.get_int_member ("kelvin"), 7);
+                    buf4.write_uint32_le ((uint32) payload.get_int_member ("duration"), 9);
+                    break;
                 case 117: // SetPower
                     buf4 = new Buffer.alloc (6);
                     buf4.write_uint16_le ((uint16) payload.get_int_member ("level"), 0);

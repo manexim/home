@@ -53,7 +53,7 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
                     #if DEMO_MODE
                     lamp.brightness = (uint16) brightness_scale.adjustment.value;
                     #else
-                    controller.switch_brightness ((uint8) brightness_scale.adjustment.value);
+                    controller.switch_brightness ((uint16) brightness_scale.adjustment.value);
                     #endif
                 });
 

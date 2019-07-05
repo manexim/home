@@ -61,6 +61,32 @@ public class Lifx.Service {
         }
     }
 
+    public void set_color (Lifx.Lamp lamp, uint16 hue, uint16 saturation, uint16 brightness, uint16 kelvin, uint32 duration=0) {
+        var packet = new Lifx.Packet ();
+        packet.type = 102;
+        packet.tagged = false;
+        packet.addressable = true;
+        packet.target = lamp.id;
+        packet.ack_required = false;
+        packet.res_required = false;
+        packet.source = source++;
+        packet.payload.set_int_member ("hue", hue);
+        packet.payload.set_int_member ("saturation", saturation);
+        packet.payload.set_int_member ("brightness", brightness);
+        packet.payload.set_int_member ("kelvin", kelvin);
+        packet.payload.set_int_member ("duration", duration);
+
+        try {
+            socket.send_to (
+                new InetSocketAddress (
+                    new InetAddress.from_string ("255.255.255.255"), lamp.port),
+                packet.raw
+            );
+        } catch (Error e) {
+            stderr.printf (e.message);
+        }
+    }
+
     private Service () {
         device_map = new Gee.HashMap<string, Models.Device> ();
 

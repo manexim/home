@@ -30,7 +30,12 @@ public class Lifx.Controller : Controllers.DeviceController {
         service = Lifx.Service.instance;
     }
 
-    public override void switch_brightness (uint16 brightness) {}
+    public override void switch_brightness (uint16 brightness) {
+        var lamp = device as Lifx.Lamp;
+        service.set_color (lamp, lamp.hue, lamp.saturation, brightness, lamp.color_temperature, 0);
+
+        lamp.brightness = brightness;
+    }
 
     public override void switch_power (bool on) {
         service.set_power (device as Lifx.Lamp, on ? 65535 : 0);
