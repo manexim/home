@@ -25,6 +25,7 @@ public class Controllers.DevicesController {
     private Philips.Hue.Service philips_hue_service;
 
     private Gee.ArrayList<Models.Device> device_list;
+    private Gee.HashMap<string, Models.Device> device_loaded_map;
 
     public signal void on_new_device (Models.Device device);
     public signal void on_updated_device (Models.Device device);
@@ -41,10 +42,15 @@ public class Controllers.DevicesController {
 
     private DevicesController () {
         device_list = new Gee.ArrayList<Models.Device> ();
+        load_devices ();
 
         lifx_service = Lifx.Service.instance;
 
         lifx_service.on_new_device.connect ((device) => {
+            if (device_loaded_map.has_key (device.id)) {
+                device.icon = device_loaded_map.get (device.id).icon;
+            }
+
             on_new_device (device);
 
             device_list.add (device);
@@ -57,6 +63,10 @@ public class Controllers.DevicesController {
         philips_hue_service = Philips.Hue.Service.instance;
 
         philips_hue_service.on_new_device.connect ((device) => {
+            if (device_loaded_map.has_key (device.id)) {
+                device.icon = device_loaded_map.get (device.id).icon;
+            }
+
             on_new_device (device);
 
             device_list.add (device);
@@ -70,6 +80,34 @@ public class Controllers.DevicesController {
     public Models.Device[] devices {
         owned get {
             return device_list.to_array ();
+        }
+    }
+
+    private void load_devices () {
+        device_loaded_map = new Gee.HashMap<string, Models.Device> ();
+
+        try {
+            var configuration = Settings.get_default ().configuration_as_json ();
+            Json.Object o;
+            if (configuration.has_member ("devices")) {
+                o = configuration.get_object_member ("devices");
+            } else {
+                return;
+            }
+
+            foreach (var key in o.get_members ()) {
+                var obj = o.get_object_member (key);
+                if (obj == null) {
+                    continue;
+                }
+
+                var device = new Models.Device.from_object (obj);
+                device.id = key;
+
+                device_loaded_map.set (device.id, device);
+            }
+        } catch (Error e) {
+            stderr.printf (e.message);
         }
     }
 }
