@@ -21,7 +21,7 @@
 
 public class Models.Lamp : Models.Device {
     public Lamp () {
-        icon = "com.github.manexim.home.icon.lightbulb-symbolic";
+        default_icon = "com.github.manexim.home.icon.lightbulb-symbolic";
     }
 
     public bool supports_color {
