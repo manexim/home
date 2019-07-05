@@ -45,7 +45,7 @@ public class Views.Overview : Gtk.ScrolledWindow {
 
         grid.attach (devices_revealer, 0, 0, 1, 1);
 
-        devices_controller = new Controllers.DevicesController ();
+        devices_controller = Controllers.DevicesController.instance;
         devices_controller.on_new_device.connect ((device) => {
             devices_carousel.add_thing (device);
             devices_revealer.reveal_child = true;

@@ -20,17 +20,34 @@
 */
 
 public class Controllers.DevicesController {
+    private static DevicesController? _instance;
     private Lifx.Service lifx_service;
     private Philips.Hue.Service philips_hue_service;
+
+    private Gee.ArrayList<Models.Device> device_list;
 
     public signal void on_new_device (Models.Device device);
     public signal void on_updated_device (Models.Device device);
 
-    public DevicesController () {
+    public static DevicesController instance {
+        get {
+            if (_instance == null) {
+                _instance = new DevicesController ();
+            }
+
+            return _instance;
+        }
+    }
+
+    private DevicesController () {
+        device_list = new Gee.ArrayList<Models.Device> ();
+
         lifx_service = Lifx.Service.instance;
 
         lifx_service.on_new_device.connect ((device) => {
             on_new_device (device);
+
+            device_list.add (device);
         });
 
         lifx_service.on_updated_device.connect ((device) => {
@@ -41,10 +58,18 @@ public class Controllers.DevicesController {
 
         philips_hue_service.on_new_device.connect ((device) => {
             on_new_device (device);
+
+            device_list.add (device);
         });
 
         philips_hue_service.on_updated_device.connect ((device) => {
             on_updated_device (device);
         });
+    }
+
+    public Models.Device[] devices {
+        owned get {
+            return device_list.to_array ();
+        }
     }
 }
