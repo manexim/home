@@ -24,7 +24,7 @@ public class Models.Thing : Object {
 
     public Thing () {
         _obj = new Json.Object ();
-        icon = "com.github.manexim.home.thing-symbolic";
+        icon = "com.github.manexim.home.icon.thing-symbolic";
     }
 
     public Thing.from_object (Json.Object object) {

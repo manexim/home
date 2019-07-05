@@ -58,6 +58,24 @@ public class Pages.DevicePage : Granite.SimpleSettingsPage {
         show_all ();
     }
 
+    construct {
+        var icon_button = new Gtk.Button ();
+        icon_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        icon_button.set_image (new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR));
+
+        icon_button.clicked.connect (() => {
+            var icon_popover = new Widgets.IconPopover (icon_button);
+            icon_popover.change_icon.connect ((name) => {
+                controller.device.icon = name;
+                icon_name = name;
+                icon_button.set_image (new Gtk.Image.from_icon_name (name, Gtk.IconSize.LARGE_TOOLBAR));
+            });
+            icon_popover.show_all ();
+        });
+
+        content_area.attach (icon_button, 0, 0, 1, 1);
+    }
+
     private void update_status () {
         description = _("ID: ") + controller.device.id;
         description += "\n" + _("Manufacturer: ") + controller.device.manufacturer;

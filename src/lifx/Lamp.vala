@@ -21,7 +21,7 @@
 
 public class Lifx.Lamp : Models.Lamp {
     public Lamp () {
-        icon = "com.github.manexim.home.lightbulb.lifx-symbolic";
+        icon = "com.github.manexim.home.icon.lightbulb.lifx-symbolic";
         manufacturer = "LIFX";
     }
 

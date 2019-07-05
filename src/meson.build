@@ -33,6 +33,7 @@ sources = [
     'views/Overview.vala',
     'widgets/Carousel.vala',
     'widgets/CarouselItem.vala',
+    'widgets/IconPopover.vala',
     'widgets/Overlay.vala',
     'MainWindow.vala'
 ]
