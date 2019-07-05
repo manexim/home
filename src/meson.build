@@ -1,4 +1,6 @@
 sources = [
+    'colors/HSB.vala',
+    'colors/RGB.vala',
     'config/Constants.vala',
     'controllers/DeviceController.vala',
     'controllers/DevicesController.vala',
