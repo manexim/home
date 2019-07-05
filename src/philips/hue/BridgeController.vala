@@ -200,6 +200,16 @@ public class Philips.Hue.BridgeController {
                 lamp.bridge = bridge;
                 var on = light.get_object_member ("state").get_boolean_member ("on");
 
+                if (light.get_object_member ("state").has_member ("bri")) {
+                    lamp.supports_brightness = true;
+                    lamp.brightness = (uint8) light.get_object_member ("state").get_int_member ("bri");
+                }
+
+                if (light.get_object_member ("state").has_member ("ct")) {
+                    lamp.supports_color_temperature = true;
+                    lamp.kelvin = (uint16) light.get_object_member ("state").get_int_member ("ct");
+                }
+
                 if (on) {
                     lamp.power = Types.Power.ON;
                 } else {

@@ -24,6 +24,19 @@ public class Models.Lamp : Models.Device {
         default_icon = "com.github.manexim.home.icon.lightbulb-symbolic";
     }
 
+    public bool supports_brightness {
+        get {
+            if (!_obj.has_member ("supportsBrightness")) {
+                supports_brightness = false;
+            }
+
+            return _obj.get_boolean_member ("supportsBrightness");
+        }
+        set {
+            _obj.set_boolean_member ("supportsBrightness", value);
+        }
+    }
+
     public bool supports_color {
         get {
             if (!_obj.has_member ("supportsColor")) {
@@ -34,6 +47,19 @@ public class Models.Lamp : Models.Device {
         }
         set {
             _obj.set_boolean_member ("supportsColor", value);
+        }
+    }
+
+    public bool supports_color_temperature {
+        get {
+            if (!_obj.has_member ("supportsColorTemperature")) {
+                supports_color_temperature = false;
+            }
+
+            return _obj.get_boolean_member ("supportsColorTemperature");
+        }
+        set {
+            _obj.set_boolean_member ("supportsColorTemperature", value);
         }
     }
 }
