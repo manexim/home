@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-04 19:22+0200\n"
+"POT-Creation-Date: 2019-07-05 13:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,27 +60,31 @@ msgstr ""
 msgid "Welcome to %s!"
 msgstr ""
 
-#: src/pages/DevicePage.vala:62
+#: src/pages/DevicePage.vala:43
+msgid "Brightness: "
+msgstr ""
+
+#: src/pages/DevicePage.vala:92
 msgid "ID: "
 msgstr ""
 
-#: src/pages/DevicePage.vala:63
+#: src/pages/DevicePage.vala:93
 msgid "Manufacturer: "
 msgstr ""
 
-#: src/pages/DevicePage.vala:64
+#: src/pages/DevicePage.vala:94
 msgid "Model: "
 msgstr ""
 
-#: src/pages/DevicePage.vala:73
+#: src/pages/DevicePage.vala:103
 msgid "Enabled"
 msgstr ""
 
-#: src/pages/DevicePage.vala:79
+#: src/pages/DevicePage.vala:109
 msgid "Disabled"
 msgstr ""
 
-#: src/pages/DevicePage.vala:83
+#: src/pages/DevicePage.vala:113
 msgid "Unknown"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-04 19:19+0200\n"
+"POT-Creation-Date: 2019-07-05 13:33+0200\n"
 "PO-Revision-Date: 2019-06-17 22:32+0400\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -66,27 +66,31 @@ msgstr "Contrôlez vos objets connectés pour maison intelligente"
 msgid "Welcome to %s!"
 msgstr ""
 
-#: src/pages/DevicePage.vala:62
+#: src/pages/DevicePage.vala:43
+msgid "Brightness: "
+msgstr ""
+
+#: src/pages/DevicePage.vala:92
 msgid "ID: "
 msgstr "Identifiant : "
 
-#: src/pages/DevicePage.vala:63
+#: src/pages/DevicePage.vala:93
 msgid "Manufacturer: "
 msgstr "Fabricant : "
 
-#: src/pages/DevicePage.vala:64
+#: src/pages/DevicePage.vala:94
 msgid "Model: "
 msgstr "Modèle : "
 
-#: src/pages/DevicePage.vala:73
+#: src/pages/DevicePage.vala:103
 msgid "Enabled"
 msgstr "Activé"
 
-#: src/pages/DevicePage.vala:79
+#: src/pages/DevicePage.vala:109
 msgid "Disabled"
 msgstr "Désactivé"
 
-#: src/pages/DevicePage.vala:83
+#: src/pages/DevicePage.vala:113
 msgid "Unknown"
 msgstr "Inconnu"
 
