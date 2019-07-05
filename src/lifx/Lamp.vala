@@ -23,6 +23,9 @@ public class Lifx.Lamp : Models.Lamp {
     public Lamp () {
         default_icon = "com.github.manexim.home.icon.lightbulb.lifx-symbolic";
         manufacturer = "LIFX";
+
+        brightness_min = 0;
+        brightness_max = 65535;
     }
 
     public uint16 port {

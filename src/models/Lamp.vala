@@ -37,6 +37,24 @@ public class Models.Lamp : Models.Device {
         }
     }
 
+    public uint16 brightness_min {
+        get {
+            return (uint16) _obj.get_int_member ("brightnessMin");
+        }
+        set {
+            _obj.set_int_member ("brightnessMin", value);
+        }
+    }
+
+    public uint16 brightness_max {
+        get {
+            return (uint16) _obj.get_int_member ("brightnessMax");
+        }
+        set {
+            _obj.set_int_member ("brightnessMax", value);
+        }
+    }
+
     public uint16 brightness {
         get {
             return (uint16) _obj.get_int_member ("brightness");

@@ -25,6 +25,9 @@ public class Philips.Hue.Lamp : Models.Lamp {
     public Lamp () {
         default_icon = "com.github.manexim.home.icon.lightbulb.philips.hue-symbolic";
         manufacturer = "Philips";
+
+        brightness_min = 0;
+        brightness_max = 254;
     }
 
     public string number {

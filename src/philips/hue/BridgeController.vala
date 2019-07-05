@@ -260,6 +260,30 @@ public class Philips.Hue.BridgeController {
         session.send_message (message);
     }
 
+    public void switch_light_brightness (Philips.Hue.Lamp lamp, uint8 brightness) {
+        string url = "%sapi/%s/lights/%s/state".printf (_bridge.base_url, _bridge.username, lamp.number);
+
+        var session = new Soup.Session ();
+        var message = new Soup.Message ("PUT", url);
+
+        size_t length;
+
+        var obj = new Json.Object ();
+        obj.set_int_member ("bri", brightness);
+
+        var gen = new Json.Generator ();
+        var root = new Json.Node (Json.NodeType.OBJECT);
+        root.set_object (obj);
+        gen.set_root (root);
+
+        var params = gen.to_data (out length);
+
+        Soup.MemoryUse buffer = Soup.MemoryUse.STATIC;
+        message.set_request ("application/json", buffer, params.data);
+
+        session.send_message (message);
+    }
+
     public Bridge bridge {
         get {
             return _bridge;

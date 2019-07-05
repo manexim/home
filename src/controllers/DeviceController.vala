@@ -28,6 +28,8 @@ public abstract class Controllers.DeviceController : Object {
         );
     }
 
+    public abstract void switch_brightness (uint16 brightness);
+
     public abstract void switch_power (bool on);
 
     public Models.Device device {

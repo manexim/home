@@ -30,10 +30,36 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
             title: device.name != null ? device.name : device.id
         );
 
-        if (device is Lifx.Lamp) {
-            controller = new Lifx.Controller (device);
-        } else if (device is Philips.Hue.Lamp) {
-            controller = new Philips.Hue.Controller (device);
+        if (device is Models.Lamp) {
+            var lamp = device as Models.Lamp;
+
+            if (lamp is Lifx.Lamp) {
+                controller = new Lifx.Controller (lamp);
+            } else if (lamp is Philips.Hue.Lamp) {
+                controller = new Philips.Hue.Controller (lamp);
+            }
+
+            if (lamp.supports_brightness) {
+                var brightness_label = new Gtk.Label (_("Brightness: "));
+                brightness_label.xalign = 1;
+
+                var brightness_scale = new Gtk.Scale.with_range (
+                    Gtk.Orientation.HORIZONTAL, lamp.brightness_min, lamp.brightness_max, 1.0
+                );
+
+                brightness_scale.adjustment.value = lamp.brightness;
+                brightness_scale.hexpand = true;
+                brightness_scale.adjustment.value_changed.connect (() => {
+                    #if DEMO_MODE
+                    lamp.brightness = (uint16) brightness_scale.adjustment.value;
+                    #else
+                    controller.switch_brightness ((uint8) brightness_scale.adjustment.value);
+                    #endif
+                });
+
+                content_area.attach (brightness_label, 0, 0, 1, 1);
+                content_area.attach (brightness_scale, 1, 0, 1, 1);
+            }
         }
 
         controller.device.notify.connect (update_status);

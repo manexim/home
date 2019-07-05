@@ -30,6 +30,12 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
         controller = new Philips.Hue.BridgeController ((device as Philips.Hue.Lamp).bridge);
     }
 
+    public override void switch_brightness (uint16 brightness) {
+        controller.switch_light_brightness (device as Philips.Hue.Lamp, (uint8) brightness);
+
+        (device as Philips.Hue.Lamp).brightness = brightness;
+    }
+
     public override void switch_power (bool on) {
         controller.switch_light_power (device as Philips.Hue.Lamp, on);
 
