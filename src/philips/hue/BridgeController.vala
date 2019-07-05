@@ -207,7 +207,14 @@ public class Philips.Hue.BridgeController {
 
                 if (light.get_object_member ("state").has_member ("ct")) {
                     lamp.supports_color_temperature = true;
-                    lamp.kelvin = (uint16) light.get_object_member ("state").get_int_member ("ct");
+                    lamp.color_temperature = (uint16) light.get_object_member ("state").get_int_member ("ct");
+                }
+
+                if (light.get_object_member ("capabilities").get_object_member ("control").has_member ("ct")) {
+                    lamp.color_temperature_min = (uint16) light.get_object_member ("capabilities").
+                        get_object_member ("control").get_object_member ("ct").get_int_member ("min");
+                    lamp.color_temperature_max = (uint16) light.get_object_member ("capabilities").
+                        get_object_member ("control").get_object_member ("ct").get_int_member ("max");
                 }
 
                 if (on) {

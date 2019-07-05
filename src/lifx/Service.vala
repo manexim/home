@@ -263,7 +263,7 @@ public class Lifx.Service {
                                         (uint16) packet.payload.get_int_member ("saturation");
                                     ((Lifx.Lamp) device_map.get (packet.target)).brightness =
                                         (uint16) packet.payload.get_int_member ("brightness");
-                                    ((Lifx.Lamp) device_map.get (packet.target)).kelvin =
+                                    ((Lifx.Lamp) device_map.get (packet.target)).color_temperature =
                                         (uint16) packet.payload.get_int_member ("kelvin");
 
                                     on_updated_device (device_map.get (packet.target));
@@ -276,7 +276,7 @@ public class Lifx.Service {
                                     device.hue = (uint16) packet.payload.get_int_member ("hue");
                                     device.saturation = (uint16) packet.payload.get_int_member ("saturation");
                                     device.brightness = (uint16) packet.payload.get_int_member ("brightness");
-                                    device.kelvin = (uint16) packet.payload.get_int_member ("kelvin");
+                                    device.color_temperature = (uint16) packet.payload.get_int_member ("kelvin");
 
                                     device_map.set (device.id, device);
                                     on_new_device (device);

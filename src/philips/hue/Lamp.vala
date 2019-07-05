@@ -39,40 +39,4 @@ public class Philips.Hue.Lamp : Models.Lamp {
             _obj.set_string_member ("number", value);
         }
     }
-
-    public uint16 hue {
-        get {
-            return (uint16) _obj.get_int_member ("hue");
-        }
-        set {
-            _obj.set_int_member ("hue", value);
-        }
-    }
-
-    public uint16 saturation {
-        get {
-            return (uint16) _obj.get_int_member ("saturation");
-        }
-        set {
-            _obj.set_int_member ("saturation", value);
-        }
-    }
-
-    public uint8 brightness {
-        get {
-            return (uint8) _obj.get_int_member ("brightness");
-        }
-        set {
-            _obj.set_int_member ("brightness", value);
-        }
-    }
-
-    public uint16 kelvin {
-        get {
-            return (uint16) _obj.get_int_member ("kelvin");
-        }
-        set {
-            _obj.set_int_member ("kelvin", value);
-        }
-    }
 }

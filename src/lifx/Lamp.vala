@@ -38,42 +38,6 @@ public class Lifx.Lamp : Models.Lamp {
         }
     }
 
-    public uint16 hue {
-        get {
-            return (uint16) _obj.get_int_member ("hue");
-        }
-        set {
-            _obj.set_int_member ("hue", value);
-        }
-    }
-
-    public uint16 saturation {
-        get {
-            return (uint16) _obj.get_int_member ("saturation");
-        }
-        set {
-            _obj.set_int_member ("saturation", value);
-        }
-    }
-
-    public uint16 brightness {
-        get {
-            return (uint16) _obj.get_int_member ("brightness");
-        }
-        set {
-            _obj.set_int_member ("brightness", value);
-        }
-    }
-
-    public uint16 kelvin {
-        get {
-            return (uint16) _obj.get_int_member ("kelvin");
-        }
-        set {
-            _obj.set_int_member ("kelvin", value);
-        }
-    }
-
     public bool supports_infrared {
         get {
             if (!_obj.has_member ("supportsInfrared")) {
