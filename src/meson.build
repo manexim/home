@@ -15,6 +15,7 @@ sources = [
     'onboarding/LIFXView.vala',
     'onboarding/PhilipsHueView.vala',
     'onboarding/StartView.vala',
+    'pages/AbstractDevicePage.vala',
     'pages/HueBridgeOnboardingPage.vala',
     'pages/DevicePage.vala',
     'pages/LoadingPage.vala',
