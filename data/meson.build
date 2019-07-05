@@ -14,10 +14,18 @@ endforeach
 
 symbolic_icons = [
     'com.github.manexim.home.icon.bridge.philips.hue-symbolic',
+    'com.github.manexim.home.icon.fan-symbolic',
+    'com.github.manexim.home.icon.lamp0-symbolic',
+    'com.github.manexim.home.icon.lamp1-symbolic',
+    'com.github.manexim.home.icon.lamp2-symbolic',
+    'com.github.manexim.home.icon.lamp3-symbolic',
+    'com.github.manexim.home.icon.lamp4-symbolic',
     'com.github.manexim.home.icon.lightbulb-symbolic',
     'com.github.manexim.home.icon.lightbulb.lifx-symbolic',
     'com.github.manexim.home.icon.lightbulb.philips.hue-symbolic',
+    'com.github.manexim.home.icon.television-symbolic',
     'com.github.manexim.home.icon.thing-symbolic',
+    'com.github.manexim.home.icon.spot-symbolic',
     'com.github.manexim.home.logo.lifx-symbolic',
     'com.github.manexim.home.logo.philips.hue-symbolic'
 ]
