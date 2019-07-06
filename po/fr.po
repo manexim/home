@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 13:33+0200\n"
+"POT-Creation-Date: 2019-07-06 11:11+0200\n"
 "PO-Revision-Date: 2019-06-17 22:32+0400\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -67,30 +67,42 @@ msgid "Welcome to %s!"
 msgstr ""
 
 #: src/pages/DevicePage.vala:43
+msgid "Hue: "
+msgstr ""
+
+#: src/pages/DevicePage.vala:63
+msgid "Saturation: "
+msgstr ""
+
+#: src/pages/DevicePage.vala:85
 msgid "Brightness: "
 msgstr ""
 
-#: src/pages/DevicePage.vala:92
+#: src/pages/DevicePage.vala:107
+msgid "Color temperature: "
+msgstr ""
+
+#: src/pages/DevicePage.vala:156
 msgid "ID: "
 msgstr "Identifiant : "
 
-#: src/pages/DevicePage.vala:93
+#: src/pages/DevicePage.vala:157
 msgid "Manufacturer: "
 msgstr "Fabricant : "
 
-#: src/pages/DevicePage.vala:94
+#: src/pages/DevicePage.vala:158
 msgid "Model: "
 msgstr "Modèle : "
 
-#: src/pages/DevicePage.vala:103
+#: src/pages/DevicePage.vala:167
 msgid "Enabled"
 msgstr "Activé"
 
-#: src/pages/DevicePage.vala:109
+#: src/pages/DevicePage.vala:173
 msgid "Disabled"
 msgstr "Désactivé"
 
-#: src/pages/DevicePage.vala:113
+#: src/pages/DevicePage.vala:177
 msgid "Unknown"
 msgstr "Inconnu"
 
