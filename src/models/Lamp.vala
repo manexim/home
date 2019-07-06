@@ -125,12 +125,48 @@ public class Models.Lamp : Models.Device {
         }
     }
 
+    public uint16 hue_min {
+        get {
+            return (uint16) _obj.get_int_member ("hueMin");
+        }
+        set {
+            _obj.set_int_member ("hueMin", value);
+        }
+    }
+
+    public uint16 hue_max {
+        get {
+            return (uint16) _obj.get_int_member ("hueMax");
+        }
+        set {
+            _obj.set_int_member ("hueMax", value);
+        }
+    }
+
     public uint16 hue {
         get {
             return (uint16) _obj.get_int_member ("hue");
         }
         set {
             _obj.set_int_member ("hue", value);
+        }
+    }
+
+    public uint16 saturation_min {
+        get {
+            return (uint16) _obj.get_int_member ("saturationMin");
+        }
+        set {
+            _obj.set_int_member ("saturationMin", value);
+        }
+    }
+
+    public uint16 saturation_max {
+        get {
+            return (uint16) _obj.get_int_member ("saturationMax");
+        }
+        set {
+            _obj.set_int_member ("saturationMax", value);
         }
     }
 

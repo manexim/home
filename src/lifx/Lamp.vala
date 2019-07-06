@@ -27,6 +27,15 @@ public class Lifx.Lamp : Models.Lamp {
         supports_brightness = true;
         brightness_min = 0;
         brightness_max = 65535;
+
+        color_temperature_min = 2500;
+        color_temperature_max = 9000;
+
+        hue_min = 0;
+        hue_max = 65535;
+
+        saturation_min = 0;
+        saturation_max = 65535;
     }
 
     public uint16 port {

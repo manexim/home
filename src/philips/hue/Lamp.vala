@@ -28,6 +28,15 @@ public class Philips.Hue.Lamp : Models.Lamp {
 
         brightness_min = 0;
         brightness_max = 254;
+
+        color_temperature_min = 154;
+        color_temperature_max = 500;
+
+        hue_min = 0;
+        hue_max = 65535;
+
+        saturation_min = 0;
+        saturation_max = 254;
     }
 
     public string number {

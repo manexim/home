@@ -237,30 +237,41 @@ public class Philips.Hue.BridgeController {
     }
 
     public void switch_light_power (Philips.Hue.Lamp lamp, bool on) {
-        string url = "%sapi/%s/lights/%s/state".printf (_bridge.base_url, _bridge.username, lamp.number);
+        var state = new Json.Object ();
+        state.set_boolean_member ("on", on);
 
-        var session = new Soup.Session ();
-        var message = new Soup.Message ("PUT", url);
-
-        size_t length;
-
-        var obj = new Json.Object ();
-        obj.set_boolean_member ("on", on);
-
-        var gen = new Json.Generator ();
-        var root = new Json.Node (Json.NodeType.OBJECT);
-        root.set_object (obj);
-        gen.set_root (root);
-
-        var params = gen.to_data (out length);
-
-        Soup.MemoryUse buffer = Soup.MemoryUse.STATIC;
-        message.set_request ("application/json", buffer, params.data);
-
-        session.send_message (message);
+        switch_light_state (lamp, state);
     }
 
-    public void switch_light_brightness (Philips.Hue.Lamp lamp, uint8 brightness) {
+    public void switch_light_hue (Philips.Hue.Lamp lamp, uint16 hue) {
+        var state = new Json.Object ();
+        state.set_int_member ("hue", hue);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_saturation (Philips.Hue.Lamp lamp, uint16 saturation) {
+        var state = new Json.Object ();
+        state.set_int_member ("sat", saturation);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_brightness (Philips.Hue.Lamp lamp, uint16 brightness) {
+        var state = new Json.Object ();
+        state.set_int_member ("bri", brightness);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_color_temperature (Philips.Hue.Lamp lamp, uint16 color_temperature) {
+        var state = new Json.Object ();
+        state.set_int_member ("ct", color_temperature);
+
+        switch_light_state (lamp, state);
+    }
+
+    private void switch_light_state (Philips.Hue.Lamp lamp, Json.Object state) {
         string url = "%sapi/%s/lights/%s/state".printf (_bridge.base_url, _bridge.username, lamp.number);
 
         var session = new Soup.Session ();
@@ -268,12 +279,9 @@ public class Philips.Hue.BridgeController {
 
         size_t length;
 
-        var obj = new Json.Object ();
-        obj.set_int_member ("bri", brightness);
-
         var gen = new Json.Generator ();
         var root = new Json.Node (Json.NodeType.OBJECT);
-        root.set_object (obj);
+        root.set_object (state);
         gen.set_root (root);
 
         var params = gen.to_data (out length);
