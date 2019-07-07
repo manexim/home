@@ -29,9 +29,6 @@ public class Philips.Hue.Lamp : Models.Lamp {
         brightness_min = 0;
         brightness_max = 254;
 
-        color_temperature_min = 154;
-        color_temperature_max = 500;
-
         hue_min = 0;
         hue_max = 65535;
 
@@ -49,6 +46,15 @@ public class Philips.Hue.Lamp : Models.Lamp {
         }
         set {
             _obj.set_string_member ("number", value);
+        }
+    }
+
+    public new uint16 color_temperature {
+        get {
+            return (uint16) (1000000.0 / _obj.get_int_member ("colorTemperature"));
+        }
+        set {
+            _obj.set_int_member ("colorTemperature", (uint16) (1000000.0 / value));
         }
     }
 }
