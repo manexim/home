@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-04 19:19+0200\n"
-"PO-Revision-Date: 2019-06-17 22:56+0400\n"
+"PO-Revision-Date: 2019-07-09 12:52+0400\n"
 "Last-Translator: Andrey Kultyapov <camellan@yandex.ru>\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: src/MainWindow.vala:58
 msgid "Light background"
-msgstr ""
+msgstr "Светлая тема"
 
 #: src/MainWindow.vala:59
 msgid "Dark background"
-msgstr ""
+msgstr "Темная тема"
 
 #: src/MainWindow.vala:80 src/MainWindow.vala:85 src/MainWindow.vala:86
 msgid "Overview"
-msgstr ""
+msgstr "Обзор"
 
 #: src/onboarding/FinishView.vala:25
 msgid ""
@@ -66,31 +66,31 @@ msgstr "Управляйте своими умными домашними уст
 #: src/onboarding/StartView.vala:27
 #, c-format
 msgid "Welcome to %s!"
-msgstr ""
+msgstr "Добро пожаловать в %s!"
 
 #: src/pages/DevicePage.vala:62
 msgid "ID: "
-msgstr ""
+msgstr "ИД:"
 
 #: src/pages/DevicePage.vala:63
 msgid "Manufacturer: "
-msgstr ""
+msgstr "Производитель:"
 
 #: src/pages/DevicePage.vala:64
 msgid "Model: "
-msgstr ""
+msgstr "Модель: "
 
 #: src/pages/DevicePage.vala:73
 msgid "Enabled"
-msgstr ""
+msgstr "Включено"
 
 #: src/pages/DevicePage.vala:79
 msgid "Disabled"
-msgstr ""
+msgstr "Отключено"
 
 #: src/pages/DevicePage.vala:83
 msgid "Unknown"
-msgstr ""
+msgstr "Неизвестно"
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
@@ -98,28 +98,28 @@ msgstr "Поиск умных домашних устройств."
 
 #: src/pages/HueBridgeOnboardingPage.vala:38
 msgid "Press the push-link button in the middle of the Hue bridge."
-msgstr ""
+msgstr "Нажмите кнопку push-link в центре Hue bridge."
 
 #: src/pages/HueBridgeOnboardingPage.vala:59
 msgid "The Hue bridge was successfully registered."
-msgstr ""
+msgstr "Hue bridge успешно зарегистрирован."
 
 #: src/views/Overview.vala:30
 msgid "Devices"
-msgstr ""
+msgstr "Устройства"
 
 #: src/views/Overview.vala:65
 msgid "Hubs"
-msgstr ""
+msgstr "Хабы"
 
 #: src/views/OnboardingView.vala:53
 msgid "Skip All"
-msgstr ""
+msgstr "Пропустить все"
 
 #: src/views/OnboardingView.vala:64 src/views/OnboardingView.vala:91
 msgid "Next"
-msgstr ""
+msgstr "Далее"
 
 #: src/views/OnboardingView.vala:88
 msgid "Get Started"
-msgstr ""
+msgstr "Начать"
