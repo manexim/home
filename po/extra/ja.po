@@ -8,41 +8,42 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-10 06:02+0200\n"
-"PO-Revision-Date: 2019-07-10 06:02+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-07-10 13:57+0900\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: data/com.github.manexim.home.appdata.xml.in:7
 #: data/com.github.manexim.home.desktop.in:4
 #: data/com.github.manexim.home.desktop.in:5
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: data/com.github.manexim.home.appdata.xml.in:8
 #: data/com.github.manexim.home.desktop.in:6
 msgid "Control your smart home gadgets"
-msgstr ""
+msgstr "ホームガジェットを操作します"
 
 #: data/com.github.manexim.home.appdata.xml.in:10
 msgid "A smart home application to control your gadgets."
-msgstr ""
+msgstr "お手持ちのガジェットを操作できる、スマートホームアプリです。"
 
 #: data/com.github.manexim.home.appdata.xml.in:11
 msgid "Supported devices:"
-msgstr ""
+msgstr "対応しているデバイス:"
 
 #: data/com.github.manexim.home.appdata.xml.in:13
 msgid "LIFX"
-msgstr ""
+msgstr "LIFX"
 
 #: data/com.github.manexim.home.appdata.xml.in:14
 msgid "Philips Hue"
-msgstr ""
+msgstr "Philips Hue"
 
 #: data/com.github.manexim.home.appdata.xml.in:26
 #: data/com.github.manexim.home.appdata.xml.in:52
@@ -137,8 +138,8 @@ msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:102
 msgid "Manexim"
-msgstr ""
+msgstr "Manexim"
 
 #: data/com.github.manexim.home.desktop.in:8
 msgid "com.github.manexim.home"
-msgstr ""
+msgstr "com.github.manexim.home"
