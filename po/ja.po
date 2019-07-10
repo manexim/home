@@ -8,126 +8,133 @@ msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-10 06:01+0200\n"
-"PO-Revision-Date: 2019-07-10 06:01+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-07-10 13:53+0900\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: src/MainWindow.vala:58
 msgid "Light background"
-msgstr ""
+msgstr "ライトモード"
 
 #: src/MainWindow.vala:59
 msgid "Dark background"
-msgstr ""
+msgstr "ダークモード"
 
 #: src/MainWindow.vala:80 src/MainWindow.vala:85 src/MainWindow.vala:86
 msgid "Overview"
-msgstr ""
+msgstr "オーバービュー"
 
 #: src/onboarding/FinishView.vala:25
 msgid ""
 "You can control your smart home gadgets directly via your local network. A "
 "connection to the internet is not required."
 msgstr ""
+"ローカルネットワークを通じて、スマートホームガジェットを直接操作できます。イ"
+"ンターネットへの接続は必須ではありません。"
 
 #: src/onboarding/FinishView.vala:27
 msgid "Let's go"
-msgstr ""
+msgstr "始めましょう"
 
 #: src/onboarding/LIFXView.vala:25
 msgid ""
 "Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
 "your Wi-Fi."
 msgstr ""
+"LIFX 製のスマートライトに対応しています。スマートライトは、すでに Wi-Fi に接"
+"続されている必要があります。"
 
 #: src/onboarding/PhilipsHueView.vala:25
 msgid ""
 "Smart ZigBee lights by Philips Hue are supported. They must already be "
 "connected to your Philips Hue Bridge."
 msgstr ""
+"Philips Hue 製のスマート ZigBee ライトに対応しています。スマートライトは、す"
+"でに Philips Hue ブリッジに接続されている必要があります。"
 
 #: src/onboarding/StartView.vala:25
 msgid "Control your smart home gadgets"
-msgstr ""
+msgstr "ホームガジェットを操作します"
 
 #: src/onboarding/StartView.vala:27
 #, c-format
 msgid "Welcome to %s!"
-msgstr ""
+msgstr "%s へようこそ！"
 
 #: src/pages/DevicePage.vala:43
 msgid "Hue: "
-msgstr ""
+msgstr "色合い: "
 
 #: src/pages/DevicePage.vala:63
 msgid "Saturation: "
-msgstr ""
+msgstr "鮮やかさ: "
 
 #: src/pages/DevicePage.vala:85
 msgid "Brightness: "
-msgstr ""
+msgstr "明るさ: "
 
 #: src/pages/DevicePage.vala:107
 msgid "Color temperature: "
-msgstr ""
+msgstr "色温度: "
 
 #: src/pages/DevicePage.vala:156
 msgid "ID: "
-msgstr ""
+msgstr "ID: "
 
 #: src/pages/DevicePage.vala:157
 msgid "Manufacturer: "
-msgstr ""
+msgstr "製造元: "
 
 #: src/pages/DevicePage.vala:158
 msgid "Model: "
-msgstr ""
+msgstr "モデル: "
 
 #: src/pages/DevicePage.vala:167
 msgid "Enabled"
-msgstr ""
+msgstr "有効"
 
 #: src/pages/DevicePage.vala:173
 msgid "Disabled"
-msgstr ""
+msgstr "無効"
 
 #: src/pages/DevicePage.vala:177
 msgid "Unknown"
-msgstr ""
+msgstr "不明"
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
-msgstr ""
+msgstr "操作できるスマートホームガジェットを検索しています。"
 
 #: src/pages/HueBridgeOnboardingPage.vala:38
 msgid "Press the push-link button in the middle of the Hue bridge."
-msgstr ""
+msgstr "Hue ブリッジの中央にあるプッシュリンクボタンを押してください。"
 
 #: src/pages/HueBridgeOnboardingPage.vala:59
 msgid "The Hue bridge was successfully registered."
-msgstr ""
+msgstr "Hue ブリッジが正常に登録されました。"
 
 #: src/views/Overview.vala:30
 msgid "Devices"
-msgstr ""
+msgstr "デバイス"
 
 #: src/views/Overview.vala:65
 msgid "Hubs"
-msgstr ""
+msgstr "ハブ"
 
 #: src/views/OnboardingView.vala:53
 msgid "Skip All"
-msgstr ""
+msgstr "すべてスキップ"
 
 #: src/views/OnboardingView.vala:64 src/views/OnboardingView.vala:91
 msgid "Next"
-msgstr ""
+msgstr "次へ"
 
 #: src/views/OnboardingView.vala:88
 msgid "Get Started"
-msgstr ""
+msgstr "始めましょう"
