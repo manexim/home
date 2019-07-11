@@ -1,4 +1,4 @@
-# German translations for com.github.manexim.home package.
+# Portuguese translations for com.github.manexim.home package.
 # Copyright (C) 2019 THE com.github.manexim.home'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.manexim.home package.
 # Automatically generated, 2019.
@@ -8,119 +8,113 @@ msgstr ""
 "Project-Id-Version: com.github.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-11 19:55+0200\n"
-"PO-Revision-Date: 2019-06-22 09:24+0200\n"
+"PO-Revision-Date: 2019-07-11 19:55+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: de\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/MainWindow.vala:58
 msgid "Light background"
-msgstr "Heller Hintergrund"
+msgstr ""
 
 #: src/MainWindow.vala:59
 msgid "Dark background"
-msgstr "Dunkler Hintergrund"
+msgstr ""
 
 #: src/MainWindow.vala:80 src/MainWindow.vala:85 src/MainWindow.vala:86
 msgid "Overview"
-msgstr "Übersicht"
+msgstr ""
 
 #: src/onboarding/FinishView.vala:25
 msgid ""
 "You can control your smart home gadgets directly via your local network. A "
 "connection to the internet is not required."
 msgstr ""
-"Du kannst deine Smart Home Gadgets direkt über dein lokales Netzwerk "
-"steuern. Eine Verbindung zum Internet ist nicht erforderlich."
 
 #: src/onboarding/FinishView.vala:27
 msgid "Let's go"
-msgstr "Lass uns loslegen"
+msgstr ""
 
 #: src/onboarding/LIFXView.vala:25
 msgid ""
 "Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
 "your Wi-Fi."
 msgstr ""
-"Intelligente WLAN-Leuchten von LIFX werden unterstützt. Sie müssen bereits "
-"mit deinem WLAN verbunden sein."
 
 #: src/onboarding/PhilipsHueView.vala:25
 msgid ""
 "Smart ZigBee lights by Philips Hue are supported. They must already be "
 "connected to your Philips Hue Bridge."
 msgstr ""
-"Intelligente ZigBee-Leuchten von Philips Hue werden unterstützt. Sie müssen "
-"bereits an deine Philips Hue Bridge angeschlossen sein."
 
 #: src/onboarding/StartView.vala:25
 msgid "Control your smart home gadgets"
-msgstr "Steuer deine Smart Home Gadgets"
+msgstr ""
 
 #: src/onboarding/StartView.vala:27
 #, c-format
 msgid "Welcome to %s!"
-msgstr "Willkommen zu %s!"
+msgstr ""
 
 #: src/pages/DevicePage.vala:43
 msgid "Hue: "
-msgstr "Farbton: "
+msgstr ""
 
 #: src/pages/DevicePage.vala:63
 msgid "Saturation: "
-msgstr "Sättigung: "
+msgstr ""
 
 #: src/pages/DevicePage.vala:85
 msgid "Brightness: "
-msgstr "Helligkeit: "
+msgstr ""
 
 #: src/pages/DevicePage.vala:107
 msgid "Color temperature: "
-msgstr "Farbtemperatur: "
+msgstr ""
 
 #: src/pages/DevicePage.vala:156
 msgid "ID: "
-msgstr "ID: "
+msgstr ""
 
 #: src/pages/DevicePage.vala:157
 msgid "Manufacturer: "
-msgstr "Hersteller: "
+msgstr ""
 
 #: src/pages/DevicePage.vala:158
 msgid "Model: "
-msgstr "Modell: "
+msgstr ""
 
 #: src/pages/DevicePage.vala:167
 msgid "Enabled"
-msgstr "Aktiviert"
+msgstr ""
 
 #: src/pages/DevicePage.vala:173
 msgid "Disabled"
-msgstr "Deaktiviert"
+msgstr ""
 
 #: src/pages/DevicePage.vala:177
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr ""
 
 #: src/pages/LoadingPage.vala:27
 msgid "Looking for smart home gadgets to control."
-msgstr "Suche nach steuerbaren Smart Home Gadgets."
+msgstr ""
 
 #: src/pages/HueBridgeOnboardingPage.vala:38
 msgid "Press the push-link button in the middle of the Hue bridge."
-msgstr "Drücke die Push-Link-Taste in der Mitte der Hue Bridge."
+msgstr ""
 
 #: src/pages/HueBridgeOnboardingPage.vala:59
 msgid "The Hue bridge was successfully registered."
-msgstr "Die Hue Bridge wurde erfolgreich registriert."
+msgstr ""
 
 #: src/views/Overview.vala:30
 msgid "Devices"
-msgstr "Geräte"
+msgstr ""
 
 #: src/views/Overview.vala:65
 msgid "Hubs"
@@ -128,12 +122,12 @@ msgstr ""
 
 #: src/views/OnboardingView.vala:53
 msgid "Skip All"
-msgstr "Alles überspringen"
+msgstr ""
 
 #: src/views/OnboardingView.vala:64 src/views/OnboardingView.vala:91
 msgid "Next"
-msgstr "Weiter"
+msgstr ""
 
 #: src/views/OnboardingView.vala:88
 msgid "Get Started"
-msgstr "Beginnen"
+msgstr ""

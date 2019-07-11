@@ -1,4 +1,4 @@
-# Russian translations for extra package.
+# Portuguese translations for extra package.
 # Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
 # Automatically generated, 2019.
@@ -8,39 +8,37 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-11 19:55+0200\n"
-"PO-Revision-Date: 2019-06-17 22:54+0400\n"
-"Last-Translator: Andrey Kultyapov <camellan@yandex.ru>\n"
+"PO-Revision-Date: 2019-07-11 19:55+0200\n"
+"Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: ru\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.manexim.home.appdata.xml.in:7
 #: data/com.github.manexim.home.desktop.in:4
 #: data/com.github.manexim.home.desktop.in:5
 msgid "Home"
-msgstr "Home"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:8
 #: data/com.github.manexim.home.desktop.in:6
 msgid "Control your smart home gadgets"
-msgstr "Управляйте своими умными домашними устройствами"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:10
 msgid "A smart home application to control your gadgets."
-msgstr "Приложение для управления вашими умными устройствами."
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:11
 msgid "Supported devices:"
-msgstr "Поддерживаемые устройства:"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:13
 msgid "LIFX"
-msgstr "LIFX"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:14
 msgid "Philips Hue"
@@ -49,7 +47,7 @@ msgstr ""
 #: data/com.github.manexim.home.appdata.xml.in:26
 #: data/com.github.manexim.home.appdata.xml.in:52
 msgid "New:"
-msgstr "Новое:"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:28
 msgid "Add new UI"
@@ -74,7 +72,7 @@ msgstr ""
 #: data/com.github.manexim.home.appdata.xml.in:34
 #: data/com.github.manexim.home.appdata.xml.in:58
 msgid "Improved:"
-msgstr "Улучшено:"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:36
 msgid "Update welcome view"
@@ -87,7 +85,7 @@ msgstr ""
 #: data/com.github.manexim.home.appdata.xml.in:39
 #: data/com.github.manexim.home.appdata.xml.in:62
 msgid "Fixed:"
-msgstr "Исправлено:"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:42
 msgid "Translations:"
@@ -107,40 +105,40 @@ msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:54
 msgid "Add welcome view for onboarding"
-msgstr "Add welcome view for onboarding"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:55
 msgid "Show loading page if no smart home gadget is found"
-msgstr "Show loading page if no smart home gadget is found"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:56
 msgid "Show manufacturer and model of device"
-msgstr "Show manufacturer and model of device"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:60
 msgid "Save and load window settings"
-msgstr "Save and load window settings"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:64
 msgid "Remove mention of elementary OS in app description"
-msgstr "Remove mention of elementary OS in app description"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:65
 msgid "Suffix symbolic icon names with -symbolic"
-msgstr "Suffix symbolic icon names with -symbolic"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:66
 msgid "Install all available icon sizes"
-msgstr "Install all available icon sizes"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:72
 msgid "Initial release"
-msgstr "Initial release"
+msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:102
 msgid "Manexim"
-msgstr "Manexim"
+msgstr ""
 
 #: data/com.github.manexim.home.desktop.in:8
 msgid "com.github.manexim.home"
-msgstr "com.github.manexim.home"
+msgstr ""
