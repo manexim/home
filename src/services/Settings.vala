@@ -90,6 +90,10 @@ public class Settings : Granite.Services.Settings {
     }
 
     public bool is_first_run () {
+        #if DEMO_MODE
+        return true;
+        #endif
+
         return last_started_app_version == "";
     }
 
@@ -106,6 +110,10 @@ public class Settings : Granite.Services.Settings {
     }
 
     public void save () {
+        #if DEMO_MODE
+        return;
+        #endif
+
         last_started_app_version = Config.APP_VERSION;
 
         var philips_hue_service = Philips.Hue.Service.instance;
