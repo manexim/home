@@ -105,11 +105,12 @@ Your commit message should describe what the commit, when applied, does to the c
 
 ### Translators
 
-| Name                                      | Language    |
-| ----------------------------------------- | ----------- |
-| [camellan](https://github.com/camellan)   | Russian 🇷🇺  |
-| [NathanBnm](https://github.com/NathanBnm) | French 🇫🇷   |
-| [ryonakano](https://github.com/ryonakano) | Japanese 🇯🇵 |
+| Name                                      | Language      |
+| ----------------------------------------- | ------------- |
+| [camellan](https://github.com/camellan)   | Russian 🇷🇺    |
+| [NathanBnm](https://github.com/NathanBnm) | French 🇫🇷     |
+| [ryonakano](https://github.com/ryonakano) | Japanese 🇯🇵   |
+| [aimproxy](https://github.com/aimproxy)   | Portuguese 🇵🇹 |
 
 ## License
 
