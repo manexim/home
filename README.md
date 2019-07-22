@@ -109,6 +109,7 @@ Your commit message should describe what the commit, when applied, does to the c
 | ------------------------------------------- | ------------- |
 | [camellan](https://github.com/camellan)     | Russian 🇷🇺    |
 | [NathanBnm](https://github.com/NathanBnm)   | French 🇫🇷     |
+| [meisenzahl](https://github.com/meisenzahl) | German 🇩🇪     |
 | [ryonakano](https://github.com/ryonakano)   | Japanese 🇯🇵   |
 | [aimproxy](https://github.com/aimproxy)     | Portuguese 🇵🇹 |
 | [oskarkunik](https://github.com/oskarkunik) | Polish 🇵🇱     |
