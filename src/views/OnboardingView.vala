@@ -47,7 +47,7 @@ public class Views.OnboardingView : Gtk.Grid {
         GLib.List<unowned Gtk.Widget> views = stack.get_children ();
         foreach (Gtk.Widget view in views) {
             var view_name_value = GLib.Value (typeof (string));
-            stack.child_get_property (view, "name", ref view_name_value);
+            stack.child_get_property (view, "name", view_name_value);
         }
 
         var skip_button = new Gtk.Button.with_label (_("Skip All"));
@@ -106,7 +106,7 @@ public class Views.OnboardingView : Gtk.Grid {
         skip_button.clicked.connect (() => {
             foreach (Gtk.Widget view in views) {
                 var view_name_value = GLib.Value (typeof (string));
-                stack.child_get_property (view, "name", ref view_name_value);
+                stack.child_get_property (view, "name", view_name_value);
             }
 
             stack.visible_child_name = "finish";
