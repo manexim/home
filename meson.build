@@ -24,6 +24,10 @@ if enable_demo_mode
     vala_flags += ['--define', 'DEMO_MODE']
 endif
 
+if build_machine.cpu_family().contains('arm')
+    vala_flags += ['--define', 'ARM']
+endif
+
 add_project_arguments(vala_flags, language: 'vala')
 
 subdir('data')
