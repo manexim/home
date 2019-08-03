@@ -28,6 +28,7 @@ public class Lifx.Lamp : Models.Lamp {
         brightness_min = 0;
         brightness_max = 65535;
 
+        supports_color_temperature = true;
         color_temperature_min = 2500;
         color_temperature_max = 9000;
 
