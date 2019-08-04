@@ -21,8 +21,22 @@
 
 public class Lifx.Lamp : Models.Lamp {
     public Lamp () {
-        icon = "com.github.manexim.home.lightbulb.lifx-symbolic";
+        default_icon = "com.github.manexim.home.icon.lightbulb.lifx-symbolic";
         manufacturer = "LIFX";
+
+        supports_brightness = true;
+        brightness_min = 0;
+        brightness_max = 65535;
+
+        supports_color_temperature = true;
+        color_temperature_min = 2500;
+        color_temperature_max = 9000;
+
+        hue_min = 0;
+        hue_max = 65535;
+
+        saturation_min = 0;
+        saturation_max = 65535;
     }
 
     public uint16 port {
@@ -35,42 +49,6 @@ public class Lifx.Lamp : Models.Lamp {
         }
         set {
             _obj.set_int_member ("port", value);
-        }
-    }
-
-    public uint16 hue {
-        get {
-            return (uint16) _obj.get_int_member ("hue");
-        }
-        set {
-            _obj.set_int_member ("hue", value);
-        }
-    }
-
-    public uint16 saturation {
-        get {
-            return (uint16) _obj.get_int_member ("saturation");
-        }
-        set {
-            _obj.set_int_member ("saturation", value);
-        }
-    }
-
-    public uint16 brightness {
-        get {
-            return (uint16) _obj.get_int_member ("brightness");
-        }
-        set {
-            _obj.set_int_member ("brightness", value);
-        }
-    }
-
-    public uint16 kelvin {
-        get {
-            return (uint16) _obj.get_int_member ("kelvin");
-        }
-        set {
-            _obj.set_int_member ("kelvin", value);
         }
     }
 

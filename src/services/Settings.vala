@@ -90,6 +90,10 @@ public class Settings : Granite.Services.Settings {
     }
 
     public bool is_first_run () {
+        #if DEMO_MODE
+        return true;
+        #endif
+
         return last_started_app_version == "";
     }
 
@@ -106,6 +110,10 @@ public class Settings : Granite.Services.Settings {
     }
 
     public void save () {
+        #if DEMO_MODE
+        return;
+        #endif
+
         last_started_app_version = Config.APP_VERSION;
 
         var philips_hue_service = Philips.Hue.Service.instance;
@@ -127,6 +135,17 @@ public class Settings : Granite.Services.Settings {
         philips.set_object_member ("hue", hue);
         com.set_object_member ("philips", philips);
         obj.set_object_member ("com", com);
+
+        var devices = new Json.Object ();
+        foreach (var device in Controllers.DevicesController.instance.devices) {
+            if (device.icon != device.default_icon) {
+                var device_obj = new Json.Object ();
+                device_obj.set_string_member ("icon", device.icon);
+                devices.set_object_member (device.id, device_obj);
+            }
+        }
+        obj.set_object_member ("devices", devices);
+
         var gen = new Json.Generator ();
         var root = new Json.Node (Json.NodeType.OBJECT);
         root.set_object (obj);

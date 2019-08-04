@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="com.github.manexim.home.lightbulb-symbolic.svg">
+   sodipodi:docname="com.github.manexim.home.icon.television-symbolic.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,17 +25,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="31.678384"
-     inkscape:cx="14.943973"
-     inkscape:cy="4.6873406"
+     inkscape:zoom="22.4"
+     inkscape:cx="7.868255"
+     inkscape:cy="1.0596238"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g18"
      showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
      units="px"
      inkscape:window-width="1920"
-     inkscape:window-height="1137"
-     inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:window-height="1167"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -54,10 +58,15 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-292.76665)">
-    <path
-       id="path815"
-       d="m 2.1166667,292.76665 a 1.4816685,1.4816685 0 0 1 1.4816685,1.48166 c 0,0.50377 -0.2518836,0.94616 -0.6350008,1.21497 v 0.47837 a 0.21166693,0.21166693 0 0 1 -0.2116669,0.21166 H 1.4816659 A 0.21166693,0.21166693 0 0 1 1.269999,295.94165 v -0.47837 c -0.38311723,-0.26881 -0.63500083,-0.7112 -0.63500083,-1.21497 a 1.4816685,1.4816685 0 0 1 1.48166853,-1.48166 m -0.6350008,4.02167 v -0.21167 h 1.2700016 v 0.21167 a 0.21166693,0.21166693 0 0 1 -0.2116669,0.21166 H 1.6933328 a 0.21166693,0.21166693 0 0 1 -0.2116669,-0.21166 m 0.6350008,-3.59834 a 1.0583347,1.0583347 0 0 0 -1.0583347,1.05833 c 0,0.43392 0.2603503,0.80645 0.6350008,0.96944 v 0.51223 h 0.8466678 v -0.51223 c 0.3746505,-0.16299 0.6350008,-0.53552 0.6350008,-0.96944 a 1.0583347,1.0583347 0 0 0 -1.0583347,-1.05833 z"
-       inkscape:connector-curvature="0"
-       style="stroke-width:0.21166693;fill:#7a7a7a;fill-opacity:1" />
+    <g
+       transform="matrix(0.01978193,0,0,0.01978193,-0.07418208,292.54114)"
+       id="g18"
+       style="fill:#440099;fill-opacity:1">
+      <path
+         inkscape:connector-curvature="0"
+         d="M 198.29546,167.03617 H 23.204537 V 50.308891 H 198.29546 m 0,-19.45455 H 23.204537 A 19.454547,19.454547 0 0 0 3.7499905,50.308891 V 167.03617 a 19.454547,19.454547 0 0 0 19.4545465,19.45455 h 48.636368 v 19.45455 H 149.6591 v -19.45455 h 48.63636 a 19.454547,19.454547 0 0 0 19.45455,-19.45455 V 50.308891 a 19.454547,19.454547 0 0 0 -19.45455,-19.45455 z"
+         id="path2-3"
+         style="fill:#7a7a7a;fill-opacity:1;stroke-width:9.72727394" />
+    </g>
   </g>
 </svg>

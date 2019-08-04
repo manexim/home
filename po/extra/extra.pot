@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-22 09:47+0200\n"
+"POT-Creation-Date: 2019-07-11 19:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,51 +40,102 @@ msgstr ""
 msgid "LIFX"
 msgstr ""
 
-#: data/com.github.manexim.home.appdata.xml.in:25
+#: data/com.github.manexim.home.appdata.xml.in:14
+msgid "Philips Hue"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:26
+#: data/com.github.manexim.home.appdata.xml.in:52
 msgid "New:"
 msgstr ""
 
-#: data/com.github.manexim.home.appdata.xml.in:27
-msgid "Add welcome view for onboarding"
-msgstr ""
-
 #: data/com.github.manexim.home.appdata.xml.in:28
-msgid "Show loading page if no smart home gadget is found"
+msgid "Add new UI"
 msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:29
-msgid "Show manufacturer and model of device"
+msgid "Add initial support for Philips Hue devices"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:30
+msgid "Add discovery for Philips Hue bridges"
 msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:31
+msgid "Add page to configure Philips Hue bridges"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:32
+msgid "Add service to save configurations"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:34
+#: data/com.github.manexim.home.appdata.xml.in:58
 msgid "Improved:"
 msgstr ""
 
-#: data/com.github.manexim.home.appdata.xml.in:33
-msgid "Save and load window settings"
-msgstr ""
-
-#: data/com.github.manexim.home.appdata.xml.in:35
-msgid "Fixed:"
+#: data/com.github.manexim.home.appdata.xml.in:36
+msgid "Update welcome view"
 msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:37
-msgid "Remove mention of elementary OS in app description"
-msgstr ""
-
-#: data/com.github.manexim.home.appdata.xml.in:38
-msgid "Suffix symbolic icon names with -symbolic"
+msgid "Add mode switch for dark theme if freedesktop schema is not available"
 msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:39
-msgid "Install all available icon sizes"
+#: data/com.github.manexim.home.appdata.xml.in:62
+msgid "Fixed:"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:42
+msgid "Translations:"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:44
+msgid "French (by NathanBnm)"
 msgstr ""
 
 #: data/com.github.manexim.home.appdata.xml.in:45
+msgid "German"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:46
+msgid "Russian (by camellan)"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:54
+msgid "Add welcome view for onboarding"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:55
+msgid "Show loading page if no smart home gadget is found"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:56
+msgid "Show manufacturer and model of device"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:60
+msgid "Save and load window settings"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:64
+msgid "Remove mention of elementary OS in app description"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:65
+msgid "Suffix symbolic icon names with -symbolic"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:66
+msgid "Install all available icon sizes"
+msgstr ""
+
+#: data/com.github.manexim.home.appdata.xml.in:72
 msgid "Initial release"
 msgstr ""
 
-#: data/com.github.manexim.home.appdata.xml.in:71
+#: data/com.github.manexim.home.appdata.xml.in:102
 msgid "Manexim"
 msgstr ""
 

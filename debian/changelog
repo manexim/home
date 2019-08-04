@@ -1,3 +1,22 @@
+com.github.manexim.home (0.4.0) bionic; urgency=medium
+
+[NEW]
+ * Set custom device icons
+ * Set dim level for dimmable bulbs
+ * Set color for supported bulbs
+[IMPROVED]
+ * UI styling
+[FIXED]
+[TRANSLATIONS]
+ * Russian (by camellan)
+ * French (by NathanBnm)
+ * German (by meisenzahl)
+ * Japanese (by ryonakano)
+ * Portuguese (by aimproxy)
+ * Polish (by oskarkunik)
+
+ -- Marius Meisenzahl <mariusmeisenzahl@gmail.com>  Sun, 04 Aug 2019 12:49:14 +0200
+
 com.github.manexim.home (0.3.0) bionic; urgency=medium
 
 [NEW]

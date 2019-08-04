@@ -1,5 +1,6 @@
 project('com.github.manexim.home', 'vala', 'c')
 
+gnome = import('gnome')
 i18n = import('i18n')
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
 
@@ -21,6 +22,10 @@ vala_flags = []
 enable_demo_mode = get_option('demo_mode') == 'true'
 if enable_demo_mode
     vala_flags += ['--define', 'DEMO_MODE']
+endif
+
+if build_machine.cpu_family().contains('arm')
+    vala_flags += ['--define', 'ARM']
 endif
 
 add_project_arguments(vala_flags, language: 'vala')

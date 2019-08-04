@@ -61,6 +61,32 @@ public class Lifx.Service {
         }
     }
 
+    public void set_color (Lifx.Lamp lamp, uint16 hue, uint16 saturation, uint16 brightness, uint16 kelvin, uint32 duration=0) {
+        var packet = new Lifx.Packet ();
+        packet.type = 102;
+        packet.tagged = false;
+        packet.addressable = true;
+        packet.target = lamp.id;
+        packet.ack_required = false;
+        packet.res_required = false;
+        packet.source = source++;
+        packet.payload.set_int_member ("hue", hue);
+        packet.payload.set_int_member ("saturation", saturation);
+        packet.payload.set_int_member ("brightness", brightness);
+        packet.payload.set_int_member ("kelvin", kelvin);
+        packet.payload.set_int_member ("duration", duration);
+
+        try {
+            socket.send_to (
+                new InetSocketAddress (
+                    new InetAddress.from_string ("255.255.255.255"), lamp.port),
+                packet.raw
+            );
+        } catch (Error e) {
+            stderr.printf (e.message);
+        }
+    }
+
     private Service () {
         device_map = new Gee.HashMap<string, Models.Device> ();
 
@@ -75,6 +101,7 @@ public class Lifx.Service {
                 lamp.power = Types.Power.OFF;
                 lamp.manufacturer = "LIFX";
                 lamp.model = "White 800 (High Voltage)";
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp);
             }
 
@@ -86,6 +113,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.OFF;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -97,6 +126,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.ON;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -108,6 +139,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.ON;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -119,6 +152,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.ON;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -130,6 +165,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.OFF;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -263,7 +300,7 @@ public class Lifx.Service {
                                         (uint16) packet.payload.get_int_member ("saturation");
                                     ((Lifx.Lamp) device_map.get (packet.target)).brightness =
                                         (uint16) packet.payload.get_int_member ("brightness");
-                                    ((Lifx.Lamp) device_map.get (packet.target)).kelvin =
+                                    ((Lifx.Lamp) device_map.get (packet.target)).color_temperature =
                                         (uint16) packet.payload.get_int_member ("kelvin");
 
                                     on_updated_device (device_map.get (packet.target));
@@ -276,7 +313,7 @@ public class Lifx.Service {
                                     device.hue = (uint16) packet.payload.get_int_member ("hue");
                                     device.saturation = (uint16) packet.payload.get_int_member ("saturation");
                                     device.brightness = (uint16) packet.payload.get_int_member ("brightness");
-                                    device.kelvin = (uint16) packet.payload.get_int_member ("kelvin");
+                                    device.color_temperature = (uint16) packet.payload.get_int_member ("kelvin");
 
                                     device_map.set (device.id, device);
                                     on_new_device (device);

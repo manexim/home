@@ -33,14 +33,26 @@
       <td>
         <img src="data/screenshots/002.png">
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="data/screenshots/003.png">
       </td>
       <td>
         <img src="data/screenshots/004.png">
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="data/screenshots/005.png">
+      </td>
+      <td>
+        <img src="data/screenshots/006.png">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="data/screenshots/007.png">
       </td>
     </tr>
   </table>
@@ -105,10 +117,14 @@ Your commit message should describe what the commit, when applied, does to the c
 
 ### Translators
 
-| Name                                      | Language   |
-| ----------------------------------------- | ---------- |
-| [camellan](https://github.com/camellan)   | Russian 🇷🇺 |
-| [NathanBnm](https://github.com/NathanBnm) | French 🇫🇷  |
+| Name                                        | Language      |
+| ------------------------------------------- | ------------- |
+| [camellan](https://github.com/camellan)     | Russian 🇷🇺    |
+| [NathanBnm](https://github.com/NathanBnm)   | French 🇫🇷     |
+| [meisenzahl](https://github.com/meisenzahl) | German 🇩🇪     |
+| [ryonakano](https://github.com/ryonakano)   | Japanese 🇯🇵   |
+| [aimproxy](https://github.com/aimproxy)     | Portuguese 🇵🇹 |
+| [oskarkunik](https://github.com/oskarkunik) | Polish 🇵🇱     |
 
 ## License
 

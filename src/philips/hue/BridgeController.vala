@@ -200,6 +200,33 @@ public class Philips.Hue.BridgeController {
                 lamp.bridge = bridge;
                 var on = light.get_object_member ("state").get_boolean_member ("on");
 
+                if (light.get_object_member ("state").has_member ("bri")) {
+                    lamp.supports_brightness = true;
+                    lamp.brightness = (uint8) light.get_object_member ("state").get_int_member ("bri");
+                }
+
+                if (light.get_object_member ("state").has_member ("ct")) {
+                    lamp.supports_color_temperature = true;
+                    lamp.color_temperature = (uint16) (1000000.0 / light.get_object_member ("state").get_int_member ("ct"));
+                }
+
+                if (light.get_object_member ("state").has_member ("hue")) {
+                    lamp.supports_color = true;
+                    lamp.hue = (uint16) light.get_object_member ("state").get_int_member ("hue");
+                }
+
+                if (light.get_object_member ("state").has_member ("sat")) {
+                    lamp.supports_color = true;
+                    lamp.saturation = (uint16) light.get_object_member ("state").get_int_member ("sat");
+                }
+
+                if (light.get_object_member ("capabilities").get_object_member ("control").has_member ("ct")) {
+                    lamp.color_temperature_min = (uint16) (1000000.0 / light.get_object_member ("capabilities").
+                        get_object_member ("control").get_object_member ("ct").get_int_member ("max"));
+                    lamp.color_temperature_max = (uint16) (1000000.0 / light.get_object_member ("capabilities").
+                        get_object_member ("control").get_object_member ("ct").get_int_member ("min"));
+                }
+
                 if (on) {
                     lamp.power = Types.Power.ON;
                 } else {
@@ -220,6 +247,41 @@ public class Philips.Hue.BridgeController {
     }
 
     public void switch_light_power (Philips.Hue.Lamp lamp, bool on) {
+        var state = new Json.Object ();
+        state.set_boolean_member ("on", on);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_hue (Philips.Hue.Lamp lamp, uint16 hue) {
+        var state = new Json.Object ();
+        state.set_int_member ("hue", hue);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_saturation (Philips.Hue.Lamp lamp, uint16 saturation) {
+        var state = new Json.Object ();
+        state.set_int_member ("sat", saturation);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_brightness (Philips.Hue.Lamp lamp, uint16 brightness) {
+        var state = new Json.Object ();
+        state.set_int_member ("bri", brightness);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_color_temperature (Philips.Hue.Lamp lamp, uint16 color_temperature) {
+        var state = new Json.Object ();
+        state.set_int_member ("ct", (uint16) (1000000 / color_temperature));
+
+        switch_light_state (lamp, state);
+    }
+
+    private void switch_light_state (Philips.Hue.Lamp lamp, Json.Object state) {
         string url = "%sapi/%s/lights/%s/state".printf (_bridge.base_url, _bridge.username, lamp.number);
 
         var session = new Soup.Session ();
@@ -227,12 +289,9 @@ public class Philips.Hue.BridgeController {
 
         size_t length;
 
-        var obj = new Json.Object ();
-        obj.set_boolean_member ("on", on);
-
         var gen = new Json.Generator ();
         var root = new Json.Node (Json.NodeType.OBJECT);
-        root.set_object (obj);
+        root.set_object (state);
         gen.set_root (root);
 
         var params = gen.to_data (out length);

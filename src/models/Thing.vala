@@ -24,7 +24,7 @@ public class Models.Thing : Object {
 
     public Thing () {
         _obj = new Json.Object ();
-        icon = "com.github.manexim.home.thing-symbolic";
+        default_icon = "com.github.manexim.home.icon.thing-symbolic";
     }
 
     public Thing.from_object (Json.Object object) {
@@ -57,10 +57,23 @@ public class Models.Thing : Object {
         }
     }
 
+    public string default_icon {
+        get {
+            if (!_obj.has_member ("defaultIcon")) {
+                default_icon = null;
+            }
+
+            return _obj.get_string_member ("defaultIcon");
+        }
+        set {
+            _obj.set_string_member ("defaultIcon", value);
+        }
+    }
+
     public string icon {
         get {
             if (!_obj.has_member ("icon")) {
-                icon = null;
+                return default_icon;
             }
 
             return _obj.get_string_member ("icon");

@@ -19,4 +19,8 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Models.Device : Models.Thing {}
+public class Models.Device : Models.Thing {
+    public Device.from_object (Json.Object object) {
+        _obj = object;
+    }
+}

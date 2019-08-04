@@ -21,7 +21,47 @@
 
 public class Models.Lamp : Models.Device {
     public Lamp () {
-        icon = "com.github.manexim.home.lightbulb-symbolic";
+        default_icon = "com.github.manexim.home.icon.lightbulb-symbolic";
+    }
+
+    public bool supports_brightness {
+        get {
+            if (!_obj.has_member ("supportsBrightness")) {
+                supports_brightness = false;
+            }
+
+            return _obj.get_boolean_member ("supportsBrightness");
+        }
+        set {
+            _obj.set_boolean_member ("supportsBrightness", value);
+        }
+    }
+
+    public uint16 brightness_min {
+        get {
+            return (uint16) _obj.get_int_member ("brightnessMin");
+        }
+        set {
+            _obj.set_int_member ("brightnessMin", value);
+        }
+    }
+
+    public uint16 brightness_max {
+        get {
+            return (uint16) _obj.get_int_member ("brightnessMax");
+        }
+        set {
+            _obj.set_int_member ("brightnessMax", value);
+        }
+    }
+
+    public uint16 brightness {
+        get {
+            return (uint16) _obj.get_int_member ("brightness");
+        }
+        set {
+            _obj.set_int_member ("brightness", value);
+        }
     }
 
     public bool supports_color {
@@ -34,6 +74,108 @@ public class Models.Lamp : Models.Device {
         }
         set {
             _obj.set_boolean_member ("supportsColor", value);
+        }
+    }
+
+    public bool supports_color_temperature {
+        get {
+            if (!_obj.has_member ("supportsColorTemperature")) {
+                supports_color_temperature = false;
+            }
+
+            return _obj.get_boolean_member ("supportsColorTemperature");
+        }
+        set {
+            _obj.set_boolean_member ("supportsColorTemperature", value);
+        }
+    }
+
+    public uint16 color_temperature_min {
+        get {
+            if (!_obj.has_member ("colorTemperatureMin")) {
+                color_temperature_min = 0;
+            }
+
+            return (uint16) _obj.get_int_member ("colorTemperatureMin");
+        }
+        set {
+            _obj.set_int_member ("colorTemperatureMin", value);
+        }
+    }
+
+    public uint16 color_temperature_max {
+        get {
+            if (!_obj.has_member ("colorTemperatureMax")) {
+                color_temperature_max = 0;
+            }
+
+            return (uint16) _obj.get_int_member ("colorTemperatureMax");
+        }
+        set {
+            _obj.set_int_member ("colorTemperatureMax", value);
+        }
+    }
+
+    public uint16 color_temperature {
+        get {
+            return (uint16) _obj.get_int_member ("colorTemperature");
+        }
+        set {
+            _obj.set_int_member ("colorTemperature", value);
+        }
+    }
+
+    public uint16 hue_min {
+        get {
+            return (uint16) _obj.get_int_member ("hueMin");
+        }
+        set {
+            _obj.set_int_member ("hueMin", value);
+        }
+    }
+
+    public uint16 hue_max {
+        get {
+            return (uint16) _obj.get_int_member ("hueMax");
+        }
+        set {
+            _obj.set_int_member ("hueMax", value);
+        }
+    }
+
+    public uint16 hue {
+        get {
+            return (uint16) _obj.get_int_member ("hue");
+        }
+        set {
+            _obj.set_int_member ("hue", value);
+        }
+    }
+
+    public uint16 saturation_min {
+        get {
+            return (uint16) _obj.get_int_member ("saturationMin");
+        }
+        set {
+            _obj.set_int_member ("saturationMin", value);
+        }
+    }
+
+    public uint16 saturation_max {
+        get {
+            return (uint16) _obj.get_int_member ("saturationMax");
+        }
+        set {
+            _obj.set_int_member ("saturationMax", value);
+        }
+    }
+
+    public uint16 saturation {
+        get {
+            return (uint16) _obj.get_int_member ("saturation");
+        }
+        set {
+            _obj.set_int_member ("saturation", value);
         }
     }
 }

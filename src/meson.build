@@ -1,4 +1,6 @@
 sources = [
+    'colors/HSB.vala',
+    'colors/RGB.vala',
     'config/Constants.vala',
     'controllers/DeviceController.vala',
     'controllers/DevicesController.vala',
@@ -15,6 +17,7 @@ sources = [
     'onboarding/LIFXView.vala',
     'onboarding/PhilipsHueView.vala',
     'onboarding/StartView.vala',
+    'pages/AbstractDevicePage.vala',
     'pages/HueBridgeOnboardingPage.vala',
     'pages/DevicePage.vala',
     'pages/LoadingPage.vala',
@@ -33,6 +36,7 @@ sources = [
     'views/Overview.vala',
     'widgets/Carousel.vala',
     'widgets/CarouselItem.vala',
+    'widgets/IconPopover.vala',
     'widgets/Overlay.vala',
     'MainWindow.vala'
 ]
@@ -40,6 +44,7 @@ sources = [
 executable(
     meson.project_name(),
     sources + ['Application.vala'],
+    asresources,
     dependencies: [
         gtk_plus_3_dep,
         json_glib_1_dep,

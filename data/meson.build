@@ -13,13 +13,21 @@ foreach i : icon_sizes
 endforeach
 
 symbolic_icons = [
-    'com.github.manexim.home.bridge.philips.hue-symbolic',
-    'com.github.manexim.home.lightbulb-symbolic',
-    'com.github.manexim.home.lightbulb.lifx-symbolic',
-    'com.github.manexim.home.lightbulb.philips.hue-symbolic',
+    'com.github.manexim.home.icon.bridge.philips.hue-symbolic',
+    'com.github.manexim.home.icon.fan-symbolic',
+    'com.github.manexim.home.icon.lamp0-symbolic',
+    'com.github.manexim.home.icon.lamp1-symbolic',
+    'com.github.manexim.home.icon.lamp2-symbolic',
+    'com.github.manexim.home.icon.lamp3-symbolic',
+    'com.github.manexim.home.icon.lamp4-symbolic',
+    'com.github.manexim.home.icon.lightbulb-symbolic',
+    'com.github.manexim.home.icon.lightbulb.lifx-symbolic',
+    'com.github.manexim.home.icon.lightbulb.philips.hue-symbolic',
+    'com.github.manexim.home.icon.television-symbolic',
+    'com.github.manexim.home.icon.thing-symbolic',
+    'com.github.manexim.home.icon.spot-symbolic',
     'com.github.manexim.home.logo.lifx-symbolic',
-    'com.github.manexim.home.logo.philips.hue-symbolic',
-    'com.github.manexim.home.thing-symbolic'
+    'com.github.manexim.home.logo.philips.hue-symbolic'
 ]
 
 foreach icon : symbolic_icons
@@ -49,4 +57,10 @@ i18n.merge_file(
 install_data(
     meson.project_name() + '.gschema.xml',
     install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
+)
+
+asresources = gnome.compile_resources(
+    'as-resources', meson.project_name() + '.gresource.xml',
+    source_dir: '.',
+    c_name: 'as'
 )

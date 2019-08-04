@@ -24,7 +24,7 @@ public class Views.DevicesView : Gtk.Paned {
     private Controllers.DevicesController devices_controller;
 
     public DevicesView () {
-        devices_controller = new Controllers.DevicesController ();
+        devices_controller = Controllers.DevicesController.instance;
 
         stack = new Gtk.Stack ();
 
