@@ -101,6 +101,7 @@ public class Lifx.Service {
                 lamp.power = Types.Power.OFF;
                 lamp.manufacturer = "LIFX";
                 lamp.model = "White 800 (High Voltage)";
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp);
             }
 
@@ -112,6 +113,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.OFF;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -123,6 +126,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.ON;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -134,6 +139,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.ON;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -145,6 +152,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.ON;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
@@ -156,6 +165,8 @@ public class Lifx.Service {
                 lamp.id = "??:??:??:??:??:??:??:??";
                 lamp.power = Types.Power.OFF;
                 lamp.model = "Color 1000";
+                lamp.supports_color = true;
+                lamp.supports_color_temperature = true;
                 on_new_device (lamp as Models.Device);
             }
 
