@@ -207,7 +207,7 @@ public class Philips.Hue.BridgeController {
 
                 if (light.get_object_member ("state").has_member ("ct")) {
                     lamp.supports_color_temperature = true;
-                    lamp.color_temperature = (uint16) light.get_object_member ("state").get_int_member ("ct");
+                    lamp.color_temperature = (uint16) (1000000.0 / light.get_object_member ("state").get_int_member ("ct"));
                 }
 
                 if (light.get_object_member ("state").has_member ("hue")) {
@@ -276,7 +276,7 @@ public class Philips.Hue.BridgeController {
 
     public void switch_light_color_temperature (Philips.Hue.Lamp lamp, uint16 color_temperature) {
         var state = new Json.Object ();
-        state.set_int_member ("ct", color_temperature);
+        state.set_int_member ("ct", (uint16) (1000000 / color_temperature));
 
         switch_light_state (lamp, state);
     }
