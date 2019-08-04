@@ -33,14 +33,26 @@
       <td>
         <img src="data/screenshots/002.png">
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="data/screenshots/003.png">
       </td>
       <td>
         <img src="data/screenshots/004.png">
       </td>
+    </tr>
+    <tr>
       <td>
         <img src="data/screenshots/005.png">
+      </td>
+      <td>
+        <img src="data/screenshots/006.png">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="data/screenshots/007.png">
       </td>
     </tr>
   </table>
