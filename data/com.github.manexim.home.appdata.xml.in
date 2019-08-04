@@ -18,9 +18,35 @@
     <category>Network</category>
   </categories>
   <provides>
-      <binary>com.github.manexim.home</binary>
+    <binary>com.github.manexim.home</binary>
   </provides>
   ​<releases>
+    <release date="2019-08-04" version="0.4.0">
+      <description>
+        <p>New:</p>
+        <ul>
+          <li>Set custom device icons</li>
+          <li>Set dim level for dimmable bulbs</li>
+          <li>Set color for supported bulbs</li>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+          <li>UI styling</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+        </ul>
+        <p>Translations:</p>
+        <ul>
+          <li>Russian (by camellan)</li>
+          <li>French (by NathanBnm)</li>
+          <li>German (by meisenzahl)</li>
+          <li>Japanese (by ryonakano)</li>
+          <li>Portuguese (by aimproxy)</li>
+          <li>Polish (by oskarkunik)</li>
+        </ul>
+      </description>
+    </release>
     <release date="2019-07-04" version="0.3.0">
       <description>
         <p>New:</p>
@@ -97,6 +123,14 @@
     <screenshot>
       <caption></caption>
       <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/005.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/006.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/007.png</image>
     </screenshot>
   </screenshots>
   <developer_name>Manexim</developer_name>
