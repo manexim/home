@@ -210,6 +210,16 @@ public class Philips.Hue.BridgeController {
                     lamp.color_temperature = (uint16) light.get_object_member ("state").get_int_member ("ct");
                 }
 
+                if (light.get_object_member ("state").has_member ("hue")) {
+                    lamp.supports_color = true;
+                    lamp.hue = (uint16) light.get_object_member ("state").get_int_member ("hue");
+                }
+
+                if (light.get_object_member ("state").has_member ("sat")) {
+                    lamp.supports_color = true;
+                    lamp.saturation = (uint16) light.get_object_member ("state").get_int_member ("sat");
+                }
+
                 if (light.get_object_member ("capabilities").get_object_member ("control").has_member ("ct")) {
                     lamp.color_temperature_min = (uint16) (1000000.0 / light.get_object_member ("capabilities").
                         get_object_member ("control").get_object_member ("ct").get_int_member ("max"));
