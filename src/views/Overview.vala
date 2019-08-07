@@ -31,7 +31,7 @@ public class Views.Overview : Gtk.ScrolledWindow {
         loading_revealer.add (new Pages.LoadingPage ());
         loading_revealer.reveal_child = true;
 
-        grid.attach (loading_revealer, 0, 1, 1, 1);
+        grid.attach (loading_revealer, 0, 0, 1, 1);
 
         var devices_label = new Gtk.Label (_("Devices"));
         devices_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
