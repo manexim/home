@@ -27,6 +27,12 @@ public class Views.Overview : Gtk.ScrolledWindow {
         grid.margin = 12;
         add (grid);
 
+        var loading_revealer = new Gtk.Revealer ();
+        loading_revealer.add (new Pages.LoadingPage ());
+        loading_revealer.reveal_child = true;
+
+        grid.attach (loading_revealer, 0, 1, 1, 1);
+
         var devices_label = new Gtk.Label (_("Devices"));
         devices_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
         devices_label.xalign = 0;
@@ -43,10 +49,14 @@ public class Views.Overview : Gtk.ScrolledWindow {
         var devices_revealer = new Gtk.Revealer ();
         devices_revealer.add (devices_grid);
 
-        grid.attach (devices_revealer, 0, 0, 1, 1);
+        grid.attach (devices_revealer, 0, 1, 1, 1);
 
         devices_controller = Controllers.DevicesController.instance;
         devices_controller.on_new_device.connect ((device) => {
+            if (loading_revealer.child_revealed) {
+                loading_revealer.reveal_child = false;
+            }
+
             devices_carousel.add_thing (device);
             devices_revealer.reveal_child = true;
         });
@@ -78,10 +88,14 @@ public class Views.Overview : Gtk.ScrolledWindow {
         var hubs_revealer = new Gtk.Revealer ();
         hubs_revealer.add (hubs_grid);
 
-        grid.attach (hubs_revealer, 0, 1, 1, 1);
+        grid.attach (hubs_revealer, 0, 2, 1, 1);
 
         var philipsHueService = Philips.Hue.Service.instance;
         philipsHueService.on_new_bridge.connect ((bridge) => {
+            if (loading_revealer.child_revealed) {
+                loading_revealer.reveal_child = false;
+            }
+
             hubs_carousel.add_thing (bridge);
             hubs_revealer.reveal_child = true;
         });
