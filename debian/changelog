@@ -1,3 +1,19 @@
+com.github.manexim.home (0.4.1) bionic; urgency=medium
+
+[NEW]
+[IMPROVED]
+[FIXED]
+ * Show loading page if no device is found
+[TRANSLATIONS]
+ * Russian (by camellan)
+ * French (by NathanBnm)
+ * German (by meisenzahl)
+ * Japanese (by ryonakano)
+ * Portuguese (by aimproxy)
+ * Polish (by oskarkunik)
+
+ -- Marius Meisenzahl <mariusmeisenzahl@gmail.com>  Wed, 07 Aug 2019 06:56:37 +0200
+
 com.github.manexim.home (0.4.0) bionic; urgency=medium
 
 [NEW]
