@@ -21,11 +21,31 @@
 
 public class Views.Overview : Gtk.ScrolledWindow {
     private Controllers.DevicesController devices_controller;
+    private Gtk.Stack stack;
+    private Gtk.Grid network_view;
+    private Gtk.Grid grid;
 
     public Overview () {
-        var grid = new Gtk.Grid ();
+        var network_alert_view = new Granite.Widgets.AlertView (_("Network Is Not Available"),
+                                                            _("Connect to the network to control your smart home gadgets."),
+                                                            "network-error");
+        network_alert_view.get_style_context ().remove_class (Gtk.STYLE_CLASS_VIEW);
+        network_alert_view.show_action (_("Network Settings…"));
+
+        network_view = new Gtk.Grid ();
+        network_view.margin = 24;
+        network_view.attach (network_alert_view, 0, 0, 1, 1);
+
+        stack = new Gtk.Stack ();
+        stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
+
+        grid = new Gtk.Grid ();
         grid.margin = 12;
-        add (grid);
+
+        stack.add (grid);
+        stack.add (network_view);
+
+        add (stack);
 
         var loading_revealer = new Gtk.Revealer ();
         loading_revealer.add (new Pages.LoadingPage ());
@@ -108,5 +128,24 @@ public class Views.Overview : Gtk.ScrolledWindow {
                 );
             }
         });
+
+        NetworkMonitor.get_default ().network_changed.connect (on_view_mode_changed);
+
+        network_alert_view.action_activated.connect (() => {
+            try {
+                AppInfo.launch_default_for_uri ("settings://network", null);
+            } catch (Error e) {
+                warning (e.message);
+            }
+        });
+    }
+
+    private void on_view_mode_changed () {
+        var connection_available = NetworkMonitor.get_default ().get_network_available ();
+        if (!connection_available) {
+            stack.visible_child = network_view;
+        } else {
+            stack.visible_child = grid;
+        }
     }
 }
