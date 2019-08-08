@@ -274,6 +274,15 @@ public class Philips.Hue.BridgeController {
         switch_light_state (lamp, state);
     }
 
+    public void switch_light_hsb (Philips.Hue.Lamp lamp, uint16 hue, uint16 saturation, uint16 brightness) {
+        var state = new Json.Object ();
+        state.set_int_member ("hue", hue);
+        state.set_int_member ("sat", saturation);
+        state.set_int_member ("bri", brightness);
+
+        switch_light_state (lamp, state);
+    }
+
     public void switch_light_color_temperature (Philips.Hue.Lamp lamp, uint16 color_temperature) {
         var state = new Json.Object ();
         state.set_int_member ("ct", (uint16) (1000000 / color_temperature));

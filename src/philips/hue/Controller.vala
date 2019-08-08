@@ -51,6 +51,15 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
         lamp.brightness = brightness;
     }
 
+    public override void switch_hsb (uint16 hue, uint16 saturation, uint16 brightness) {
+        var lamp = device as Philips.Hue.Lamp;
+        controller.switch_light_hsb (lamp, hue, saturation, brightness);
+
+        lamp.hue = hue;
+        lamp.saturation = saturation;
+        lamp.brightness = brightness;
+    }
+
     public override void switch_color_temperature (uint16 color_temperature) {
         var lamp = device as Philips.Hue.Lamp;
         controller.switch_light_color_temperature (lamp, color_temperature);

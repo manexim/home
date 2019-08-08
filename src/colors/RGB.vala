@@ -29,4 +29,75 @@ public class Colors.RGB {
     public RGB.from_hex (string hex) {
         hex.scanf ("%02x%02x%02x", &red, &green, &blue);
     }
+
+    public RGB.from_hsb (HSB hsb) {
+        int i;
+        double f, p, q, t;
+        double r, g, b;
+
+        double hue, saturation, brightness;
+        hue = (double) hsb.hue;
+        saturation = (double) (hsb.saturation / 100.0);
+        brightness = (double) (hsb.brightness / 100.0);
+
+        if (saturation == 0) {
+            r = brightness;
+            g = brightness;
+            b = brightness;
+
+            red = (uint8) (r * 255 + 0.5);
+            green = (uint8) (g * 255 + 0.5);
+            blue = (uint8) (b * 255 + 0.5);
+
+            return;
+        }
+
+        hue /= 60;
+        i = (int) hue;
+        f = hue - i;
+        p = brightness * (1 - saturation);
+        q = brightness * (1 - saturation * f);
+        t = brightness * (1 - saturation * (1 - f));
+
+        switch (i) {
+            case 0:
+                r = brightness;
+                g = t;
+                b = p;
+                break;
+            case 1:
+                r = q;
+                g = brightness;
+                b = p;
+                break;
+            case 2:
+                r = p;
+                g = brightness;
+                b = t;
+                break;
+            case 3:
+                r = p;
+                g = q;
+                b = brightness;
+                break;
+            case 4:
+                r = t;
+                g = p;
+                b = brightness;
+                break;
+            default:
+                r = brightness;
+                g = p;
+                b = q;
+                break;
+        }
+
+        red = (uint8) (r * 255 + 0.5);
+        green = (uint8) (g * 255 + 0.5);
+        blue = (uint8) (b * 255 + 0.5);
+    }
+
+    public string to_hex () {
+        return "#%02x%02x%02x".printf (red, green, blue);
+    }
 }
