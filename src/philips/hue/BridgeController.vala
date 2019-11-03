@@ -43,12 +43,15 @@ public class Philips.Hue.BridgeController {
 
         session.send_message (message);
 
-        // replace <root xmlns="urn:schemas-upnp-org:device-1-0"> with <root>
-        // because  otherwise the node can not be found
-        GLib.Regex r = /.*(<root.*>).*/;
         Xml.Doc* doc;
         try {
-            var patched = r.replace ((string) message.response_body.data, (ssize_t) message.response_body.length, 0, "<root>");
+            // replace <root xmlns="urn:schemas-upnp-org:device-1-0"> with <root>
+            // because  otherwise the node can not be found
+            var r = new Regex (".*(<root.*>).*");
+
+            var patched = r.replace (
+                (string) message.response_body.data, (ssize_t) message.response_body.length, 0, "<root>"
+            );
 
             Xml.Parser.init ();
 
@@ -57,19 +60,19 @@ public class Philips.Hue.BridgeController {
                 stderr.printf ("failed to read the .xml file\n");
             }
 
-            Xml.XPath.Context context = new Xml.XPath.Context(doc);
+            Xml.XPath.Context context = new Xml.XPath.Context (doc);
             if (context == null) {
                 stderr.printf ("failed to create the xpath context\n");
             }
 
-            Xml.XPath.Object* obj = context.eval_expression("/root/device/friendlyName");
+            Xml.XPath.Object* obj = context.eval_expression ("/root/device/friendlyName");
             if (obj == null) {
                 stderr.printf ("failed to evaluate xpath\n");
             }
 
             Xml.Node* node = null;
-            if (obj->nodesetval != null && obj->nodesetval->item(0) != null) {
-                node = obj->nodesetval->item(0);
+            if (obj->nodesetval != null && obj->nodesetval->item (0) != null) {
+                node = obj->nodesetval->item (0);
             } else {
                 stderr.printf ("failed to find the expected node\n");
             }
@@ -78,14 +81,14 @@ public class Philips.Hue.BridgeController {
 
             delete obj;
 
-            obj = context.eval_expression("/root/device/manufacturer");
+            obj = context.eval_expression ("/root/device/manufacturer");
             if (obj == null) {
                 stderr.printf ("failed to evaluate xpath\n");
             }
 
             node = null;
-            if (obj->nodesetval != null && obj->nodesetval->item(0) != null) {
-                node = obj->nodesetval->item(0);
+            if (obj->nodesetval != null && obj->nodesetval->item (0) != null) {
+                node = obj->nodesetval->item (0);
             } else {
                 stderr.printf ("failed to find the expected node\n");
             }
@@ -94,14 +97,14 @@ public class Philips.Hue.BridgeController {
 
             delete obj;
 
-            obj = context.eval_expression("/root/device/modelName");
+            obj = context.eval_expression ("/root/device/modelName");
             if (obj == null) {
                 stderr.printf ("failed to evaluate xpath\n");
             }
 
             node = null;
-            if (obj->nodesetval != null && obj->nodesetval->item(0) != null) {
-                node = obj->nodesetval->item(0);
+            if (obj->nodesetval != null && obj->nodesetval->item (0) != null) {
+                node = obj->nodesetval->item (0);
             } else {
                 stderr.printf ("failed to find the expected node\n");
             }
@@ -109,7 +112,7 @@ public class Philips.Hue.BridgeController {
             _bridge.model = node->get_content ();
 
             delete obj;
-        } catch (GLib.RegexError e) {
+        } catch (RegexError e) {
             stderr.printf (e.message);
         } finally {
             delete doc;
@@ -118,7 +121,7 @@ public class Philips.Hue.BridgeController {
         Xml.Parser.cleanup ();
     }
 
-    public bool register () throws GLib.Error {
+    public bool register () throws Error {
         #if DEMO_MODE
         if (register_counter++ == 2) {
             _bridge.power = Types.Power.ON;
@@ -149,15 +152,15 @@ public class Philips.Hue.BridgeController {
 
         string response = (string) message.response_body.flatten ().data;
 
-        var parser = new Json.Parser();
+        var parser = new Json.Parser ();
         parser.load_from_data (response, -1);
 
         foreach (var element in parser.get_root ().get_array ().get_elements ()) {
             var obj = element.get_object ();
 
             if (obj.has_member ("error")) {
-                throw new GLib.Error (
-                    GLib.Quark.from_string (""),
+                throw new Error (
+                    Quark.from_string (""),
                     (int) obj.get_object_member ("error").get_int_member ("type"),
                     obj.get_object_member ("error").get_string_member ("description")
                 );
@@ -184,7 +187,7 @@ public class Philips.Hue.BridgeController {
         string response = (string) message.response_body.flatten ().data;
 
         try {
-            var parser = new Json.Parser();
+            var parser = new Json.Parser ();
             parser.load_from_data (response, -1);
             var object = parser.get_root ().get_object ();
             var lights = object.get_object_member ("lights");
@@ -207,7 +210,8 @@ public class Philips.Hue.BridgeController {
 
                 if (light.get_object_member ("state").has_member ("ct")) {
                     lamp.supports_color_temperature = true;
-                    lamp.color_temperature = (uint16) (1000000.0 / light.get_object_member ("state").get_int_member ("ct"));
+                    lamp.color_temperature = (uint16) (1000000.0 / light.get_object_member ("state")
+                        .get_int_member ("ct"));
                 }
 
                 if (light.get_object_member ("state").has_member ("hue")) {
@@ -241,7 +245,7 @@ public class Philips.Hue.BridgeController {
                     on_updated_lamp (lamp);
                 }
             }
-        } catch (GLib.Error e) {
+        } catch (Error e) {
             stderr.printf (e.message);
         }
     }
@@ -269,6 +273,15 @@ public class Philips.Hue.BridgeController {
 
     public void switch_light_brightness (Philips.Hue.Lamp lamp, uint16 brightness) {
         var state = new Json.Object ();
+        state.set_int_member ("bri", brightness);
+
+        switch_light_state (lamp, state);
+    }
+
+    public void switch_light_hsb (Philips.Hue.Lamp lamp, uint16 hue, uint16 saturation, uint16 brightness) {
+        var state = new Json.Object ();
+        state.set_int_member ("hue", hue);
+        state.set_int_member ("sat", saturation);
         state.set_int_member ("bri", brightness);
 
         switch_light_state (lamp, state);

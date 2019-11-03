@@ -75,7 +75,7 @@ public class Settings : Granite.Services.Settings {
                     return true;
                 },
                 (value, expected_type) => {
-                    return new Variant.string(value.get_boolean() ? "dark" : "no-preference");
+                    return new Variant.string (value.get_boolean () ? "dark" : "no-preference");
                 },
                 null,
                 null
@@ -102,7 +102,7 @@ public class Settings : Granite.Services.Settings {
     }
 
     public Json.Object configuration_as_json () throws GLib.Error {
-        var parser = new Json.Parser();
+        var parser = new Json.Parser ();
         parser.load_from_data (configuration, -1);
         var object = parser.get_root ().get_object ();
 

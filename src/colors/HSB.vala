@@ -19,4 +19,72 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class Colors.HSB {}
+public class Colors.HSB {
+    public uint16 hue;
+    public uint8 saturation;
+    public uint8 brightness;
+
+    public HSB () {}
+
+    public HSB.from_rgb (RGB rgb) {
+        double min, max, delta;
+        double h, s, b;
+
+        double red = rgb.red / 255.0;
+        double green = rgb.green / 255.0;
+        double blue = rgb.blue / 255.0;
+
+        min = red;
+        min = green < min ? green : min;
+        min = blue < min ? blue : min;
+
+        max = red;
+        max = green > max ? green : max;
+        max = blue > max ? blue : max;
+
+        b = max;
+        delta = max - min;
+
+        if (max != 0) {
+            s = delta / max;
+        } else {
+            s = 0;
+            h = 0;
+
+            hue = (uint16) (h + 0.5);
+            saturation = (uint8) (s * 100 + 0.5);
+            brightness = (uint8) (b * 100 + 0.5);
+
+            return;
+        }
+
+        if (max == min) {
+            h = 0;
+            s = 0;
+
+            hue = (uint16) (h + 0.5);
+            saturation = (uint8) (s * 100 + 0.5);
+            brightness = (uint8) (b * 100 + 0.5);
+
+            return;
+        }
+
+        if (red == max) {
+            h = (green - blue) / delta;
+        } else if (green == max) {
+            h = 2 + (blue - red) / delta;
+        } else {
+            h = 4 + (red - green) / delta;
+        }
+
+        h *= 60;
+
+        if (h < 0) {
+            h += 360;
+        }
+
+        hue = (uint16) (h + 0.5);
+        saturation = (uint8) (s * 100 + 0.5);
+        brightness = (uint8) (b * 100 + 0.5);
+    }
+}

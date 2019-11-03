@@ -21,6 +21,9 @@
 
 public class Pages.DevicePage : Pages.AbstractDevicePage {
     private Controllers.DeviceController controller;
+    private Gtk.Scale hue_scale;
+    private Gtk.Scale saturation_scale;
+    private Gtk.Scale brightness_scale;
 
     public DevicePage (Models.Device device) {
         Object (
@@ -43,7 +46,7 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
                 var hue_label = new Gtk.Label (_("Hue: "));
                 hue_label.xalign = 1;
 
-                var hue_scale = new Gtk.Scale.with_range (
+                hue_scale = new Gtk.Scale.with_range (
                     Gtk.Orientation.HORIZONTAL, lamp.hue_min, lamp.hue_max, 1.0
                 );
 
@@ -63,7 +66,7 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
                 var saturation_label = new Gtk.Label (_("Saturation: "));
                 saturation_label.xalign = 1;
 
-                var saturation_scale = new Gtk.Scale.with_range (
+                saturation_scale = new Gtk.Scale.with_range (
                     Gtk.Orientation.HORIZONTAL, lamp.saturation_min, lamp.saturation_max, 1.0
                 );
 
@@ -85,7 +88,7 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
                 var brightness_label = new Gtk.Label (_("Brightness: "));
                 brightness_label.xalign = 1;
 
-                var brightness_scale = new Gtk.Scale.with_range (
+                brightness_scale = new Gtk.Scale.with_range (
                     Gtk.Orientation.HORIZONTAL, lamp.brightness_min, lamp.brightness_max, 1.0
                 );
 
@@ -123,6 +126,42 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
 
                 content_area.attach (color_temperature_label, 0, 3, 1, 1);
                 content_area.attach (color_temperature_scale, 1, 3, 1, 1);
+            }
+
+            if (lamp.supports_color) {
+                var c = new Colors.HSB ();
+                c.hue = remap_value (lamp.hue, lamp.hue_min, lamp.hue_max, 0, 360);
+                c.saturation = (uint8) remap_value (lamp.saturation, lamp.saturation_min, lamp.saturation_max, 0, 100);
+                c.brightness = (uint8) remap_value (lamp.brightness, lamp.brightness_min, lamp.brightness_max, 0, 100);
+
+                var color_picker = new Widgets.ColorPicker (MainWindow.get_default ());
+                color_picker.hsb = c;
+                color_picker.on_color_change.connect ((rgb) => {
+                    var hsb = new Colors.HSB.from_rgb (rgb);
+
+                    var hue = remap_value (hsb.hue, 0, 360, lamp.hue_min, lamp.hue_max);
+                    var saturation = remap_value (hsb.saturation, 0, 100, lamp.saturation_min, lamp.saturation_max);
+                    var brightness = remap_value (hsb.brightness, 0, 100, lamp.brightness_min, lamp.brightness_max);
+
+                    #if DEMO_MODE
+                    hue_scale.adjustment.value = hue;
+                    lamp.hue = hue_scale.adjustment.value;
+
+                    saturation_scale.adjustment.value = saturation;
+                    lamp.saturation = saturation_scale.adjustment.value;
+
+                    brightness_scale.adjustment.value = brightness;
+                    lamp.brightness = brightness_scale.adjustment.value;
+                    #else
+                    controller.switch_hsb (hue, saturation, brightness);
+
+                    hue_scale.adjustment.value = hue;
+                    saturation_scale.adjustment.value = saturation;
+                    brightness_scale.adjustment.value = brightness;
+                    #endif
+                });
+
+                content_area.attach (color_picker, 0, 4, 1, 1);
             }
         }
 
@@ -177,5 +216,9 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
             status = (_("Unknown"));
             break;
         }
+    }
+
+    private uint16 remap_value (uint16 value, uint16 in_min, uint16 in_max, uint16 out_min, uint16 out_max) {
+        return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 }

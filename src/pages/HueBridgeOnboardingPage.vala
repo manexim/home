@@ -38,7 +38,7 @@ public class Pages.HueBridgeOnboardingPage : Gtk.Grid {
         label = new Gtk.Label (_("Press the push-link button in the middle of the Hue bridge."));
 
         spinner = new Gtk.Spinner ();
-		spinner.start ();
+        spinner.start ();
 
         attach (icon, 0, 0, 1, 1);
         attach (label, 0, 1, 1, 1);

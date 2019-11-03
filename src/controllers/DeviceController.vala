@@ -34,6 +34,8 @@ public abstract class Controllers.DeviceController : Object {
 
     public abstract void switch_brightness (uint16 brightness);
 
+    public abstract void switch_hsb (uint16 hue, uint16 saturation, uint16 brightness);
+
     public abstract void switch_color_temperature (uint16 color_temperature);
 
     public abstract void switch_power (bool on);

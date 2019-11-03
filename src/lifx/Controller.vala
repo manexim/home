@@ -51,6 +51,15 @@ public class Lifx.Controller : Controllers.DeviceController {
         lamp.brightness = brightness;
     }
 
+    public override void switch_hsb (uint16 hue, uint16 saturation, uint16 brightness) {
+        var lamp = device as Lifx.Lamp;
+        service.set_color (lamp, hue, saturation, brightness, 0, 0);
+
+        lamp.hue = hue;
+        lamp.saturation = saturation;
+        lamp.brightness = brightness;
+    }
+
     public override void switch_color_temperature (uint16 color_temperature) {
         var lamp = device as Lifx.Lamp;
         service.set_color (lamp, 0, 0, lamp.brightness, color_temperature, 0);

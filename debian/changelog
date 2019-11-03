@@ -1,3 +1,20 @@
+com.github.manexim.home (0.5.0) bionic; urgency=medium
+
+[NEW]
+ * Use color picker to set color of smart bulbs
+[IMPROVED]
+ * Show an error page if network is not available
+[FIXED]
+[TRANSLATIONS]
+ * Russian (by camellan)
+ * French (by NathanBnm)
+ * German (by meisenzahl)
+ * Japanese (by ryonakano)
+ * Portuguese (by aimproxy)
+ * Polish (by oskarkunik)
+
+ -- Marius Meisenzahl <mariusmeisenzahl@gmail.com>  Sun, 03 Nov 2019 14:24:03 +0100
+
 com.github.manexim.home (0.4.2) bionic; urgency=medium
 
 [NEW]

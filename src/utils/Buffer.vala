@@ -51,40 +51,40 @@ public class Buffer {
         return offset + 1;
     }
 
-    private uint16 readUInt16Backwards (uint8 offset) {
+    private uint16 read_uint16_backwards (uint8 offset) {
         return this.values[offset + 1]
             | (this.values[offset] << 8);
     }
 
-    private uint16 readUInt16Forwards (uint8 offset) {
+    private uint16 read_uint16_forwards (uint8 offset) {
         return this.values[offset]
             | (this.values[offset + 1] << 8);
     }
 
     public uint16 read_uint16_be (uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.readUInt16Forwards (offset);
+            return this.read_uint16_forwards (offset);
         }
 
-        return this.readUInt16Backwards (offset);
+        return this.read_uint16_backwards (offset);
     }
 
     public uint16 read_uint16_le (uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.readUInt16Backwards (offset);
+            return this.read_uint16_backwards (offset);
         }
 
-        return this.readUInt16Forwards (offset);
+        return this.read_uint16_forwards (offset);
     }
 
-    private uint8 writeUInt16Backwards (uint16 value, uint8 offset) {
+    private uint8 writer_uint16_backwards (uint16 value, uint8 offset) {
         this.values[offset + 1] = (uint8) (value & 0xff);
         this.values[offset] = (uint8) ((value >> 8) & 0xff);
 
         return offset + 2;
     }
 
-    private uint8 writeUInt16Forwards (uint16 value, uint8 offset) {
+    private uint8 write_uint16_forwards (uint16 value, uint8 offset) {
         this.values[offset] = (uint8) (value & 0xff);
         this.values[offset + 1] = (uint8) ((value >> 8) & 0xff);
 
@@ -93,28 +93,28 @@ public class Buffer {
 
     public uint8 write_uint16_be (uint16 value, uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.writeUInt16Forwards (value, offset);
+            return this.write_uint16_forwards (value, offset);
         }
 
-        return this.writeUInt16Backwards (value, offset);
+        return this.writer_uint16_backwards (value, offset);
     }
 
     public uint8 write_uint16_le (uint16 value, uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.writeUInt16Backwards (value, offset);
+            return this.writer_uint16_backwards (value, offset);
         }
 
-        return this.writeUInt16Forwards (value, offset);
+        return this.write_uint16_forwards (value, offset);
     }
 
-    private uint32 readUInt32Backwards (uint8 offset) {
+    private uint32 read_uint32_backwards (uint8 offset) {
         return this.values[offset + 3]
             | (this.values[offset + 2] << 8)
             | (this.values[offset + 1] << 16)
             | (this.values[offset] << 24);
     }
 
-    private uint32 readUInt32Forwards (uint8 offset) {
+    private uint32 read_uint32_forwards (uint8 offset) {
         return this.values[offset]
             | (this.values[offset + 1] << 8)
             | (this.values[offset + 2] << 16)
@@ -123,21 +123,21 @@ public class Buffer {
 
     public uint32 read_uint32_be (uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.readUInt32Forwards (offset);
+            return this.read_uint32_forwards (offset);
         }
 
-        return this.readUInt32Backwards (offset);
+        return this.read_uint32_backwards (offset);
     }
 
     public uint32 read_uint32_le (uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.readUInt32Backwards (offset);
+            return this.read_uint32_backwards (offset);
         }
 
-        return this.readUInt32Forwards (offset);
+        return this.read_uint32_forwards (offset);
     }
 
-    private uint8 writeUInt32Backwards (uint32 value, uint8 offset) {
+    private uint8 write_uint32_backwards (uint32 value, uint8 offset) {
         this.values[offset + 3] = (uint8) (value & 0xff);
         this.values[offset + 2] = (uint8) ((value >> 8) & 0xff);
         this.values[offset + 1] = (uint8) ((value >> 16) & 0xff);
@@ -146,7 +146,7 @@ public class Buffer {
         return offset + 4;
     }
 
-    private uint8 writeUInt32Forwards (uint32 value, uint8 offset) {
+    private uint8 write_uint32_forwards (uint32 value, uint8 offset) {
         this.values[offset] = (uint8) (value & 0xff);
         this.values[offset + 1] = (uint8) ((value >> 8) & 0xff);
         this.values[offset + 2] = (uint8) ((value >> 16) & 0xff);
@@ -157,28 +157,28 @@ public class Buffer {
 
     public uint8 write_uint32_be (uint32 value, uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.writeUInt32Forwards (value, offset);
+            return this.write_uint32_forwards (value, offset);
         }
 
-        return this.writeUInt32Backwards (value, offset);
+        return this.write_uint32_backwards (value, offset);
     }
 
     public uint8 write_uint32_le (uint32 value, uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.writeUInt32Backwards (value, offset);
+            return this.write_uint32_backwards (value, offset);
         }
 
-        return this.writeUInt32Forwards (value, offset);
+        return this.write_uint32_forwards (value, offset);
     }
 
-    private float readFloatBackwards (uint8 offset) {
+    private float read_float_backwards (uint8 offset) {
         float f = (float) 0.0;
         Posix.memcpy (&f, &this.values[offset], 4);
 
         return f;
     }
 
-    private float readFloatForwards (uint8 offset) {
+    private float read_float_forwards (uint8 offset) {
         float f = (float) 0.0;
         Posix.memcpy (&f, &this.values[offset], 4);
 
@@ -187,27 +187,27 @@ public class Buffer {
 
     public float read_float_be (uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.readFloatForwards (offset);
+            return this.read_float_forwards (offset);
         }
 
-        return this.readFloatBackwards (offset);
+        return this.read_float_backwards (offset);
     }
 
     public float read_float_le (uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.readFloatBackwards (offset);
+            return this.read_float_backwards (offset);
         }
 
-        return this.readFloatForwards (offset);
+        return this.read_float_forwards (offset);
     }
 
-    private uint8 writeFloatBackwards (float value, uint8 offset) {
+    private uint8 write_float_backwards (float value, uint8 offset) {
         Posix.memcpy (&this.values[offset], &value, 4);
 
         return 4;
     }
 
-    private uint8 writeFloatForwards (float value, uint8 offset) {
+    private uint8 write_float_forwards (float value, uint8 offset) {
         Posix.memcpy (&this.values[offset], &value, 4);
 
         return 4;
@@ -215,18 +215,18 @@ public class Buffer {
 
     public uint8 write_float_be (float value, uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.writeFloatForwards (value, offset);
+            return this.write_float_forwards (value, offset);
         }
 
-        return this.writeFloatBackwards (value, offset);
+        return this.write_float_backwards (value, offset);
     }
 
     public uint8 write_float_le (float value, uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.writeFloatBackwards (value, offset);
+            return this.write_float_backwards (value, offset);
         }
 
-        return this.writeFloatForwards (value, offset);
+        return this.write_float_forwards (value, offset);
     }
 
     public Buffer concat (Buffer list) {
