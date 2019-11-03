@@ -71,10 +71,10 @@ public class Buffer {
 
     public uint16 read_uint16_le (uint8 offset) {
         if (Platform.is_big_endian ()) {
-            return this.readUInt16Backwards (offset);
+            return this.read_uint16_backwards (offset);
         }
 
-        return this.readUInt16Forwards (offset);
+        return this.read_uint16_forwards (offset);
     }
 
     private uint8 writer_uint16_backwards (uint16 value, uint8 offset) {

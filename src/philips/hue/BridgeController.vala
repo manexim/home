@@ -43,11 +43,12 @@ public class Philips.Hue.BridgeController {
 
         session.send_message (message);
 
-        // replace <root xmlns="urn:schemas-upnp-org:device-1-0"> with <root>
-        // because  otherwise the node can not be found
-        GLib.Regex r = ".*(<root.*>).*";
         Xml.Doc* doc;
         try {
+            // replace <root xmlns="urn:schemas-upnp-org:device-1-0"> with <root>
+            // because  otherwise the node can not be found
+            var r = new Regex (".*(<root.*>).*");
+
             var patched = r.replace (
                 (string) message.response_body.data, (ssize_t) message.response_body.length, 0, "<root>"
             );
@@ -111,7 +112,7 @@ public class Philips.Hue.BridgeController {
             _bridge.model = node->get_content ();
 
             delete obj;
-        } catch (GLib.RegexError e) {
+        } catch (RegexError e) {
             stderr.printf (e.message);
         } finally {
             delete doc;
@@ -120,7 +121,7 @@ public class Philips.Hue.BridgeController {
         Xml.Parser.cleanup ();
     }
 
-    public bool register () throws GLib.Error {
+    public bool register () throws Error {
         #if DEMO_MODE
         if (register_counter++ == 2) {
             _bridge.power = Types.Power.ON;
@@ -158,8 +159,8 @@ public class Philips.Hue.BridgeController {
             var obj = element.get_object ();
 
             if (obj.has_member ("error")) {
-                throw new GLib.Error (
-                    GLib.Quark.from_string (""),
+                throw new Error (
+                    Quark.from_string (""),
                     (int) obj.get_object_member ("error").get_int_member ("type"),
                     obj.get_object_member ("error").get_string_member ("description")
                 );
@@ -244,7 +245,7 @@ public class Philips.Hue.BridgeController {
                     on_updated_lamp (lamp);
                 }
             }
-        } catch (GLib.Error e) {
+        } catch (Error e) {
             stderr.printf (e.message);
         }
     }

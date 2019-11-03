@@ -78,22 +78,22 @@ public class Lifx.Packet {
 
         switch (type) {
             case 3: // StateService
-                payload.set_int_member ("service", buffer.read_uint8 (INDEX)));
-                payload.set_int_member ("port", buffer.read_uint32_le (INDEX) + 1));
+                payload.set_int_member ("service", buffer.read_uint8 (INDEX));
+                payload.set_int_member ("port", buffer.read_uint32_le (INDEX + 1));
                 break;
             case 13: // StateHostInfo
-                payload.set_double_member ("signal", buffer.read_float_le (INDEX)));
-                payload.set_int_member ("tx", buffer.read_uint32_le (INDEX) + 4));
-                payload.set_int_member ("rx", buffer.read_uint32_le (INDEX) + 8));
+                payload.set_double_member ("signal", buffer.read_float_le (INDEX));
+                payload.set_int_member ("tx", buffer.read_uint32_le (INDEX + 4));
+                payload.set_int_member ("rx", buffer.read_uint32_le (INDEX + 8));
                 break;
             case 15: // StateHostFirmware
-                payload.set_double_member ("signal", buffer.read_float_le (INDEX)));
-                payload.set_int_member ("tx", buffer.read_uint32_le (INDEX) + 4));
-                payload.set_int_member ("rx", buffer.read_uint32_le (INDEX) + 8));
+                payload.set_double_member ("signal", buffer.read_float_le (INDEX));
+                payload.set_int_member ("tx", buffer.read_uint32_le (INDEX + 4));
+                payload.set_int_member ("rx", buffer.read_uint32_le (INDEX + 8));
                 break;
             case 22: // StatePower
                 Types.Power power = Types.Power.UNKNOWN;
-                uint16 power_t = buffer.read_uint16_le (INDEX));
+                uint16 power_t = buffer.read_uint16_le (INDEX);
                 if (power_t > 0) {
                     power = Types.Power.ON;
                 } else if (power_t == 0) {
@@ -102,10 +102,10 @@ public class Lifx.Packet {
                 payload.set_int_member ("level", power);
                 break;
             case 25: // StateLabel
-                payload.set_string_member ("label", (string) buffer.slice (INDEX), INDEX + 32).raw);
+                payload.set_string_member ("label", (string) buffer.slice (INDEX, INDEX + 32).raw);
                 break;
             case 33: // StateVersion
-                uint32 product = buffer.read_uint32_le (INDEX) + 4);
+                uint32 product = buffer.read_uint32_le (INDEX + 4);
                 string model = "";
                 bool supports_color = false;
                 bool supports_infrared = false;
@@ -255,14 +255,14 @@ public class Lifx.Packet {
                 payload.set_boolean_member ("supportsMultizone", supports_multizone);
                 break;
             case 107: // State
-                payload.set_int_member ("hue", buffer.read_uint16_le (INDEX)));
-                payload.set_int_member ("saturation", buffer.read_uint16_le (INDEX) + 2));
-                payload.set_int_member ("brightness", buffer.read_uint16_le (INDEX) + 4));
-                payload.set_int_member ("kelvin", buffer.read_uint16_le (INDEX) + 6));
+                payload.set_int_member ("hue", buffer.read_uint16_le (INDEX));
+                payload.set_int_member ("saturation", buffer.read_uint16_le (INDEX + 2));
+                payload.set_int_member ("brightness", buffer.read_uint16_le (INDEX + 4));
+                payload.set_int_member ("kelvin", buffer.read_uint16_le (INDEX + 6));
 
                 // power
                 Types.Power power = Types.Power.UNKNOWN;
-                uint16 power_t = buffer.read_uint16_le (INDEX) + 10);
+                uint16 power_t = buffer.read_uint16_le (INDEX + 10);
                 if (power_t > 0) {
                     power = Types.Power.ON;
                 } else if (power_t == 0) {
@@ -270,11 +270,11 @@ public class Lifx.Packet {
                 }
                 payload.set_int_member ("power", power);
 
-                payload.set_string_member ("label", (string) buffer.slice (INDEX) + 12, INDEX + 44).raw);
+                payload.set_string_member ("label", (string) buffer.slice (INDEX + 12, INDEX + 44).raw);
                 break;
             case 118: // StatePower
                 Types.Power power = Types.Power.UNKNOWN;
-                uint16 power_t = buffer.read_uint16_le (INDEX));
+                uint16 power_t = buffer.read_uint16_le (INDEX);
                 if (power_t > 0) {
                     power = Types.Power.ON;
                 } else if (power_t == 0) {
@@ -284,7 +284,7 @@ public class Lifx.Packet {
                 break;
             default:
                 var a = new Json.Array ();
-                var raw = buffer.slice (INDEX), (uint8) size).raw;
+                var raw = buffer.slice (INDEX, (uint8) size).raw;
 
                 for (uint8 j = 0; j < raw.length; j++) {
                     a.add_int_element (raw[j]);
