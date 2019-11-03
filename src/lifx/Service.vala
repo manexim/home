@@ -61,7 +61,9 @@ public class Lifx.Service {
         }
     }
 
-    public void set_color (Lifx.Lamp lamp, uint16 hue, uint16 saturation, uint16 brightness, uint16 kelvin, uint32 duration=0) {
+    public void set_color (
+        Lifx.Lamp lamp, uint16 hue, uint16 saturation, uint16 brightness, uint16 kelvin, uint32 duration=0
+    ) {
         var packet = new Lifx.Packet ();
         packet.type = 102;
         packet.tagged = false;
@@ -186,9 +188,9 @@ public class Lifx.Service {
 
             #if HAVE_SO_REUSEPORT
             int32 enable = 1;
-            Posix.setsockopt(
+            Posix.setsockopt (
                 socket.fd, Platform.Socket.SOL_SOCKET, Platform.Socket.SO_REUSEPORT, &enable,
-                (Posix.socklen_t) sizeof(int)
+                (Posix.socklen_t) sizeof (int)
             );
             #endif
 

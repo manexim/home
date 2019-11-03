@@ -26,9 +26,11 @@ public class Views.Overview : Gtk.ScrolledWindow {
     private Gtk.Grid grid;
 
     public Overview () {
-        var network_alert_view = new Granite.Widgets.AlertView (_("Network Is Not Available"),
-                                                            _("Connect to the network to control your smart home gadgets."),
-                                                            "network-error");
+        var network_alert_view = new Granite.Widgets.AlertView (
+            _("Network Is Not Available"),
+            _("Connect to the network to control your smart home gadgets."),
+            "network-error"
+        );
         network_alert_view.get_style_context ().remove_class (Gtk.STYLE_CLASS_VIEW);
         network_alert_view.show_action (_("Network Settings…"));
 
@@ -110,8 +112,8 @@ public class Views.Overview : Gtk.ScrolledWindow {
 
         grid.attach (hubs_revealer, 0, 2, 1, 1);
 
-        var philipsHueService = Philips.Hue.Service.instance;
-        philipsHueService.on_new_bridge.connect ((bridge) => {
+        var philips_hue_service = Philips.Hue.Service.instance;
+        philips_hue_service.on_new_bridge.connect ((bridge) => {
             if (loading_revealer.child_revealed) {
                 loading_revealer.reveal_child = false;
             }

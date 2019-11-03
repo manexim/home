@@ -25,7 +25,7 @@ public enum Types.Power {
     OFF = 0,
     ON = 65535;
 
-    public string to_string() {
+    public string to_string () {
         switch (this) {
             case UNKNOWN:
                 return "unknown";
@@ -37,7 +37,7 @@ public enum Types.Power {
                 return "on";
             default:
                 print ("ERROR: Unsupported value %d\n", this);
-                assert_not_reached();
+                assert_not_reached ();
         }
     }
 }

@@ -121,9 +121,9 @@ public class Philips.Hue.Service {
 
             #if HAVE_SO_REUSEPORT
             int32 enable = 1;
-            Posix.setsockopt(
+            Posix.setsockopt (
                 socket.fd, Platform.Socket.SOL_SOCKET, Platform.Socket.SO_REUSEPORT, &enable,
-                (Posix.socklen_t) sizeof(int)
+                (Posix.socklen_t) sizeof (int)
             );
             #endif
 
@@ -144,7 +144,7 @@ public class Philips.Hue.Service {
                         size_t read = s.receive (buffer);
                         buffer[read] = 0; // null-terminate string
 
-                        GLib.Regex r_hue_bridgeid = /.*hue-bridgeid:\s*([^\s]*).*/;
+                        GLib.Regex r_hue_bridgeid = ".*hue-bridgeid:\\s*([^\\s]*).*";
                         string hue_bridgeid;
                         GLib.MatchInfo mi;
                         if (r_hue_bridgeid.match ((string) buffer, 0, out mi)) {
@@ -244,7 +244,7 @@ public class Philips.Hue.Service {
     }
 
     private void found_bridge_ssdp (string bridgeid, string message) {
-        GLib.Regex r_location = /.*LOCATION:\s*((http:\/\/)(.*):(\d*)([^\s]*)).*/;
+        GLib.Regex r_location = ".*LOCATION:\\s*((http:\/\/)(.*):(\\d*)([^\\s]*)).*";
         string url, protocol, host, port, path;
         GLib.MatchInfo mi;
         if (r_location.match (message, 0, out mi)) {
