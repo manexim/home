@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.manexim.home package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.manexim.home\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-11 19:55+0200\n"
+"PO-Revision-Date: 2019-11-05 10:35+0300\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: Orkun Uçan <info@orkunucan.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: tr\n"
+
+#: src/MainWindow.vala:58
+msgid "Light background"
+msgstr "Açık arka plan"
+
+#: src/MainWindow.vala:59
+msgid "Dark background"
+msgstr "Koyu arka plan"
+
+#: src/MainWindow.vala:80 src/MainWindow.vala:85 src/MainWindow.vala:86
+msgid "Overview"
+msgstr "Genel bakış"
+
+#: src/onboarding/FinishView.vala:25
+msgid ""
+"You can control your smart home gadgets directly via your local network. A "
+"connection to the internet is not required."
+msgstr ""
+"Akıllı ev cihazınızı yerel ağınız aracılığıyla kontrol edebilirsiniz. Bu "
+"işlem internet bağlantısı olmadan gerçekleşir."
+
+#: src/onboarding/FinishView.vala:27
+msgid "Let's go"
+msgstr "Başla"
+
+#: src/onboarding/LIFXView.vala:25
+msgid ""
+"Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
+"your Wi-Fi."
+msgstr ""
+"Akıllı Wi-Fi LIFX aydınlatmalar desteklenmektedir. Aydıntlatmanızı Wi-Fi "
+"ağınıza dahil etmeniz gerekmektedir."
+
+#: src/onboarding/PhilipsHueView.vala:25
+msgid ""
+"Smart ZigBee lights by Philips Hue are supported. They must already be "
+"connected to your Philips Hue Bridge."
+msgstr ""
+"Philips Hue Akıllı ZigBee aydınlatmalar desteklenmektedir. "
+"Aydınlatmalarınız Philips Hue Bridge'inize bağlı olmalıdır."
+
+#: src/onboarding/StartView.vala:25
+msgid "Control your smart home gadgets"
+msgstr "Akıllı ev aletlerinizi kontrol edin"
+
+#: src/onboarding/StartView.vala:27
+#, c-format
+msgid "Welcome to %s!"
+msgstr "%s'a Hoş Geldiniz!"
+
+#: src/pages/DevicePage.vala:43
+msgid "Hue: "
+msgstr "Hue: "
+
+#: src/pages/DevicePage.vala:63
+msgid "Saturation: "
+msgstr "Doygunluk: "
+
+#: src/pages/DevicePage.vala:85
+msgid "Brightness: "
+msgstr "Parlaklık: "
+
+#: src/pages/DevicePage.vala:107
+msgid "Color temperature: "
+msgstr "Renk Sıcaklığı: "
+
+#: src/pages/DevicePage.vala:156
+msgid "ID: "
+msgstr "ID: "
+
+#: src/pages/DevicePage.vala:157
+msgid "Manufacturer: "
+msgstr "Üretici: "
+
+#: src/pages/DevicePage.vala:158
+msgid "Model: "
+msgstr "Model: "
+
+#: src/pages/DevicePage.vala:167
+msgid "Enabled"
+msgstr "Aktif"
+
+#: src/pages/DevicePage.vala:173
+msgid "Disabled"
+msgstr "Pasif"
+
+#: src/pages/DevicePage.vala:177
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+#: src/pages/LoadingPage.vala:27
+msgid "Looking for smart home gadgets to control."
+msgstr "Kullanılabilir akıllı ev aletleri aranıyor."
+
+#: src/pages/HueBridgeOnboardingPage.vala:38
+msgid "Press the push-link button in the middle of the Hue bridge."
+msgstr "Lütfen Hue Brdige'inizin ortasında bulunan butona basın ."
+
+#: src/pages/HueBridgeOnboardingPage.vala:59
+msgid "The Hue bridge was successfully registered."
+msgstr "Hue Bridge başarıyla kaydedildi."
+
+#: src/views/Overview.vala:30
+msgid "Devices"
+msgstr "Cihazlar"
+
+#: src/views/Overview.vala:65
+msgid "Hubs"
+msgstr "Merkez"
+
+#: src/views/OnboardingView.vala:53
+msgid "Skip All"
+msgstr "Tümünü geç"
+
+#: src/views/OnboardingView.vala:64 src/views/OnboardingView.vala:91
+msgid "Next"
+msgstr "İleri"
+
+#: src/views/OnboardingView.vala:88
+msgid "Get Started"
+msgstr "Başlarken"
