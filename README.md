@@ -126,6 +126,7 @@ Your commit message should describe what the commit, when applied, does to the c
 | [aimproxy](https://github.com/aimproxy)     | Portuguese 🇵🇹 |
 | [oskarkunik](https://github.com/oskarkunik) | Polish 🇵🇱     |
 | [Vistaus ](https://github.com/Vistausk)     | Dutch 🇳🇱      |
+| [orkunucan](https://github.com/orkunucan)   | Turkish 🇹🇷    |
 
 ## License
 
