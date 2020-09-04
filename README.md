@@ -117,16 +117,16 @@ Your commit message should describe what the commit, when applied, does to the c
 
 ### Translators
 
-| Name                                        | Language      |
-| ------------------------------------------- | ------------- |
-| [camellan](https://github.com/camellan)     | Russian 🇷🇺    |
-| [NathanBnm](https://github.com/NathanBnm)   | French 🇫🇷     |
-| [meisenzahl](https://github.com/meisenzahl) | German 🇩🇪     |
-| [ryonakano](https://github.com/ryonakano)   | Japanese 🇯🇵   |
-| [aimproxy](https://github.com/aimproxy)     | Portuguese 🇵🇹 |
-| [oskarkunik](https://github.com/oskarkunik) | Polish 🇵🇱     |
-| [Vistaus ](https://github.com/Vistausk)     | Dutch 🇳🇱      |
-| [orkunucan](https://github.com/orkunucan)   | Turkish 🇹🇷    |
+| Name                                                                                           | Language     |
+| ---------------------------------------------------------------------------------------------- | ------------ |
+| [camellan](https://github.com/camellan)                                                        | Russian 🇷🇺    |
+| [NathanBnm](https://github.com/NathanBnm)                                                      | French 🇫🇷     |
+| [meisenzahl](https://github.com/meisenzahl)                                                    | German 🇩🇪     |
+| [ryonakano](https://github.com/ryonakano)                                                      | Japanese 🇯🇵   |
+| [aimproxy](https://github.com/aimproxy)<br>[rottenpants466](https://github.com/rottenpants466) | Portuguese 🇵🇹 |
+| [oskarkunik](https://github.com/oskarkunik)                                                    | Polish 🇵🇱     |
+| [Vistaus ](https://github.com/Vistausk)                                                        | Dutch 🇳🇱      |
+| [orkunucan](https://github.com/orkunucan)                                                      | Turkish 🇹🇷    |
 
 ## License
 
