@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-11 19:55+0200\n"
-"PO-Revision-Date: 2019-07-11 19:55+0200\n"
-"Last-Translator: aimproxy\n"
+"PO-Revision-Date: 2020-08-26 13:59+0100\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/com.github.manexim.home.appdata.xml.in:7
 #: data/com.github.manexim.home.desktop.in:4
@@ -26,11 +27,11 @@ msgstr "Casa"
 #: data/com.github.manexim.home.appdata.xml.in:8
 #: data/com.github.manexim.home.desktop.in:6
 msgid "Control your smart home gadgets"
-msgstr "Controle seus gadgets domésticos inteligentes"
+msgstr "Controle seus aparelhos domésticos inteligentes"
 
 #: data/com.github.manexim.home.appdata.xml.in:10
 msgid "A smart home application to control your gadgets."
-msgstr "Uma aplicação para casas inteligentes para controlar seus gadgets."
+msgstr "Uma aplicação de casa inteligente para controlar os seus aparelhos domésticos."
 
 #: data/com.github.manexim.home.appdata.xml.in:11
 msgid "Supported devices:"
@@ -38,11 +39,11 @@ msgstr "Dispositivos suportados:"
 
 #: data/com.github.manexim.home.appdata.xml.in:13
 msgid "LIFX"
-msgstr ""
+msgstr "LIFX"
 
 #: data/com.github.manexim.home.appdata.xml.in:14
 msgid "Philips Hue"
-msgstr ""
+msgstr "Philips Hue"
 
 #: data/com.github.manexim.home.appdata.xml.in:26
 #: data/com.github.manexim.home.appdata.xml.in:52
@@ -51,23 +52,23 @@ msgstr "Novo: "
 
 #: data/com.github.manexim.home.appdata.xml.in:28
 msgid "Add new UI"
-msgstr "Adicionar nova interface do usuário"
+msgstr "Nova interface de utilizador adicionada"
 
 #: data/com.github.manexim.home.appdata.xml.in:29
 msgid "Add initial support for Philips Hue devices"
-msgstr "Adicionar suporte inicial para dispositivos Philips Hue"
+msgstr "Suporte inicial para dispositivos Philips Hue adicionado"
 
 #: data/com.github.manexim.home.appdata.xml.in:30
 msgid "Add discovery for Philips Hue bridges"
-msgstr "Adicionar descoberta para pontes Philips Hue"
+msgstr "Descoberta para pontes Philips Hue adicionada"
 
 #: data/com.github.manexim.home.appdata.xml.in:31
 msgid "Add page to configure Philips Hue bridges"
-msgstr "Adicionar página para configurar pontes Philips Hue"
+msgstr "Página para configurar pontes Philips Hue adicionada"
 
 #: data/com.github.manexim.home.appdata.xml.in:32
 msgid "Add service to save configurations"
-msgstr "Adicionar serviço para guardar configurações"
+msgstr "Serviço para guardar configurações adicionado"
 
 #: data/com.github.manexim.home.appdata.xml.in:34
 #: data/com.github.manexim.home.appdata.xml.in:58
@@ -76,11 +77,11 @@ msgstr "Melhorado:"
 
 #: data/com.github.manexim.home.appdata.xml.in:36
 msgid "Update welcome view"
-msgstr "Atualizar painel de boas-vindas"
+msgstr "Atualização do painel de boas-vindas"
 
 #: data/com.github.manexim.home.appdata.xml.in:37
 msgid "Add mode switch for dark theme if freedesktop schema is not available"
-msgstr "Adicionar alternar modo para tema escuro se o esquema freedesktop não estiver disponível"
+msgstr "Modo para alterar o tema escuro adicionado se o esquema freedesktop não estiver disponível"
 
 #: data/com.github.manexim.home.appdata.xml.in:39
 #: data/com.github.manexim.home.appdata.xml.in:62
@@ -105,12 +106,11 @@ msgstr "Russo (pelo camellan)"
 
 #: data/com.github.manexim.home.appdata.xml.in:54
 msgid "Add welcome view for onboarding"
-msgstr "Adicione uma vista de boas vindas ao onboarding"
+msgstr "Adicionada uma vista de boas vindas ao onboarding"
 
 #: data/com.github.manexim.home.appdata.xml.in:55
 msgid "Show loading page if no smart home gadget is found"
-msgstr "Mostrar página de carregamento se não for encontrado "
-"nenhum dispositivo doméstico inteligente"
+msgstr "Mostrar página de carregamento se não for encontrado nenhum aparelho doméstico inteligente"
 
 #: data/com.github.manexim.home.appdata.xml.in:56
 msgid "Show manufacturer and model of device"
@@ -122,7 +122,7 @@ msgstr "Guardar e carregar as configurações da janela"
 
 #: data/com.github.manexim.home.appdata.xml.in:64
 msgid "Remove mention of elementary OS in app description"
-msgstr "Remover menção de elementaryOS na descrição do aplicativo"
+msgstr "Remover menção do elementaryOS na descrição da aplicação"
 
 #: data/com.github.manexim.home.appdata.xml.in:65
 msgid "Suffix symbolic icon names with -symbolic"
