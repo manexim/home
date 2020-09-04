@@ -84,8 +84,8 @@ These dependencies must be present before building:
 
 ```
 git clone https://github.com/manexim/home.git && cd home
-meson build && cd build
-meson configure -Dprefix=/usr
+meson build --prefix=/usr
+cd build
 ninja
 sudo ninja install
 com.github.manexim.home
