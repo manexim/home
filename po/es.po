@@ -1,0 +1,138 @@
+# Spanish translations for com.github.manexim.home package.
+# Copyright (C) 2019 THE com.github.manexim.home'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.manexim.home package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.manexim.home\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021/02/08 11:20+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: decisoft <decisoft@protonmail.com>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/MainWindow.vala:58
+msgid "Light background"
+msgstr "Fondo claro"
+
+#: src/MainWindow.vala:59
+msgid "Dark background"
+msgstr "Fondo oscuro"
+
+#: src/MainWindow.vala:80 src/MainWindow.vala:85 src/MainWindow.vala:86
+msgid "Overview"
+msgstr "Visión general"
+
+#: src/onboarding/FinishView.vala:25
+msgid ""
+"You can control your smart home gadgets directly via your local network. A "
+"connection to the internet is not required."
+msgstr ""
+"Puedes controlar tus dispositivos inteligentes del hogar directamente por "
+"tu red local. Estar conectado a internet no es necesario."
+
+#: src/onboarding/FinishView.vala:27
+msgid "Let's go"
+msgstr "Vamos"
+
+#: src/onboarding/LIFXView.vala:25
+msgid ""
+"Smart Wi-Fi lights by LIFX are supported. They must already be connected to "
+"your Wi-Fi."
+msgstr ""
+"Las luces inteligentes Wi-Fi de LIFX son compatibles. Las luces deben estar "
+"conectadas a tu Wi-Fi."
+
+#: src/onboarding/PhilipsHueView.vala:25
+msgid ""
+"Smart ZigBee lights by Philips Hue are supported. They must already be "
+"connected to your Philips Hue Bridge."
+msgstr ""
+"Las luces inteligentes ZigBee de Philips Hue son compatibles. Las luces "
+"deben estar conectadas a tu Bridge Philips Hue."
+
+#: src/onboarding/StartView.vala:25
+msgid "Control your smart home gadgets"
+msgstr "Controla los dispositivos de tu hogar inteligente"
+
+#: src/onboarding/StartView.vala:27
+#, c-format
+msgid "Welcome to %s!"
+msgstr "¡Bienvenido a %s!"
+
+#: src/pages/DevicePage.vala:43
+msgid "Hue: "
+msgstr "Tono: "
+
+#: src/pages/DevicePage.vala:63
+msgid "Saturation: "
+msgstr "Saturación: "
+
+#: src/pages/DevicePage.vala:85
+msgid "Brightness: "
+msgstr "Brillo: "
+
+#: src/pages/DevicePage.vala:107
+msgid "Color temperature: "
+msgstr "Temperatura del color: "
+
+#: src/pages/DevicePage.vala:156
+msgid "ID: "
+msgstr "Identificador: "
+
+#: src/pages/DevicePage.vala:157
+msgid "Manufacturer: "
+msgstr "Fabricante: "
+
+#: src/pages/DevicePage.vala:158
+msgid "Model: "
+msgstr "Modelo: "
+
+#: src/pages/DevicePage.vala:167
+msgid "Enabled"
+msgstr "Activado"
+
+#: src/pages/DevicePage.vala:173
+msgid "Disabled"
+msgstr "Desactivado"
+
+#: src/pages/DevicePage.vala:177
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: src/pages/LoadingPage.vala:27
+msgid "Looking for smart home gadgets to control."
+msgstr "Buscando dispositivos domésticos inteligentes para controlar."
+
+#: src/pages/HueBridgeOnboardingPage.vala:38
+msgid "Press the push-link button in the middle of the Hue bridge."
+msgstr "Presione el botón push-link en el medio del bridge de Hue."
+
+#: src/pages/HueBridgeOnboardingPage.vala:59
+msgid "The Hue bridge was successfully registered."
+msgstr "El bridge de Hue fue registrado correctamente."
+
+#: src/views/Overview.vala:30
+msgid "Devices"
+msgstr "Dispositivos"
+
+#: src/views/Overview.vala:65
+msgid "Hubs"
+msgstr "Hubs"
+
+#: src/views/OnboardingView.vala:53
+msgid "Skip All"
+msgstr "Saltar todo"
+
+#: src/views/OnboardingView.vala:64 src/views/OnboardingView.vala:91
+msgid "Next"
+msgstr "Siguiente"
+
+#: src/views/OnboardingView.vala:88
+msgid "Get Started"
+msgstr "Empezar"
