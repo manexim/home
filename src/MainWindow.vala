@@ -51,7 +51,7 @@ public class MainWindow : Hdy.Window {
         headerbar.pack_start (return_button);
 
         overlay = Widgets.Overlay.instance;
-        
+
         var main_layout = new Gtk.Grid ();
         main_layout.attach (headerbar, 0, 0);
         main_layout.attach (overlay, 0, 1);
