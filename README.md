@@ -73,6 +73,7 @@ These dependencies must be present before building:
  - `meson (>=0.40)`
  - `valac (>=0.40)`
  - `libgtk-3-dev`
+ - `libhandy-1-dev` >=1.0.0
  - `libjson-glib-dev`
  - `libgee-0.8-dev`
  - `libgranite-dev`

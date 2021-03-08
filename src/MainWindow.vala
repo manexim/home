@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class MainWindow : Gtk.ApplicationWindow {
+public class MainWindow : Hdy.Window {
     private static MainWindow? instance;
     private Settings settings;
     private Gtk.Stack stack;
@@ -37,9 +37,11 @@ public class MainWindow : Gtk.ApplicationWindow {
         settings = Settings.get_default ();
         load_settings ();
 
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        headerbar.show_close_button = true;
+        var headerbar = new Hdy.HeaderBar () {
+            decoration_layout = "close:",
+            show_close_button = true,
+            title = Config.APP_NAME
+        };
 
         return_button = new Gtk.Button ();
         return_button.no_show_all = true;
@@ -63,11 +65,18 @@ public class MainWindow : Gtk.ApplicationWindow {
             headerbar.pack_end (mode_switch);
         }
 
-        set_titlebar (headerbar);
         title = Config.APP_NAME;
 
         overlay = Widgets.Overlay.instance;
-        add (overlay);
+        
+        var main_layout = new Gtk.Grid ();
+        main_layout.attach (headerbar, 0, 0);
+        main_layout.attach (overlay, 0, 1);
+
+        var window_handle = new Hdy.WindowHandle ();
+        window_handle.add (main_layout);
+
+        add (window_handle);
 
         stack = new Gtk.Stack ();
         overlay.add (stack);
@@ -90,6 +99,10 @@ public class MainWindow : Gtk.ApplicationWindow {
 
             return false;
         });
+    }
+
+    construct {
+        Hdy.init ();
     }
 
     public static MainWindow get_default () {
