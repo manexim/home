@@ -11,6 +11,7 @@ Build-Depends: meson,
                libsoup2.4-dev,
                libxml2-dev,
                uuid-dev,
+               git,
                valac
 Standards-Version: 3.9.3
 

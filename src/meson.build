@@ -39,6 +39,15 @@ sources = [
     'widgets/ColorPicker.vala',
     'widgets/IconPopover.vala',
     'widgets/Overlay.vala',
+
+    'Flux/Actions.vala',
+    'Flux/ActionType.vala',
+    'Flux/HueMiddleware.vala',
+    'Flux/LifxMiddleware.vala',
+    'Flux/LoggingMiddleware.vala',
+    'Flux/Payloads.vala',
+    'Flux/Store.vala',
+
     'MainWindow.vala'
 ]
 
@@ -54,7 +63,8 @@ executable(
         granite_dep,
         soup_dep,
         xml_dep,
-        uuid_dep
+        uuid_dep,
+        flux_dep,
     ],
     install: true
 )
@@ -75,7 +85,8 @@ foreach test_name : tests
             granite_dep,
             soup_dep,
             xml_dep,
-            uuid_dep
+            uuid_dep,
+            flux_dep,
         ]
     )
     test(

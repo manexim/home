@@ -17,6 +17,7 @@ granite_dep = dependency('granite')
 soup_dep = dependency('libsoup-2.4')
 xml_dep = dependency('libxml-2.0')
 uuid_dep = dependency('uuid')
+flux_dep = dependency('flux', fallback : ['flux', 'libflux_dep'])
 
 vala_flags = []
 enable_demo_mode = get_option('demo_mode') == 'true'

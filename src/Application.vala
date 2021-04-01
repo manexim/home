@@ -30,6 +30,15 @@ public class Application : Granite.Application {
     }
 
     protected override void activate () {
+        // Register Middlewares
+        Flux.Dispatcher.get_instance ().register_middleware (new LoggingMiddleware ());
+
+        Flux.Dispatcher.get_instance ().register_middleware (new HueMiddleware ());
+        Flux.Dispatcher.get_instance ().register_middleware (new LifxMiddleware ());
+
+        // Register Stores
+        Flux.Dispatcher.get_instance ().register_store (new Store ());
+
         window = new MainWindow (this);
 
         window.show_all ();
