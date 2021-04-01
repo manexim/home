@@ -54,7 +54,8 @@ executable(
         granite_dep,
         soup_dep,
         xml_dep,
-        uuid_dep
+        uuid_dep,
+        flux_dep,
     ],
     install: true
 )
@@ -75,7 +76,8 @@ foreach test_name : tests
             granite_dep,
             soup_dep,
             xml_dep,
-            uuid_dep
+            uuid_dep,
+            flux_dep,
         ]
     )
     test(
