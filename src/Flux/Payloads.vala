@@ -19,6 +19,16 @@
  * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
  */
 
+public class DevicePayload : Flux.Payload {
+    public string id { get; set; }
+    public string name { get; set; }
+    public string manufacturer { get; set; }
+    public string model { get; set; }
+    public string power { get; set; }
+    public string icon { get; set; }
+    public string default_icon { get; set; }
+}
+
 public class SetColorPayload : Flux.Payload {
     public string id { get; set; }
     public bool on { get; set; }

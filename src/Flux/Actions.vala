@@ -20,6 +20,36 @@
  */
 
 public class Actions {
+    public static void add_device (string id, string name, string manufacturer, string model, string power, string icon, string? default_icon=null) {
+        var type = ActionType.ADD_DEVICE;
+        var payload = new DevicePayload () {
+            id = id,
+            name = name,
+            manufacturer = manufacturer,
+            model = model,
+            power = power,
+            icon = icon,
+            default_icon = default_icon
+        };
+        var action = new Flux.Action (type, payload);
+        Flux.Dispatcher.get_instance ().dispatch (action);
+    }
+
+    public static void update_device (string id, string name, string manufacturer, string model, string power, string icon, string? default_icon=null) {
+        var type = ActionType.UPDATE_DEVICE;
+        var payload = new DevicePayload () {
+            id = id,
+            name = name,
+            manufacturer = manufacturer,
+            model = model,
+            power = power,
+            icon = icon,
+            default_icon = default_icon
+        };
+        var action = new Flux.Action (type, payload);
+        Flux.Dispatcher.get_instance ().dispatch (action);
+    }
+
     public static void set_color (string id, uint16 hue, uint16 saturation, uint16 brightness, uint16 kelvin, uint32 duration=0) {
         var type = ActionType.SET_COLOR;
         var payload = new SetColorPayload () {

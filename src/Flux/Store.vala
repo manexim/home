@@ -22,8 +22,16 @@
 public class Store : Flux.Store {
     public override void process (Flux.Action action) {
         switch (action.action_type) {
-            default:
+            case ActionType.ADD_DEVICE:
+                process_add_device (action);
+                break;
+            case ActionType.UPDATE_DEVICE:
+                process_update_device (action);
                 break;
         }
     }
+
+    private void process_add_device (Flux.Action action) {}
+
+    private void process_update_device (Flux.Action action) {}
 }

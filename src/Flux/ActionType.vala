@@ -20,6 +20,8 @@
  */
 
 namespace ActionType {
+    const string ADD_DEVICE = "ADD_DEVICE";
+    const string UPDATE_DEVICE = "UPDATE_DEVICE";
     const string SET_COLOR = "SET_COLOR";
     const string SET_HUE = "SET_HUE";
     const string SET_SATURATION = "SET_SATURATION";
