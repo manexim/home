@@ -68,6 +68,7 @@ public class Lifx.Controller : Controllers.DeviceController {
     }
 
     public override void switch_power (bool on) {
+        DeviceActions.set_power (device.id);
         service.set_power (device as Lifx.Lamp, on ? 65535 : 0);
 
         _device.power = on ? Types.Power.ON : Types.Power.OFF;
