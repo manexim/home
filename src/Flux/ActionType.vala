@@ -19,6 +19,7 @@
  * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
  */
 
-public class DevicePayload : Flux.Payload {
-    public string id { get; set; }
+namespace ActionType {
+    const string SET_COLOR = "SET_COLOR";
+    const string SET_POWER = "SET_POWER";
 }

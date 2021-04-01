@@ -68,6 +68,7 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
     }
 
     public override void switch_power (bool on) {
+        Actions.set_power (device.id, on);
         controller.switch_light_power (device as Philips.Hue.Lamp, on);
 
         _device.power = on ? Types.Power.ON : Types.Power.OFF;

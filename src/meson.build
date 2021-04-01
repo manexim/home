@@ -39,11 +39,11 @@ sources = [
     'widgets/ColorPicker.vala',
     'widgets/IconPopover.vala',
     'widgets/Overlay.vala',
-    'Actions/ActionType.vala',
-    'Actions/DeviceActions.vala',
-    'Middlewares/LoggingMiddleware.vala',
-    'Payloads/DevicePayload.vala',
-    'Stores/Store.vala',
+    'Flux/Actions.vala',
+    'Flux/ActionType.vala',
+    'Flux/LoggingMiddleware.vala',
+    'Flux/Payloads.vala',
+    'Flux/Store.vala',
     'MainWindow.vala'
 ]
 

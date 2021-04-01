@@ -19,13 +19,17 @@
  * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
  */
 
-public class DeviceActions {
-    public static void set_power (string id) {
-        var type = ActionType.SET_POWER;
-        var payload = new DevicePayload () {
-            id = id
-        };
-        var action = new Flux.Action (type, payload);
-        Flux.Dispatcher.get_instance ().dispatch (action);
-    }
+public class SetColorPayload : Flux.Payload {
+    public string id { get; set; }
+    public bool on { get; set; }
+    public uint16 hue { get; set; }
+    public uint16 saturation { get; set; }
+    public uint16 brightness { get; set; }
+    public uint16 kelvin { get; set; }
+    public uint32 duration { get; set; }
+}
+
+public class SetPowerPayload : Flux.Payload {
+    public string id { get; set; }
+    public bool on { get; set; }
 }

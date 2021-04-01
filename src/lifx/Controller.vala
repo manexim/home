@@ -32,6 +32,7 @@ public class Lifx.Controller : Controllers.DeviceController {
 
     public override void switch_hue (uint16 hue) {
         var lamp = device as Lifx.Lamp;
+        Actions.set_color (device.id, hue, lamp.saturation, lamp.brightness, 0, 0);
         service.set_color (lamp, hue, lamp.saturation, lamp.brightness, 0, 0);
 
         lamp.hue = hue;
@@ -39,6 +40,7 @@ public class Lifx.Controller : Controllers.DeviceController {
 
     public override void switch_saturation (uint16 saturation) {
         var lamp = device as Lifx.Lamp;
+        Actions.set_color (device.id, lamp.hue, saturation, lamp.brightness, 0, 0);
         service.set_color (lamp, lamp.hue, saturation, lamp.brightness, 0, 0);
 
         lamp.saturation = saturation;
@@ -46,6 +48,7 @@ public class Lifx.Controller : Controllers.DeviceController {
 
     public override void switch_brightness (uint16 brightness) {
         var lamp = device as Lifx.Lamp;
+        Actions.set_color (device.id, lamp.hue, lamp.saturation, brightness, lamp.color_temperature, 0);
         service.set_color (lamp, lamp.hue, lamp.saturation, brightness, lamp.color_temperature, 0);
 
         lamp.brightness = brightness;
@@ -53,6 +56,7 @@ public class Lifx.Controller : Controllers.DeviceController {
 
     public override void switch_hsb (uint16 hue, uint16 saturation, uint16 brightness) {
         var lamp = device as Lifx.Lamp;
+        Actions.set_color (device.id, hue, saturation, brightness, 0, 0);
         service.set_color (lamp, hue, saturation, brightness, 0, 0);
 
         lamp.hue = hue;
@@ -62,13 +66,14 @@ public class Lifx.Controller : Controllers.DeviceController {
 
     public override void switch_color_temperature (uint16 color_temperature) {
         var lamp = device as Lifx.Lamp;
+        Actions.set_color (device.id, 0, 0, lamp.brightness, color_temperature, 0);
         service.set_color (lamp, 0, 0, lamp.brightness, color_temperature, 0);
 
         lamp.color_temperature = color_temperature;
     }
 
     public override void switch_power (bool on) {
-        DeviceActions.set_power (device.id);
+        Actions.set_power (device.id, on);
         service.set_power (device as Lifx.Lamp, on ? 65535 : 0);
 
         _device.power = on ? Types.Power.ON : Types.Power.OFF;
