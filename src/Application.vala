@@ -33,6 +33,9 @@ public class Application : Granite.Application {
         // Register Middlewares
         Flux.Dispatcher.get_instance ().register_middleware (new LoggingMiddleware ());
 
+        Flux.Dispatcher.get_instance ().register_middleware (new HueMiddleware ());
+        Flux.Dispatcher.get_instance ().register_middleware (new LifxMiddleware ());
+
         // Register Stores
         Flux.Dispatcher.get_instance ().register_store (new Store ());
 

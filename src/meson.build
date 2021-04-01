@@ -39,11 +39,15 @@ sources = [
     'widgets/ColorPicker.vala',
     'widgets/IconPopover.vala',
     'widgets/Overlay.vala',
+
     'Flux/Actions.vala',
     'Flux/ActionType.vala',
+    'Flux/HueMiddleware.vala',
+    'Flux/LifxMiddleware.vala',
     'Flux/LoggingMiddleware.vala',
     'Flux/Payloads.vala',
     'Flux/Store.vala',
+
     'MainWindow.vala'
 ]
 
