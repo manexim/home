@@ -20,7 +20,7 @@
  */
 
 public class Actions {
-    public static void add_device (string id, string name, string manufacturer, string model, string power, string icon, string? default_icon=null) {
+    public static void add_device (string id, string name, string manufacturer, string model, Types.Power power, string icon, string? default_icon=null) {
         var type = ActionType.ADD_DEVICE;
         var payload = new DevicePayload () {
             id = id,
@@ -35,7 +35,7 @@ public class Actions {
         Flux.Dispatcher.get_instance ().dispatch (action);
     }
 
-    public static void update_device (string id, string name, string manufacturer, string model, string power, string icon, string? default_icon=null) {
+    public static void update_device (string id, string name, string manufacturer, string model, Types.Power power, string icon, string? default_icon=null) {
         var type = ActionType.UPDATE_DEVICE;
         var payload = new DevicePayload () {
             id = id,

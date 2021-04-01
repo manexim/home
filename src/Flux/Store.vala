@@ -20,6 +20,8 @@
  */
 
 public class Store : Flux.Store {
+    public Gee.List<Models.Device> devices;
+
     public override void process (Flux.Action action) {
         switch (action.action_type) {
             case ActionType.ADD_DEVICE:
@@ -31,7 +33,43 @@ public class Store : Flux.Store {
         }
     }
 
-    private void process_add_device (Flux.Action action) {}
+    private void process_add_device (Flux.Action action) {
+        var payload = (DevicePayload) action.payload;
 
-    private void process_update_device (Flux.Action action) {}
+        var device = new Models.Device () {
+            id = payload.id,
+            name = payload.name,
+            manufacturer = payload.manufacturer,
+            model = payload.model,
+            power = payload.power,
+            icon = payload.icon,
+            default_icon = payload.default_icon
+        };
+
+        devices.add (device);
+    }
+
+    private void process_update_device (Flux.Action action) {
+        var payload = (DevicePayload) action.payload;
+
+        for (int i = 0; i < devices.size; i++) {
+            if (devices[i].id == payload.id) {
+                devices[i] = new Models.Device () {
+                    id = payload.id,
+                    name = payload.name,
+                    manufacturer = payload.manufacturer,
+                    model = payload.model,
+                    power = payload.power,
+                    icon = payload.icon,
+                    default_icon = payload.default_icon
+                };
+
+                break;
+            }
+        }
+    }
+
+    public Store () {
+        devices = new Gee.ArrayList<Models.Device> ();
+    }
 }

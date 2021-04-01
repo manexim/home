@@ -24,7 +24,7 @@ public class DevicePayload : Flux.Payload {
     public string name { get; set; }
     public string manufacturer { get; set; }
     public string model { get; set; }
-    public string power { get; set; }
+    public Types.Power power { get; set; }
     public string icon { get; set; }
     public string default_icon { get; set; }
 }
