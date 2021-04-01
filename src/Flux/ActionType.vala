@@ -21,5 +21,10 @@
 
 namespace ActionType {
     const string SET_COLOR = "SET_COLOR";
+    const string SET_HUE = "SET_HUE";
+    const string SET_SATURATION = "SET_SATURATION";
+    const string SET_BRIGHTNESS = "SET_BRIGHTNESS";
+    const string SET_HSB = "SET_HSB";
+    const string SET_COLOR_TEMPERATURE = "SET_COLOR_TEMPERATURE";
     const string SET_POWER = "SET_POWER";
 }

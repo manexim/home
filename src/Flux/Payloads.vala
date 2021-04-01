@@ -29,6 +29,33 @@ public class SetColorPayload : Flux.Payload {
     public uint32 duration { get; set; }
 }
 
+public class SetHuePayload : Flux.Payload {
+    public string id { get; set; }
+    public uint16 hue { get; set; }
+}
+
+public class SetSaturationPayload : Flux.Payload {
+    public string id { get; set; }
+    public uint16 saturation { get; set; }
+}
+
+public class SetBrightnessPayload : Flux.Payload {
+    public string id { get; set; }
+    public uint16 brightness { get; set; }
+}
+
+public class SetHsbPayload : Flux.Payload {
+    public string id { get; set; }
+    public uint16 hue { get; set; }
+    public uint16 saturation { get; set; }
+    public uint16 brightness { get; set; }
+}
+
+public class SetColorTemperaturePayload : Flux.Payload {
+    public string id { get; set; }
+    public uint16 color_temperature { get; set; }
+}
+
 public class SetPowerPayload : Flux.Payload {
     public string id { get; set; }
     public bool on { get; set; }

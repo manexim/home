@@ -32,6 +32,7 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
 
     public override void switch_hue (uint16 hue) {
         var lamp = device as Philips.Hue.Lamp;
+        Actions.set_hue (device.id, hue);
         controller.switch_light_hue (lamp, hue);
 
         lamp.hue = hue;
@@ -39,6 +40,7 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
 
     public override void switch_saturation (uint16 saturation) {
         var lamp = device as Philips.Hue.Lamp;
+        Actions.set_saturation (device.id, saturation);
         controller.switch_light_saturation (lamp, saturation);
 
         lamp.saturation = saturation;
@@ -46,6 +48,7 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
 
     public override void switch_brightness (uint16 brightness) {
         var lamp = device as Philips.Hue.Lamp;
+        Actions.set_brightness (device.id, brightness);
         controller.switch_light_brightness (lamp, brightness);
 
         lamp.brightness = brightness;
@@ -53,6 +56,7 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
 
     public override void switch_hsb (uint16 hue, uint16 saturation, uint16 brightness) {
         var lamp = device as Philips.Hue.Lamp;
+        Actions.set_hsb (device.id, hue, saturation, brightness);
         controller.switch_light_hsb (lamp, hue, saturation, brightness);
 
         lamp.hue = hue;
@@ -62,6 +66,7 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
 
     public override void switch_color_temperature (uint16 color_temperature) {
         var lamp = device as Philips.Hue.Lamp;
+        Actions.set_color_temperature (device.id, color_temperature);
         controller.switch_light_color_temperature (lamp, color_temperature);
 
         lamp.color_temperature = color_temperature;

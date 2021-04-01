@@ -34,6 +34,58 @@ public class Actions {
         Flux.Dispatcher.get_instance ().dispatch (action);
     }
 
+    public static void set_hue (string id, uint16 hue) {
+        var type = ActionType.SET_HUE;
+        var payload = new SetHuePayload () {
+            id = id,
+            hue = hue
+        };
+        var action = new Flux.Action (type, payload);
+        Flux.Dispatcher.get_instance ().dispatch (action);
+    }
+
+    public static void set_saturation (string id, uint16 saturation) {
+        var type = ActionType.SET_SATURATION;
+        var payload = new SetSaturationPayload () {
+            id = id,
+            saturation = saturation
+        };
+        var action = new Flux.Action (type, payload);
+        Flux.Dispatcher.get_instance ().dispatch (action);
+    }
+
+    public static void set_brightness (string id, uint16 brightness) {
+        var type = ActionType.SET_BRIGHTNESS;
+        var payload = new SetBrightnessPayload () {
+            id = id,
+            brightness = brightness
+        };
+        var action = new Flux.Action (type, payload);
+        Flux.Dispatcher.get_instance ().dispatch (action);
+    }
+
+    public static void set_hsb (string id, uint16 hue, uint16 saturation, uint16 brightness) {
+        var type = ActionType.SET_HSB;
+        var payload = new SetHsbPayload () {
+            id = id,
+            hue = hue,
+            saturation = saturation,
+            brightness = brightness
+        };
+        var action = new Flux.Action (type, payload);
+        Flux.Dispatcher.get_instance ().dispatch (action);
+    }
+
+    public static void set_color_temperature (string id, uint16 color_temperature) {
+        var type = ActionType.SET_COLOR_TEMPERATURE;
+        var payload = new SetColorTemperaturePayload () {
+            id = id,
+            color_temperature = color_temperature
+        };
+        var action = new Flux.Action (type, payload);
+        Flux.Dispatcher.get_instance ().dispatch (action);
+    }
+
     public static void set_power (string id, bool on) {
         var type = ActionType.SET_POWER;
         var payload = new SetPowerPayload () {
