@@ -1,3 +1,3 @@
 *~
-build/
-src/Application
+build
+subprojects/flux
