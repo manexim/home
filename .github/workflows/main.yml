@@ -30,7 +30,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: bilelmoussaoui/flatpak-github-actions@master
       with:
-        bundle: "home.flatpak"
+        bundle: "com.github.manexim.home.flatpak"
         manifest-path: "com.github.manexim.home.yml"
         run-tests: "true"
         repository-name: "elementary"
