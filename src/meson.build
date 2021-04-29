@@ -49,6 +49,7 @@ executable(
     dependencies: [
         gtk_plus_3_dep,
         json_glib_1_dep,
+        libhandy_dep,
         posix_dep,
         gee_dep,
         granite_dep,
@@ -70,6 +71,7 @@ foreach test_name : tests
         dependencies: [
             gtk_plus_3_dep,
             json_glib_1_dep,
+            libhandy_dep,
             posix_dep,
             gee_dep,
             granite_dep,

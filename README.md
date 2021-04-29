@@ -12,8 +12,8 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/manexim/home">
-    <img src="https://img.shields.io/travis/manexim/home.svg">
+  <a href="https://github.com/manexim/home/actions/workflows/main.yml">
+    <img src="https://github.com/manexim/home/workflows/CI/badge.svg">
   </a>
   <a href="https://github.com/manexim/home/releases/">
     <img src="https://img.shields.io/github/release/manexim/home.svg">
@@ -73,6 +73,7 @@ These dependencies must be present before building:
  - `meson (>=0.40)`
  - `valac (>=0.40)`
  - `libgtk-3-dev`
+ - `libhandy-1-dev` >=1.0.0
  - `libjson-glib-dev`
  - `libgee-0.8-dev`
  - `libgranite-dev`
