@@ -25,6 +25,10 @@ public class Models.Thing : Object {
     public Thing () {
         _obj = new Json.Object ();
         default_icon = "com.github.manexim.home.icon.thing-symbolic";
+        id = "";
+        name = "";
+        manufacturer = "";
+        model = "";
     }
 
     public Thing.from_object (Json.Object object) {
