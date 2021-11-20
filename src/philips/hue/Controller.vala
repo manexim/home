@@ -27,7 +27,7 @@ public class Philips.Hue.Controller : Controllers.DeviceController {
             device : device
         );
 
-        controller = new Philips.Hue.BridgeController ((device as Philips.Hue.Lamp).bridge);
+        controller = new Philips.Hue.BridgeController (((Philips.Hue.Lamp) device).bridge);
     }
 
     public override void switch_hue (uint16 hue) {

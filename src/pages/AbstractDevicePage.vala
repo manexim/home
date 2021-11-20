@@ -49,7 +49,7 @@ public abstract class Pages.AbstractDevicePage : Granite.SettingsPage {
         construct set {
             if (header_icon_button != null) {
                 header_icon_button.set_image (new Gtk.Image.from_icon_name (value, Gtk.IconSize.LARGE_TOOLBAR));
-                (header_icon_button.image as Gtk.Image).pixel_size = 64;
+                ((Gtk.Image) header_icon_button.image).pixel_size = 64;
             }
             _icon_name = value;
         }
@@ -71,7 +71,7 @@ public abstract class Pages.AbstractDevicePage : Granite.SettingsPage {
 
     construct {
         header_icon_button = new Gtk.Button.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
-        (header_icon_button.image as Gtk.Image).pixel_size = 64;
+        ((Gtk.Image) header_icon_button.image).pixel_size = 64;
         header_icon_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         header_icon_button.valign = Gtk.Align.START;
 
@@ -140,7 +140,7 @@ public abstract class Pages.AbstractDevicePage : Granite.SettingsPage {
         notify["icon-name"].connect (() => {
             if (header_icon_button != null) {
                 header_icon_button.set_image (new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR));
-                (header_icon_button.image as Gtk.Image).pixel_size = 64;
+                ((Gtk.Image) header_icon_button.image).pixel_size = 64;
             }
         });
 
