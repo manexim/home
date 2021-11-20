@@ -51,12 +51,16 @@ public class Controllers.DevicesController {
                 device.icon = device_loaded_map.get (device.id).icon;
             }
 
+            Actions.add_device (device.id, device.name, device.manufacturer, device.model, device.power, device.icon, device.default_icon);
+
             on_new_device (device);
 
             device_list.add (device);
         });
 
         lifx_service.on_updated_device.connect ((device) => {
+            Actions.update_device (device.id, device.name, device.manufacturer, device.model, device.power, device.icon, device.default_icon);
+
             on_updated_device (device);
         });
 
@@ -67,12 +71,16 @@ public class Controllers.DevicesController {
                 device.icon = device_loaded_map.get (device.id).icon;
             }
 
+            Actions.add_device (device.id, device.name, device.manufacturer, device.model, device.power, device.icon, device.default_icon);
+
             on_new_device (device);
 
             device_list.add (device);
         });
 
         philips_hue_service.on_updated_device.connect ((device) => {
+            Actions.update_device (device.id, device.name, device.manufacturer, device.model, device.power, device.icon, device.default_icon);
+
             on_updated_device (device);
         });
     }
