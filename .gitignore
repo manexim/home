@@ -1,3 +1,7 @@
 *~
 build
-subprojects/flux
+build-dir
+.flatpak-builder
+repo/
+*.flatpak
+subprojects/flux/

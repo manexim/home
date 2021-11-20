@@ -19,7 +19,7 @@
 * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
 */
 
-public class MainWindow : Gtk.ApplicationWindow {
+public class MainWindow : Hdy.Window {
     private static MainWindow? instance;
     private Settings settings;
     private Gtk.Stack stack;
@@ -37,37 +37,26 @@ public class MainWindow : Gtk.ApplicationWindow {
         settings = Settings.get_default ();
         load_settings ();
 
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        headerbar.show_close_button = true;
+        var headerbar = new Hdy.HeaderBar () {
+            decoration_layout = "close:",
+            show_close_button = true,
+            title = Constants.APP_NAME
+        };
 
         return_button = new Gtk.Button ();
         return_button.no_show_all = true;
         return_button.valign = Gtk.Align.CENTER;
-        return_button.get_style_context ().add_class ("back-button");
+        return_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
         return_button.clicked.connect (go_back);
         headerbar.pack_start (return_button);
 
-        if (!settings.is_freedesktop_prefers_color_scheme_available ()) {
-            var gtk_settings = Gtk.Settings.get_default ();
-
-            var mode_switch = new Granite.ModeSwitch.from_icon_name (
-                "display-brightness-symbolic",
-                "weather-clear-night-symbolic"
-            );
-            mode_switch.primary_icon_tooltip_text = _("Light background");
-            mode_switch.secondary_icon_tooltip_text = _("Dark background");
-            mode_switch.valign = Gtk.Align.CENTER;
-            mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
-            settings.bind ("prefer-dark-style", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            headerbar.pack_end (mode_switch);
-        }
-
-        set_titlebar (headerbar);
-        title = Config.APP_NAME;
-
         overlay = Widgets.Overlay.instance;
-        add (overlay);
+
+        var main_layout = new Gtk.Grid ();
+        main_layout.attach (headerbar, 0, 0);
+        main_layout.attach (overlay, 0, 1);
+
+        add (main_layout);
 
         stack = new Gtk.Stack ();
         overlay.add (stack);
@@ -90,6 +79,10 @@ public class MainWindow : Gtk.ApplicationWindow {
 
             return false;
         });
+    }
+
+    construct {
+        Hdy.init ();
     }
 
     public static MainWindow get_default () {

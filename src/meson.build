@@ -1,7 +1,18 @@
+config_data = configuration_data()
+config_data.set('APP_ID', meson.project_name())
+config_data.set('APP_VERSION', meson.project_version())
+config_data.set('GETTEXT_PACKAGE', meson.project_name())
+config_data.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
+
+config_file = configure_file(
+    input: 'Constants.vala.in',
+    output: '@BASENAME@',
+    configuration: config_data
+)
+
 sources = [
     'colors/HSB.vala',
     'colors/RGB.vala',
-    'config/Constants.vala',
     'controllers/DeviceController.vala',
     'controllers/DevicesController.vala',
     'lifx/Controller.vala',
@@ -39,7 +50,6 @@ sources = [
     'widgets/ColorPicker.vala',
     'widgets/IconPopover.vala',
     'widgets/Overlay.vala',
-
     'Flux/Actions.vala',
     'Flux/ActionType.vala',
     'Flux/HueMiddleware.vala',
@@ -47,8 +57,8 @@ sources = [
     'Flux/LoggingMiddleware.vala',
     'Flux/Payloads.vala',
     'Flux/Store.vala',
-
-    'MainWindow.vala'
+    'MainWindow.vala',
+    config_file,
 ]
 
 executable(
@@ -58,6 +68,7 @@ executable(
     dependencies: [
         gtk_plus_3_dep,
         json_glib_1_dep,
+        libhandy_dep,
         posix_dep,
         gee_dep,
         granite_dep,
@@ -80,6 +91,7 @@ foreach test_name : tests
         dependencies: [
             gtk_plus_3_dep,
             json_glib_1_dep,
+            libhandy_dep,
             posix_dep,
             gee_dep,
             granite_dep,
