@@ -40,7 +40,7 @@ public class MainWindow : Hdy.Window {
         var headerbar = new Hdy.HeaderBar () {
             decoration_layout = "close:",
             show_close_button = true,
-            title = Config.APP_NAME
+            title = Constants.APP_NAME
         };
 
         return_button = new Gtk.Button ();
