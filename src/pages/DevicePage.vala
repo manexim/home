@@ -145,13 +145,13 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
 
                     #if DEMO_MODE
                     hue_scale.adjustment.value = hue;
-                    lamp.hue = hue_scale.adjustment.value;
+                    lamp.hue = (uint16) hue_scale.adjustment.value;
 
                     saturation_scale.adjustment.value = saturation;
-                    lamp.saturation = saturation_scale.adjustment.value;
+                    lamp.saturation = (uint16) saturation_scale.adjustment.value;
 
                     brightness_scale.adjustment.value = brightness;
-                    lamp.brightness = brightness_scale.adjustment.value;
+                    lamp.brightness = (uint16) brightness_scale.adjustment.value;
                     #else
                     controller.switch_hsb (hue, saturation, brightness);
 
