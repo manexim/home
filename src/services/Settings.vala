@@ -41,7 +41,7 @@ public class Settings : Granite.Services.Settings {
     public bool window_maximized { get; set; }
 
     private Settings () {
-        base ("com.github.manexim.home");
+        base ("com.manexim.home");
 
         if (uuid == null || uuid == "") {
             uint8[] uu = new uint8[16];

@@ -1,8 +1,8 @@
-app-id: com.github.manexim.home
+app-id: com.manexim.home
 runtime: io.elementary.Platform
 runtime-version: '6.1'
 sdk: io.elementary.Sdk
-command: com.github.manexim.home
+command: com.manexim.home
 finish-args:
   - '--share=ipc'
   - '--share=network'

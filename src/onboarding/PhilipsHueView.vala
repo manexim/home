@@ -23,7 +23,7 @@ public class Onboarding.PhilipsHueView : Onboarding.AbstractOnboardingView {
     public PhilipsHueView () {
         Object (
             description: _("Smart ZigBee lights by Philips Hue are supported. They must already be connected to your Philips Hue Bridge."),
-            icon_name: "com.github.manexim.home.logo.philips.hue-symbolic",
+            icon_name: "com.manexim.home.logo.philips.hue-symbolic",
             title: "Philips Hue"
         );
     }

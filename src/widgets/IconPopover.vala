@@ -38,7 +38,7 @@ public class Widgets.IconPopover : Gtk.Popover {
 
         var icon_theme = Gtk.IconTheme.get_default ();
         icon_theme.list_icons ("Applications").@foreach ((name) => {
-            if (name.has_prefix ("com.github.manexim.home.icon")) {
+            if (name.has_prefix ("com.manexim.home.icon")) {
                 icons.add (name);
             }
         });

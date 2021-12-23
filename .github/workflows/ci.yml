@@ -35,8 +35,8 @@ jobs:
       - name: Build
         uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
-          bundle: com.github.manexim.home.flatpak
-          manifest-path: com.github.manexim.home.yml
+          bundle: com.manexim.home.flatpak
+          manifest-path: com.manexim.home.yml
           run-tests: true
           repository-name: appcenter
           repository-url: https://flatpak.elementary.io/repo.flatpakrepo

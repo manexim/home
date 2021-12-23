@@ -1,11 +1,11 @@
-# French translations for com.github.manexim.home package.
-# Copyright (C) 2019 THE com.github.manexim.home'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.manexim.home package.
+# French translations for com.manexim.home package.
+# Copyright (C) 2019 THE com.manexim.home'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.manexim.home package.
 # NathanBnm, 2019.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.manexim.home\n"
+"Project-Id-Version: com.manexim.home\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-11 19:55+0200\n"
 "PO-Revision-Date: 2019-06-17 22:32+0400\n"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="com.github.manexim.home" path="/com/github/manexim/home/" gettext-domain="com.github.manexim.home">
+  <schema id="com.manexim.home" path="/com/github/manexim/home/" gettext-domain="com.manexim.home">
     <key name="uuid" type="s">
       <default>""</default>
       <summary>The universally unique identifier</summary>

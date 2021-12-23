@@ -3,7 +3,7 @@
 # fail on first error
 set -e
 
-APP=com.github.manexim.home
+APP=com.manexim.home
 
 case "$1" in
     build)
