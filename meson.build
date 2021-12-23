@@ -1,4 +1,4 @@
-project('com.manexim.home', 'vala', 'c', version: '0.5.0')
+project('com.manexim.home', 'vala', 'c', version: '0.6.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
