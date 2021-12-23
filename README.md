@@ -1,19 +1,19 @@
 <div align="center">
-  <span align="center"> <img width="80" height="80" class="center" src="data/icons/128/com.github.manexim.home.svg" alt="Icon"></span>
+  <span align="center"> <img width="80" height="80" class="center" src="data/icons/128/com.manexim.home.svg" alt="Icon"></span>
   <h1 align="center">Home</h1>
   <h3 align="center">Control your smart home gadgets</h3>
   <p align="center">Designed for <a href="https://elementary.io">elementary OS</a></p>
 </div>
 
 <p align="center">
-  <a href="https://appcenter.elementary.io/com.github.manexim.home" target="_blank">
+  <a href="https://appcenter.elementary.io/com.manexim.home" target="_blank">
     <img src="https://appcenter.elementary.io/badge.svg">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/manexim/home">
-    <img src="https://img.shields.io/travis/manexim/home.svg">
+  <a href="https://github.com/manexim/home/actions/workflows/main.yml">
+    <img src="https://github.com/manexim/home/workflows/CI/badge.svg">
   </a>
   <a href="https://github.com/manexim/home/releases/">
     <img src="https://img.shields.io/github/release/manexim/home.svg">
@@ -73,6 +73,7 @@ These dependencies must be present before building:
  - `meson (>=0.40)`
  - `valac (>=0.40)`
  - `libgtk-3-dev`
+ - `libhandy-1-dev` >=1.0.0
  - `libjson-glib-dev`
  - `libgee-0.8-dev`
  - `libgranite-dev`
@@ -88,7 +89,7 @@ meson build --prefix=/usr
 cd build
 ninja
 sudo ninja install
-com.github.manexim.home
+com.manexim.home
 ```
 
 ### Deconstruct

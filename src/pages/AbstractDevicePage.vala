@@ -86,7 +86,7 @@ public abstract class Pages.AbstractDevicePage : Granite.SettingsPage {
         title_label = new Gtk.Label (title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
         title_label.xalign = 0;
-        title_label.get_style_context ().add_class ("h2");
+        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var header_area = new Gtk.Grid ();
         header_area.column_spacing = 12;

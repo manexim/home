@@ -32,7 +32,7 @@ public class Pages.HueBridgeOnboardingPage : Gtk.Grid {
         row_spacing = 16;
 
         var icon = new Gtk.Image ();
-        icon.gicon = new ThemedIcon ("com.github.manexim.home.bridge.philips.hue-symbolic");
+        icon.gicon = new ThemedIcon ("com.manexim.home.icon.bridge.philips.hue-symbolic");
         icon.pixel_size = 256;
 
         label = new Gtk.Label (_("Press the push-link button in the middle of the Hue bridge."));

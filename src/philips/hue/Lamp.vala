@@ -23,7 +23,7 @@ public class Philips.Hue.Lamp : Models.Lamp {
     public Philips.Hue.Bridge bridge;
 
     public Lamp () {
-        default_icon = "com.github.manexim.home.icon.lightbulb.philips.hue-symbolic";
+        default_icon = "com.manexim.home.icon.lightbulb.philips.hue-symbolic";
         manufacturer = "Philips";
 
         brightness_min = 0;

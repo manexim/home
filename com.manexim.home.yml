@@ -1,0 +1,16 @@
+app-id: com.manexim.home
+runtime: io.elementary.Platform
+runtime-version: '6.1'
+sdk: io.elementary.Sdk
+command: com.manexim.home
+finish-args:
+  - '--share=ipc'
+  - '--share=network'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+modules:
+  - name: home
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .

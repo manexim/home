@@ -1,3 +1,6 @@
 *~
-build/
-src/Application
+build
+build-dir
+.flatpak-builder
+repo/
+*.flatpak

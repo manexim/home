@@ -23,7 +23,7 @@ public class Onboarding.LIFXView : Onboarding.AbstractOnboardingView {
     public LIFXView () {
         Object (
             description: _("Smart Wi-Fi lights by LIFX are supported. They must already be connected to your Wi-Fi."),
-            icon_name: "com.github.manexim.home.logo.lifx-symbolic",
+            icon_name: "com.manexim.home.logo.lifx-symbolic",
             title: "LIFX"
         );
     }

@@ -21,7 +21,7 @@
 
 public class Philips.Hue.Bridge : Models.Device {
     public Bridge () {
-        default_icon = "com.github.manexim.home.icon.bridge.philips.hue-symbolic";
+        default_icon = "com.manexim.home.icon.bridge.philips.hue-symbolic";
         manufacturer = "Philips";
         power = Types.Power.WARNING;
     }

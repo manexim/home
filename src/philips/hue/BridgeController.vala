@@ -138,7 +138,7 @@ public class Philips.Hue.BridgeController {
         var root = new Json.Node (Json.NodeType.OBJECT);
         var object = new Json.Object ();
 
-        object.set_string_member ("devicetype", "com.github.manexim.home");
+        object.set_string_member ("devicetype", "com.manexim.home");
 
         root.set_object (object);
         gen.set_root (root);

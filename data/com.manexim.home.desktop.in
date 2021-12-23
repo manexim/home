@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Home
+GenericName=Home
+Comment=Control your smart home gadgets
+Exec=com.manexim.home
+Icon=com.manexim.home
+Categories=GNOME;GTK;Network;

@@ -24,12 +24,32 @@ public class Application : Granite.Application {
 
     public Application () {
         Object (
-            application_id: Config.APP_ID,
+            application_id: Constants.APP_ID,
             flags: ApplicationFlags.FLAGS_NONE
         );
     }
 
+    construct {
+        Intl.setlocale (LocaleCategory.ALL, "");
+        Intl.bindtextdomain (Constants.GETTEXT_PACKAGE, Constants.LOCALEDIR);
+        Intl.bind_textdomain_codeset (Constants.GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (Constants.GETTEXT_PACKAGE);
+    }
+
     protected override void activate () {
+        var granite_settings = Granite.Settings.get_default ();
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        gtk_settings.gtk_application_prefer_dark_theme = (
+            granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK
+        );
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = (
+                granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK
+            );
+        });
+
         window = new MainWindow (this);
 
         window.show_all ();

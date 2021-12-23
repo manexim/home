@@ -41,7 +41,7 @@ public class Settings : Granite.Services.Settings {
     public bool window_maximized { get; set; }
 
     private Settings () {
-        base ("com.github.manexim.home");
+        base ("com.manexim.home");
 
         if (uuid == null || uuid == "") {
             uint8[] uu = new uint8[16];
@@ -114,7 +114,7 @@ public class Settings : Granite.Services.Settings {
         return;
         #endif
 
-        last_started_app_version = Config.APP_VERSION;
+        last_started_app_version = Constants.APP_VERSION;
 
         var philips_hue_service = Philips.Hue.Service.instance;
 

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Manexim -->
+<component type="desktop">
+  <id>com.manexim.home</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Home</name>
+  <summary>Control your smart home gadgets</summary>
+  <description>
+    <p>A smart home application to control your gadgets.</p>
+    <p>Supported devices:</p>
+    <ul>
+      <li>LIFX</li>
+      <li>Philips Hue</li>
+    </ul>
+  </description>
+  <categories>
+    <category>Network</category>
+  </categories>
+  <provides>
+    <binary>com.manexim.home</binary>
+  </provides>
+  ​<releases>
+    <release date="2019-11-03" version="0.5.0">
+      <description>
+        <p>New:</p>
+        <ul>
+         <li>Use color picker to set color of smart bulbs</li>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+          <li>Show an error page if network is not available</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+        </ul>
+        <p>Translations:</p>
+        <ul>
+          <li>Russian (by camellan)</li>
+          <li>French (by NathanBnm)</li>
+          <li>German (by meisenzahl)</li>
+          <li>Japanese (by ryonakano)</li>
+          <li>Portuguese (by aimproxy)</li>
+          <li>Polish (by oskarkunik)</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2019-08-07" version="0.4.2">
+      <description>
+        <p>New:</p>
+        <ul>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fix of overlapping elements</li>
+        </ul>
+        <p>Translations:</p>
+        <ul>
+          <li>Russian (by camellan)</li>
+          <li>French (by NathanBnm)</li>
+          <li>German (by meisenzahl)</li>
+          <li>Japanese (by ryonakano)</li>
+          <li>Portuguese (by aimproxy)</li>
+          <li>Polish (by oskarkunik)</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2019-08-07" version="0.4.1">
+      <description>
+        <p>New:</p>
+        <ul>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Show loading page if no device is found</li>
+        </ul>
+        <p>Translations:</p>
+        <ul>
+          <li>Russian (by camellan)</li>
+          <li>French (by NathanBnm)</li>
+          <li>German (by meisenzahl)</li>
+          <li>Japanese (by ryonakano)</li>
+          <li>Portuguese (by aimproxy)</li>
+          <li>Polish (by oskarkunik)</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2019-08-04" version="0.4.0">
+      <description>
+        <p>New:</p>
+        <ul>
+          <li>Set custom device icons</li>
+          <li>Set dim level for dimmable bulbs</li>
+          <li>Set color for supported bulbs</li>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+          <li>UI styling</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+        </ul>
+        <p>Translations:</p>
+        <ul>
+          <li>Russian (by camellan)</li>
+          <li>French (by NathanBnm)</li>
+          <li>German (by meisenzahl)</li>
+          <li>Japanese (by ryonakano)</li>
+          <li>Portuguese (by aimproxy)</li>
+          <li>Polish (by oskarkunik)</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2019-07-04" version="0.3.0">
+      <description>
+        <p>New:</p>
+        <ul>
+          <li>Add new UI</li>
+          <li>Add initial support for Philips Hue devices</li>
+          <li>Add discovery for Philips Hue bridges</li>
+          <li>Add page to configure Philips Hue bridges</li>
+          <li>Add service to save configurations</li>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+          <li>Update welcome view</li>
+          <li>Add mode switch for dark theme if freedesktop schema is not available</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+        </ul>
+        <p>Translations:</p>
+        <ul>
+          <li>French (by NathanBnm)</li>
+          <li>German</li>
+          <li>Russian (by camellan)</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2019-06-14" version="0.2.0">
+      <description>
+        <p>New:</p>
+        <ul>
+          <li>Add welcome view for onboarding</li>
+          <li>Show loading page if no smart home gadget is found</li>
+          <li>Show manufacturer and model of device</li>
+        </ul>
+        <p>Improved:</p>
+        <ul>
+          <li>Save and load window settings</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Remove mention of elementary OS in app description</li>
+          <li>Suffix symbolic icon names with -symbolic</li>
+          <li>Install all available icon sizes</li>
+        </ul>
+      </description>
+    </release>
+    <release date="2019-06-11" version="0.1.0">
+      <description>
+        <p>Initial release</p>
+      </description>
+    </release>
+  </releases>
+  <screenshots>
+    <screenshot type="default">
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/000.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/001.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/002.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/003.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/004.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/005.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/006.png</image>
+    </screenshot>
+    <screenshot>
+      <caption></caption>
+      <image>https://raw.githubusercontent.com/manexim/home/master/data/screenshots/007.png</image>
+    </screenshot>
+  </screenshots>
+  <developer_name>Manexim</developer_name>
+  <url type="homepage">https://github.com/manexim</url>
+  <url type="bugtracker">https://github.com/manexim/home/issues</url>
+  <custom>
+    <!-- elementary AppCenter specific values -->
+    <value key="x-appcenter-color-primary">#802392</value>
+    <value key="x-appcenter-color-primary-text">#fafafa</value>
+    <!-- Suggested price in USD; just a suggestion, NOT a minimum. -->
+    <value key="x-appcenter-suggested-price">5</value>
+    <value key="x-appcenter-stripe">pk_live_FiCVZObTHO7IaLtSXRETuJiJ00aW6Su9kN</value>
+  </custom>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="violence-desecration">none</content_attribute>
+    <content_attribute id="violence-slavery">none</content_attribute>
+    <content_attribute id="violence-worship">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="sex-homosexuality">none</content_attribute>
+    <content_attribute id="sex-prostitution">none</content_attribute>
+    <content_attribute id="sex-adultery">none</content_attribute>
+    <content_attribute id="sex-appearance">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">mild</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+</component>
