@@ -129,39 +129,24 @@ public class Pages.DevicePage : Pages.AbstractDevicePage {
             }
 
             if (lamp.supports_color) {
-                var c = new Colors.HSB ();
-                c.hue = remap_value (lamp.hue, lamp.hue_min, lamp.hue_max, 0, 360);
-                c.saturation = (uint8) remap_value (lamp.saturation, lamp.saturation_min, lamp.saturation_max, 0, 100);
-                c.brightness = (uint8) remap_value (lamp.brightness, lamp.brightness_min, lamp.brightness_max, 0, 100);
+                Gtk.Settings.get_default ().notify["gtk-theme-name"].connect ((s, p) => {
+                    var context = new Gtk.StyleContext ();
+                    Gdk.RGBA color;
+                    if (context.lookup_color ("accent_color_500", out color)) {
+                        var rgb = new Colors.RGB ();
+                        rgb.red = (uint8) (color.red * 255 + 0.5);
+                        rgb.green = (uint8) (color.green * 255 + 0.5);
+                        rgb.blue = (uint8) (color.blue * 255 + 0.5);
 
-                var color_picker = new Widgets.ColorPicker (MainWindow.get_default ());
-                color_picker.hsb = c;
-                color_picker.on_color_change.connect ((rgb) => {
-                    var hsb = new Colors.HSB.from_rgb (rgb);
+                        var hsb = new Colors.HSB.from_rgb (rgb);
 
-                    var hue = remap_value (hsb.hue, 0, 360, lamp.hue_min, lamp.hue_max);
-                    var saturation = remap_value (hsb.saturation, 0, 100, lamp.saturation_min, lamp.saturation_max);
-                    var brightness = remap_value (hsb.brightness, 0, 100, lamp.brightness_min, lamp.brightness_max);
+                        var hue = remap_value (hsb.hue, 0, 360, lamp.hue_min, lamp.hue_max);
+                        var saturation = remap_value (hsb.saturation, 0, 100, lamp.saturation_min, lamp.saturation_max);
+                        var brightness = remap_value (hsb.brightness, 0, 100, lamp.brightness_min, lamp.brightness_max);
 
-                    #if DEMO_MODE
-                    hue_scale.adjustment.value = hue;
-                    lamp.hue = (uint16) hue_scale.adjustment.value;
-
-                    saturation_scale.adjustment.value = saturation;
-                    lamp.saturation = (uint16) saturation_scale.adjustment.value;
-
-                    brightness_scale.adjustment.value = brightness;
-                    lamp.brightness = (uint16) brightness_scale.adjustment.value;
-                    #else
-                    controller.switch_hsb (hue, saturation, brightness);
-
-                    hue_scale.adjustment.value = hue;
-                    saturation_scale.adjustment.value = saturation;
-                    brightness_scale.adjustment.value = brightness;
-                    #endif
+                        controller.switch_hsb (hue, saturation, brightness);
+                    }
                 });
-
-                content_area.attach (color_picker, 0, 4, 1, 1);
             }
         }
 
